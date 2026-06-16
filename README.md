@@ -20,7 +20,7 @@
 
 ```bash
 # YOLO
-curl -fsSL https://rimuru.ai/install | bash
+curl -fsSL https://rimurucode.vercel.app/install | bash
 
 # Package managers (coming soon)
 # npm i -g rimuru-ai@latest
@@ -65,5 +65,3 @@ For more info on how to configure Rimuru AI, refer to the project-level `.openco
 Interested in contributing? Check the [contributing docs](./CONTRIBUTING.md) before submitting a pull request.
 
 ---
-
-**Join our community** [Discord](https://discord.gg/opencode) | [X.com](https://x.com/opencode)

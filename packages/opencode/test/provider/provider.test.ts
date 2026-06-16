@@ -2,10 +2,10 @@ import { afterEach, expect, test } from "bun:test"
 import { mkdir, unlink } from "fs/promises"
 import path from "path"
 import { Effect, Layer } from "effect"
-import { ModelsDev } from "@opencode-ai/core/models-dev"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { Global } from "@opencode-ai/core/global"
+import { ModelsDev } from "@rimuru-ai/core/models-dev"
+import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
+import { Global } from "@rimuru-ai/core/global"
 import { disposeAllInstances, provideInstanceEffect, tmpdirScoped, TestInstance } from "../fixture/fixture"
 import { markPluginDependenciesReady } from "../fixture/plugin"
 import { Auth } from "@/auth"
@@ -18,8 +18,8 @@ import { RuntimeFlags } from "@/effect/runtime-flags"
 import { Filesystem } from "@/util/filesystem"
 import { InstanceLayer } from "@/project/instance-layer"
 import { testEffect } from "../lib/effect"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { ModelV2 } from "@rimuru-ai/core/model"
 
 const originalEnv = new Map<string, string | undefined>()
 
@@ -70,7 +70,7 @@ const providerLayer = (flags: Partial<RuntimeFlags.Info> = {}) =>
 const list = Provider.use.list()
 
 const paid = (providers: Record<string, { models: Record<string, { cost: { input: number } }> }>) => {
-  const item = providers[ProviderV2.ID.make("opencode")]
+  const item = providers[ProviderV2.ID.make("rimuru-ai")]
   expect(item).toBeDefined()
   return Object.values(item.models).filter((model) => model.cost.input > 0).length
 }
@@ -1122,7 +1122,7 @@ it.instance(
     const providers = yield* list
     expect(providers[ProviderV2.ID.make("nvidia")].options.headers).toEqual({
       "HTTP-Referer": "https://opencode.ai/",
-      "X-Title": "opencode",
+      "X-Title": "rimuru-ai",
       "X-BILLING-INVOKE-ORIGIN": "OpenCode",
     })
   }),
@@ -1135,7 +1135,7 @@ it.instance(
     const providers = yield* list
     expect(providers[ProviderV2.ID.make("nvidia")].options.headers).toEqual({
       "HTTP-Referer": "https://opencode.ai/",
-      "X-Title": "opencode",
+      "X-Title": "rimuru-ai",
       "X-BILLING-INVOKE-ORIGIN": "OpenCode",
     })
   }),
@@ -1633,12 +1633,12 @@ it.instance(
     expect(providers[ProviderV2.ID.make("cloudflare-ai-gateway")]).toBeDefined()
     expect(providers[ProviderV2.ID.make("cloudflare-ai-gateway")].options.metadata).toEqual({
       invoked_by: "test",
-      project: "opencode",
+      project: "rimuru-ai",
     })
   }),
   {
     config: {
-      provider: { "cloudflare-ai-gateway": { options: { metadata: { invoked_by: "test", project: "opencode" } } } },
+      provider: { "cloudflare-ai-gateway": { options: { metadata: { invoked_by: "test", project: "rimuru-ai" } } } },
     },
   },
 )

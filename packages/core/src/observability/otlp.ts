@@ -35,7 +35,7 @@ function resourceAttributes() {
 
 export function resource(): { serviceName: string; serviceVersion: string; attributes: Record<string, string> } {
   return {
-    serviceName: "opencode",
+    serviceName: "rimuru-ai",
     serviceVersion: InstallationVersion,
     attributes: {
       ...resourceAttributes(),

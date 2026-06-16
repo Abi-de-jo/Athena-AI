@@ -3,13 +3,13 @@ import { $ } from "bun"
 import fs from "fs/promises"
 import path from "path"
 import { Effect, Layer, Schema } from "effect"
-import { ProjectV2 } from "@opencode-ai/core/project"
-import { Database } from "@opencode-ai/core/database/database"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { Git } from "@opencode-ai/core/git"
-import { AbsolutePath } from "@opencode-ai/core/schema"
-import { Hash } from "@opencode-ai/core/util/hash"
-import { ProjectDirectories } from "@opencode-ai/core/project/directories"
+import { ProjectV2 } from "@rimuru-ai/core/project"
+import { Database } from "@rimuru-ai/core/database/database"
+import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { Git } from "@rimuru-ai/core/git"
+import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { Hash } from "@rimuru-ai/core/util/hash"
+import { ProjectDirectories } from "@rimuru-ai/core/project/directories"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
@@ -170,7 +170,7 @@ describe("ProjectV2.resolve", () => {
         (tmp) => Effect.promise(() => tmp[Symbol.asyncDispose]()),
       )
       yield* Effect.promise(() => initRepo(tmp.path, { commit: true, remote: "git@github.com:owner/repo.git" }))
-      yield* Effect.promise(() => Bun.write(path.join(tmp.path, ".git", "opencode"), "old-id"))
+      yield* Effect.promise(() => Bun.write(path.join(tmp.path, ".git", "rimuru-ai"), "old-id"))
       const project = yield* ProjectV2.Service
 
       const result = yield* project.resolve(abs(tmp.path))
@@ -191,7 +191,7 @@ describe("ProjectV2.resolve", () => {
 
       yield* project.resolve(abs(tmp.path))
 
-      expect(yield* Effect.promise(() => Bun.file(path.join(tmp.path, ".git", "opencode")).exists())).toBe(false)
+      expect(yield* Effect.promise(() => Bun.file(path.join(tmp.path, ".git", "rimuru-ai")).exists())).toBe(false)
     }),
   )
 
@@ -222,7 +222,7 @@ describe("ProjectV2.resolve", () => {
         Effect.promise(() => $`rm -rf ${worktree}`.quiet().nothrow()).pipe(Effect.ignore),
       )
       yield* Effect.promise(() => initRepo(tmp.path, { commit: true, remote: "git@github.com:owner/repo.git" }))
-      yield* Effect.promise(() => Bun.write(path.join(tmp.path, ".git", "opencode"), "old-id"))
+      yield* Effect.promise(() => Bun.write(path.join(tmp.path, ".git", "rimuru-ai"), "old-id"))
       yield* Effect.promise(() => $`git worktree add ${worktree} -b test-${Date.now()}`.cwd(tmp.path).quiet())
       const project = yield* ProjectV2.Service
 

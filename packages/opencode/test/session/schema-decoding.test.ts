@@ -8,8 +8,8 @@ import { SessionStatus } from "../../src/session/status"
 import { SessionSummary } from "../../src/session/summary"
 import { Todo } from "../../src/session/todo"
 import { SessionID, MessageID, PartID } from "../../src/session/schema"
-import { ProjectV2 } from "@opencode-ai/core/project"
-import { WorkspaceV2 } from "@opencode-ai/core/workspace"
+import { ProjectV2 } from "@rimuru-ai/core/project"
+import { WorkspaceV2 } from "@rimuru-ai/core/workspace"
 
 // Covers the session-domain Effect Schema migration. For each migrated
 // schema we assert:
@@ -236,7 +236,7 @@ describe("SessionStatus.Info", () => {
       message: "transient",
       action: {
         reason: "free_tier_limit",
-        provider: "opencode",
+        provider: "rimuru-ai",
         title: "Free limit reached",
         message: "Subscribe to OpenCode Go.",
         label: "subscribe",

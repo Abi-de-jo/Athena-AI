@@ -1,7 +1,7 @@
-import { Button } from "@opencode-ai/ui/button"
-import { useDialog } from "@opencode-ai/ui/context/dialog"
-import { Spinner } from "@opencode-ai/ui/spinner"
-import { showToast } from "@opencode-ai/ui/toast"
+import { Button } from "@rimuru-ai/ui/button"
+import { useDialog } from "@rimuru-ai/ui/context/dialog"
+import { Spinner } from "@rimuru-ai/ui/spinner"
+import { showToast } from "@rimuru-ai/ui/toast"
 import { createEffect, createMemo, For, Match, onCleanup, Show, Switch } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useLanguage } from "@/context/language"
@@ -9,9 +9,9 @@ import { usePlatform } from "@/context/platform"
 import { useWslServers } from "./context"
 import { enterWslOpencodeStep } from "./settings-model"
 
-type WslServerStep = "wsl" | "distro" | "opencode"
+type WslServerStep = "wsl" | "distro" | "rimuru-ai"
 
-const STEPS: WslServerStep[] = ["wsl", "distro", "opencode"]
+const STEPS: WslServerStep[] = ["wsl", "distro", "rimuru-ai"]
 
 function isHiddenDistro(name: string) {
   return /^docker-desktop(?:-data)?$/i.test(name)
@@ -126,7 +126,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
   const recommendedStep = createMemo<WslServerStep>(() => {
     if (!wslReady()) return "wsl"
     if (!distroReady()) return "distro"
-    return "opencode"
+    return "rimuru-ai"
   })
   // activeStep falls back to recommendedStep when the user hasn't picked one.
   // Once the user clicks a step tab we respect their choice rather than snapping
@@ -536,7 +536,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
               </div>
             </Match>
 
-            <Match when={activeStep() === "opencode"}>
+            <Match when={activeStep() === "rimuru-ai"}>
               <div class="rounded-md bg-surface-base p-4 flex flex-col gap-3">
                 <div class="flex items-center justify-between gap-3">
                   <div class="text-14-medium text-text-strong">{language.t("wsl.onboarding.step.opencode")}</div>
@@ -597,7 +597,7 @@ export function DialogAddWslServer(props: DialogWslServerProps = {}) {
             </Match>
           </Switch>
 
-          <Show when={activeStep() === "opencode" && allReady() && selectedDistro()}>
+          <Show when={activeStep() === "rimuru-ai" && allReady() && selectedDistro()}>
             <div class="flex items-center justify-end gap-2">
               <Button variant="ghost" size="large" disabled={store.adding} onClick={() => dialog.close()}>
                 {language.t("common.cancel")}

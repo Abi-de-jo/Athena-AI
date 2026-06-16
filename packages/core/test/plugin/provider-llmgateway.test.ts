@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@opencode-ai/core/catalog"
-import { Integration } from "@opencode-ai/core/integration"
-import { PluginV2 } from "@opencode-ai/core/plugin"
-import { ProviderPlugins } from "@opencode-ai/core/plugin/provider"
-import { LLMGatewayPlugin } from "@opencode-ai/core/plugin/provider/llmgateway"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { Catalog } from "@rimuru-ai/core/catalog"
+import { Integration } from "@rimuru-ai/core/integration"
+import { PluginV2 } from "@rimuru-ai/core/plugin"
+import { ProviderPlugins } from "@rimuru-ai/core/plugin/provider"
+import { LLMGatewayPlugin } from "@rimuru-ai/core/plugin/provider/llmgateway"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
 import { expectPluginRegistered, it, provider } from "./provider-helper"
 
 describe("LLMGatewayPlugin", () => {
@@ -51,8 +51,8 @@ describe("LLMGatewayPlugin", () => {
       expect((yield* catalog.provider.get(ProviderV2.ID.make("llmgateway"))).request.headers).toEqual({
         Existing: "value",
         "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
-        "X-Source": "opencode",
+        "X-Title": "rimuru-ai",
+        "X-Source": "rimuru-ai",
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.openrouter)).request.headers).toEqual({})
     }),

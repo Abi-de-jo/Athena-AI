@@ -1,15 +1,15 @@
 import { describe, expect } from "bun:test"
 import { DateTime, Effect, Layer, Option } from "effect"
-import { Catalog } from "@opencode-ai/core/catalog"
-import { Credential } from "@opencode-ai/core/credential"
-import { EventV2 } from "@opencode-ai/core/event"
-import { Integration } from "@opencode-ai/core/integration"
-import { Location } from "@opencode-ai/core/location"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { PluginV2 } from "@opencode-ai/core/plugin"
-import { OpencodePlugin } from "@opencode-ai/core/plugin/provider/opencode"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { AbsolutePath } from "@opencode-ai/core/schema"
+import { Catalog } from "@rimuru-ai/core/catalog"
+import { Credential } from "@rimuru-ai/core/credential"
+import { EventV2 } from "@rimuru-ai/core/event"
+import { Integration } from "@rimuru-ai/core/integration"
+import { Location } from "@rimuru-ai/core/location"
+import { ModelV2 } from "@rimuru-ai/core/model"
+import { PluginV2 } from "@rimuru-ai/core/plugin"
+import { OpencodePlugin } from "@rimuru-ai/core/plugin/provider/opencode"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { AbsolutePath } from "@rimuru-ai/core/schema"
 import { location } from "../fixture/location"
 import { it, model, provider, withEnv } from "./provider-helper"
 
@@ -33,9 +33,9 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(yield* Integration.Service))
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode")
+          const item = provider("rimuru-ai")
           catalog.provider.update(item.id, () => {})
-          const paid = model("opencode", "paid", { cost: cost(1) })
+          const paid = model("rimuru-ai", "paid", { cost: cost(1) })
           catalog.model.update(item.id, paid.id, (draft) => {
             draft.cost = [...paid.cost]
           })
@@ -54,9 +54,9 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(yield* Integration.Service))
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode")
+          const item = provider("rimuru-ai")
           catalog.provider.update(item.id, () => {})
-          const free = model("opencode", "free", { cost: cost(0) })
+          const free = model("rimuru-ai", "free", { cost: cost(0) })
           catalog.model.update(item.id, free.id, (draft) => {
             draft.cost = [...free.cost]
           })
@@ -75,9 +75,9 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(yield* Integration.Service))
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode")
+          const item = provider("rimuru-ai")
           catalog.provider.update(item.id, () => {})
-          const outputOnly = model("opencode", "output-only", { cost: cost(0, 1) })
+          const outputOnly = model("rimuru-ai", "output-only", { cost: cost(0, 1) })
           catalog.model.update(item.id, outputOnly.id, (draft) => {
             draft.cost = [...outputOnly.cost]
           })
@@ -96,9 +96,9 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(yield* Integration.Service))
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode")
+          const item = provider("rimuru-ai")
           catalog.provider.update(item.id, () => {})
-          const paid = model("opencode", "paid", { cost: cost(1) })
+          const paid = model("rimuru-ai", "paid", { cost: cost(1) })
           catalog.model.update(item.id, paid.id, (draft) => {
             draft.cost = [...paid.cost]
           })
@@ -118,15 +118,15 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(integrations))
         yield* integrations.update((editor) => {
           editor.method.update({
-            integrationID: Integration.ID.make("opencode"),
+            integrationID: Integration.ID.make("rimuru-ai"),
             method: { type: "env", names: ["CUSTOM_OPENCODE_API_KEY"] },
           })
         })
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode")
+          const item = provider("rimuru-ai")
           catalog.provider.update(item.id, () => {})
-          const paid = model("opencode", "paid", { cost: cost(1) })
+          const paid = model("rimuru-ai", "paid", { cost: cost(1) })
           catalog.model.update(item.id, paid.id, (draft) => {
             draft.cost = [...paid.cost]
           })
@@ -145,7 +145,7 @@ describe("OpencodePlugin", () => {
         yield* plugin.add(pluginWithIntegrations(yield* Integration.Service))
         const transform = yield* catalog.transform()
         yield* transform((catalog) => {
-          const item = provider("opencode", {
+          const item = provider("rimuru-ai", {
             request: {
               headers: {},
               body: { apiKey: "configured" },
@@ -154,7 +154,7 @@ describe("OpencodePlugin", () => {
           catalog.provider.update(item.id, (draft) => {
             draft.request = item.request
           })
-          const paid = model("opencode", "paid", { cost: cost(1) })
+          const paid = model("rimuru-ai", "paid", { cost: cost(1) })
           catalog.model.update(item.id, paid.id, (draft) => {
             draft.cost = [...paid.cost]
           })

@@ -1,1 +1,1 @@
-export * from "@opencode-ai/tui/logo"
+export * from "@rimuru-ai/tui/logo"

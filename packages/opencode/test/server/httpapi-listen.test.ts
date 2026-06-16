@@ -2,7 +2,7 @@ import { afterEach, describe, expect, test } from "bun:test"
 import net from "node:net"
 import path from "node:path"
 import { pathToFileURL } from "node:url"
-import { Flag } from "@opencode-ai/core/flag/flag"
+import { Flag } from "@rimuru-ai/core/flag/flag"
 import { Server } from "../../src/server/server"
 import { PtyPaths } from "../../src/server/routes/instance/httpapi/groups/pty"
 import { withTimeout } from "../../src/util/timeout"
@@ -15,7 +15,7 @@ const original = {
   envPassword: process.env.OPENCODE_SERVER_PASSWORD,
   envUsername: process.env.OPENCODE_SERVER_USERNAME,
 }
-const auth = { username: "opencode", password: "listen-secret" }
+const auth = { username: "rimuru-ai", password: "listen-secret" }
 const testPty = process.platform === "win32" ? test.skip : test
 
 afterEach(async () => {

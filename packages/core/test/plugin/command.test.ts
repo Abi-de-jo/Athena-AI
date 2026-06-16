@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { CommandV2 } from "@opencode-ai/core/command"
-import { Location } from "@opencode-ai/core/location"
-import { CommandPlugin } from "@opencode-ai/core/plugin/command"
-import { AbsolutePath } from "@opencode-ai/core/schema"
+import { CommandV2 } from "@rimuru-ai/core/command"
+import { Location } from "@rimuru-ai/core/location"
+import { CommandPlugin } from "@rimuru-ai/core/plugin/command"
+import { AbsolutePath } from "@rimuru-ai/core/schema"
 import { location } from "../fixture/location"
 import { testEffect } from "../lib/effect"
 

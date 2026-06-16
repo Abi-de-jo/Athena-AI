@@ -1,14 +1,14 @@
 import { afterEach, describe, expect } from "bun:test"
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
+import { ConfigV1 } from "@rimuru-ai/core/v1/config/config"
+import { SessionV1 } from "@rimuru-ai/core/v1/session"
 import { Deferred, Effect, Layer } from "effect"
 import type * as Scope from "effect/Scope"
 import { HttpServer } from "effect/unstable/http"
 import { ChildProcessSpawner } from "effect/unstable/process"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { Flag } from "@opencode-ai/core/flag/flag"
-import { createOpencodeClient } from "@opencode-ai/sdk/v2"
+import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
+import { Flag } from "@rimuru-ai/core/flag/flag"
+import { createOpencodeClient } from "@rimuru-ai/sdk/v2"
 import { validateSession } from "../../src/cli/tui/validate-session"
 import { InstanceBootstrap } from "../../src/project/bootstrap-service"
 import { InstanceStore } from "../../src/project/instance-store"
@@ -24,9 +24,9 @@ import { resetDatabase } from "../fixture/db"
 import { disposeAllInstances, TestInstance, tmpdirScoped } from "../fixture/fixture"
 import { awaitWithTimeout, testEffect } from "../lib/effect"
 import { testProviderConfig } from "../lib/test-provider"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { Database } from "@opencode-ai/core/database/database"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { ModelV2 } from "@rimuru-ai/core/model"
+import { Database } from "@rimuru-ai/core/database/database"
 import { httpApiLayer } from "./httpapi-layer"
 
 const noopBootstrap = Layer.succeed(InstanceBootstrap.Service, InstanceBootstrap.Service.of({ run: Effect.void }))
@@ -493,12 +493,12 @@ describe("HttpApi SDK", () => {
         const missing = yield* capture(() => missingSdk.file.read({ path: "hello.txt" }))
         const badSdk = yield* client("raw", directory, {
           password: "secret",
-          headers: { authorization: authorization("opencode", "wrong") },
+          headers: { authorization: authorization("rimuru-ai", "wrong") },
         })
         const bad = yield* capture(() => badSdk.file.read({ path: "hello.txt" }))
         const goodSdk = yield* client("raw", directory, {
           password: "secret",
-          headers: { authorization: authorization("opencode", "secret") },
+          headers: { authorization: authorization("rimuru-ai", "secret") },
         })
         const good = yield* capture(() => goodSdk.file.read({ path: "hello.txt" }))
 

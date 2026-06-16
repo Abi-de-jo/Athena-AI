@@ -3,8 +3,8 @@ import { Effect, Layer, Stream } from "effect"
 import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
 import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process"
 import { Installation } from "../../src/installation"
-import { InstallationChannel } from "@opencode-ai/core/installation/version"
-import { AppProcess } from "@opencode-ai/core/process"
+import { InstallationChannel } from "@rimuru-ai/core/installation/version"
+import { AppProcess } from "@rimuru-ai/core/process"
 import { testEffect } from "../lib/effect"
 
 const encoder = new TextEncoder()
@@ -139,8 +139,8 @@ describe("installation", () => {
         () => jsonResponse({ versions: { stable: "2.0.0" } }),
         (cmd, args) => {
           // getBrewFormula: return core formula (no tap)
-          if (cmd === "brew" && args.includes("--formula") && args.includes("anomalyco/tap/opencode")) return ""
-          if (cmd === "brew" && args.includes("--formula") && args.includes("opencode")) return "opencode"
+          if (cmd === "brew" && args.includes("--formula") && args.includes("gowdaman/tap/opencode")) return ""
+          if (cmd === "brew" && args.includes("--formula") && args.includes("rimuru-ai")) return "rimuru-ai"
           return ""
         },
       ),
@@ -158,7 +158,7 @@ describe("installation", () => {
       testLayer(
         () => jsonResponse({}), // HTTP not used for tap formula
         (cmd, args) => {
-          if (cmd === "brew" && args.includes("anomalyco/tap/opencode") && args.includes("--formula")) return "opencode"
+          if (cmd === "brew" && args.includes("gowdaman/tap/opencode") && args.includes("--formula")) return "rimuru-ai"
           if (cmd === "brew" && args.includes("--json=v2")) return brewInfoJson
           return ""
         },

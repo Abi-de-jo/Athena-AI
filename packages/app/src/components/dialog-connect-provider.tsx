@@ -1,13 +1,13 @@
-import type { ProviderAuthAuthorization, ProviderAuthMethod } from "@opencode-ai/sdk/v2/client"
-import { Button } from "@opencode-ai/ui/button"
-import { useDialog } from "@opencode-ai/ui/context/dialog"
-import { Dialog } from "@opencode-ai/ui/dialog"
-import { Icon } from "@opencode-ai/ui/icon"
-import { IconButton } from "@opencode-ai/ui/icon-button"
-import { List, type ListRef } from "@opencode-ai/ui/list"
-import { ProviderIcon } from "@opencode-ai/ui/provider-icon"
-import { Spinner } from "@opencode-ai/ui/spinner"
-import { TextField } from "@opencode-ai/ui/text-field"
+import type { ProviderAuthAuthorization, ProviderAuthMethod } from "@rimuru-ai/sdk/v2/client"
+import { Button } from "@rimuru-ai/ui/button"
+import { useDialog } from "@rimuru-ai/ui/context/dialog"
+import { Dialog } from "@rimuru-ai/ui/dialog"
+import { Icon } from "@rimuru-ai/ui/icon"
+import { IconButton } from "@rimuru-ai/ui/icon-button"
+import { List, type ListRef } from "@rimuru-ai/ui/list"
+import { ProviderIcon } from "@rimuru-ai/ui/provider-icon"
+import { Spinner } from "@rimuru-ai/ui/spinner"
+import { TextField } from "@rimuru-ai/ui/text-field"
 import { showToast } from "@/utils/toast"
 import { createEffect, createMemo, createResource, Match, onCleanup, onMount, Switch } from "solid-js"
 import { createStore, produce } from "solid-js/store"
@@ -422,7 +422,7 @@ export function DialogConnectProvider(props: { provider: string }) {
     return (
       <div class="flex flex-col gap-6">
         <Switch>
-          <Match when={provider().id === "opencode"}>
+          <Match when={provider().id === "rimuru-ai"}>
             <div class="flex flex-col gap-4">
               <div class="text-14-regular text-text-base">{language.t("provider.connect.opencodeZen.line1")}</div>
               <div class="text-14-regular text-text-base">{language.t("provider.connect.opencodeZen.line2")}</div>

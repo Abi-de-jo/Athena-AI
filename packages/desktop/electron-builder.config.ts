@@ -75,7 +75,7 @@ const getBase = (appId: string): Configuration => ({
   },
   protocols: {
     name: "OpenCode",
-    schemes: ["opencode"],
+    schemes: ["rimuru-ai"],
   },
   win: {
     icon: `resources/icons/icon.ico`,
@@ -116,7 +116,7 @@ function getConfig() {
         ...base,
         appId,
         productName: "OpenCode Dev",
-        rpm: { packageName: "opencode-dev" },
+        rpm: { packageName: "rimuru-ai-dev" },
       }
     }
     case "beta": {
@@ -124,8 +124,8 @@ function getConfig() {
         ...base,
         appId,
         productName: "OpenCode Beta",
-        protocols: { name: "OpenCode Beta", schemes: ["opencode"] },
-        publish: { provider: "github", owner: "anomalyco", repo: "opencode-beta", channel: "latest" },
+        protocols: { name: "OpenCode Beta", schemes: ["rimuru-ai"] },
+        publish: { provider: "github", owner: "gowdaman", repo: "opencode-beta", channel: "latest" },
         rpm: { packageName: "opencode-beta" },
       }
     }
@@ -134,10 +134,10 @@ function getConfig() {
         ...base,
         appId,
         productName: "OpenCode",
-        protocols: { name: "OpenCode", schemes: ["opencode"] },
-        publish: { provider: "github", owner: "anomalyco", repo: "opencode", channel: "latest" },
+        protocols: { name: "OpenCode", schemes: ["rimuru-ai"] },
+        publish: { provider: "github", owner: "gowdaman", repo: "rimuru-ai", channel: "latest" },
         deb: { fpm: [legacyDesktopEntryFpm] },
-        rpm: { packageName: "opencode", fpm: [legacyDesktopEntryFpm] },
+        rpm: { packageName: "rimuru-ai", fpm: [legacyDesktopEntryFpm] },
       }
     }
   }

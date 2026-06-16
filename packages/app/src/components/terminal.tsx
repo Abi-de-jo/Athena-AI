@@ -1,7 +1,7 @@
-import { withAlpha } from "@opencode-ai/ui/theme/color"
-import { useTheme } from "@opencode-ai/ui/theme/context"
-import { resolveThemeVariant } from "@opencode-ai/ui/theme/resolve"
-import type { HexColor } from "@opencode-ai/ui/theme/types"
+import { withAlpha } from "@rimuru-ai/ui/theme/color"
+import { useTheme } from "@rimuru-ai/ui/theme/context"
+import { resolveThemeVariant } from "@rimuru-ai/ui/theme/resolve"
+import type { HexColor } from "@rimuru-ai/ui/theme/types"
 import { showToast } from "@/utils/toast"
 import type { FitAddon, Ghostty, Terminal as Term } from "ghostty-web"
 import { type ComponentProps, createEffect, createMemo, onCleanup, onMount, splitProps } from "solid-js"
@@ -165,7 +165,7 @@ export const Terminal = (props: TerminalProps) => {
   const client = sdk().client
   const url = sdk().url
   const auth = server.current?.http
-  const username = auth?.username ?? "opencode"
+  const username = auth?.username ?? "rimuru-ai"
   const password = auth?.password ?? ""
   const sameOrigin = new URL(url, location.href).origin === location.origin
   let container!: HTMLDivElement

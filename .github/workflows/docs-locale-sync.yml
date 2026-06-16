@@ -48,11 +48,11 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Install OpenCode
+      - name: Install rimuru
         if: steps.changes.outputs.has_changes == 'true'
-        run: curl -fsSL https://opencode.ai/install | bash
+        run: curl -fsSL https://rimurucode.vercel.app/install | bash
 
-      - name: Sync locale docs with OpenCode
+      - name: Sync locale docs
         if: steps.changes.outputs.has_changes == 'true'
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
@@ -67,7 +67,7 @@ jobs:
               }
             }
         run: |
-          opencode run --agent docs --model opencode/gpt-5.3-codex <<'EOF'
+          rimuru run --agent docs --model rimuru-ai/gpt-5.3-codex <<'EOF'
             Update localized docs to match the latest English docs changes.
 
             Changed English doc files:

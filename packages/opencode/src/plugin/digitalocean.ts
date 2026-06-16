@@ -1,6 +1,6 @@
-import type { Hooks, PluginInput } from "@opencode-ai/plugin"
-import type { Model } from "@opencode-ai/sdk/v2"
-import { InstallationVersion } from "@opencode-ai/core/installation/version"
+import type { Hooks, PluginInput } from "@rimuru-ai/plugin"
+import type { Model } from "@rimuru-ai/sdk/v2"
+import { InstallationVersion } from "@rimuru-ai/core/installation/version"
 import { createServer } from "http"
 import open from "open"
 

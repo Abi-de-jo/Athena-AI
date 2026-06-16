@@ -14,8 +14,8 @@ export const headerLinks = [
   { href: "#geo-breakdown", label: "Geo Breakdown" },
 ] as const
 export const githubLink = {
-  href: "https://github.com/anomalyco/opencode",
-  apiHref: "https://api.github.com/repos/anomalyco/opencode",
+  href: "https://github.com/gowdaman/rimuru-ai",
+  apiHref: "https://api.github.com/repos/gowdaman/opencode",
   label: "GitHub",
   fallbackStars: "150K",
   ariaLabel: "Star OpenCode on GitHub",
@@ -250,7 +250,7 @@ export function Footer(props: {
       <div data-slot="footer-pattern" aria-hidden="true" />
       <div data-slot="footer-bottom">
         <div>
-          <span>© 2026 Anomaly Innovations Inc.</span>
+          <span>© 2026 Rimuru Innovations Inc.</span>
           <span data-slot="status">All systems Operational</span>
         </div>
         <div data-slot="theme-toggle" role="group" aria-label="Theme">

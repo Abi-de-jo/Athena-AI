@@ -18,8 +18,8 @@
 // without changing the fixture. Long-lived commands like `serve` will need a
 // different return shape — see the TODO at the bottom of OpencodeCli.
 import { test, type TestOptions } from "bun:test"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { AppProcess } from "@opencode-ai/core/process"
+import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { AppProcess } from "@rimuru-ai/core/process"
 import { Deferred, Duration, Effect, Layer, Queue, Scope, Stream } from "effect"
 import { FetchHttpClient, HttpClient } from "effect/unstable/http"
 import { ChildProcess } from "effect/unstable/process"
@@ -423,7 +423,7 @@ function parseJsonEvents(stdout: string): Array<Record<string, unknown>> {
 
 // Convenience for the common assertion pattern. Dumps stderr/stdout when
 // the exit code doesn't match — saves debugging time on CI failures.
-function expectExit(result: RunResult, expected: number, label = "opencode") {
+function expectExit(result: RunResult, expected: number, label = "rimuru-ai") {
   if (result.exitCode === expected) return
   const tail = (s: string, n: number) => (s.length > n ? "..." + s.slice(-n) : s)
   // eslint-disable-next-line no-console

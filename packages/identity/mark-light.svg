@@ -1,5 +1,12 @@
-<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="512" height="512" fill="#FDFCFC"/>
-<path d="M320 224V352H192V224H320Z" fill="#E6E5E6"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M384 416H128V96H384V416ZM320 160H192V352H320V160Z" fill="#17181C"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f4fa"/>
+      <stop offset="100%" stop-color="#dce3f0"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="230" fill="url(#bg)"/>
+  <g transform="translate(136.0, 151.0) scale(6.0)">
+    <path d="M0 34.3199V0H28.7519C32.3039 0 35.0559 0.895945 37.0079 2.68794C38.9919 4.47994 39.9839 7.19994 39.9839 10.8479C39.9839 13.9519 39.2639 16.3839 37.8239 18.1439C36.3839 19.9039 34.3359 21.0079 31.6799 21.4559L39.5999 34.3199H30.8639L23.5199 21.6959H7.67989V34.3199H0ZM27.8399 6.23994H7.67989V15.4079L27.8399 15.4559C29.2479 15.4559 30.3199 15.1039 31.0559 14.3999C31.8239 13.6959 32.2079 12.5119 32.2079 10.8479C32.2079 9.15194 31.8239 7.96794 31.0559 7.29595C30.3199 6.59194 29.2479 6.23994 27.8399 6.23994Z" fill="#0a1628"/>
+  </g>
 </svg>

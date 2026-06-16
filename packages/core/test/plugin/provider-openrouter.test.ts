@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@opencode-ai/core/catalog"
-import { ModelV2 } from "@opencode-ai/core/model"
-import { PluginV2 } from "@opencode-ai/core/plugin"
-import { ProviderPlugins } from "@opencode-ai/core/plugin/provider"
-import { OpenRouterPlugin } from "@opencode-ai/core/plugin/provider/openrouter"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { Catalog } from "@rimuru-ai/core/catalog"
+import { ModelV2 } from "@rimuru-ai/core/model"
+import { PluginV2 } from "@rimuru-ai/core/plugin"
+import { ProviderPlugins } from "@rimuru-ai/core/plugin/provider"
+import { OpenRouterPlugin } from "@rimuru-ai/core/plugin/provider/openrouter"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
 import { expectPluginRegistered, it, model, provider } from "./provider-helper"
 
 describe("OpenRouterPlugin", () => {
@@ -39,7 +39,7 @@ describe("OpenRouterPlugin", () => {
       expect((yield* catalog.provider.get(ProviderV2.ID.make("openrouter"))).request.headers).toEqual({
         Existing: "value",
         "HTTP-Referer": "https://opencode.ai/",
-        "X-Title": "opencode",
+        "X-Title": "rimuru-ai",
       })
       expect((yield* catalog.provider.get(ProviderV2.ID.make("nvidia"))).request.headers).toEqual({})
     }),

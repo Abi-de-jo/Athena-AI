@@ -2,7 +2,7 @@ import type { Argv } from "yargs"
 import { UI } from "../ui"
 import * as prompts from "@clack/prompts"
 import { Installation } from "../../installation"
-import { Global } from "@opencode-ai/core/global"
+import { Global } from "@rimuru-ai/core/global"
 import fs from "fs/promises"
 import path from "path"
 import os from "os"
@@ -184,15 +184,15 @@ async function executeUninstall(method: Installation.Method, targets: RemovalTar
       pnpm: ["pnpm", "uninstall", "-g", "opencode-ai"],
       bun: ["bun", "remove", "-g", "opencode-ai"],
       yarn: ["yarn", "global", "remove", "opencode-ai"],
-      brew: ["brew", "uninstall", "opencode"],
-      choco: ["choco", "uninstall", "opencode"],
-      scoop: ["scoop", "uninstall", "opencode"],
+      brew: ["brew", "uninstall", "rimuru-ai"],
+      choco: ["choco", "uninstall", "rimuru-ai"],
+      scoop: ["scoop", "uninstall", "rimuru-ai"],
     }
 
     const cmd = cmds[method]
     if (cmd) {
       spinner.start(`Running ${cmd.join(" ")}...`)
-      const result = await Process.run(method === "choco" ? ["choco", "uninstall", "opencode", "-y", "-r"] : cmd, {
+      const result = await Process.run(method === "choco" ? ["choco", "uninstall", "rimuru-ai", "-y", "-r"] : cmd, {
         nothrow: true,
       })
       if (result.code !== 0) {

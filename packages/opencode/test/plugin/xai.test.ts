@@ -93,7 +93,7 @@ describe("plugin.xai", () => {
       expect(params.get("state")).toBe("state-abc")
       expect(params.get("nonce")).toBe("nonce-xyz")
       expect(params.get("plan")).toBe("generic")
-      expect(params.get("referrer")).toBe("opencode")
+      expect(params.get("referrer")).toBe("rimuru-ai")
     })
 
     test("supports endpoint override for local integration tests", () => {

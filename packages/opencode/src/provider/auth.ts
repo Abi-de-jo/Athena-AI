@@ -1,11 +1,11 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import type { AuthOAuthResult, Hooks } from "@opencode-ai/plugin"
-import { serviceUse } from "@opencode-ai/core/effect/service-use"
+import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import type { AuthOAuthResult, Hooks } from "@rimuru-ai/plugin"
+import { serviceUse } from "@rimuru-ai/core/effect/service-use"
 import { Auth } from "@/auth"
 import { InstanceState } from "@/effect/instance-state"
-import { optionalOmitUndefined } from "@opencode-ai/core/schema"
+import { optionalOmitUndefined } from "@rimuru-ai/core/schema"
 import { Plugin } from "../plugin"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
 import { Array as Arr, Effect, Layer, Record, Result, Context, Schema } from "effect"
 
 const When = Schema.Struct({

@@ -1,12 +1,12 @@
 {
-  "name": "opencode",
-  "displayName": "opencode",
+  "name": "rimuru-ai",
+  "displayName": "rimuru-ai",
   "description": "opencode for VS Code",
   "version": "1.17.7",
   "publisher": "sst-dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anomalyco/opencode"
+    "url": "https://github.com/gowdaman/rimuru-ai"
   },
   "license": "MIT",
   "icon": "images/icon.png",

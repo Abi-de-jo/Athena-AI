@@ -1,17 +1,17 @@
 import { describe, expect, test } from "bun:test"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
-import type { NamedError } from "@opencode-ai/core/util/error"
+import { SessionV1 } from "@rimuru-ai/core/v1/session"
+import type { NamedError } from "@rimuru-ai/core/util/error"
 import { APICallError } from "ai"
 import { setTimeout as sleep } from "node:timers/promises"
 import { Effect, Layer, Schedule, Schema } from "effect"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
+import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
 import { SessionRetry } from "../../src/session/retry"
 import { MessageV2 } from "../../src/session/message-v2"
 import { ProviderError } from "../../src/provider/error"
 import { SessionID } from "../../src/session/schema"
 import { SessionStatus } from "../../src/session/status"
 import { testEffect } from "../lib/effect"
-import { ProviderV2 } from "@opencode-ai/core/provider"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
 
 const providerID = ProviderV2.ID.make("test")
 const retryProvider = "test"
@@ -266,11 +266,11 @@ describe("session.retry.retryable", () => {
       }).toObject(),
     )
 
-    expect(SessionRetry.retryable(error, "opencode")).toEqual({
+    expect(SessionRetry.retryable(error, "rimuru-ai")).toEqual({
       message: SessionRetry.GO_UPSELL_MESSAGE,
       action: {
         reason: "free_tier_limit",
-        provider: "opencode",
+        provider: "rimuru-ai",
         title: "Free limit reached",
         message: "Subscribe to OpenCode Go for reliable access to the best open-source models, starting at $5/month.",
         label: "subscribe",

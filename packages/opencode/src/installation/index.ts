@@ -1,18 +1,18 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
-import { httpClient } from "@opencode-ai/core/effect/layer-node-platform"
+import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { httpClient } from "@rimuru-ai/core/effect/layer-node-platform"
 import { Effect, Layer, Schema, Context, Stream } from "effect"
-import { serviceUse } from "@opencode-ai/core/effect/service-use"
+import { serviceUse } from "@rimuru-ai/core/effect/service-use"
 import { FetchHttpClient, HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
 import { withTransientReadRetry } from "@/util/effect-http-client"
 import { errorMessage } from "@/util/error"
 import { ChildProcess } from "effect/unstable/process"
-import { AppProcess } from "@opencode-ai/core/process"
+import { AppProcess } from "@rimuru-ai/core/process"
 import path from "path"
-import { EventV2 } from "@opencode-ai/core/event"
-import { makeRuntime } from "@opencode-ai/core/effect/runtime"
+import { EventV2 } from "@rimuru-ai/core/event"
+import { makeRuntime } from "@rimuru-ai/core/effect/runtime"
 import semver from "semver"
-import { InstallationChannel, InstallationVersion } from "@opencode-ai/core/installation/version"
-import { NpmConfig } from "@opencode-ai/core/npm-config"
+import { InstallationChannel, InstallationVersion } from "@rimuru-ai/core/installation/version"
+import { NpmConfig } from "@rimuru-ai/core/npm-config"
 
 export type Method = "curl" | "npm" | "yarn" | "pnpm" | "bun" | "brew" | "scoop" | "choco" | "unknown"
 
@@ -135,11 +135,11 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
     )
 
     const getBrewFormula = Effect.fnUntraced(function* () {
-      const tapFormula = yield* text(["brew", "list", "--formula", "anomalyco/tap/opencode"])
-      if (tapFormula.includes("opencode")) return "anomalyco/tap/opencode"
-      const coreFormula = yield* text(["brew", "list", "--formula", "opencode"])
-      if (coreFormula.includes("opencode")) return "opencode"
-      return "opencode"
+      const tapFormula = yield* text(["brew", "list", "--formula", "gowdaman/tap/opencode"])
+      if (tapFormula.includes("rimuru-ai")) return "gowdaman/tap/opencode"
+      const coreFormula = yield* text(["brew", "list", "--formula", "rimuru-ai"])
+      if (coreFormula.includes("rimuru-ai")) return "rimuru-ai"
+      return "rimuru-ai"
     })
 
     const upgradeFailure = (method: Method, result?: { code: number; stdout: string; stderr: string }) => {
@@ -193,9 +193,9 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
           { name: "yarn", command: () => text(["yarn", "global", "list"]) },
           { name: "pnpm", command: () => text(["pnpm", "list", "-g", "--depth=0"]) },
           { name: "bun", command: () => text(["bun", "pm", "ls", "-g"]) },
-          { name: "brew", command: () => text(["brew", "list", "--formula", "opencode"]) },
-          { name: "scoop", command: () => text(["scoop", "list", "opencode"]) },
-          { name: "choco", command: () => text(["choco", "list", "--limit-output", "opencode"]) },
+          { name: "brew", command: () => text(["brew", "list", "--formula", "rimuru-ai"]) },
+          { name: "scoop", command: () => text(["scoop", "list", "rimuru-ai"]) },
+          { name: "choco", command: () => text(["choco", "list", "--limit-output", "rimuru-ai"]) },
         ]
 
         checks.sort((a, b) => {
@@ -209,7 +209,7 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
         for (const check of checks) {
           const output = yield* check.command()
           const installedName =
-            check.name === "brew" || check.name === "choco" || check.name === "scoop" ? "opencode" : "opencode-ai"
+            check.name === "brew" || check.name === "choco" || check.name === "scoop" ? "rimuru-ai" : "opencode-ai"
           if (output.includes(installedName)) {
             return check.name
           }
@@ -267,7 +267,7 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
         }
 
         const response = yield* httpOk.execute(
-          HttpClientRequest.get("https://api.github.com/repos/anomalyco/opencode/releases/latest").pipe(
+          HttpClientRequest.get("https://api.github.com/repos/gowdaman/opencode/releases/latest").pipe(
             HttpClientRequest.acceptJson,
           ),
         )
@@ -293,12 +293,12 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
             const formula = yield* getBrewFormula()
             const env = { HOMEBREW_NO_AUTO_UPDATE: "1" }
             if (formula.includes("/")) {
-              const tap = yield* run(["brew", "tap", "anomalyco/tap"], { env })
+              const tap = yield* run(["brew", "tap", "gowdaman/tap"], { env })
               if (tap.code !== 0) {
                 upgradeResult = tap
                 break
               }
-              const repo = yield* text(["brew", "--repo", "anomalyco/tap"])
+              const repo = yield* text(["brew", "--repo", "gowdaman/tap"])
               const dir = repo.trim()
               if (dir) {
                 const pull = yield* run(["git", "pull", "--ff-only"], { cwd: dir, env })
@@ -312,7 +312,7 @@ export const layer: Layer.Layer<Service, never, HttpClient.HttpClient | AppProce
             break
           }
           case "choco":
-            upgradeResult = yield* run(["choco", "upgrade", "opencode", `--version=${target}`, "-y"])
+            upgradeResult = yield* run(["choco", "upgrade", "rimuru-ai", `--version=${target}`, "-y"])
             break
           case "scoop":
             upgradeResult = yield* run(["scoop", "install", `opencode@${target}`])

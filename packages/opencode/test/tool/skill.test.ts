@@ -1,6 +1,6 @@
-import { PermissionV1 } from "@opencode-ai/core/v1/permission"
-import { CrossSpawnSpawner } from "@opencode-ai/core/cross-spawn-spawner"
-import { Ripgrep } from "@opencode-ai/core/ripgrep"
+import { PermissionV1 } from "@rimuru-ai/core/v1/permission"
+import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
+import { Ripgrep } from "@rimuru-ai/core/ripgrep"
 import { Cause, Effect, Exit, Layer } from "effect"
 import { afterEach, describe, expect } from "bun:test"
 import path from "path"
@@ -63,7 +63,7 @@ Use this skill.
       const registry = yield* ToolRegistry.Service
       const agent = { name: "build", mode: "primary" as const, permission: [], options: {} }
       const tool = (yield* registry.tools({
-        providerID: "opencode" as any,
+        providerID: "rimuru-ai" as any,
         modelID: "gpt-5" as any,
         agent,
       })).find((tool) => tool.id === SkillTool.id)
@@ -109,7 +109,7 @@ Use this skill.
       const registry = yield* ToolRegistry.Service
       const agent = { name: "build", mode: "primary" as const, permission: [], options: {} }
       const tool = (yield* registry.tools({
-        providerID: "opencode" as any,
+        providerID: "rimuru-ai" as any,
         modelID: "gpt-5" as any,
         agent,
       })).find((tool) => tool.id === SkillTool.id)

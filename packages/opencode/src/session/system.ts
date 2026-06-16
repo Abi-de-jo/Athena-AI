@@ -1,4 +1,4 @@
-import { LayerNode } from "@opencode-ai/core/effect/layer-node"
+import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
 import { Context, Effect, Layer } from "effect"
 
 import { InstanceState } from "@/effect/instance-state"
@@ -16,11 +16,11 @@ import type { Provider } from "@/provider/provider"
 import type { Agent } from "@/agent/agent"
 import { Permission } from "@/permission"
 import { Skill } from "@/skill"
-import { AbsolutePath } from "@opencode-ai/core/schema"
-import { Location } from "@opencode-ai/core/location"
-import { LocationServiceMap } from "@opencode-ai/core/location-layer"
-import { PluginBoot } from "@opencode-ai/core/plugin/boot"
-import { Reference } from "@opencode-ai/core/reference"
+import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { Location } from "@rimuru-ai/core/location"
+import { LocationServiceMap } from "@rimuru-ai/core/location-layer"
+import { PluginBoot } from "@rimuru-ai/core/plugin/boot"
+import { Reference } from "@rimuru-ai/core/reference"
 
 export function provider(model: Provider.Model) {
   if (model.api.id.includes("gpt-4") || model.api.id.includes("o1") || model.api.id.includes("o3"))

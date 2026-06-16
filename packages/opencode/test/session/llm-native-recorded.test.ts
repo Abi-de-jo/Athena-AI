@@ -1,9 +1,9 @@
-import { ConfigV1 } from "@opencode-ai/core/v1/config/config"
-import { SessionV1 } from "@opencode-ai/core/v1/session"
-import { FSUtil } from "@opencode-ai/core/fs-util"
-import { ModelsDev } from "@opencode-ai/core/models-dev"
-import { HttpRecorder } from "@opencode-ai/http-recorder"
-import { HttpRecorderInternal } from "@opencode-ai/http-recorder/internal"
+import { ConfigV1 } from "@rimuru-ai/core/v1/config/config"
+import { SessionV1 } from "@rimuru-ai/core/v1/session"
+import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { ModelsDev } from "@rimuru-ai/core/models-dev"
+import { HttpRecorder } from "@rimuru-ai/http-recorder"
+import { HttpRecorderInternal } from "@rimuru-ai/http-recorder/internal"
 import { describe, expect, test } from "bun:test"
 import { tool, type ModelMessage, type JSONValue } from "ai"
 import { Effect, Layer, Option, Schema, Stream } from "effect"
@@ -15,8 +15,8 @@ import { Plugin } from "@/plugin"
 import { Provider } from "@/provider/provider"
 
 import { Filesystem } from "@/util/filesystem"
-import { LLMEvent, LLMResponse } from "@opencode-ai/llm"
-import { LLMClient, RequestExecutor, WebSocketExecutor } from "@opencode-ai/llm/route"
+import { LLMEvent, LLMResponse } from "@rimuru-ai/llm"
+import { LLMClient, RequestExecutor, WebSocketExecutor } from "@rimuru-ai/llm/route"
 import { Env } from "@/env"
 import { RuntimeFlags } from "@/effect/runtime-flags"
 import type { Agent } from "../../src/agent/agent"
@@ -24,8 +24,8 @@ import { LLM } from "../../src/session/llm"
 import { MessageID, SessionID } from "../../src/session/schema"
 import { TestInstance } from "../fixture/fixture"
 import { testEffect } from "../lib/effect"
-import { ProviderV2 } from "@opencode-ai/core/provider"
-import { ModelV2 } from "@opencode-ai/core/model"
+import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { ModelV2 } from "@rimuru-ai/core/model"
 
 const FIXTURES_DIR = path.join(import.meta.dir, "../fixtures/recordings")
 
@@ -120,7 +120,7 @@ const RECORDED_SCENARIOS = [
     modelID: "gpt-4.1-mini",
     cassette: "session/native-openai-tool-loop",
     protocol: "openai-responses",
-    tags: ["opencode", "native", "tool-loop"],
+    tags: ["rimuru-ai", "native", "tool-loop"],
     canRecord: () => Boolean(envValue("OPENCODE_RECORD_OPENAI_API_KEY", "OPENAI_API_KEY")),
     config: (model) =>
       providerConfig({
@@ -143,7 +143,7 @@ const RECORDED_SCENARIOS = [
     modelID: "gpt-5.5",
     cassette: "session/native-openai-oauth-tool-loop",
     protocol: "openai-responses",
-    tags: ["opencode", "native", "oauth", "tool-loop"],
+    tags: ["rimuru-ai", "native", "oauth", "tool-loop"],
     canRecord: () => recordOpenAIOAuth() !== undefined,
     recordAuth: recordOpenAIOAuth,
     replayAuth: replayOpenAIOAuth,
@@ -166,7 +166,7 @@ const RECORDED_SCENARIOS = [
     modelID: "gpt-5.2-codex",
     cassette: "session/native-zen-tool-loop",
     protocol: "openai-responses",
-    tags: ["opencode", "zen", "native", "tool-loop"],
+    tags: ["rimuru-ai", "zen", "native", "tool-loop"],
     canRecord: () => Boolean(process.env.OPENCODE_RECORD_CONSOLE_TOKEN && process.env.OPENCODE_RECORD_ZEN_ORG_ID),
     config: (model) =>
       providerConfig({
@@ -189,7 +189,7 @@ const RECORDED_SCENARIOS = [
     modelID: "claude-haiku-4-5-20251001",
     cassette: "session/native-anthropic-tool-loop",
     protocol: "anthropic-messages",
-    tags: ["opencode", "native", "tool-loop"],
+    tags: ["rimuru-ai", "native", "tool-loop"],
     canRecord: () => Boolean(envValue("OPENCODE_RECORD_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY")),
     config: (model) =>
       providerConfig({
