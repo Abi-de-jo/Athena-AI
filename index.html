@@ -3,59 +3,716 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rimuru AI</title>
+  <title>Rimuru AI — The Open Source AI Coding Agent</title>
+  <meta name="description" content="Rimuru AI is an open source AI-powered coding agent. Code with terminal-native speed, powerful MCP integration, and a multi-agent system.">
+  <meta property="og:title" content="Rimuru AI — The Open Source AI Coding Agent">
+  <meta property="og:description" content="An open source AI-powered coding agent with terminal-native speed, powerful MCP integration, and a multi-agent system.">
+  <meta property="og:image" content="/social-share.png">
+  <link rel="icon" href="/favicon-v3.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-v3.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-v3.png">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
       background: #0a0a0b;
       color: #e4e4e7;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background effects */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 20% 20%, rgba(120, 80, 240, 0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(100, 80, 240, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(10, 10, 11, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #e4e4e7;
+      text-decoration: none;
+    }
+    nav .logo svg { width: 24px; height: 24px; }
+    nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    nav .nav-links a {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav .nav-links a:hover { color: #e4e4e7; }
+    nav .nav-links .btn {
+      background: linear-gradient(135deg, #7c3aed, #6366f1);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+    }
+    nav .nav-links .btn:hover { opacity: 0.9; color: #fff; }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
-      padding: 2rem;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
     }
-    h1 {
-      font-size: 3rem;
+    .hero-logo { margin-bottom: 1.5rem; }
+    .hero-logo svg { width: 180px; height: auto; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #a78bfa, #818cf8, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: #a1a1aa;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Install box */
+    .install-box {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+      font-size: 0.9rem;
+      position: relative;
+      margin-bottom: 2rem;
+    }
+    .install-box .prompt { color: #22c55e; }
+    .install-box .cmd { color: #e4e4e7; }
+    .install-box .copy-btn {
+      background: #27272a;
+      border: none;
+      color: #a1a1aa;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.375rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .install-box .copy-btn:hover { background: #3f3f46; color: #e4e4e7; }
+    .install-box .copy-btn.copied { background: #22c55e; color: #fff; }
+
+    .hero-features {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .hero-features span {
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      color: #a1a1aa;
+      font-size: 0.875rem;
+    }
+    .hero-features .dot { color: #22c55e; }
+
+    /* Section styling */
+    section { padding: 5rem 1.5rem; }
+    section h2 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      text-align: center;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+    section h2 .gradient {
       background: linear-gradient(135deg, #a78bfa, #818cf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    p {
-      font-size: 1.125rem;
-      color: #a1a1aa;
-      margin-bottom: 2rem;
+    section .subtitle {
+      text-align: center;
+      color: #71717a;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
     }
-    code {
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Features grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+    .feature-card {
       background: #18181b;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      display: inline-block;
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: 0.9rem;
       border: 1px solid #27272a;
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .links { margin-top: 2rem; display: flex; gap: 1.5rem; }
-    a {
-      color: #818cf8;
+    .feature-card:hover {
+      border-color: #3f3f46;
+      transform: translateY(-2px);
+    }
+    .feature-card .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.625rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card .icon.purple { background: rgba(124, 58, 237, 0.15); color: #a78bfa; }
+    .feature-card .icon.green { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .feature-card .icon.blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .feature-card .icon.orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
+    .feature-card .icon.teal { background: rgba(45, 212, 191, 0.15); color: #2dd4bf; }
+    .feature-card .icon.pink { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      color: #a1a1aa;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* Agents section */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .agent-card {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 0.75rem;
+      padding: 1.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    .agent-card.build::before { background: linear-gradient(90deg, #7c3aed, #6366f1); }
+    .agent-card.plan::before { background: linear-gradient(90deg, #22c55e, #34d399); }
+    .agent-card .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .agent-card.build .badge { background: rgba(124, 58, 237, 0.15); color: #a78bfa; }
+    .agent-card.plan .badge { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .agent-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .agent-card p { color: #a1a1aa; font-size: 0.9rem; line-height: 1.6; }
+    .agent-card ul {
+      margin-top: 0.75rem;
+      list-style: none;
+    }
+    .agent-card ul li {
+      color: #a1a1aa;
+      font-size: 0.85rem;
+      padding: 0.3rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .agent-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #52525b;
+    }
+    .agent-card.plan ul li::before { color: #4ade80; }
+    .agent-card.build ul li::before { color: #a78bfa; }
+
+    /* Install section */
+    .install-section {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 0.75rem;
+      padding: 2.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .install-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .install-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      background: #27272a;
+      border-radius: 0.5rem;
+      padding: 0.25rem;
+    }
+    .install-tab {
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 0.375rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #a1a1aa;
+      transition: all 0.2s;
+    }
+    .install-tab.active { background: #3f3f46; color: #e4e4e7; }
+    .install-code {
+      background: #0a0a0b;
+      border: 1px solid #27272a;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #e4e4e7;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .install-code .comment { color: #71717a; }
+    .install-code .keyword { color: #7c3aed; }
+    .install-code .string { color: #22c55e; }
+
+    /* Desktop downloads */
+    .downloads {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      color: #e4e4e7;
       text-decoration: none;
+      transition: all 0.2s;
       font-size: 0.9rem;
     }
-    a:hover { text-decoration: underline; }
+    .download-btn:hover { border-color: #3f3f46; background: #1f1f23; }
+    .download-btn .os-icon { font-size: 1.5rem; }
+    .download-btn .label { display: flex; flex-direction: column; }
+    .download-btn .label small { color: #71717a; font-size: 0.75rem; }
+
+    /* MCP section */
+    .mcp-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .mcp-item {
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .mcp-item .mcp-icon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 0.375rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+    }
+    .mcp-item span { font-size: 0.9rem; font-weight: 500; }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #27272a;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    footer .footer-links a {
+      color: #71717a;
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    footer .footer-links a:hover { color: #e4e4e7; }
+    footer p { color: #52525b; font-size: 0.8rem; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate { animation: fadeInUp 0.6s ease-out both; }
+    .animate-delay-1 { animation-delay: 0.1s; }
+    .animate-delay-2 { animation-delay: 0.2s; }
+    .animate-delay-3 { animation-delay: 0.3s; }
+    .animate-delay-4 { animation-delay: 0.4s; }
+
+    @media (max-width: 640px) {
+      nav { padding: 0.75rem 1rem; }
+      nav .nav-links .hide-mobile { display: none; }
+      .hero { padding: 5rem 1rem 3rem; }
+      section { padding: 3rem 1rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .agents-grid { grid-template-columns: 1fr; }
+      .mcp-list { grid-template-columns: 1fr 1fr; }
+      .downloads { flex-direction: column; align-items: stretch; }
+    }
   </style>
 </head>
 <body>
-  <h1>Rimuru AI</h1>
-  <p>The open source AI coding agent.</p>
-  <code>curl -fsSL https://rimurucode.vercel.app/install | bash</code>
-  <div class="links">
-    <a href="https://github.com/gowdaman-dev/rimuru-ai">GitHub</a>
-    <a href="/docs">Docs</a>
-  </div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="logo">
+      <svg viewBox="0 0 234 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 30H6V18H18V30Z" fill="#a78bfa"/>
+        <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" fill="#6366f1"/>
+        <path d="M48 30H36V18H48V30Z" fill="#a78bfa"/>
+        <path d="M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" fill="#6366f1"/>
+        <path d="M84 24V30H66V24H84Z" fill="#a78bfa"/>
+        <path d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" fill="#6366f1"/>
+        <path d="M108 36H96V18H108V36Z" fill="#a78bfa"/>
+        <path d="M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" fill="#6366f1"/>
+        <path d="M144 30H126V18H144V30Z" fill="#a78bfa"/>
+        <path d="M144 12H126V30H144V36H120V6H144V12Z" fill="#e4e4e7"/>
+        <path d="M168 30H156V18H168V30Z" fill="#a78bfa"/>
+        <path d="M168 12H156V30H168V12ZM174 36H150V6H174V36Z" fill="#e4e4e7"/>
+        <path d="M198 30H186V18H198V30Z" fill="#a78bfa"/>
+        <path d="M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" fill="#e4e4e7"/>
+        <path d="M234 24V30H216V24H234Z" fill="#a78bfa"/>
+        <path d="M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" fill="#e4e4e7"/>
+      </svg>
+      rimuru-ai
+    </a>
+    <div class="nav-links">
+      <a href="#features" class="hide-mobile">Features</a>
+      <a href="#agents" class="hide-mobile">Agents</a>
+      <a href="#install">Install</a>
+      <a href="https://github.com/gowdaman-dev/rimuru-ai" class="hide-mobile">GitHub</a>
+      <a href="/docs" class="btn">Docs</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-logo animate">
+      <svg viewBox="0 0 234 42" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:200px">
+        <path d="M18 30H6V18H18V30Z" fill="#a78bfa"/>
+        <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" fill="#6366f1"/>
+        <path d="M48 30H36V18H48V30Z" fill="#a78bfa"/>
+        <path d="M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" fill="#6366f1"/>
+        <path d="M84 24V30H66V24H84Z" fill="#a78bfa"/>
+        <path d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" fill="#6366f1"/>
+        <path d="M108 36H96V18H108V36Z" fill="#a78bfa"/>
+        <path d="M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" fill="#6366f1"/>
+        <path d="M144 30H126V18H144V30Z" fill="#a78bfa"/>
+        <path d="M144 12H126V30H144V36H120V6H144V12Z" fill="#cfcecd"/>
+        <path d="M168 30H156V18H168V30Z" fill="#a78bfa"/>
+        <path d="M168 12H156V30H168V12ZM174 36H150V6H174V36Z" fill="#cfcecd"/>
+        <path d="M198 30H186V18H198V30Z" fill="#a78bfa"/>
+        <path d="M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" fill="#cfcecd"/>
+        <path d="M234 24V30H216V24H234Z" fill="#a78bfa"/>
+        <path d="M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" fill="#cfcecd"/>
+      </svg>
+    </div>
+    <h1 class="animate animate-delay-1">
+      Code with <span class="gradient">Rimuru AI</span>
+    </h1>
+    <p class="animate animate-delay-2">
+      An open source AI coding agent that lives in your terminal.
+      Multi-agent system, native MCP support, and fast context-aware tools.
+    </p>
+
+    <div class="install-box animate animate-delay-3">
+      <span class="prompt">$</span>
+      <span class="cmd">curl -fsSL https://rimurucode.vercel.app/install | bash</span>
+      <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
+    </div>
+
+    <div class="hero-features animate animate-delay-4">
+      <span><span class="dot">◆</span> Open source</span>
+      <span><span class="dot">◆</span> Multi-agent</span>
+      <span><span class="dot">◆</span> MCP native</span>
+      <span><span class="dot">◆</span> 29 packages</span>
+      <span><span class="dot">◆</span> Cross-platform</span>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <h2>Everything you need, <span class="gradient">right in your terminal</span></h2>
+      <p class="subtitle">Rimuru AI combines the power of large language models with deep code understanding tools — no IDE required.</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon purple">⚡</div>
+          <h3>Terminal-Native Speed</h3>
+          <p>Built for the terminal with a rich TUI interface. Switch between agents with <kbd>Tab</kbd>, view diffs inline, and work at the speed of thought.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon green">🧠</div>
+          <h3>Multi-Agent System</h3>
+          <p>Two built-in agents — <strong>build</strong> for full-access development and <strong>plan</strong> for read-only analysis. Route complex tasks to specialist subagents.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon blue">🔌</div>
+          <h3>MCP Server Integration</h3>
+          <p>Native Model Context Protocol support. Connect to Figma, databases, browsers, APIs, and custom tools through a single, unified interface.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon orange">🔍</div>
+          <h3>Semantic Code Search</h3>
+          <p>Find code by meaning, not keywords. Index your entire codebase with vector embeddings and search with natural language queries.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon teal">🎯</div>
+          <h3>Context-Aware Tools</h3>
+          <p>MADAR knowledge graph understands relationships across your project. Call graph, implementation lookup, and focused context packs.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon pink">🌐</div>
+          <h3>Cross-Provider</h3>
+          <p>Works with any LLM provider — Claude, GPT, Gemini, Llama, and more. Switch models without switching tools.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agents -->
+  <section id="agents">
+    <div class="container">
+      <h2>Two agents, <span class="gradient">one workflow</span></h2>
+      <p class="subtitle">Switch between agents with the <kbd>Tab</kbd> key. Each agent has the right tools and permissions for the job.</p>
+
+      <div class="agents-grid">
+        <div class="agent-card build">
+          <div class="badge">Build</div>
+          <h3>Full-Access Development Agent</h3>
+          <p>The default agent for writing code, editing files, running commands, and building features. Has the full toolset at its disposal.</p>
+          <ul>
+            <li>Read, write, edit files</li>
+            <li>Execute bash commands</li>
+            <li>Search and explore code</li>
+            <li>Run tests and builds</li>
+          </ul>
+        </div>
+
+        <div class="agent-card plan">
+          <div class="badge">Plan</div>
+          <h3>Read-Only Analysis Agent</h3>
+          <p>Designed for exploration and planning. Read-only by default — denies file edits, asks before bash. Perfect for unfamiliar codebases.</p>
+          <ul>
+            <li>Explore code structure</li>
+            <li>Review and analyze</li>
+            <li>Plan changes safely</li>
+            <li>Research dependencies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCP Servers -->
+  <section>
+    <div class="container">
+      <h2>Built-in <span class="gradient">MCP support</span></h2>
+      <p class="subtitle">Connect to the tools you already use through the Model Context Protocol.</p>
+
+      <div class="mcp-list">
+        <div class="mcp-item"><div class="mcp-icon">🎨</div><span>Figma</span></div>
+        <div class="mcp-item"><div class="mcp-icon">📁</div><span>Filesystem</span></div>
+        <div class="mcp-item"><div class="mcp-icon">📮</div><span>Postman</span></div>
+        <div class="mcp-item"><div class="mcp-icon">🌐</div><span>Browser</span></div>
+        <div class="mcp-item"><div class="mcp-icon">📄</div><span>PDF</span></div>
+        <div class="mcp-item"><div class="mcp-icon">🗄️</div><span>SQLite</span></div>
+        <div class="mcp-item"><div class="mcp-icon">🔧</div><span>Chrome DevTools</span></div>
+        <div class="mcp-item"><div class="mcp-icon">🤖</div><span>Browser Use</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" style="padding-bottom: 3rem;">
+    <div class="container" style="max-width: 700px;">
+      <h2>Get started in <span class="gradient">one command</span></h2>
+      <p class="subtitle">No dependencies, no setup. Just curl and go.</p>
+
+      <div class="install-section">
+        <h3>Install Rimuru AI</h3>
+
+        <div class="install-tabs">
+          <button class="install-tab active" onclick="switchTab(this, 'curl')">curl</button>
+          <button class="install-tab" onclick="switchTab(this, 'npm')">npm</button>
+          <button class="install-tab" onclick="switchTab(this, 'nix')">Nix</button>
+        </div>
+
+        <div id="tab-curl" class="install-code"><span class="comment"># Install Rimuru AI</span>
+curl -fsSL https://rimurucode.vercel.app/install | bash
+
+<span class="comment"># Then run it:</span>
+rimuru</div>
+
+        <div id="tab-npm" class="install-code" style="display:none"><span class="comment"># Via npm (coming soon)</span>
+<span class="keyword">npm</span> install -g rimuru-ai@latest</div>
+
+        <div id="tab-nix" class="install-code" style="display:none"><span class="comment"># Via Nix flake</span>
+nix run github:gowdaman-dev/rimuru-ai
+
+<span class="comment"># Or add to your flake:</span>
+<span class="keyword">inputs</span> = {
+  rimuru-ai.url = <span class="string">"github:gowdaman-dev/rimuru-ai"</span>;
+};</div>
+      </div>
+
+      <!-- Desktop -->
+      <h2 style="margin-top: 4rem; font-size: 1.5rem;">Desktop app <span class="gradient">(BETA)</span></h2>
+      <p class="subtitle" style="margin-bottom: 1.5rem;">Download the desktop application for your platform.</p>
+      <div class="downloads">
+        <a href="https://github.com/gowdaman-dev/rimuru-ai/releases" class="download-btn">
+          <span class="os-icon">🍎</span>
+          <span class="label">
+            macOS (Apple Silicon)
+            <small>rimuru-desktop-mac-arm64.dmg</small>
+          </span>
+        </a>
+        <a href="https://github.com/gowdaman-dev/rimuru-ai/releases" class="download-btn">
+          <span class="os-icon">🍎</span>
+          <span class="label">
+            macOS (Intel)
+            <small>rimuru-desktop-mac-x64.dmg</small>
+          </span>
+        </a>
+        <a href="https://github.com/gowdaman-dev/rimuru-ai/releases" class="download-btn">
+          <span class="os-icon">🪟</span>
+          <span class="label">
+            Windows
+            <small>rimuru-desktop-windows-x64.exe</small>
+          </span>
+        </a>
+        <a href="https://github.com/gowdaman-dev/rimuru-ai/releases" class="download-btn">
+          <span class="os-icon">🐧</span>
+          <span class="label">
+            Linux
+            <small>.deb / .rpm / .AppImage</small>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="/docs">Documentation</a>
+      <a href="https://github.com/gowdaman-dev/rimuru-ai">GitHub</a>
+      <a href="https://github.com/gowdaman-dev/rimuru-ai/releases">Releases</a>
+      <a href="https://github.com/gowdaman-dev/rimuru-ai/blob/dev/CONTRIBUTING.md">Contributing</a>
+      <a href="https://github.com/gowdaman-dev/rimuru-ai/blob/dev/LICENSE">License</a>
+    </div>
+    <p>Rimuru AI — Open source under the MIT License.</p>
+  </footer>
+
+  <script>
+    function copyInstall(btn) {
+      const text = 'curl -fsSL https://rimurucode.vercel.app/install | bash';
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+      });
+    }
+
+    function switchTab(btn, tab) {
+      document.querySelectorAll('.install-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('[id^="tab-"]').forEach(el => el.style.display = 'none');
+      document.getElementById('tab-' + tab).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
