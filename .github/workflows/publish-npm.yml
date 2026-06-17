@@ -26,7 +26,7 @@ jobs:
             const root = JSON.parse(require('fs').readFileSync('../../package.json','utf8'));
             const pkg = JSON.parse(require('fs').readFileSync('package.json','utf8'));
             const catalog = root.workspaces?.catalog || {};
-            ['dependencies','devDependencies','peerDependencies'].forEach(section => {
+            ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
               if (!pkg[section]) return;
               Object.keys(pkg[section]).forEach(key => {
                 if (pkg[section][key] === 'catalog:' && catalog[key]) {
@@ -35,7 +35,8 @@ jobs:
               });
             });
             require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
-            console.log('Resolved:', Object.keys(catalog).filter(k => (pkg.dependencies?.[k] || pkg.devDependencies?.[k]) === catalog[k]).join(', '));
+            const resolved = Object.keys(catalog).filter(k => ['dependencies','devDependencies','overrides'].some(s => pkg[s]?.[k] === catalog[k]));
+            console.log('Resolved:', resolved.join(', ') || '(none)');
           "
         working-directory: packages/rimuru
 
