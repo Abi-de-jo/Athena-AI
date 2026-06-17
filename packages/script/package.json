@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package",
   "name": "@rimuru-ai/script",
+  "version": "1.17.7",
   "license": "MIT",
   "dependencies": {
     "semver": "^7.6.3"

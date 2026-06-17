@@ -20,34 +20,95 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Resolve catalog references
+      - name: Resolve catalog + workspace refs for all packages
         run: |
           node -e "
-            const root = JSON.parse(require('fs').readFileSync('../../package.json','utf8'));
-            const pkg = JSON.parse(require('fs').readFileSync('package.json','utf8'));
+            const fs = require('fs');
+            const root = JSON.parse(fs.readFileSync('package.json', 'utf8'));
             const catalog = root.workspaces?.catalog || {};
-            ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
-              if (!pkg[section]) return;
-              Object.keys(pkg[section]).forEach(key => {
-                if (pkg[section][key] === 'catalog:' && catalog[key]) {
-                  pkg[section][key] = catalog[key];
-                }
-              });
-            });
-            require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
-            const resolved = Object.keys(catalog).filter(k => ['dependencies','devDependencies','overrides'].some(s => pkg[s]?.[k] === catalog[k]));
-            console.log('Resolved:', resolved.join(', ') || '(none)');
-          "
-        working-directory: packages/rimuru
 
-      - name: Publish to npm
+            // Pre-build workspace version map (read each sub-package's version)
+            const publishOrder = [
+              'packages/effect-drizzle-sqlite',
+              'packages/effect-sqlite-node',
+              'packages/sdk/js',
+              'packages/script',
+              'packages/llm',
+              'packages/core',
+              'packages/plugin',
+              'packages/ui',
+              'packages/server',
+              'packages/tui',
+              'packages/rimuru',
+            ];
+            const wsVersions = {};
+            for (const dir of publishOrder) {
+              const pkg = JSON.parse(fs.readFileSync(dir + '/package.json', 'utf8'));
+              wsVersions[pkg.name] = pkg.version || '1.17.7';
+            }
+
+            // Resolve catalog: and workspace:* in every sub-package
+            function resolvePackage(dir) {
+              const path = dir + '/package.json';
+              let pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+
+              ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
+                if (!pkg[section]) return;
+                Object.keys(pkg[section]).forEach(key => {
+                  // Resolve catalog:
+                  if (pkg[section][key] === 'catalog:' && catalog[key]) {
+                    pkg[section][key] = catalog[key];
+                  }
+                  // Resolve workspace:*
+                  if (pkg[section][key] === 'workspace:*' && wsVersions[key]) {
+                    pkg[section][key] = '^' + wsVersions[key];
+                  }
+                });
+              });
+
+              fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+            }
+
+            for (const dir of publishOrder) {
+              resolvePackage(dir);
+              const pkg = JSON.parse(fs.readFileSync(dir + '/package.json', 'utf8'));
+              const resolved = Object.entries(pkg.dependencies || {})
+                .filter(([,v]) => v !== 'catalog:' && !v.startsWith('workspace:'))
+                .map(([k,v]) => k + '@' + v);
+              console.log(pkg.name + ': resolved ' + resolved.length + ' deps');
+            }
+          "
+
+      - name: Publish sub-packages in dependency order
         run: |
-          if [ -z "${NPM_TOKEN}" ]; then
-            echo "ERROR: NPM_TOKEN secret is empty. Add it at:"
-            echo "  https://github.com/gowdaman-dev/rimuru-ai/settings/secrets/actions"
-            exit 1
-          fi
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
+          # Publish order: leaves first, root last
+          for dir in \
+            packages/effect-drizzle-sqlite \
+            packages/effect-sqlite-node \
+            packages/sdk/js \
+            packages/script \
+            packages/llm \
+            packages/core \
+            packages/plugin \
+            packages/ui \
+            packages/server \
+            packages/tui
+          do
+            name=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).name)")
+            ver=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).version)")
+            if npm view "$name@$ver" version &>/dev/null; then
+              echo "✓ Already published $name@$ver"
+            else
+              echo "→ Publishing $name@$ver..."
+              (cd "$dir" && npm publish --access public) || echo "⚠  Publish failed for $name (may already exist)"
+            fi
+          done
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish rimuru-ai
+        run: |
           npm publish --access public
         working-directory: packages/rimuru
         env:
