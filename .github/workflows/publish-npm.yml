@@ -22,7 +22,7 @@ jobs:
           node-version: "22"
 
       - name: Vendor sub-packages and prepare package
-        run: node script/prepare-publish.js
+        run: node script/prepare-publish.cjs
 
       - name: Publish rimuru-ai
         run: |
