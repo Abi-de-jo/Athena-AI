@@ -7,6 +7,7 @@ on:
       - "packages/rimuru/package.json"
       - "packages/rimuru/.rimuru/**"
       - "packages/rimuru/src/**"
+      - ".github/workflows/publish-npm.yml"
 
 jobs:
   publish:
@@ -15,8 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          registry-url: "https://registry.npmjs.org"
+
       - name: Publish to npm
-        run: npm publish
+        if: env.NODE_AUTH_TOKEN != ''
+        run: npm publish --access public || true
         working-directory: packages/rimuru
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
