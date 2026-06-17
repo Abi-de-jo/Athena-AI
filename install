@@ -331,7 +331,13 @@ download_and_install() {
 
     if [[ "$os" == "windows" ]] || ! [ -t 2 ] || ! download_with_progress "$url" "$tmp_dir/$filename"; then
         # Fallback to standard curl on Windows, non-TTY environments, or if custom progress fails
-        curl -# -L -o "$tmp_dir/$filename" "$url"
+        if ! curl -fsSL -o "$tmp_dir/$filename" "$url"; then
+            echo -e "${RED}Error: Failed to download binary from GitHub Releases.${NC}"
+            echo -e "${MUTED}The repository may be private. Try installing via npm instead:${NC}"
+            echo -e "  npm install -g rimuru-ai"
+            echo -e "${MUTED}Or make the repo public: Settings → Danger Zone → Change visibility${NC}"
+            exit 1
+        fi
     fi
 
     if [ "$os" = "linux" ]; then
@@ -440,7 +446,7 @@ fi
 
 install_configs() {
     local config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/rimuru"
-    local config_url="https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/rimuru-default-configs.tar.gz"
+    local config_url="https://rimurucode.vercel.app/rimuru-configs.tar.gz"
     local tmp_dir="${TMPDIR:-/tmp}/rimuru_config_$$"
     local tmp_config="$tmp_dir/configs.tar.gz"
 
