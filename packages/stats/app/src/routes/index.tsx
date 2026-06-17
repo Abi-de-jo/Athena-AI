@@ -51,7 +51,7 @@ const rangeLabels: Record<UsageRange, string> = {
 }
 const statsHomeTitle = "OpenCode Data"
 const statsHomeDescription = "OpenCode usage data, market share, token cost, and session cost."
-const statsHomeFallbackUrl = "https://opencode.ai/data/"
+const statsHomeFallbackUrl = "https://github.com/gowdaman-dev/rimuru-ai/data/"
 const statsUnfurlPath = "banner.jpg"
 const statsUnfurlAlt = "OpenCode Data wordmark on a dark patterned background"
 const usageColors = [
@@ -187,7 +187,7 @@ export default function StatsHome() {
 
 function getStatsHomeUrl(base: string, requestUrl: string) {
   const url = new URL(base, requestUrl)
-  if (url.hostname === "stats.opencode.ai") return "https://opencode.ai/data/"
+  if (url.hostname === "stats.opencode.ai") return "https://github.com/gowdaman-dev/rimuru-ai/data/"
   if (url.hostname === "stats.dev.opencode.ai") return "https://dev.opencode.ai/data/"
   return url.toString()
 }

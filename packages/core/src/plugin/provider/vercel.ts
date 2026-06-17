@@ -10,7 +10,7 @@ export const VercelPlugin = PluginV2.define({
           if (item.provider.api.type !== "aisdk") continue
           if (item.provider.api.package !== "@ai-sdk/vercel") continue
           evt.provider.update(item.provider.id, (provider) => {
-            provider.request.headers["http-referer"] = "https://opencode.ai/"
+            provider.request.headers["http-referer"] = "https://github.com/gowdaman-dev/rimuru-ai/"
             provider.request.headers["x-title"] = "rimuru-ai"
           })
         }

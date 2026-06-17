@@ -31,9 +31,9 @@ const xml = `<?xml version="1.0" encoding="UTF-8"?>
 
   <content_rating type="oars-1.1" />
 
-  <url type="bugtracker">https://github.com/gowdaman/rimuru-ai/issues</url>
+  <url type="bugtracker">https://github.com/gowdaman-dev/rimuru-ai/issues</url>
   <url type="homepage">https://opencode.ai</url>
-  <url type="vcs-browser">https://github.com/gowdaman/rimuru-ai</url>
+  <url type="vcs-browser">https://github.com/gowdaman-dev/rimuru-ai</url>
 
   <screenshots>
     <screenshot type="default">

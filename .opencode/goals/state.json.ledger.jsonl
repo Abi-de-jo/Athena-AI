@@ -1,0 +1,2 @@
+{"ts":1781690913341,"sessionID":"ses_12ec5e0a5ffeTV3n2SbP1YtGKF","goalId":"3dbd4007-7f12-467e-80d5-4d77855b6d48","condition":"proceed migration","type":"set","detail":"Goal created with limits: 10 auto-continues, 900s, 200,000 context tokens."}
+{"ts":1781692200476,"sessionID":"ses_12ec5e0a5ffeTV3n2SbP1YtGKF","goalId":"3dbd4007-7f12-467e-80d5-4d77855b6d48","condition":"proceed migration","type":"recovered","detail":"Recovered persisted goal state after plugin restart; auto-continue remains paused until you resume."}

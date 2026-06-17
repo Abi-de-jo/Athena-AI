@@ -38,7 +38,7 @@ import {
   type ThemePreference,
 } from "../stats-shell"
 
-const statsCanonicalBaseUrl = "https://opencode.ai/data/"
+const statsCanonicalBaseUrl = "https://github.com/gowdaman-dev/rimuru-ai/data/"
 const statsUnfurlPath = "banner.png"
 const statsUnfurlAlt = "OpenCode Data wordmark on a dark patterned background"
 const statsUnfurlUrl = new URL(statsUnfurlPath, statsCanonicalBaseUrl).toString()

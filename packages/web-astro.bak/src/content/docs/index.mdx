@@ -1,0 +1,274 @@
+---
+title: Intro
+description: Get started with Rimuru AI.
+---
+
+import { Tabs, TabItem } from "@astrojs/starlight/components"
+import config from "../../../config.mjs"
+export const console = config.console
+
+[**Rimuru AI**](/) is an open source AI-powered development tool. It runs in your terminal.
+
+![Rimuru AI TUI](../../assets/lander/screenshot.png)
+
+Let's get started.
+
+---
+
+#### Prerequisites
+
+To use Rimuru AI, you'll need:
+
+1. **Node.js 22+** ([download](https://nodejs.org))
+2. **Bun 1.3+** ([install guide](https://bun.sh))
+3. API keys for the LLM providers you want to use.
+
+---
+
+## Install
+
+The easiest way to get Rimuru AI is through the install script:
+
+```bash
+curl -fsSL https://rimurucode.vercel.app/install | bash
+```
+
+This will check for the latest release, download it, and set it up for you.
+
+### Build from source
+
+If you prefer to build from source (or there isn't a pre-built release yet):
+
+```bash
+git clone https://github.com/gowdaman-dev/rimuru-ai.git
+cd rimuru-ai
+bun install
+bun run dev
+```
+
+> Pre-built binaries and package manager installs (npm, brew, etc.) are coming soon.
+
+---
+
+## Configure
+
+With Rimuru AI you can use any LLM provider by configuring their API keys.
+
+1. Run the `/connect` command in the TUI, select a provider, and follow the prompts to authenticate.
+
+   ```txt
+   /connect
+   ```
+
+2. Sign in, add your billing details, and copy your API key.
+
+3. Paste your API key.
+
+   ```txt
+   ┌ API key
+   │
+   │
+   └ enter
+   ```
+
+Alternatively, you can configure a provider manually. [Learn more](/providers).
+
+---
+
+## Initialize
+
+Now that you've configured a provider, you can navigate to a project that
+you want to work on.
+
+```bash
+cd /path/to/project
+```
+
+And run Rimuru AI.
+
+```bash
+rimuru-ai
+```
+
+Next, initialize Rimuru AI for the project by running the following command.
+
+```bash frame="none"
+/init
+```
+
+This will get Rimuru AI to analyze your project and create an `AGENTS.md` file in
+the project root.
+
+:::tip
+You should commit your project's `AGENTS.md` file to Git.
+:::
+
+This helps Rimuru AI understand the project structure and the coding patterns
+used.
+
+---
+
+## Usage
+
+You are now ready to use Rimuru AI to work on your project. Feel free to ask it
+anything!
+
+If you are new to using an AI coding agent, here are some examples that might
+help.
+
+---
+
+### Ask questions
+
+You can ask Rimuru AI to explain the codebase to you.
+
+:::tip
+Use the `@` key to fuzzy search for files in the project.
+:::
+
+```txt frame="none" "@packages/functions/src/api/index.ts"
+How is authentication handled in @packages/functions/src/api/index.ts
+```
+
+This is helpful if there's a part of the codebase that you didn't work on.
+
+---
+
+### Add features
+
+You can ask Rimuru AI to add new features to your project. Though we first recommend asking it to create a plan.
+
+1. **Create a plan**
+
+   Rimuru AI has a _Plan mode_ that disables its ability to make changes and
+   instead suggest _how_ it'll implement the feature.
+
+   Switch to it using the **Tab** key. You'll see an indicator for this in the lower right corner.
+
+   ```bash frame="none" title="Switch to Plan mode"
+   <TAB>
+   ```
+
+   Now let's describe what we want it to do.
+
+   ```txt frame="none"
+   When a user deletes a note, we'd like to flag it as deleted in the database.
+   Then create a screen that shows all the recently deleted notes.
+   From this screen, the user can undelete a note or permanently delete it.
+   ```
+
+   You want to give Rimuru AI enough details to understand what you want. It helps
+   to talk to it like you are talking to a junior developer on your team.
+
+   :::tip
+   Give Rimuru AI plenty of context and examples to help it understand what you
+   want.
+   :::
+
+2. **Iterate on the plan**
+
+   Once it gives you a plan, you can give it feedback or add more details.
+
+   ```txt frame="none"
+   We'd like to design this new screen using a design I've used before.
+   [Image #1] Take a look at this image and use it as a reference.
+   ```
+
+   :::tip
+   Drag and drop images into the terminal to add them to the prompt.
+   :::
+
+   Rimuru AI can scan any images you give it and add them to the prompt. You can
+   do this by dragging and dropping an image into the terminal.
+
+3. **Build the feature**
+
+   Once you feel comfortable with the plan, switch back to _Build mode_ by
+   hitting the **Tab** key again.
+
+   ```bash frame="none"
+   <TAB>
+   ```
+
+   And asking it to make the changes.
+
+   ```bash frame="none"
+   Sounds good! Go ahead and make the changes.
+   ```
+
+---
+
+### Make changes
+
+For more straightforward changes, you can ask Rimuru AI to directly build it
+without having to review the plan first.
+
+```txt frame="none" "@packages/functions/src/settings.ts" "@packages/functions/src/notes.ts"
+We need to add authentication to the /settings route. Take a look at how this is
+handled in the /notes route in @packages/functions/src/notes.ts and implement
+the same logic in @packages/functions/src/settings.ts
+```
+
+You want to make sure you provide a good amount of detail so Rimuru AI makes the right
+changes.
+
+---
+
+### Undo changes
+
+Let's say you ask Rimuru AI to make some changes.
+
+```txt frame="none" "@packages/functions/src/api/index.ts"
+Can you refactor the function in @packages/functions/src/api/index.ts?
+```
+
+But you realize that it is not what you wanted. You **can undo** the changes
+using the `/undo` command.
+
+```bash frame="none"
+/undo
+```
+
+Rimuru AI will now revert the changes you made and show your original message
+again.
+
+```txt frame="none" "@packages/functions/src/api/index.ts"
+Can you refactor the function in @packages/functions/src/api/index.ts?
+```
+
+From here you can tweak the prompt and ask Rimuru AI to try again.
+
+:::tip
+You can run `/undo` multiple times to undo multiple changes.
+:::
+
+Or you **can redo** the changes using the `/redo` command.
+
+```bash frame="none"
+/redo
+```
+
+---
+
+## Share
+
+The conversations that you have with Rimuru AI can be [shared with your
+team](/share).
+
+```bash frame="none"
+/share
+```
+
+This will create a link to the current conversation and copy it to your clipboard.
+
+:::note
+Conversations are not shared by default.
+:::
+
+---
+
+## Customize
+
+And that's it! You are now a pro at using Rimuru AI.
+
+To make it your own, we recommend [picking a theme](/themes), [customizing the keybinds](/keybinds), [configuring code formatters](/formatters), [creating custom commands](/commands), or playing around with the [Rimuru AI config](/config).

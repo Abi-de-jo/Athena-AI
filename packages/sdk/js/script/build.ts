@@ -27,7 +27,7 @@ await createClient({
     },
     {
       name: "@hey-api/sdk",
-      instance: "OpencodeClient",
+      instance: "RimuruClient",
       exportFromIndex: false,
       auth: false,
       paramsStructure: "flat",

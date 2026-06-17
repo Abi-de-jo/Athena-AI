@@ -10,7 +10,7 @@
 <p align="center">ওপেন সোর্স এআই কোডিং এজেন্ট।</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # or github:gowdaman/rimuru-ai for latest de
 
 ### ডেস্কটপ অ্যাপ (BETA)
 
-Rimuru AI ডেস্কটপ অ্যাপ্লিকেশন হিসেবেও উপলব্ধ। সরাসরি [রিলিজ পেজ](https://github.com/gowdaman/rimuru-ai/releases) অথবা [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) থেকে ডাউনলোড করুন।
+Rimuru AI ডেস্কটপ অ্যাপ্লিকেশন হিসেবেও উপলব্ধ। সরাসরি [রিলিজ পেজ](https://github.com/gowdaman-dev/rimuru-ai/releases) অথবা [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) থেকে ডাউনলোড করুন।
 
 | প্ল্যাটফর্ম           | ডাউনলোড                            |
 | --------------------- | ---------------------------------- |

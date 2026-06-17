@@ -1,4 +1,4 @@
-import { createOpencodeClient } from "@rimuru-ai/sdk/v2"
+import { createRimuruClient } from "@rimuru-ai/sdk/v2"
 import type { GlobalEvent } from "@rimuru-ai/sdk/v2"
 import { Flag } from "@rimuru-ai/core/flag/flag"
 import { createSimpleContext } from "./helper"
@@ -21,7 +21,7 @@ export const { use: useSDK, provider: SDKProvider } = createSimpleContext({
     let sse: AbortController | undefined
 
     function createSDK() {
-      return createOpencodeClient({
+      return createRimuruClient({
         baseUrl: props.url,
         signal: abort.signal,
         directory: props.directory,

@@ -1,5 +1,13 @@
 # Contributing to Rimuru AI
 
+## Contributors
+
+Rimuru AI is maintained by:
+
+- [**gowdaman-dev**](https://github.com/gowdaman-dev) — Maintainer
+- [**Abi-de-jo**](https://github.com/Abi-de-jo) — Contributor
+- [**jahangeer-dev**](https://github.com/jahangeer-dev) — Contributor
+
 We want to make it easy for you to contribute to Rimuru AI. Here are the most common type of changes that get merged:
 
 - Bug fixes
@@ -14,10 +22,10 @@ However, any UI or core product feature must go through a design review with the
 
 If you are unsure if a PR would be accepted, feel free to ask a maintainer or look for issues with any of the following labels:
 
-- [`help wanted`](https://github.com/gowdaman/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
-- [`good first issue`](https://github.com/gowdaman/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
-- [`bug`](https://github.com/gowdaman/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
-- [`perf`](https://github.com/gowdaman/rimuru-ai/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
+- [`help wanted`](https://github.com/gowdaman-dev/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3Ahelp-wanted)
+- [`good first issue`](https://github.com/gowdaman-dev/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3A%22good%20first%20issue%22)
+- [`bug`](https://github.com/gowdaman-dev/rimuru-ai/issues?q=is%3Aissue%20state%3Aopen%20label%3Abug)
+- [`perf`](https://github.com/gowdaman-dev/rimuru-ai/issues?q=is%3Aopen%20is%3Aissue%20label%3A%22perf%22)
 
 > [!NOTE]
 > PRs that ignore these guardrails will likely be closed.
@@ -78,7 +86,7 @@ Replace `<platform>` with your platform (e.g., `darwin-arm64`, `linux-x64`).
 
 ### Understanding bun dev vs opencode
 
-During development, `bun dev` is the local equivalent of the built `opencode` command. Both run the same CLI interface:
+During development, `bun dev` is the local equivalent of the built `rimuru-ai` command. Both run the same CLI interface:
 
 ```bash
 # Development (from project root)

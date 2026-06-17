@@ -34,7 +34,7 @@ export const iconNames = [
   "openrouter",
   "llmgateway",
   "rimuru-ai",
-  "opencode-go",
+  "rimuru-go",
   "openai",
   "ollama-cloud",
   "nvidia",

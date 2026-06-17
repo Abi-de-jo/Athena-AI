@@ -301,7 +301,7 @@ export const dict = {
   "dialog.mcp.empty": "No MCPs configured",
 
   "dialog.lsp.empty": "LSPs auto-detected from file types",
-  "dialog.plugins.empty": "Plugins configured in opencode.json",
+  "dialog.plugins.empty": "Plugins configured in rimuru.json",
 
   "mcp.status.connected": "connected",
   "mcp.status.failed": "failed",
@@ -361,7 +361,7 @@ export const dict = {
   "wsl.server.retryStart": "Retry start",
   "wsl.server.updating": "Updating...",
   "wsl.onboarding.step.distro": "Choose distro",
-  "wsl.onboarding.step.opencode": "OpenCode",
+  "wsl.onboarding.step.rimuru": "OpenCode",
   "wsl.onboarding.checkingRuntime": "Checking WSL...",
   "wsl.onboarding.restartRequired": "Windows needs a restart to finish installing WSL.",
   "wsl.onboarding.ready": "WSL is ready.",
@@ -560,7 +560,7 @@ export const dict = {
   "error.chain.responseBody": "Response body:\n{{body}}",
   "error.chain.didYouMean": "Did you mean: {{suggestions}}",
   "error.chain.modelNotFound": "Model not found: {{provider}}/{{model}}",
-  "error.chain.checkConfig": "Check your config (opencode.json) provider/model names",
+  "error.chain.checkConfig": "Check your config (rimuru.json) provider/model names",
   "error.chain.mcpFailed": 'MCP server "{{name}}" failed. Note, OpenCode does not support MCP authentication yet.',
   "error.chain.providerAuthFailed": "Provider authentication failed ({{provider}}): {{message}}",
   "error.chain.providerInitFailed":

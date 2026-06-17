@@ -10,7 +10,7 @@
 <p align="center">开源的 AI Coding Agent。</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # 或用 github:gowdaman/rimuru-ai 获取最
 
 ### 桌面应用程序 (BETA)
 
-Rimuru AI 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/gowdaman/rimuru-ai/releases) 或 [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) 下载。
+Rimuru AI 也提供桌面版应用。可直接从 [发布页 (releases page)](https://github.com/gowdaman-dev/rimuru-ai/releases) 或 [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) 下载。
 
 | 平台                  | 下载文件                           |
 | --------------------- | ---------------------------------- |

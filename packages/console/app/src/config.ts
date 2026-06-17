@@ -7,7 +7,7 @@ export const config = {
 
   // GitHub
   github: {
-    repoUrl: "https://github.com/gowdaman/rimuru-ai",
+    repoUrl: "https://github.com/gowdaman-dev/rimuru-ai",
     starsFormatted: {
       compact: "160K",
       full: "160,000",

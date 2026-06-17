@@ -82,8 +82,8 @@ async function stop() {
 
 function prepareSidecarEnv(password: string, userDataPath: string) {
   Object.assign(process.env, {
-    OPENCODE_SERVER_USERNAME: "rimuru-ai",
-    OPENCODE_SERVER_PASSWORD: password,
+    RIMURU_SERVER_USERNAME: "rimuru-ai",
+    RIMURU_SERVER_PASSWORD: password,
     XDG_STATE_HOME: process.env.XDG_STATE_HOME ?? userDataPath,
   })
 }

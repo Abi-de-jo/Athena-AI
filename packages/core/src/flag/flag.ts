@@ -29,8 +29,8 @@ export const Flag = {
   OPENCODE_DISABLE_MODELS_FETCH: truthy("OPENCODE_DISABLE_MODELS_FETCH"),
   OPENCODE_DISABLE_MOUSE: truthy("OPENCODE_DISABLE_MOUSE"),
   OPENCODE_FAKE_VCS: process.env["OPENCODE_FAKE_VCS"],
-  OPENCODE_SERVER_PASSWORD: process.env["OPENCODE_SERVER_PASSWORD"],
-  OPENCODE_SERVER_USERNAME: process.env["OPENCODE_SERVER_USERNAME"],
+  RIMURU_SERVER_PASSWORD: process.env["RIMURU_SERVER_PASSWORD"],
+  RIMURU_SERVER_USERNAME: process.env["RIMURU_SERVER_USERNAME"],
   OPENCODE_DISABLE_FFF: fff === undefined ? process.platform === "win32" : truthy("OPENCODE_DISABLE_FFF"),
 
   // Experimental
@@ -60,8 +60,8 @@ export const Flag = {
   get OPENCODE_TUI_CONFIG() {
     return process.env["OPENCODE_TUI_CONFIG"]
   },
-  get OPENCODE_CONFIG_DIR() {
-    return process.env["OPENCODE_CONFIG_DIR"]
+  get RIMURU_CONFIG_DIR() {
+    return process.env["RIMURU_CONFIG_DIR"]
   },
   get OPENCODE_PURE() {
     return truthy("OPENCODE_PURE")
@@ -72,7 +72,7 @@ export const Flag = {
   get OPENCODE_PLUGIN_META_FILE() {
     return process.env["OPENCODE_PLUGIN_META_FILE"]
   },
-  get OPENCODE_CLIENT() {
-    return process.env["OPENCODE_CLIENT"] ?? "cli"
+  get RIMURU_CLIENT() {
+    return process.env["RIMURU_CLIENT"] ?? "cli"
   },
 }

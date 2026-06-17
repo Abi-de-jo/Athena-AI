@@ -82,7 +82,7 @@ beforeAll(async () => {
   }))
 
   mock.module("@rimuru-ai/sdk/v2/client", () => ({
-    createOpencodeClient: (input: { directory: string }) => {
+    createRimuruClient: (input: { directory: string }) => {
       createdClients.push(input.directory)
       return clientFor(input.directory)
     },

@@ -56,16 +56,6 @@
       "command": ["npx", "-y", "browser-use", "--mcp"],
       "enabled": true
     },
-    "mcp-pdf": {
-      "type": "local",
-      "command": ["npx", "-y", "@microsoft/knowledge-learning-mcp"],
-      "enabled": true
-    },
-    "sqlite": {
-      "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-sqlite", "./rimuru.db"],
-      "enabled": true
-    }
   },
 
   "tools": {
@@ -85,14 +75,7 @@
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
-        "tool": {
-          "Read": true,
-          "Write": true,
-          "Edit": true,
-          "Bash": true,
-          "Glob": true,
-          "Grep": true
-        }
+        "tool": { "*": "allow" }
       }
     },
     "rimuru-codebase": {

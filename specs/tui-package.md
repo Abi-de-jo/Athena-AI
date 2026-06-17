@@ -144,7 +144,7 @@ Exit criteria:
 
 - `packages/tui` typechecks independently.
 - Its test command runs from `packages/tui`.
-- The package has no dependency on `opencode`, `@rimuru-ai/cli`, or
+- The package has no dependency on `rimuru-ai`, `@rimuru-ai/cli`, or
   `@rimuru-ai/core`.
 
 Checkpoint commit:

@@ -10,7 +10,7 @@
 <p align="center">Rimuru AI je open source AI agent za programiranje.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # ili github:gowdaman/rimuru-ai za najnoviji
 
 ### Desktop aplikacija (BETA)
 
-Rimuru AI je dostupan i kao desktop aplikacija. Preuzmi je direktno sa [stranice izdanja](https://github.com/gowdaman/rimuru-ai/releases) ili sa [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
+Rimuru AI je dostupan i kao desktop aplikacija. Preuzmi je direktno sa [stranice izdanja](https://github.com/gowdaman-dev/rimuru-ai/releases) ili sa [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
 
 | Platforma             | Preuzimanje                        |
 | --------------------- | ---------------------------------- |

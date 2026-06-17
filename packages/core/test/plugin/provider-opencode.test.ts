@@ -7,7 +7,7 @@ import { Integration } from "@rimuru-ai/core/integration"
 import { Location } from "@rimuru-ai/core/location"
 import { ModelV2 } from "@rimuru-ai/core/model"
 import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { OpencodePlugin } from "@rimuru-ai/core/plugin/provider/opencode"
+import { RimuruPlugin } from "@rimuru-ai/core/plugin/provider/opencode"
 import { ProviderV2 } from "@rimuru-ai/core/provider"
 import { AbsolutePath } from "@rimuru-ai/core/schema"
 import { location } from "../fixture/location"
@@ -20,13 +20,13 @@ const locationLayer = Layer.succeed(
 )
 
 const pluginWithIntegrations = (integrations: Integration.Interface) => ({
-  ...OpencodePlugin,
-  effect: OpencodePlugin.effect.pipe(Effect.provideService(Integration.Service, integrations)),
+  ...RimuruPlugin,
+  effect: RimuruPlugin.effect.pipe(Effect.provideService(Integration.Service, integrations)),
 })
 
-describe("OpencodePlugin", () => {
+describe("RimuruPlugin", () => {
   it.effect("uses a public key and disables paid models without credentials", () =>
-    withEnv({ OPENCODE_API_KEY: undefined }, () =>
+    withEnv({ RIMURU_API_KEY: undefined }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -47,7 +47,7 @@ describe("OpencodePlugin", () => {
   )
 
   it.effect("keeps free models without credentials", () =>
-    withEnv({ OPENCODE_API_KEY: undefined }, () =>
+    withEnv({ RIMURU_API_KEY: undefined }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -68,7 +68,7 @@ describe("OpencodePlugin", () => {
   )
 
   it.effect("treats output-only cost as free without credentials", () =>
-    withEnv({ OPENCODE_API_KEY: undefined }, () =>
+    withEnv({ RIMURU_API_KEY: undefined }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -88,8 +88,8 @@ describe("OpencodePlugin", () => {
     ),
   )
 
-  it.effect("uses OPENCODE_API_KEY as credentials", () =>
-    withEnv({ OPENCODE_API_KEY: "secret" }, () =>
+  it.effect("uses RIMURU_API_KEY as credentials", () =>
+    withEnv({ RIMURU_API_KEY: "secret" }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -110,7 +110,7 @@ describe("OpencodePlugin", () => {
   )
 
   it.effect("uses configured provider env vars as credentials", () =>
-    withEnv({ OPENCODE_API_KEY: undefined, CUSTOM_OPENCODE_API_KEY: "secret" }, () =>
+    withEnv({ RIMURU_API_KEY: undefined, CUSTOM_RIMURU_API_KEY: "secret" }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -119,7 +119,7 @@ describe("OpencodePlugin", () => {
         yield* integrations.update((editor) => {
           editor.method.update({
             integrationID: Integration.ID.make("rimuru-ai"),
-            method: { type: "env", names: ["CUSTOM_OPENCODE_API_KEY"] },
+            method: { type: "env", names: ["CUSTOM_RIMURU_API_KEY"] },
           })
         })
         const transform = yield* catalog.transform()
@@ -138,7 +138,7 @@ describe("OpencodePlugin", () => {
   )
 
   it.effect("uses configured apiKey as credentials", () =>
-    withEnv({ OPENCODE_API_KEY: undefined }, () =>
+    withEnv({ RIMURU_API_KEY: undefined }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -165,8 +165,8 @@ describe("OpencodePlugin", () => {
     ),
   )
 
-  it.effect("ignores non-opencode providers and models", () =>
-    withEnv({ OPENCODE_API_KEY: undefined }, () =>
+  it.effect("ignores non-rimuru-ai providers and models", () =>
+    withEnv({ RIMURU_API_KEY: undefined }, () =>
       Effect.gen(function* () {
         const plugin = yield* PluginV2.Service
         const catalog = yield* Catalog.Service
@@ -186,7 +186,7 @@ describe("OpencodePlugin", () => {
     ),
   )
 
-  it.effect("prefers gpt-5-nano as the opencode small model", () =>
+  it.effect("prefers gpt-5-nano as the rimuru-ai small model", () =>
     Effect.gen(function* () {
       const catalog = yield* Catalog.Service
       const providerID = ProviderV2.ID.opencode

@@ -7,11 +7,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gowdaman/rimuru-ai.git",
+    "url": "git+https://github.com/gowdaman-dev/rimuru-ai.git",
     "directory": "packages/http-recorder"
   },
-  "homepage": "https://github.com/gowdaman/rimuru-ai/tree/dev/packages/http-recorder",
-  "bugs": "https://github.com/gowdaman/rimuru-ai/issues",
+  "homepage": "https://github.com/gowdaman-dev/rimuru-ai/tree/dev/packages/http-recorder",
+  "bugs": "https://github.com/gowdaman-dev/rimuru-ai/issues",
   "keywords": [
     "effect",
     "http",

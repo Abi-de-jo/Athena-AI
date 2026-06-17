@@ -161,10 +161,10 @@ export default function Home() {
             <a href="https://x.com/opencode">{i18n.t("footer.x")}</a>
           </div>
           <div data-slot="cell">
-            <a href="https://github.com/gowdaman/rimuru-ai">{i18n.t("footer.github")}</a>
+            <a href="https://github.com/gowdaman-dev/rimuru-ai">{i18n.t("footer.github")}</a>
           </div>
           <div data-slot="cell">
-            <a href="https://opencode.ai/discord">{i18n.t("footer.discord")}</a>
+            <a href="https://github.com/gowdaman-dev/rimuru-ai/discord">{i18n.t("footer.discord")}</a>
           </div>
         </footer>
       </div>

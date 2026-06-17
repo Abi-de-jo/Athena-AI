@@ -14,7 +14,7 @@ export const headerLinks = [
   { href: "#geo-breakdown", label: "Geo Breakdown" },
 ] as const
 export const githubLink = {
-  href: "https://github.com/gowdaman/rimuru-ai",
+  href: "https://github.com/gowdaman-dev/rimuru-ai",
   apiHref: "https://api.github.com/repos/gowdaman/opencode",
   label: "GitHub",
   fallbackStars: "150K",
@@ -127,7 +127,7 @@ export function Header(props: { githubStars: string; links?: readonly HeaderLink
             <strong>{githubLink.label}</strong>
             <span>[{props.githubStars}]</span>
           </a>
-          <a data-slot="header-button" data-variant="contrast" href="https://opencode.ai/">
+          <a data-slot="header-button" data-variant="contrast" href="https://github.com/gowdaman-dev/rimuru-ai/">
             <strong>Try OpenCode</strong>
           </a>
           <button
@@ -218,12 +218,12 @@ export function Footer(props: {
     { href: "#geo-breakdown", label: "Geo Breakdown" },
   ]
   const legal = [
-    { href: "https://opencode.ai/legal/terms-of-service", label: "Terms of service" },
-    { href: "https://opencode.ai/legal/privacy-policy", label: "Privacy policy" },
+    { href: "https://github.com/gowdaman-dev/rimuru-ai/legal/terms-of-service", label: "Terms of service" },
+    { href: "https://github.com/gowdaman-dev/rimuru-ai/legal/privacy-policy", label: "Privacy policy" },
   ]
   const connect = [
     { href: "mailto:hello@opencode.ai", label: "Contact us" },
-    { href: "https://opencode.ai/discord", label: "Community" },
+    { href: "https://github.com/gowdaman-dev/rimuru-ai/discord", label: "Community" },
     { href: "https://x.com/opencode", label: "X" },
     githubLink,
     { href: "https://www.youtube.com/@anomaly-co", label: "YouTube" },

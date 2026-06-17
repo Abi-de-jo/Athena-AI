@@ -10,7 +10,7 @@
 <p align="center">오픈 소스 AI 코딩 에이전트.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # 또는 github:gowdaman/rimuru-ai 로 최�
 
 ### 데스크톱 앱 (BETA)
 
-Rimuru AI 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/gowdaman/rimuru-ai/releases) 에서 직접 다운로드하거나 [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) 를 이용하세요.
+Rimuru AI 는 데스크톱 앱으로도 제공됩니다. [releases page](https://github.com/gowdaman-dev/rimuru-ai/releases) 에서 직접 다운로드하거나 [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) 를 이용하세요.
 
 | 플랫폼                | 다운로드                           |
 | --------------------- | ---------------------------------- |

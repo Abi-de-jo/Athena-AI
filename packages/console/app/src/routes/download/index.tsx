@@ -118,7 +118,7 @@ export default function Download() {
             <div data-component="section-content">
               <button
                 data-component="cli-row"
-                onClick={handleCopyClick("curl -fsSL https://opencode.ai/install | bash")}
+                onClick={handleCopyClick("curl -fsSL https://github.com/gowdaman-dev/rimuru-ai/install | bash")}
               >
                 <code>
                   curl -fsSL https://<strong>opencode.ai/install</strong> | bash

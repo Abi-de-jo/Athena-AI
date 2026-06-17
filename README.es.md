@@ -10,7 +10,7 @@
 <p align="center">El agente de programación con IA de código abierto.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # o github:gowdaman/rimuru-ai para la rama d
 
 ### App de escritorio (BETA)
 
-Rimuru AI también está disponible como aplicación de escritorio. Descárgala directamente desde la [página de releases](https://github.com/gowdaman/rimuru-ai/releases) o desde [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
+Rimuru AI también está disponible como aplicación de escritorio. Descárgala directamente desde la [página de releases](https://github.com/gowdaman-dev/rimuru-ai/releases) o desde [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
 
 | Plataforma            | Descarga                           |
 | --------------------- | ---------------------------------- |

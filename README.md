@@ -58,7 +58,7 @@ Also included is a **general** subagent for complex searches and multistep tasks
 
 ### Documentation
 
-For more info on how to configure Rimuru AI, refer to the project-level `.opencode/` configuration files in this repo.
+For more info on how to configure Rimuru AI, refer to the project-level `.rimuru/` configuration files in this repo.
 
 ### Contributing
 

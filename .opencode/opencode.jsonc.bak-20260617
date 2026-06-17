@@ -1,0 +1,129 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  "provider": {},
+
+  "permission": {},
+
+  "references": {
+    "effect": {
+      "repository": "github.com/Effect-TS/effect-smol",
+      "description": "Use for Effect v4 and effect-smol implementation details"
+    },
+    "rimuru-local": {
+      "path": "~/.local/share/opencode",
+      "description": "Contains opencode logs and data"
+    },
+    "rimuru-docs": {
+      "path": "./packages/docs",
+      "description": "Rimuru documentation site built with Astro"
+    },
+    "rimuru-core": {
+      "path": "./packages/core",
+      "description": "Core shared library for rimuru-ai"
+    }
+  },
+
+  "mcp": {
+    "figma": {
+      "type": "local",
+      "command": ["npx", "-y", "@nexus2520/figma-mcp-server"],
+      "enabled": true,
+      "environment": {
+        "FIGMA_ACCESS_TOKEN": "figd_hnE1be8CLqwEb2ZKciIr4y8bokJs38c-wTasSVQj"
+      }
+    },
+    "filesystem": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/home/gowdaman"],
+      "enabled": true
+    },
+    "postman": {
+      "type": "local",
+      "command": ["npx", "-y", "@postman/postman-mcp-server@latest", "--region", "us", "--full"],
+      "enabled": true,
+      "environment": {
+        "POSTMAN_API_KEY": "PMAK-6a27e753d8c40900019727e5-35d5902e704787a6b5a23328fbf0e7922d"
+      }
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+      "enabled": true
+    },
+    "browser-use": {
+      "type": "local",
+      "command": ["npx", "-y", "browser-use", "--mcp"],
+      "enabled": true
+    },
+    "mcp-pdf": {
+      "type": "local",
+      "command": ["npx", "-y", "@microsoft/knowledge-learning-mcp"],
+      "enabled": true
+    },
+    "sqlite": {
+      "type": "local",
+      "command": ["npx", "-y", "@modelcontextprotocol/server-sqlite", "./rimuru.db"],
+      "enabled": true
+    }
+  },
+
+  "tools": {
+    "github-triage": false,
+    "github-pr-search": false
+  },
+
+  "agent": {
+    "rimuru-build": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    },
+    "rimuru-docs": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    },
+    "rimuru-codebase": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    }
+  },
+
+  "plugin": [
+    "opencode-optimal-model-temps",
+    "opencode-codebase-index",
+    "opencode-helicone-session",
+    "opencode-goal-plugin"
+  ],
+
+  "command": {
+    "goal": {
+      "description": "Set a session-scoped goal and auto-continue until complete.",
+      "template": "$ARGUMENTS",
+      "agent": "build"
+    },
+    "build-package": {
+      "description": "Build a specific package with turbo",
+      "template": "bun turbo build --filter=$ARGUMENTS",
+      "agent": "build"
+    },
+    "typecheck": {
+      "description": "Run typecheck across the project",
+      "template": "bun turbo typecheck",
+      "agent": "build"
+    },
+    "lint": {
+      "description": "Run linter",
+      "template": "oxlint",
+      "agent": "build"
+    }
+  }
+}

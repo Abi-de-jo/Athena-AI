@@ -10,7 +10,7 @@
 <p align="center">Trợ lý lập trình AI mã nguồn mở.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # hoặc github:gowdaman/rimuru-ai cho nhán
 
 ### Ứng dụng Desktop (BETA)
 
-Rimuru AI cũng có sẵn dưới dạng ứng dụng desktop. Tải trực tiếp từ [trang releases](https://github.com/gowdaman/rimuru-ai/releases) hoặc [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
+Rimuru AI cũng có sẵn dưới dạng ứng dụng desktop. Tải trực tiếp từ [trang releases](https://github.com/gowdaman-dev/rimuru-ai/releases) hoặc [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
 
 | Nền tảng              | Tải xuống                          |
 | --------------------- | ---------------------------------- |

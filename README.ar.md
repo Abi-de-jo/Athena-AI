@@ -10,7 +10,7 @@
 <p align="center">وكيل برمجة بالذكاء الاصطناعي مفتوح المصدر.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # او github:gowdaman/rimuru-ai لاحدث 
 
 ### تطبيق سطح المكتب (BETA)
 
-يتوفر Rimuru AI ايضا كتطبيق سطح مكتب. قم بالتنزيل مباشرة من [صفحة الاصدارات](https://github.com/gowdaman/rimuru-ai/releases) او من [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
+يتوفر Rimuru AI ايضا كتطبيق سطح مكتب. قم بالتنزيل مباشرة من [صفحة الاصدارات](https://github.com/gowdaman-dev/rimuru-ai/releases) او من [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download).
 
 | المنصة                | التنزيل                            |
 | --------------------- | ---------------------------------- |

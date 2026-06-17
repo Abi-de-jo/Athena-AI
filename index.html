@@ -16,27 +16,66 @@
     html { scroll-behavior: smooth; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
-      background: #0a0a0b;
+      background: #08080f;
       color: #e4e4e7;
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* Background effects */
-    body::before {
-      content: '';
+    /* ─── Slime Blob Background ─── */
+    .blob-container {
       position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 20% 20%, rgba(120, 80, 240, 0.06) 0%, transparent 50%),
-                  radial-gradient(ellipse at 80% 80%, rgba(100, 80, 240, 0.04) 0%, transparent 50%);
+      inset: 0;
       pointer-events: none;
-      z-index: -1;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.12;
+      animation: blobFloat 20s ease-in-out infinite;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: #7c3aed;
+      top: -10%; left: -5%;
+      animation-delay: 0s;
+    }
+    .blob-2 {
+      width: 500px; height: 500px;
+      background: #06b6d4;
+      bottom: -10%; right: -5%;
+      animation-delay: -7s;
+    }
+    .blob-3 {
+      width: 400px; height: 400px;
+      background: #6366f1;
+      top: 40%; left: 50%;
+      animation-delay: -14s;
+    }
+    .blob-4 {
+      width: 350px; height: 350px;
+      background: #7c3aed;
+      top: 60%; left: -8%;
+      animation-delay: -5s;
+    }
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(40px, 30px) scale(1.02); }
     }
 
-    /* Nav */
+    /* ─── Slime SVG Decorations ─── */
+    .slime-drip {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── Nav ─── */
     nav {
       position: fixed;
       top: 0;
@@ -47,10 +86,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(10, 10, 11, 0.8);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(8, 8, 15, 0.8);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.12);
     }
     nav .logo {
       display: flex;
@@ -70,17 +109,18 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-    nav .nav-links a:hover { color: #e4e4e7; }
+    nav .nav-links a:hover { color: #c4b5fd; }
     nav .nav-links .btn {
       background: linear-gradient(135deg, #7c3aed, #6366f1);
       color: #fff;
       padding: 0.5rem 1.25rem;
       border-radius: 0.5rem;
       font-weight: 600;
+      transition: all 0.2s;
     }
-    nav .nav-links .btn:hover { opacity: 0.9; color: #fff; }
+    nav .nav-links .btn:hover { opacity: 0.9; color: #fff; box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
 
-    /* Hero */
+    /* ─── Hero ─── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -90,7 +130,19 @@
       text-align: center;
       padding: 6rem 1.5rem 4rem;
       position: relative;
+      overflow: hidden;
     }
+    .hero-blob {
+      position: absolute;
+      width: 800px;
+      height: 800px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      opacity: 0.06;
+    }
+    .hero-content { position: relative; z-index: 1; }
     .hero-logo { margin-bottom: 1.5rem; }
     .hero-logo svg { width: 180px; height: auto; }
     .hero h1 {
@@ -101,21 +153,22 @@
       margin-bottom: 1rem;
     }
     .hero h1 .gradient {
-      background: linear-gradient(135deg, #a78bfa, #818cf8, #6366f1);
+      background: linear-gradient(135deg, #a78bfa, #818cf8, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     .hero p {
       font-size: clamp(1rem, 2vw, 1.25rem);
       color: #a1a1aa;
       max-width: 600px;
-      margin-bottom: 2.5rem;
+      margin: 0 auto 2.5rem;
     }
 
     /* Install box */
     .install-box {
-      background: #18181b;
-      border: 1px solid #27272a;
+      background: rgba(24, 24, 27, 0.8);
+      border: 1px solid rgba(124, 58, 237, 0.2);
       border-radius: 0.75rem;
       padding: 1.25rem 1.75rem;
       display: inline-flex;
@@ -123,23 +176,24 @@
       gap: 0.75rem;
       font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
       font-size: 0.9rem;
-      position: relative;
       margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
     }
-    .install-box .prompt { color: #22c55e; }
+    .install-box .prompt { color: #06b6d4; }
     .install-box .cmd { color: #e4e4e7; }
     .install-box .copy-btn {
-      background: #27272a;
-      border: none;
-      color: #a1a1aa;
+      background: rgba(124, 58, 237, 0.2);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      color: #c4b5fd;
       padding: 0.375rem 0.75rem;
       border-radius: 0.375rem;
       font-size: 0.75rem;
       cursor: pointer;
       transition: all 0.2s;
+      font-family: inherit;
     }
-    .install-box .copy-btn:hover { background: #3f3f46; color: #e4e4e7; }
-    .install-box .copy-btn.copied { background: #22c55e; color: #fff; }
+    .install-box .copy-btn:hover { background: rgba(124, 58, 237, 0.35); color: #e4e4e7; }
+    .install-box .copy-btn.copied { background: #06b6d4; color: #fff; border-color: #06b6d4; }
 
     .hero-features {
       display: flex;
@@ -155,10 +209,16 @@
       color: #a1a1aa;
       font-size: 0.875rem;
     }
-    .hero-features .dot { color: #22c55e; }
+    .hero-features .dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+    }
 
-    /* Section styling */
-    section { padding: 5rem 1.5rem; }
+    /* ─── Section Styling ─── */
+    section { padding: 5rem 1.5rem; position: relative; }
     section h2 {
       font-size: clamp(1.75rem, 3vw, 2.5rem);
       font-weight: 700;
@@ -167,9 +227,10 @@
       letter-spacing: -0.01em;
     }
     section h2 .gradient {
-      background: linear-gradient(135deg, #a78bfa, #818cf8);
+      background: linear-gradient(135deg, #a78bfa, #818cf8, #06b6d4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     section .subtitle {
       text-align: center;
@@ -182,25 +243,40 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
+      position: relative;
+      z-index: 1;
     }
 
-    /* Features grid */
+    /* ─── Features Grid ─── */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
     .feature-card {
-      background: #18181b;
-      border: 1px solid #27272a;
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(124, 58, 237, 0.1);
       border-radius: 0.75rem;
       padding: 1.75rem;
-      transition: border-color 0.2s, transform 0.2s;
+      transition: all 0.3s;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(6, 182, 212, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s;
     }
     .feature-card:hover {
-      border-color: #3f3f46;
-      transform: translateY(-2px);
+      border-color: rgba(124, 58, 237, 0.3);
+      transform: translateY(-3px);
     }
+    .feature-card:hover::before { opacity: 1; }
     .feature-card .icon {
       width: 2.5rem;
       height: 2.5rem;
@@ -210,38 +286,44 @@
       justify-content: center;
       font-size: 1.25rem;
       margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
     }
     .feature-card .icon.purple { background: rgba(124, 58, 237, 0.15); color: #a78bfa; }
-    .feature-card .icon.green { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
-    .feature-card .icon.blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
-    .feature-card .icon.orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
-    .feature-card .icon.teal { background: rgba(45, 212, 191, 0.15); color: #2dd4bf; }
+    .feature-card .icon.teal { background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
+    .feature-card .icon.blue { background: rgba(99, 102, 241, 0.15); color: #818cf8; }
+    .feature-card .icon.green { background: rgba(52, 211, 153, 0.15); color: #34d399; }
     .feature-card .icon.pink { background: rgba(236, 72, 153, 0.15); color: #f472b6; }
-    .feature-card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .feature-card p {
-      color: #a1a1aa;
-      font-size: 0.9rem;
-      line-height: 1.6;
+    .feature-card .icon.orange { background: rgba(251, 146, 60, 0.15); color: #fb923c; }
+    .feature-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; position: relative; z-index: 1; }
+    .feature-card p { color: #a1a1aa; font-size: 0.9rem; line-height: 1.6; position: relative; z-index: 1; }
+    .feature-card kbd {
+      background: rgba(124, 58, 237, 0.15);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: 0.25rem;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+      color: #c4b5fd;
     }
 
-    /* Agents section */
+    /* ─── Agents ─── */
     .agents-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
     .agent-card {
-      background: #18181b;
-      border: 1px solid #27272a;
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(124, 58, 237, 0.1);
       border-radius: 0.75rem;
       padding: 1.75rem;
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s;
     }
+    .agent-card:hover { border-color: rgba(124, 58, 237, 0.3); transform: translateY(-3px); }
     .agent-card::before {
       content: '';
       position: absolute;
@@ -251,25 +333,22 @@
       height: 3px;
     }
     .agent-card.build::before { background: linear-gradient(90deg, #7c3aed, #6366f1); }
-    .agent-card.plan::before { background: linear-gradient(90deg, #22c55e, #34d399); }
+    .agent-card.plan::before { background: linear-gradient(90deg, #06b6d4, #34d399); }
     .agent-card .badge {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 600;
       padding: 0.2rem 0.6rem;
       border-radius: 0.25rem;
       margin-bottom: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
     }
     .agent-card.build .badge { background: rgba(124, 58, 237, 0.15); color: #a78bfa; }
-    .agent-card.plan .badge { background: rgba(34, 197, 94, 0.15); color: #4ade80; }
+    .agent-card.plan .badge { background: rgba(6, 182, 212, 0.15); color: #22d3ee; }
     .agent-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
     .agent-card p { color: #a1a1aa; font-size: 0.9rem; line-height: 1.6; }
-    .agent-card ul {
-      margin-top: 0.75rem;
-      list-style: none;
-    }
+    .agent-card ul { margin-top: 0.75rem; list-style: none; }
     .agent-card ul li {
       color: #a1a1aa;
       font-size: 0.85rem;
@@ -278,108 +357,34 @@
       position: relative;
     }
     .agent-card ul li::before {
-      content: '→';
+      content: '';
       position: absolute;
       left: 0;
-      color: #52525b;
+      top: 0.55rem;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
     }
-    .agent-card.plan ul li::before { color: #4ade80; }
-    .agent-card.build ul li::before { color: #a78bfa; }
+    .agent-card.build ul li::before { background: #a78bfa; }
+    .agent-card.plan ul li::before { background: #22d3ee; }
 
-    /* Install section */
-    .install-section {
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 0.75rem;
-      padding: 2.5rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    .install-section h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .install-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      background: #27272a;
-      border-radius: 0.5rem;
-      padding: 0.25rem;
-    }
-    .install-tab {
-      flex: 1;
-      padding: 0.5rem;
-      text-align: center;
-      border-radius: 0.375rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      border: none;
-      background: transparent;
-      color: #a1a1aa;
-      transition: all 0.2s;
-    }
-    .install-tab.active { background: #3f3f46; color: #e4e4e7; }
-    .install-code {
-      background: #0a0a0b;
-      border: 1px solid #27272a;
-      border-radius: 0.5rem;
-      padding: 1rem 1.25rem;
-      font-family: "SF Mono", "Fira Code", monospace;
-      font-size: 0.85rem;
-      line-height: 1.5;
-      color: #e4e4e7;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-    .install-code .comment { color: #71717a; }
-    .install-code .keyword { color: #7c3aed; }
-    .install-code .string { color: #22c55e; }
-
-    /* Desktop downloads */
-    .downloads {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-    .download-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: #18181b;
-      border: 1px solid #27272a;
-      border-radius: 0.75rem;
-      padding: 1rem 1.5rem;
-      color: #e4e4e7;
-      text-decoration: none;
-      transition: all 0.2s;
-      font-size: 0.9rem;
-    }
-    .download-btn:hover { border-color: #3f3f46; background: #1f1f23; }
-    .download-btn .os-icon { font-size: 1.5rem; }
-    .download-btn .label { display: flex; flex-direction: column; }
-    .download-btn .label small { color: #71717a; font-size: 0.75rem; }
-
-    /* MCP section */
+    /* ─── MCP ─── */
     .mcp-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 0.75rem;
     }
     .mcp-item {
-      background: #18181b;
-      border: 1px solid #27272a;
+      background: rgba(24, 24, 27, 0.5);
+      border: 1px solid rgba(124, 58, 237, 0.08);
       border-radius: 0.5rem;
       padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      transition: all 0.2s;
     }
+    .mcp-item:hover { border-color: rgba(124, 58, 237, 0.25); background: rgba(24, 24, 27, 0.8); }
     .mcp-item .mcp-icon {
       width: 2rem;
       height: 2rem;
@@ -393,9 +398,97 @@
     }
     .mcp-item span { font-size: 0.9rem; font-weight: 500; }
 
-    /* Footer */
+    /* ─── Install Section ─── */
+    .install-section {
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: 0.75rem;
+      padding: 2.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+      backdrop-filter: blur(10px);
+    }
+    .install-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #c4b5fd;
+    }
+    .install-tabs {
+      display: flex;
+      gap: 0.375rem;
+      margin-bottom: 1rem;
+      background: rgba(39, 39, 42, 0.6);
+      border-radius: 0.5rem;
+      padding: 0.25rem;
+      border: 1px solid rgba(124, 58, 237, 0.08);
+    }
+    .install-tab {
+      flex: 1;
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 0.375rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #a1a1aa;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .install-tab.active {
+      background: rgba(124, 58, 237, 0.2);
+      color: #c4b5fd;
+      box-shadow: 0 0 12px rgba(124, 58, 237, 0.1);
+    }
+    .install-code {
+      background: rgba(8, 8, 15, 0.8);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      font-family: "SF Mono", "Fira Code", monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: #e4e4e7;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .install-code .comment { color: #71717a; }
+    .install-code .keyword { color: #7c3aed; }
+    .install-code .string { color: #22d3ee; }
+
+    /* ─── Desktop Downloads ─── */
+    .downloads {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .download-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(24, 24, 27, 0.6);
+      border: 1px solid rgba(124, 58, 237, 0.1);
+      border-radius: 0.75rem;
+      padding: 1rem 1.5rem;
+      color: #e4e4e7;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      backdrop-filter: blur(10px);
+    }
+    .download-btn:hover { border-color: rgba(124, 58, 237, 0.3); background: rgba(24, 24, 27, 0.8); transform: translateY(-2px); }
+    .download-btn .os-icon { font-size: 1.5rem; }
+    .download-btn .label { display: flex; flex-direction: column; }
+    .download-btn .label small { color: #71717a; font-size: 0.75rem; }
+
+    /* ─── Footer ─── */
     footer {
-      border-top: 1px solid #27272a;
+      border-top: 1px solid rgba(124, 58, 237, 0.1);
       padding: 2.5rem 1.5rem;
       text-align: center;
     }
@@ -412,12 +505,12 @@
       font-size: 0.875rem;
       transition: color 0.2s;
     }
-    footer .footer-links a:hover { color: #e4e4e7; }
+    footer .footer-links a:hover { color: #c4b5fd; }
     footer p { color: #52525b; font-size: 0.8rem; }
 
-    /* Animations */
+    /* ─── Animations ─── */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
     .animate { animation: fadeInUp 0.6s ease-out both; }
@@ -425,6 +518,12 @@
     .animate-delay-2 { animation-delay: 0.2s; }
     .animate-delay-3 { animation-delay: 0.3s; }
     .animate-delay-4 { animation-delay: 0.4s; }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.1); }
+      50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); }
+    }
+    .hero .install-box { animation: pulseGlow 4s ease-in-out infinite; }
 
     @media (max-width: 640px) {
       nav { padding: 0.75rem 1rem; }
@@ -435,33 +534,36 @@
       .agents-grid { grid-template-columns: 1fr; }
       .mcp-list { grid-template-columns: 1fr 1fr; }
       .downloads { flex-direction: column; align-items: stretch; }
+      .install-section { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Animated Slime Background -->
+  <div class="blob-container">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
   <!-- Nav -->
   <nav>
     <a href="/" class="logo">
-      <svg viewBox="0 0 234 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 30H6V18H18V30Z" fill="#a78bfa"/>
-        <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" fill="#6366f1"/>
-        <path d="M48 30H36V18H48V30Z" fill="#a78bfa"/>
-        <path d="M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" fill="#6366f1"/>
-        <path d="M84 24V30H66V24H84Z" fill="#a78bfa"/>
-        <path d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" fill="#6366f1"/>
-        <path d="M108 36H96V18H108V36Z" fill="#a78bfa"/>
-        <path d="M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" fill="#6366f1"/>
-        <path d="M144 30H126V18H144V30Z" fill="#a78bfa"/>
-        <path d="M144 12H126V30H144V36H120V6H144V12Z" fill="#e4e4e7"/>
-        <path d="M168 30H156V18H168V30Z" fill="#a78bfa"/>
-        <path d="M168 12H156V30H168V12ZM174 36H150V6H174V36Z" fill="#e4e4e7"/>
-        <path d="M198 30H186V18H198V30Z" fill="#a78bfa"/>
-        <path d="M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" fill="#e4e4e7"/>
-        <path d="M234 24V30H216V24H234Z" fill="#a78bfa"/>
-        <path d="M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" fill="#e4e4e7"/>
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="navLogo" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+        <path d="M4 16C4 8.268 10.268 2 18 2C25.732 2 32 8.268 32 16C32 21 28.5 25.5 24 27.5C21.5 28.7 19.5 30 18 30C13 30 8.5 27.5 5.5 24C4.5 22.5 4 19.5 4 16Z" fill="url(#navLogo)"/>
+        <path d="M14 22V12H18C20 12 21.5 13 21.5 15.5C21.5 18 20 19 18 19H17V22H14ZM17 16.5H17.5C18.3 16.5 19 16 19 15.5C19 15 18.3 14.5 17.5 14.5H17V16.5Z" fill="#08080f"/>
+        <circle cx="9" cy="12" r="1.5" fill="#06b6d4" opacity="0.6"/>
+        <circle cx="27" cy="10" r="1" fill="#7c3aed" opacity="0.4"/>
       </svg>
-      rimuru-ai
+      Rimuru AI
     </a>
     <div class="nav-links">
       <a href="#features" class="hide-mobile">Features</a>
@@ -474,46 +576,64 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-logo animate">
-      <svg viewBox="0 0 234 42" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:200px">
-        <path d="M18 30H6V18H18V30Z" fill="#a78bfa"/>
-        <path d="M18 12H6V30H18V12ZM24 36H0V6H24V36Z" fill="#6366f1"/>
-        <path d="M48 30H36V18H48V30Z" fill="#a78bfa"/>
-        <path d="M36 30H48V12H36V30ZM54 36H36V42H30V6H54V36Z" fill="#6366f1"/>
-        <path d="M84 24V30H66V24H84Z" fill="#a78bfa"/>
-        <path d="M84 24H66V30H84V36H60V6H84V24ZM66 18H78V12H66V18Z" fill="#6366f1"/>
-        <path d="M108 36H96V18H108V36Z" fill="#a78bfa"/>
-        <path d="M108 12H96V36H90V6H108V12ZM114 36H108V12H114V36Z" fill="#6366f1"/>
-        <path d="M144 30H126V18H144V30Z" fill="#a78bfa"/>
-        <path d="M144 12H126V30H144V36H120V6H144V12Z" fill="#cfcecd"/>
-        <path d="M168 30H156V18H168V30Z" fill="#a78bfa"/>
-        <path d="M168 12H156V30H168V12ZM174 36H150V6H174V36Z" fill="#cfcecd"/>
-        <path d="M198 30H186V18H198V30Z" fill="#a78bfa"/>
-        <path d="M198 12H186V30H198V12ZM204 36H180V6H198V0H204V36Z" fill="#cfcecd"/>
-        <path d="M234 24V30H216V24H234Z" fill="#a78bfa"/>
-        <path d="M216 12V18H228V12H216ZM234 24H216V30H234V36H210V6H234V24Z" fill="#cfcecd"/>
-      </svg>
-    </div>
-    <h1 class="animate animate-delay-1">
-      Code with <span class="gradient">Rimuru AI</span>
-    </h1>
-    <p class="animate animate-delay-2">
-      An open source AI coding agent that lives in your terminal.
-      Multi-agent system, native MCP support, and fast context-aware tools.
-    </p>
+    <!-- Decorative hero slime blob -->
+    <svg class="hero-blob" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="heroBlobGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="50%" stop-color="#6366f1"/>
+          <stop offset="100%" stop-color="#06b6d4"/>
+        </linearGradient>
+      </defs>
+      <path d="M400 50C550 50 650 150 700 300C750 450 750 550 650 650C550 750 450 750 300 700C150 650 50 550 50 400C50 250 150 100 300 80C350 75 375 50 400 50Z" fill="url(#heroBlobGrad)" opacity="0.3"/>
+      <path d="M400 100C520 100 600 180 640 300C680 420 680 520 600 600C520 680 420 700 300 640C180 580 100 500 100 380C100 240 200 120 320 105C350 102 380 100 400 100Z" fill="url(#heroBlobGrad)" opacity="0.5"/>
+    </svg>
 
-    <div class="install-box animate animate-delay-3">
-      <span class="prompt">$</span>
-      <span class="cmd">curl -fsSL https://rimurucode.vercel.app/install | bash</span>
-      <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
-    </div>
+    <div class="hero-content">
+      <div class="hero-logo animate">
+        <svg viewBox="0 0 200 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="heroLogo" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c3aed"/>
+              <stop offset="50%" stop-color="#6366f1"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+            <linearGradient id="heroText" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e4e4e7"/>
+              <stop offset="100%" stop-color="#c4b5fd"/>
+            </linearGradient>
+          </defs>
+          <!-- Slime blob icon -->
+          <path d="M6 22C6 12.058 14.058 4 24 4C33.942 4 42 12.058 42 22C42 28 38 33 33 35.5C30 37 27 38 24 38C16 38 9 34.5 6 28C5 26 5 24 6 22Z" fill="url(#heroLogo)"/>
+          <path d="M18 30V16H23C25.5 16 27.5 17.5 27.5 20.5C27.5 23.5 25.5 25 23 25H22V30H18ZM22 22H22.5C23.5 22 24.5 21.5 24.5 20.5C24.5 19.5 23.5 19 22.5 19H22V22Z" fill="#08080f"/>
+          <circle cx="12" cy="16" r="2" fill="#06b6d4" opacity="0.5"/>
+          <circle cx="36" cy="14" r="1.5" fill="#7c3aed" opacity="0.3"/>
+          <!-- RIMURU text -->
+          <text x="52" y="30" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="800" fill="url(#heroText)" letter-spacing="2">RIMURU</text>
+          <text x="52" y="40" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="600" fill="#71717a" letter-spacing="2">AI CODING AGENT</text>
+        </svg>
+      </div>
+      <h1 class="animate animate-delay-1">
+        Code with <span class="gradient">Rimuru</span>
+      </h1>
+      <p class="animate animate-delay-2">
+        An open source AI coding agent that lives in your terminal.
+        Multi-agent system, native MCP support, and fast context-aware tools.
+      </p>
 
-    <div class="hero-features animate animate-delay-4">
-      <span><span class="dot">◆</span> Open source</span>
-      <span><span class="dot">◆</span> Multi-agent</span>
-      <span><span class="dot">◆</span> MCP native</span>
-      <span><span class="dot">◆</span> 29 packages</span>
-      <span><span class="dot">◆</span> Cross-platform</span>
+      <div class="install-box animate animate-delay-3">
+        <span class="prompt">$</span>
+        <span class="cmd">curl -fsSL https://rimurucode.vercel.app/install | bash</span>
+        <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
+      </div>
+
+      <div class="hero-features animate animate-delay-4">
+        <span><span class="dot"></span> Open source</span>
+        <span><span class="dot"></span> Multi-agent</span>
+        <span><span class="dot"></span> MCP native</span>
+        <span><span class="dot"></span> 29 packages</span>
+        <span><span class="dot"></span> Cross-platform</span>
+      </div>
     </div>
   </section>
 
@@ -531,7 +651,7 @@
         </div>
 
         <div class="feature-card">
-          <div class="icon green">🧠</div>
+          <div class="icon teal">🧠</div>
           <h3>Multi-Agent System</h3>
           <p>Two built-in agents — <strong>build</strong> for full-access development and <strong>plan</strong> for read-only analysis. Route complex tasks to specialist subagents.</p>
         </div>
@@ -543,13 +663,13 @@
         </div>
 
         <div class="feature-card">
-          <div class="icon orange">🔍</div>
+          <div class="icon green">🔍</div>
           <h3>Semantic Code Search</h3>
           <p>Find code by meaning, not keywords. Index your entire codebase with vector embeddings and search with natural language queries.</p>
         </div>
 
         <div class="feature-card">
-          <div class="icon teal">🎯</div>
+          <div class="icon orange">🎯</div>
           <h3>Context-Aware Tools</h3>
           <p>MADAR knowledge graph understands relationships across your project. Call graph, implementation lookup, and focused context packs.</p>
         </div>

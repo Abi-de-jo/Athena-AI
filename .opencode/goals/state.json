@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "goals": [
+    {
+      "goalId": "3dbd4007-7f12-467e-80d5-4d77855b6d48",
+      "condition": "proceed migration",
+      "successCriteria": "",
+      "constraints": "",
+      "mode": "normal",
+      "sessionID": "ses_12ec5e0a5ffeTV3n2SbP1YtGKF",
+      "turnCount": 0,
+      "startedAt": 1781690913326,
+      "totalTokens": 155178,
+      "options": {
+        "maxTurns": 10,
+        "maxDurationMs": 900000,
+        "maxTokens": 200000,
+        "minDelayMs": 1500,
+        "maxRecentMessages": 50,
+        "noProgressTokenThreshold": 50,
+        "noProgressTurnsBeforePause": 2,
+        "noToolCallTurnsBeforePause": 2,
+        "budgetWrapupRatio": 0.8,
+        "warnTurnsRemaining": 3,
+        "warnDurationMsRemaining": 60000,
+        "warnTokensRemaining": 25000,
+        "maxPromptFailures": 3,
+        "resultRetentionMs": 604800000,
+        "maxStoredResults": 200
+      },
+      "lastStatus": "Recovered persisted goal state. Review the goal status and resume it when ready.",
+      "lastAssistantText": "",
+      "lastAssistantMessageID": "",
+      "lastContinueAt": 0,
+      "lastProgressAt": 1781691077970,
+      "noProgressTurns": 0,
+      "noToolCallTurns": 0,
+      "blockedReason": "",
+      "budgetWrapupSent": false,
+      "stopped": true,
+      "stopReason": "recovered after restart",
+      "promptFailures": 0,
+      "messageIDs": [
+        "msg_ed50dd2d4001fBfdW42jXJPh5W",
+        "msg_ed50e171f001RXU0zycGjgmpjZ",
+        "msg_ed50e6dfc001R25NubpiemFZab",
+        "msg_ed50e8b3e0016GWmEMKc36LxtP",
+        "msg_ed50ea49c001cF2NsweEcRJ2WC",
+        "msg_ed50ecb94001jCwqijsl5H4HiD",
+        "msg_ed50f3de7001y5wjGuCqHpUdlC",
+        "msg_ed50f5c5c001at08lQpNqdlZzS",
+        "msg_ed50f81d9001U0vmTmhYaXPVMR",
+        "msg_ed50f9805001Hev102hC7ox6tK",
+        "msg_ed510196a001vnoThUDjQOaxJF"
+      ],
+      "history": [
+        {
+          "type": "set",
+          "detail": "Goal created with limits: 10 auto-continues, 900s, 200,000 context tokens.",
+          "timestamp": 1781690913341
+        },
+        {
+          "type": "recovered",
+          "detail": "Recovered persisted goal state after plugin restart; auto-continue remains paused until you resume.",
+          "timestamp": 1781692200476
+        }
+      ],
+      "checkpoints": [],
+      "lastCheckpoint": null,
+      "focused": true
+    }
+  ],
+  "results": [],
+  "archives": [],
+  "orderedSessions": []
+}

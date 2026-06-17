@@ -114,7 +114,7 @@ for (const item of targets) {
         name: `@rimuru-ai/${name}`,
         version: Script.version,
         license: "MIT",
-        repository: { type: "git", url: "git+https://github.com/gowdaman/rimuru-ai.git" },
+        repository: { type: "git", url: "git+https://github.com/gowdaman-dev/rimuru-ai.git" },
         os: [item.os],
         cpu: [item.arch],
       },

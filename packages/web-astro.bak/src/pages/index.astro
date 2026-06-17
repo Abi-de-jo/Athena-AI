@@ -1,0 +1,261 @@
+---
+export const prerender = true
+
+const features = [
+  { title: "Terminal-Native Speed", desc: "Built for the terminal. No Electron overhead. Instant startup, minimal memory, maximum throughput." },
+  { title: "Multi-Agent Architecture", desc: "Orchestrate specialized sub-agents for backend, frontend, database, and DevOps — all from one session." },
+  { title: "MCP & Plugin Ecosystem", desc: "Extend with Model Context Protocol servers and custom plugins. SQLite, Figma, Chrome DevTools, and more." },
+  { title: "Semantic Code Search", desc: "Find code by meaning, not keywords. Knowledge graph-powered context packing finds exactly what you need." },
+  { title: "Context-Aware Edits", desc: "MADAR knowledge graph understands your codebase. Edits ripple correctly across files without breaking patterns." },
+  { title: "Cross-Provider Flexibility", desc: "Use any LLM provider — OpenAI, Anthropic, Google, or local models. Switch mid-session without losing context." },
+]
+const agents = [
+  { title: "Build", desc: "Full-stack development with autonomous specialist agents. From schema to deployment in one flow." },
+  { title: "Plan", desc: "Architecture-first approach. Design before coding. Generate specs, migrations, and test plans." },
+]
+const mcpServers = [
+  "Figma", "Filesystem", "Postman", "Browser",
+  "PDF", "SQLite", "Chrome DevTools", "Browser Use",
+]
+const installTabs = [
+  { id: "curl", label: "Install Script", code: "curl -fsSL https://rimurucode.vercel.app/install | sh" },
+  { id: "source", label: "From Source", code: "git clone https://github.com/gowdaman-dev/rimuru-ai && cd rimuru-ai && bun install && bun run dev" },
+]
+const navLinks = [
+  { label: "Docs", url: "/" },
+  { label: "GitHub", url: "https://github.com/gowdaman-dev/rimuru-ai" },
+]
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rimuru AI — Code at the Speed of Thought</title>
+    <meta name="description" content="AI-powered development tool. Terminal-native, multi-agent, MCP-compatible." />
+    <style>
+      /* ─── Reset & Base ─── */
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{color-scheme:dark;--bg:#0a0a0f;--surface:#12121a;--card:#1a1a28;--border:#2a2a3e;--fg:#e4e4ed;--fg-dim:#8888a0;--accent:#a855f7;--accent2:#06b6d4;--gradient:linear-gradient(135deg,#a855f7,#7c3aed,#6366f1,#06b6d4);--radius:12px;--font-sans:'Inter','SF Pro','system-ui',sans-serif;--font-mono:'JetBrains Mono','Fira Code','monospace',monospace}
+      html{scroll-behavior:smooth}
+      body{background:var(--bg);color:var(--fg);font-family:var(--font-sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+      a{color:inherit;text-decoration:none}
+      /* ─── Layout ─── */
+      .page{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:0 24px}
+      /* ─── Nav ─── */
+      nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--border);margin-bottom:80px}
+      .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem}
+      .logo svg{width:32px;height:32px}
+      .nav-links{display:flex;gap:32px;font-size:.9rem;color:var(--fg-dim)}
+      .nav-links a:hover{color:var(--fg);transition:color .2s}
+      .nav-cta{background:var(--accent);border:none;color:#fff;padding:8px 20px;border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .2s}
+      .nav-cta:hover{opacity:.9}
+      /* ─── Hero ─── */
+      .hero{text-align:center;padding:80px 0 100px;position:relative}
+      .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:20px;color:var(--fg)}
+      .hero p{font-size:clamp(1rem,2vw,1.2rem);color:var(--fg-dim);max-width:600px;margin:0 auto 40px}
+      .install-box{display:inline-flex;align-items:center;gap:0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+      .install-box code{padding:14px 20px;font-family:var(--font-mono);font-size:.85rem;color:var(--fg)}
+      .install-box button{background:var(--accent);border:none;color:#fff;padding:14px 24px;font-size:.85rem;font-weight:600;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+      .install-box button:hover{opacity:.9}
+      .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+      .btn-primary{background:var(--accent);border:none;color:#fff;padding:14px 32px;border-radius:var(--radius);font-size:1rem;font-weight:600;cursor:pointer;transition:opacity .2s}
+      .btn-primary:hover{opacity:.9}
+      .btn-secondary{background:var(--card);border:1px solid var(--border);color:var(--fg);padding:14px 32px;border-radius:var(--radius);font-size:1rem;font-weight:500;cursor:pointer;transition:all .2s}
+      .btn-secondary:hover{background:var(--border)}
+      /* ─── Section ─── */
+      section{padding:80px 0}
+      .section-label{text-transform:uppercase;letter-spacing:2px;font-size:.75rem;font-weight:600;color:var(--accent);margin-bottom:12px;text-align:center}
+      h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;text-align:center;margin-bottom:16px}
+      .section-desc{text-align:center;color:var(--fg-dim);max-width:600px;margin:0 auto 60px}
+      /* ─── Features Grid ─── */
+      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+      .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;transition:all .3s ease}
+      .card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(168,85,247,.1)}
+      .card h3{font-size:1.1rem;font-weight:600;margin-bottom:10px}
+      .card p{font-size:.9rem;color:var(--fg-dim);line-height:1.7}
+      /* ─── Agents ─── */
+      .agents-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+      .agent-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:32px;position:relative;overflow:hidden}
+      .agent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--radius) var(--radius) 0 0}
+      .agent-card.build::before{background:linear-gradient(90deg,#a855f7,#6366f1)}
+      .agent-card.plan::before{background:linear-gradient(90deg,#06b6d4,#10b981)}
+      .agent-card h3{font-size:1.1rem;font-weight:600;margin-bottom:8px}
+      .agent-card p{font-size:.9rem;color:var(--fg-dim)}
+      /* ─── MCP Grid ─── */
+      .mcp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+      .mcp-chip{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center;font-size:.85rem;font-weight:500;transition:all .2s;cursor:default}
+      .mcp-chip:hover{border-color:var(--accent);background:rgba(168,85,247,.05)}
+      /* ─── Install Tabs ─── */
+      .tabs{max-width:680px;margin:0 auto}
+      .tab-headers{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:0}
+      .tab-btn{background:none;border:none;color:var(--fg-dim);padding:12px 24px;font-size:.85rem;font-weight:500;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s}
+      .tab-btn.active,.tab-btn:hover{color:var(--fg);border-bottom-color:var(--accent)}
+      .tab-content{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:20px 24px;display:flex;align-items:center;justify-content:space-between}
+      .tab-content code{font-family:var(--font-mono);font-size:.82rem;color:var(--accent2);word-break:break-all}
+      .tab-content button{background:none;border:1px solid var(--border);color:var(--fg-dim);padding:6px 14px;border-radius:6px;font-size:.8rem;cursor:pointer;transition:all .2s;white-space:nowrap;margin-left:12px}
+      .tab-content button:hover{color:var(--fg);border-color:var(--accent)}
+      /* ─── Docs Grid ─── */
+      .docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+      .docs-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all .2s}
+      .docs-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+      .docs-card h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+      .docs-card p{font-size:.85rem;color:var(--fg-dim);line-height:1.6}
+      .docs-card .count{font-size:.75rem;color:var(--accent2);margin-top:8px}
+      /* ─── Footer ─── */
+      footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;font-size:.85rem;color:var(--fg-dim)}
+      footer .links{display:flex;gap:24px;justify-content:center;margin-bottom:12px;flex-wrap:wrap}
+      footer .links a:hover{color:var(--fg);transition:color .2s}
+      /* ─── Responsive ─── */
+      @media(max-width:768px){nav .nav-links,.nav-cta{display:none}.hero{padding:60px 0 60px}.page{padding:0 16px}}
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Nav -->
+      <nav>
+        <div class="logo">
+          <svg viewBox="0 0 32 32" fill="none" style="color:var(--accent)">
+            <ellipse cx="16" cy="20" rx="14" ry="10" fill="currentColor" opacity=".3"/>
+            <ellipse cx="16" cy="18" rx="12" ry="9" fill="currentColor" opacity=".5"/>
+            <ellipse cx="16" cy="16" rx="10" ry="8" fill="currentColor" opacity=".7"/>
+            <circle cx="12" cy="14" r="2" fill="#fff" opacity=".9"/>
+            <circle cx="20" cy="14" r="2" fill="#fff" opacity=".9"/>
+            <circle cx="12" cy="14" r="1" fill="#111"/>
+            <circle cx="20" cy="14" r="1" fill="#111"/>
+            <ellipse cx="16" cy="20" rx="4" ry="2" fill="#fff" opacity=".6"/>
+          </svg>
+          <span>Rimuru</span>
+        </div>
+        <div class="nav-links">
+          {navLinks.map((l) => (<a href={l.url}>{l.label}</a>))}
+        </div>
+        <a href="/"><button class="nav-cta">Get Started</button></a>
+      </nav>
+
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Code at the<br/>Speed of Thought</h1>
+        <p>
+          Rimuru AI is the terminal-native development tool that understands your entire codebase.
+          Orchestrate multi-agent workflows, run MCP servers, and ship faster.
+        </p>
+        <div class="hero-actions">
+          <div class="install-box">
+            <code>curl -fsSL https://rimurucode.vercel.app/install | sh</code>
+            <button onclick="navigator.clipboard?.writeText(this.previousElementSibling?.textContent||'')">Copy</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section>
+        <div class="section-label">Features</div>
+        <h2>Everything You Need,<br/>Nothing You Don't</h2>
+        <p class="section-desc">A modern development experience that adapts to your workflow, not the other way around.</p>
+        <div class="grid">
+          {features.map((f) => (
+            <div class="card">
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Agents -->
+      <section>
+        <div class="section-label">Agents</div>
+        <h2>Autonomous Specialists</h2>
+        <p class="section-desc">Dedicated sub-agents for every domain — working together in a single session.</p>
+        <div class="agents-grid">
+          {agents.map((a, i) => (
+            <div class={`agent-card ${i === 0 ? 'build' : 'plan'}`}>
+              <h3>{a.title}</h3>
+              <p>{a.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- MCP Servers -->
+      <section>
+        <div class="section-label">Integrations</div>
+        <h2>MCP Server Ecosystem</h2>
+        <p class="section-desc">Connect to your tools through the Model Context Protocol.</p>
+        <div class="mcp-grid">
+          {mcpServers.map((m) => (<div class="mcp-chip">{m}</div>))}
+        </div>
+      </section>
+
+      <!-- Install -->
+      <section>
+        <div class="section-label">Get Started</div>
+        <h2>Install in Seconds</h2>
+        <p class="section-desc">Choose your method. Works on macOS, Linux, and Windows.</p>
+        <div class="tabs" x-data="{ active: 'curl' }">
+          <div class="tab-headers">
+            {installTabs.map((t) => (
+              <button class:list={['tab-btn', { active: t.id === 'curl' }]} data-tab={t.id}>{t.label}</button>
+            ))}
+          </div>
+          {installTabs.map((t) => (
+            <div class="tab-content" data-tab-content={t.id}>
+              <code>{t.code}</code>
+              <button onclick="navigator.clipboard?.writeText(this.previousElementSibling?.textContent||'')">Copy</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Docs -->
+      <section>
+        <div class="section-label">Documentation</div>
+        <h2>Explore the Docs</h2>
+        <p class="section-desc">Everything you need to configure and extend Rimuru AI.</p>
+        <div class="docs-grid">
+          <a href="/providers" class="docs-card">
+            <h3>Providers</h3>
+            <p>Configure LLM providers — OpenAI, Anthropic, Google, local models, and more.</p>
+            <div class="count">10+ providers</div>
+          </a>
+          <a href="/mcp-servers" class="docs-card">
+            <h3>MCP Servers</h3>
+            <p>Add external tools via the Model Context Protocol. Local & remote servers.</p>
+            <div class="count">8 built-in servers</div>
+          </a>
+          <a href="/skills" class="docs-card">
+            <h3>Skills</h3>
+            <p>Specialized workflows for algorithmic art, branding, doc prep, and more.</p>
+            <div class="count">60+ skills</div>
+          </a>
+          <a href="/plugins" class="docs-card">
+            <h3>Plugins</h3>
+            <p>Extend Rimuru AI with community and custom plugins.</p>
+            <div class="count">Extensible</div>
+          </a>
+          <a href="/agents" class="docs-card">
+            <h3>Agents</h3>
+            <p>Configure specialist sub-agents for backend, frontend, database, DevOps.</p>
+            <div class="count">10 agent types</div>
+          </a>
+          <a href="/config" class="docs-card">
+            <h3>Configuration</h3>
+            <p>Tools, rules, themes, keybinds, commands, formatters, permissions, and more.</p>
+            <div class="count">15+ config sections</div>
+          </a>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="links">
+          <a href="/">Docs</a>
+          <a href="https://github.com/gowdaman-dev/rimuru-ai">GitHub</a>
+        </div>
+        <p>&copy; 2026 Rimuru AI. Open source under MIT.</p>
+      </footer>
+    </div>
+  </body>
+</html>

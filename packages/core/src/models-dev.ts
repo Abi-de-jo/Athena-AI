@@ -14,7 +14,7 @@ import { httpClient } from "./effect/layer-node-platform"
 export const CatalogModelStatus = Schema.Literals(["alpha", "beta", "deprecated"])
 export type CatalogModelStatus = typeof CatalogModelStatus.Type
 
-const USER_AGENT = `opencode/${InstallationChannel}/${InstallationVersion}/${Flag.OPENCODE_CLIENT}`
+const USER_AGENT = `rimuru-ai/${InstallationChannel}/${InstallationVersion}/${Flag.RIMURU_CLIENT}`
 
 const CostTier = Schema.Struct({
   input: Schema.Finite,
@@ -115,14 +115,14 @@ export const Event = {
   }),
 }
 
-declare const OPENCODE_MODELS_DEV: Record<string, Provider> | undefined
+declare const RIMURU_MODELS_DEV: Record<string, Provider> | undefined
 
 export interface Interface {
   readonly get: () => Effect.Effect<Record<string, Provider>>
   readonly refresh: (force?: boolean) => Effect.Effect<void>
 }
 
-export class Service extends Context.Service<Service, Interface>()("@opencode/ModelsDev") {}
+export class Service extends Context.Service<Service, Interface>()("@rimuru/ModelsDev") {}
 
 export const layer = Layer.effect(
   Service,
@@ -178,7 +178,7 @@ export const layer = Layer.effect(
     )
 
     const loadSnapshot = Effect.sync(() =>
-      typeof OPENCODE_MODELS_DEV === "undefined" ? undefined : OPENCODE_MODELS_DEV,
+      typeof RIMURU_MODELS_DEV === "undefined" ? undefined : RIMURU_MODELS_DEV,
     )
 
     const fetchAndWrite = Effect.fn("ModelsDev.fetchAndWrite")(function* () {
@@ -202,7 +202,7 @@ export const layer = Layer.effect(
       const snapshot = yield* loadSnapshot
       if (snapshot) return snapshot
       if (Flag.OPENCODE_DISABLE_MODELS_FETCH) return {}
-      // Flock is cross-process: concurrent opencode CLIs can race on this cache file.
+      // Flock is cross-process: concurrent rimuru CLIs can race on this cache file.
       const text = yield* Effect.scoped(
         Effect.gen(function* () {
           yield* Flock.effect(lockKey)

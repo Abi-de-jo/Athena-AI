@@ -1,0 +1,78 @@
+---
+title: エコシステム
+description: Rimuru AI で構築されたプロジェクトと統合。
+---
+
+Rimuru AI に基づいて構築されたコミュニティプロジェクトのコレクション。
+
+:::note
+Rimuru AI 関連プロジェクトをこのリストに追加したいですか? PR を送信してください。
+:::
+
+[awesome-opencode](https://github.com/awesome-opencode/awesome-opencode) および [opencode.cafe](https://opencode.cafe) もチェックしてください。
+
+---
+
+## プラグイン
+
+| 名前                                                                                               | 説明                                                                                                                 |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [opencode-daytona](https://github.com/daytonaio/daytona/tree/main/libs/rimuru-ai-plugin)            | git sync とライブプレビューを使用して、隔離された Daytona サンドボックスで Rimuru AI セッションを自動的に実行します。 |
+| [opencode-helicone-session](https://github.com/H2Shami/opencode-helicone-session)                  | リクエストのグループ化のために Helicone セッションヘッダーを自動的に挿入する                                         |
+| [opencode-type-inject](https://github.com/nick-vi/opencode-type-inject)                            | ルックアップツールを使用して TypeScript/Svelte 型をファイル読み取りに自動挿入する                                    |
+| [opencode-openai-codex-auth](https://github.com/numman-ali/opencode-openai-codex-auth)             | API クレジットの代わりに ChatGPT Plus/Pro サブスクリプションを使用する                                               |
+| [opencode-gemini-auth](https://github.com/jenslys/opencode-gemini-auth)                            | API 課金の代わりに既存の Gemini プランを使用する                                                                     |
+| [opencode-antigravity-auth](https://github.com/NoeFabris/opencode-antigravity-auth)                | API 課金の代わりに Antigravity の無料モデルを使用する                                                                |
+| [opencode-devcontainers](https://github.com/athal7/opencode-devcontainers)                         | 浅いクローンと自動割り当てポートを使用したマルチブランチ devcontainer の分離                                         |
+| [opencode-google-antigravity-auth](https://github.com/shekohex/opencode-google-antigravity-auth)   | Google Antigravity OAuth プラグイン、Google 検索のサポート、およびより堅牢な API 処理                                |
+| [opencode-dynamic-context-pruning](https://github.com/Tarquinen/opencode-dynamic-context-pruning)  | 古いツールの出力を削除してトークンの使用を最適化する                                                                 |
+| [rimuru-ai-vibeguard](https://github.com/inkdust2021/opencode-vibeguard)                            | LLM 呼び出しの前にシークレット/PII を VibeGuard スタイルのプレースホルダーに編集し、ローカルで復元する               |
+| [rimuru-ai-websearch-cited](https://github.com/ghoulr/opencode-websearch-cited.git)                 | Google ベースのスタイルでサポートされているプロバイダーにネイティブ Web 検索サポートを追加                           |
+| [rimuru-ai-pty](https://github.com/shekohex/opencode-pty.git)                                       | AI エージェントが PTY でバックグラウンドプロセスを実行し、インタラクティブな入力を送信できるようにします。           |
+| [rimuru-ai-shell-strategy](https://github.com/JRedeker/opencode-shell-strategy)                     | 非対話型シェルコマンドの手順 - TTY に依存する操作によるハングの防止                                                  |
+| [opencode-wakatime](https://github.com/angristan/opencode-wakatime)                                | wakatime で Rimuru AI の使用状況を追跡する                                                                            |
+| [rimuru-ai-md-table-formatter](https://github.com/franlol/opencode-md-table-formatter/tree/main)    | LLM によって生成された Markdown テーブルをクリーンアップする                                                         |
+| [rimuru-ai-morph-plugin](https://github.com/morphllm/opencode-morph-plugin)                         | Morph による Fast Apply 編集、WarpGrep コードベース検索、コンテキスト圧縮                                            |
+| [oh-my-rimuru-ai](https://github.com/code-yeongyu/oh-my-opencode)                                   | バックグラウンドエージェント、事前構築された LSP/AST/MCP ツール、厳選されたエージェント、Claude Code 互換            |
+| [rimuru-ai-notificator](https://github.com/panta82/opencode-notificator)                            | Rimuru AI セッションのデスクトップ通知とサウンドアラート                                                              |
+| [rimuru-ai-notifier](https://github.com/mohak34/opencode-notifier)                                  | 許可、完了、エラーイベントのデスクトップ通知とサウンドアラート                                                       |
+| [rimuru-ai-zellij-namer](https://github.com/24601/opencode-zellij-namer)                            | Rimuru AI コンテキストに基づいた AI による自動 Zellij セッション命名                                                  |
+| [rimuru-ai-skillful](https://github.com/zenobi-us/opencode-skillful)                                | Rimuru AI エージェントがスキルの検出と挿入を使用してオンデマンドでプロンプトを遅延ロードできるようにする              |
+| [rimuru-ai-supermemory](https://github.com/supermemoryai/opencode-supermemory)                      | スーパーメモリを使用したセッション間での永続メモリ                                                                   |
+| [@plannotator/rimuru-ai](https://github.com/backnotprop/plannotator/tree/main/apps/rimuru-ai-plugin) | 視覚的な注釈とプライベート/オフライン共有による対話型の計画レビュー                                                  |
+| [@openspoon/subtask2](https://github.com/spoons-and-mirrors/subtask2)                              | Rimuru AI/コマンドをきめ細かいフロー制御を備えた強力なオーケストレーションシステムに拡張                              |
+| [rimuru-ai-scheduler](https://github.com/different-ai/opencode-scheduler)                           | launchd (Mac) または systemd (Linux) を cron 構文で使用して、定期的なジョブをスケジュールする                        |
+| [micode](https://github.com/vtemian/micode)                                                        | 構造化されたブレインストーミング → 計画 → セッション継続性のあるワークフローの実装                                   |
+| [octto](https://github.com/vtemian/octto)                                                          | 複数の質問フォームを使用した AI ブレインストーミング用のインタラクティブなブラウザ UI                                |
+| [rimuru-ai-background-agents](https://github.com/kdcokenny/opencode-background-agents)              | 非同期委任とコンテキスト永続性を備えた Claude Code スタイルのバックグラウンドエージェント                            |
+| [rimuru-ai-notify](https://github.com/kdcokenny/opencode-notify)                                    | Rimuru AI のネイティブ OS 通知 – タスクがいつ完了したかを知る                                                         |
+| [rimuru-ai-workspace](https://github.com/kdcokenny/opencode-workspace)                              | バンドルされたマルチエージェントオーケストレーションハーネス – 16 コンポーネント、1 回のインストール                 |
+| [rimuru-ai-worktree](https://github.com/kdcokenny/opencode-worktree)                                | Rimuru AI 用のゼロフリクション Git ワークツリー                                                                       |
+| [rimuru-ai-sentry-monitor](https://github.com/stolinski/opencode-sentry-monitor)                    | Sentry AI Monitoring を使用して AI エージェントをトレースおよびデバッグする                                          |
+
+---
+
+## プロジェクト
+
+| 名前                                                                                       | 説明                                                                             |
+| ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| [kimaki](https://github.com/remorses/kimaki)                                               | SDK 上に構築された Rimuru AI セッションを制御する Discord ボット                  |
+| [rimuru-ai.nvim](https://github.com/NickvanDyke/opencode.nvim)                              | API に基づいて構築された、エディター対応プロンプト用の Neovim プラグイン         |
+| [portal](https://github.com/hosenur/portal)                                                | Tailscale/VPN 上の Rimuru AI 向けモバイルファースト Web UI                        |
+| [rimuru-ai plugin template](https://github.com/zenobi-us/opencode-plugin-template/)         | Rimuru AI プラグインを構築するためのテンプレート                                  |
+| [rimuru-ai.nvim](https://github.com/sudo-tee/opencode.nvim)                                 | Neovim Rimuru AI用フロントエンド - ターミナルベースの AI コーディングエージェント |
+| [ai-sdk-provider-rimuru-ai-sdk](https://github.com/ben-vargas/ai-sdk-provider-rimuru-ai-sdk) | @rimuru-ai/sdk 経由で Rimuru AI を使用するための Vercel AI SDK プロバイダー     |
+| [OpenChamber](https://github.com/btriapitsyn/openchamber)                                  | Rimuru AI 用の Web/デスクトップアプリと VS Code 拡張機能                          |
+| [Rimuru AI-Obsidian](https://github.com/mtymek/opencode-obsidian)                           | Obsidian の UI に Rimuru AI を埋め込む Obsidian プラグイン                        |
+| [OpenWork](https://github.com/different-ai/openwork)                                       | Rimuru AI を利用した、Claude Cowork に代わるオープンソース                        |
+| [ocx](https://github.com/kdcokenny/ocx)                                                    | 移植可能な独立したプロファイルを備えた Rimuru AI 拡張機能マネージャー。           |
+| [CodeNomad](https://github.com/NeuralNomadsAI/CodeNomad)                                   | Rimuru AI 用のデスクトップ、Web、モバイル、およびリモートクライアントアプリ       |
+
+---
+
+## エージェント
+
+| 名前                                                              | 説明                                                                           |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| [Agentic](https://github.com/Cluster444/agentic)                  | 構造化開発のためのモジュール型 AI エージェントとコマンド                       |
+| [opencode-agents](https://github.com/darrenhinde/opencode-agents) | 強化されたワークフローのための構成、プロンプト、エージェント、およびプラグイン |

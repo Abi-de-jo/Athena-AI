@@ -12,7 +12,7 @@ Examples: `enhanced-config`, `mcp-setup`, `doc-prep-workflow`
 Conventional commit format: `type(scope): summary`.
 
 Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`
-Scopes: `core`, `opencode`, `tui`, `app`, `desktop`, `sdk`, `plugin`, `config`, `mcp`
+Scopes: `core`, `rimuru-ai`, `tui`, `app`, `desktop`, `sdk`, `plugin`, `config`, `mcp`
 
 ## Style Guide
 Follow the existing code style in the source. Key rules:
@@ -32,7 +32,7 @@ Follow the existing code style in the source. Key rules:
 - Run `oxlint` for linting
 
 ## MCP Servers
-Configured in `.opencode/opencode.jsonc`. Available MCPs:
+Configured in `.rimuru/rimuru.jsonc`. Available MCPs:
 - figma — Design integration
 - filesystem — File system access
 - postman — API management

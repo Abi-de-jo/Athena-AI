@@ -35,7 +35,7 @@ await Bun.file(`./dist/${pkg.name}/package.json`).write(
       bin: { lildax: "./bin/lildax" },
       version,
       license: pkg.license,
-      repository: { type: "git", url: "git+https://github.com/gowdaman/rimuru-ai.git" },
+      repository: { type: "git", url: "git+https://github.com/gowdaman-dev/rimuru-ai.git" },
       os: ["darwin", "linux", "win32"],
       cpu: ["arm64", "x64"],
       optionalDependencies: binaries,

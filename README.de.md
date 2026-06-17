@@ -10,7 +10,7 @@
 <p align="center">Der Open-Source KI-Coding-Agent.</p>
 <p align="center">
   <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
-  <a href="https://github.com/gowdaman/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ nix run nixpkgs#rimuru-ai           # oder github:gowdaman/rimuru-ai für den ne
 
 ### Desktop-App (BETA)
 
-Rimuru AI ist auch als Desktop-Anwendung verfügbar. Lade sie direkt von der [Releases-Seite](https://github.com/gowdaman/rimuru-ai/releases) oder [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) herunter.
+Rimuru AI ist auch als Desktop-Anwendung verfügbar. Lade sie direkt von der [Releases-Seite](https://github.com/gowdaman-dev/rimuru-ai/releases) oder [rimurucode.vercel.app/download](https://rimurucode.vercel.app/download) herunter.
 
 | Plattform             | Download                           |
 | --------------------- | ---------------------------------- |
