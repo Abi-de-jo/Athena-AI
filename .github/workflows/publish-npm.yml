@@ -20,6 +20,25 @@ jobs:
         with:
           node-version: "22"
 
+      - name: Resolve catalog references
+        run: |
+          node -e "
+            const root = JSON.parse(require('fs').readFileSync('../../package.json','utf8'));
+            const pkg = JSON.parse(require('fs').readFileSync('package.json','utf8'));
+            const catalog = root.workspaces?.catalog || {};
+            ['dependencies','devDependencies','peerDependencies'].forEach(section => {
+              if (!pkg[section]) return;
+              Object.keys(pkg[section]).forEach(key => {
+                if (pkg[section][key] === 'catalog:' && catalog[key]) {
+                  pkg[section][key] = catalog[key];
+                }
+              });
+            });
+            require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+            console.log('Resolved:', Object.keys(catalog).filter(k => (pkg.dependencies?.[k] || pkg.devDependencies?.[k]) === catalog[k]).join(', '));
+          "
+        working-directory: packages/rimuru
+
       - name: Publish to npm
         run: |
           if [ -z "${NPM_TOKEN}" ]; then
