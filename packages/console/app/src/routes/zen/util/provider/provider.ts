@@ -1,4 +1,4 @@
-import { ZenData } from "@rimuru-ai/console-core/model.js"
+import { ZenData } from "@rimurucode-ai/console-core/model.js"
 import {
   fromAnthropicChunk,
   fromAnthropicRequest,

@@ -1,9 +1,9 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import path from "path"
-import { Global } from "@rimuru-ai/core/global"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { Global } from "@rimurucode-ai/core/global"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 import { Effect, Exit, Layer, Option, RcMap, Schema, Context, TxReentrantLock } from "effect"
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
 import { Git } from "@/git"
 
 type Migration = (dir: string, fs: FSUtil.Interface, git: Git.Interface) => Effect.Effect<void, FSUtil.Error>

@@ -1,7 +1,7 @@
 import path from "path"
 import { fileURLToPath } from "url"
 import { Schema } from "effect"
-import { Global } from "@rimuru-ai/core/global"
+import { Global } from "@rimurucode-ai/core/global"
 
 type BaseReference = {
   host: string

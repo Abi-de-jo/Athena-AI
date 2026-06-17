@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { NamedError } from "@rimuru-ai/core/util/error"
+import { NamedError } from "@rimurucode-ai/core/util/error"
 import { MessageError } from "../../src/session/message-error"
 
 describe("util.error", () => {

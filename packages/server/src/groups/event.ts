@@ -1,5 +1,5 @@
-import { EventV2 } from "@rimuru-ai/core/event"
-import { Location } from "@rimuru-ai/core/location"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { Location } from "@rimurucode-ai/core/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi, LocationMiddleware } from "./location"

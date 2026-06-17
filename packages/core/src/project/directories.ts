@@ -7,7 +7,7 @@ import { LayerNode } from "../effect/layer-node"
 import { AbsolutePath, optionalOmitUndefined } from "../schema"
 import { ProjectSchema } from "./schema"
 import { ProjectDirectoryTable } from "./sql"
-import type { EffectDrizzleSqlite } from "@rimuru-ai/effect-drizzle-sqlite"
+import type { EffectDrizzleSqlite } from "@rimurucode-ai/effect-drizzle-sqlite"
 
 export interface Directory {
   readonly directory: AbsolutePath

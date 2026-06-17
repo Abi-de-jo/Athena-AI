@@ -1,15 +1,15 @@
 // Rimuru publish boundary for core events. Attach routed instance location
 // so direct EventV2 consumers can isolate directory/workspace streams.
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { InstanceRef, WorkspaceRef } from "@/effect/instance-ref"
 import { GlobalBus } from "@/bus/global"
-import { EventV2 } from "@rimuru-ai/core/event"
-import { Location } from "@rimuru-ai/core/location"
-import { Project } from "@rimuru-ai/core/project"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
-import "@rimuru-ai/core/account"
-import "@rimuru-ai/core/catalog"
-import "@rimuru-ai/core/session/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { Location } from "@rimurucode-ai/core/location"
+import { Project } from "@rimurucode-ai/core/project"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
+import "@rimurucode-ai/core/account"
+import "@rimurucode-ai/core/catalog"
+import "@rimurucode-ai/core/session/event"
 import { Context, Effect, Layer } from "effect"
 
 export class Service extends Context.Service<Service, EventV2.Interface>()("@rimuru/EventV2Bridge") {}

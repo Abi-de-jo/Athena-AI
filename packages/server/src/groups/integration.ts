@@ -1,5 +1,5 @@
-import { Integration } from "@rimuru-ai/core/integration"
-import { Location } from "@rimuru-ai/core/location"
+import { Integration } from "@rimurucode-ai/core/integration"
+import { Location } from "@rimurucode-ai/core/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { InvalidRequestError } from "../errors"

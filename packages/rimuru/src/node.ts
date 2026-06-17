@@ -1,4 +1,4 @@
 export { Config } from "@/config/config"
 export { Server } from "./server/server"
 export { bootstrap } from "./cli/bootstrap"
-export { Database } from "@rimuru-ai/core/database/database"
+export { Database } from "@rimurucode-ai/core/database/database"

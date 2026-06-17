@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect, Exit, Layer, Scope } from "effect"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
-import { Global } from "@rimuru-ai/core/global"
-import { Reference } from "@rimuru-ai/core/reference"
-import { Repository } from "@rimuru-ai/core/repository"
-import { RepositoryCache } from "@rimuru-ai/core/repository-cache"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
+import { Global } from "@rimurucode-ai/core/global"
+import { Reference } from "@rimurucode-ai/core/reference"
+import { Repository } from "@rimurucode-ai/core/repository"
+import { RepositoryCache } from "@rimurucode-ai/core/repository-cache"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { it } from "./lib/effect"
 
 const cache = Layer.mock(RepositoryCache.Service, {

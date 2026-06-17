@@ -139,7 +139,7 @@ Python script at `/tmp/opencode/fix_opencode.py` processed **477 files**, **4,28
 `bun run build --single --skip-embed-web-ui --skip-install` → `1.0.0-dev-202606171124` ✅
 
 ### Key insight
-- **Zero `import` refs to `packages/opencode/`** existed — codebase uses `@/*` path aliases and `@rimuru-ai/*` package names.
+- **Zero `import` refs to `packages/opencode/`** existed — codebase uses `@/*` path aliases and `@rimurucode-ai/*` package names.
 - **`ProviderV2.ID.opencode`** intentionally preserved as well-known provider ID for open-source models.
 
 ### Remaining (non-blocking)

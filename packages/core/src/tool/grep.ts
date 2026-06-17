@@ -1,6 +1,6 @@
 export * as GrepTool from "./grep"
 
-import { ToolFailure } from "@rimuru-ai/llm"
+import { ToolFailure } from "@rimurucode-ai/llm"
 import { Effect, Layer, Schema } from "effect"
 import path from "path"
 import { FileSystem } from "../filesystem"

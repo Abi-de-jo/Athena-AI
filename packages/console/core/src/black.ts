@@ -1,6 +1,6 @@
 import { z } from "zod"
 import { fn } from "./util/fn"
-import { Resource } from "@rimuru-ai/console-resource"
+import { Resource } from "@rimurucode-ai/console-resource"
 import { BlackPlans } from "./schema/billing.sql"
 import { Subscription } from "./subscription"
 

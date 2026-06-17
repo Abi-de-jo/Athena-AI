@@ -9,8 +9,8 @@ import type {
   Message,
   Part,
   Config as SDKConfig,
-} from "@rimuru-ai/sdk"
-import type { Provider as ProviderV2, Model as ModelV2, Auth } from "@rimuru-ai/sdk/v2"
+} from "@rimurucode-ai/sdk"
+import type { Provider as ProviderV2, Model as ModelV2, Auth } from "@rimurucode-ai/sdk/v2"
 
 import type { BunShell } from "./shell.js"
 import { type ToolDefinition } from "./tool.js"

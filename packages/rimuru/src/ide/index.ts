@@ -1,6 +1,6 @@
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { Schema } from "effect"
-import { NamedError } from "@rimuru-ai/core/util/error"
+import { NamedError } from "@rimurucode-ai/core/util/error"
 import { Process } from "@/util/process"
 
 const SUPPORTED_IDES = [

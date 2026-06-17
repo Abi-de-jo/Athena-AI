@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { ModelV2 } from "@rimuru-ai/core/model"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { MistralPlugin } from "@rimuru-ai/core/plugin/provider/mistral"
+import { ModelV2 } from "@rimurucode-ai/core/model"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { MistralPlugin } from "@rimurucode-ai/core/plugin/provider/mistral"
 import { fakeSelectorSdk, it, model } from "./provider-helper"
 
 describe("MistralPlugin", () => {

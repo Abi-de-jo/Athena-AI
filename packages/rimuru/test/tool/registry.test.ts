@@ -3,7 +3,7 @@ import path from "path"
 import fs from "fs/promises"
 import { fileURLToPath, pathToFileURL } from "url"
 import { Effect, Layer, Result, Schema } from "effect"
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { ToolRegistry } from "@/tool/registry"
 import { Tool } from "@/tool/tool"
 import { disposeAllInstances, TestInstance } from "../fixture/fixture"
@@ -17,8 +17,8 @@ import { InstanceState } from "@/effect/instance-state"
 import { ToolJsonSchema } from "@/tool/json-schema"
 import { MessageID, SessionID } from "@/session/schema"
 import { RuntimeFlags } from "@/effect/runtime-flags"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 
 const configLayer = TestConfig.layer({
   directories: () => InstanceState.directory.pipe(Effect.map((dir) => [path.join(dir, ".rimuru")])),
@@ -294,7 +294,7 @@ describe("tool.registry", () => {
         yield* Effect.promise(() =>
           Bun.write(
             path.join(plugin, "package.json"),
-            JSON.stringify({ name: "@rimuru-ai/plugin", type: "module", exports: { ".": "./dist/index.js" } }),
+            JSON.stringify({ name: "@rimurucode-ai/plugin", type: "module", exports: { ".": "./dist/index.js" } }),
           ),
         )
         yield* Effect.promise(() =>
@@ -314,7 +314,7 @@ describe("tool.registry", () => {
           Bun.write(
             path.join(customTools, "addition.ts"),
             [
-              'import { tool } from "@rimuru-ai/plugin"',
+              'import { tool } from "@rimurucode-ai/plugin"',
               "export default tool({",
               "  description: 'Use this tool to add two numbers and return their sum.',",
               "  args: {",
@@ -431,7 +431,7 @@ describe("tool.registry", () => {
           JSON.stringify({
             name: "custom-tools",
             dependencies: {
-              "@rimuru-ai/plugin": "^0.0.0",
+              "@rimurucode-ai/plugin": "^0.0.0",
               cowsay: "^1.6.0",
             },
           }),
@@ -446,7 +446,7 @@ describe("tool.registry", () => {
             packages: {
               "": {
                 dependencies: {
-                  "@rimuru-ai/plugin": "^0.0.0",
+                  "@rimurucode-ai/plugin": "^0.0.0",
                   cowsay: "^1.6.0",
                 },
               },

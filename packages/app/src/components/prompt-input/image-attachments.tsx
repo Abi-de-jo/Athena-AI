@@ -1,6 +1,6 @@
 import { Component, For, Show } from "solid-js"
-import { Icon } from "@rimuru-ai/ui/icon"
-import { Tooltip } from "@rimuru-ai/ui/tooltip"
+import { Icon } from "@rimurucode-ai/ui/icon"
+import { Tooltip } from "@rimurucode-ai/ui/tooltip"
 import type { ImageAttachmentPart } from "@/context/prompt"
 
 type PromptImageAttachmentsProps = {

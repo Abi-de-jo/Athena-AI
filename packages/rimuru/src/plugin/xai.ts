@@ -1,7 +1,7 @@
-import type { Hooks, PluginInput } from "@rimuru-ai/plugin"
+import type { Hooks, PluginInput } from "@rimurucode-ai/plugin"
 import { OAUTH_DUMMY_KEY } from "../auth"
 import { createServer } from "http"
-import { InstallationVersion } from "@rimuru-ai/core/installation/version"
+import { InstallationVersion } from "@rimurucode-ai/core/installation/version"
 import { escapeHtml } from "@/util/html"
 
 // Public Grok-CLI OAuth client. xAI's auth server rejects loopback OAuth from

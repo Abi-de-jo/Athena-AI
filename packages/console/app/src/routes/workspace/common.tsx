@@ -1,11 +1,11 @@
-import { Resource } from "@rimuru-ai/console-resource"
-import { Actor } from "@rimuru-ai/console-core/actor.js"
+import { Resource } from "@rimurucode-ai/console-resource"
+import { Actor } from "@rimurucode-ai/console-core/actor.js"
 import { action, json, query } from "@solidjs/router"
 import { withActor } from "~/context/auth.withActor"
-import { Billing } from "@rimuru-ai/console-core/billing.js"
-import { and, Database, desc, eq, isNull } from "@rimuru-ai/console-core/drizzle/index.js"
-import { WorkspaceTable } from "@rimuru-ai/console-core/schema/workspace.sql.js"
-import { UserTable } from "@rimuru-ai/console-core/schema/user.sql.js"
+import { Billing } from "@rimurucode-ai/console-core/billing.js"
+import { and, Database, desc, eq, isNull } from "@rimurucode-ai/console-core/drizzle/index.js"
+import { WorkspaceTable } from "@rimurucode-ai/console-core/schema/workspace.sql.js"
+import { UserTable } from "@rimurucode-ai/console-core/schema/user.sql.js"
 
 export function formatDateForTable(date: Date) {
   const options: Intl.DateTimeFormatOptions = {

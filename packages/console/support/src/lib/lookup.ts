@@ -1,8 +1,8 @@
 "use server"
 
-import { Database, and, eq, isNull, sql } from "@rimuru-ai/console-core/drizzle/index.js"
-import { AuthTable } from "@rimuru-ai/console-core/schema/auth.sql.js"
-import { UserTable } from "@rimuru-ai/console-core/schema/user.sql.js"
+import { Database, and, eq, isNull, sql } from "@rimurucode-ai/console-core/drizzle/index.js"
+import { AuthTable } from "@rimurucode-ai/console-core/schema/auth.sql.js"
+import { UserTable } from "@rimurucode-ai/console-core/schema/user.sql.js"
 import {
   BillingTable,
   PaymentTable,
@@ -10,15 +10,15 @@ import {
   BlackPlans,
   UsageTable,
   LiteTable,
-} from "@rimuru-ai/console-core/schema/billing.sql.js"
-import { WorkspaceTable } from "@rimuru-ai/console-core/schema/workspace.sql.js"
-import { KeyTable } from "@rimuru-ai/console-core/schema/key.sql.js"
-import { ModelTable } from "@rimuru-ai/console-core/schema/model.sql.js"
-import { BlackData } from "@rimuru-ai/console-core/black.js"
-import { LiteData } from "@rimuru-ai/console-core/lite.js"
-import { Subscription } from "@rimuru-ai/console-core/subscription.js"
-import { centsToMicroCents } from "@rimuru-ai/console-core/util/price.js"
-import { getWeekBounds } from "@rimuru-ai/console-core/util/date.js"
+} from "@rimurucode-ai/console-core/schema/billing.sql.js"
+import { WorkspaceTable } from "@rimurucode-ai/console-core/schema/workspace.sql.js"
+import { KeyTable } from "@rimurucode-ai/console-core/schema/key.sql.js"
+import { ModelTable } from "@rimurucode-ai/console-core/schema/model.sql.js"
+import { BlackData } from "@rimurucode-ai/console-core/black.js"
+import { LiteData } from "@rimurucode-ai/console-core/lite.js"
+import { Subscription } from "@rimurucode-ai/console-core/subscription.js"
+import { centsToMicroCents } from "@rimurucode-ai/console-core/util/price.js"
+import { getWeekBounds } from "@rimurucode-ai/console-core/util/date.js"
 
 export type LookupResult = {
   identifier: string

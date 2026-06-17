@@ -1,12 +1,12 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { SessionID } from "./schema"
 import { Effect, Layer, Context, Schema } from "effect"
-import { Database } from "@rimuru-ai/core/database/database"
+import { Database } from "@rimurucode-ai/core/database/database"
 import { eq } from "drizzle-orm"
 import { asc } from "drizzle-orm"
-import { TodoTable } from "@rimuru-ai/core/session/sql"
+import { TodoTable } from "@rimurucode-ai/core/session/sql"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 
 export const Info = Schema.Struct({
   content: Schema.String.annotate({ description: "Brief description of the task" }),

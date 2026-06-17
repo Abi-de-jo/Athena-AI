@@ -1,5 +1,5 @@
-import { Icon } from "@rimuru-ai/ui/v2/icon"
-import { Popover } from "@rimuru-ai/ui/popover"
+import { Icon } from "@rimurucode-ai/ui/v2/icon"
+import { Popover } from "@rimurucode-ai/ui/popover"
 import { createSignal, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 

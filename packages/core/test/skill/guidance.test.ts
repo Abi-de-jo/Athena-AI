@@ -1,12 +1,12 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { PluginBoot } from "@rimuru-ai/core/plugin/boot"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
-import { SkillV2 } from "@rimuru-ai/core/skill"
-import { SystemContext } from "@rimuru-ai/core/system-context"
-import { SkillGuidance } from "@rimuru-ai/core/skill/guidance"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { PluginBoot } from "@rimurucode-ai/core/plugin/boot"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
+import { SkillV2 } from "@rimurucode-ai/core/skill"
+import { SystemContext } from "@rimurucode-ai/core/system-context"
+import { SkillGuidance } from "@rimurucode-ai/core/skill/guidance"
 import { it } from "../lib/effect"
 
 const build = AgentV2.ID.make("build")

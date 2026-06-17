@@ -1,10 +1,10 @@
 import { EOL } from "os"
 import { Effect, Option } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { LocationServiceMap } from "@rimuru-ai/core/location-layer"
-import { Location } from "@rimuru-ai/core/location"
-import { PluginBoot } from "@rimuru-ai/core/plugin/boot"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { LocationServiceMap } from "@rimurucode-ai/core/location-layer"
+import { Location } from "@rimurucode-ai/core/location"
+import { PluginBoot } from "@rimurucode-ai/core/plugin/boot"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
 import { effectCmd } from "../../effect-cmd"
 
 export const V2Command = effectCmd({

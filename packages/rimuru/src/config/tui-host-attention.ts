@@ -1,5 +1,5 @@
-import { TuiConfig } from "@rimuru-ai/tui/config"
-import { isRecord } from "@rimuru-ai/tui/util/record"
+import { TuiConfig } from "@rimurucode-ai/tui/config"
+import { isRecord } from "@rimurucode-ai/tui/util/record"
 import { Filesystem } from "@/util/filesystem"
 import { Schema } from "effect"
 

@@ -1,4 +1,4 @@
-import type { Model } from "@rimuru-ai/sdk/v2"
+import type { Model } from "@rimurucode-ai/sdk/v2"
 import { Option, Schema } from "effect"
 
 const item = Schema.Struct({

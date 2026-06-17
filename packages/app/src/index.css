@@ -1,5 +1,5 @@
-@import "@rimuru-ai/ui/styles/tailwind";
-@import "@rimuru-ai/ui/v2/styles/tailwind.css";
+@import "@rimurucode-ai/ui/styles/tailwind";
+@import "@rimurucode-ai/ui/v2/styles/tailwind.css";
 
 @font-face {
   font-family: "JetBrainsMono Nerd Font Mono";

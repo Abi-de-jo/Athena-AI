@@ -1,5 +1,5 @@
 import { NodeFileSystem, NodePath } from "@effect/platform-node"
-import { LLMClient, RequestExecutor } from "@rimuru-ai/llm/route"
+import { LLMClient, RequestExecutor } from "@rimurucode-ai/llm/route"
 import { FetchHttpClient } from "effect/unstable/http"
 import { LayerNode } from "./layer-node"
 

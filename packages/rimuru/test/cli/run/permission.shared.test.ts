@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { PermissionRequest } from "@rimuru-ai/sdk/v2"
+import type { PermissionRequest } from "@rimurucode-ai/sdk/v2"
 import {
   createPermissionBodyState,
   permissionAlwaysLines,

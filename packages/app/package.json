@@ -1,5 +1,5 @@
 {
-  "name": "@rimuru-ai/app",
+  "name": "@rimurucode-ai/app",
   "version": "1.17.7",
   "description": "",
   "type": "module",
@@ -43,9 +43,9 @@
   },
   "dependencies": {
     "@kobalte/core": "catalog:",
-    "@rimuru-ai/core": "workspace:*",
-    "@rimuru-ai/sdk": "workspace:*",
-    "@rimuru-ai/ui": "workspace:*",
+    "@rimurucode-ai/core": "workspace:*",
+    "@rimurucode-ai/sdk": "workspace:*",
+    "@rimurucode-ai/ui": "workspace:*",
     "@pierre/trees": "1.0.0-beta.4",
     "@sentry/solid": "catalog:",
     "@shikijs/transformers": "3.9.2",

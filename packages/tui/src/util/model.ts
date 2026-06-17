@@ -1,4 +1,4 @@
-import type { Provider } from "@rimuru-ai/sdk/v2"
+import type { Provider } from "@rimurucode-ai/sdk/v2"
 
 export function parse(value: string) {
   const [providerID, ...modelID] = value.split("/")

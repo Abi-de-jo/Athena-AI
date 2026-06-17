@@ -1,10 +1,10 @@
 import path from "path"
 import { fileURLToPath } from "url"
 
-import { Flag } from "@rimuru-ai/core/flag/flag"
-import { Global } from "@rimuru-ai/core/global"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
+import { Global } from "@rimurucode-ai/core/global"
 import { Filesystem } from "@/util/filesystem"
-import { Flock } from "@rimuru-ai/core/util/flock"
+import { Flock } from "@rimurucode-ai/core/util/flock"
 
 import { parsePluginSpecifier, pluginSource } from "./shared"
 

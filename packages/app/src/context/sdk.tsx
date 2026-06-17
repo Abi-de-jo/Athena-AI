@@ -1,4 +1,4 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
 import { type Accessor, createMemo } from "solid-js"
 import { type ServerSDK, useServerSDK } from "./server-sdk"
 

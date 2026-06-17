@@ -1,11 +1,11 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
-import { httpClient, path } from "@rimuru-ai/core/effect/layer-node-platform"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
+import { httpClient, path } from "@rimurucode-ai/core/effect/layer-node-platform"
 import { NodePath } from "@effect/platform-node"
 import { Effect, Layer, Path, Schema, Context } from "effect"
 import { FetchHttpClient, HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
 import { withTransientReadRetry } from "@/util/effect-http-client"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { Global } from "@rimuru-ai/core/global"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { Global } from "@rimurucode-ai/core/global"
 
 const skillConcurrency = 4
 const fileConcurrency = 8

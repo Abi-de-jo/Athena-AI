@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@rimuru-ai/stats-app",
+  "name": "@rimurucode-ai/stats-app",
   "version": "1.17.7",
   "private": true,
   "type": "module",
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@ibm/plex": "6.4.1",
-    "@rimuru-ai/stats-core": "workspace:*",
-    "@rimuru-ai/ui": "workspace:*",
+    "@rimurucode-ai/stats-core": "workspace:*",
+    "@rimurucode-ai/ui": "workspace:*",
     "@solidjs/meta": "catalog:",
     "@solidjs/router": "catalog:",
     "@solidjs/start": "catalog:",

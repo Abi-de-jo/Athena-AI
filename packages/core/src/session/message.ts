@@ -1,7 +1,7 @@
 export * as SessionMessage from "./message"
 
 import { Schema } from "effect"
-import { ProviderMetadata, ToolContent } from "@rimuru-ai/llm"
+import { ProviderMetadata, ToolContent } from "@rimurucode-ai/llm"
 import { ModelV2 } from "../model"
 import { V2Schema } from "../v2-schema"
 import { SessionEvent } from "./event"

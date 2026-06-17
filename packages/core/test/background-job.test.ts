@@ -1,5 +1,5 @@
 import { describe, expect } from "bun:test"
-import { BackgroundJob } from "@rimuru-ai/core/background-job"
+import { BackgroundJob } from "@rimurucode-ai/core/background-job"
 import { Deferred, Effect, Exit, Scope } from "effect"
 import { it } from "./lib/effect"
 

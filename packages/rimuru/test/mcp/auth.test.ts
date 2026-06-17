@@ -1,8 +1,8 @@
 import { expect, test } from "bun:test"
 import { setTimeout as sleep } from "node:timers/promises"
 import { Effect, Layer } from "effect"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { EffectFlock } from "@rimuru-ai/core/util/effect-flock"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { EffectFlock } from "@rimurucode-ai/core/util/effect-flock"
 import { McpAuth } from "../../src/mcp/auth"
 
 function authFile() {

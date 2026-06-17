@@ -1,9 +1,9 @@
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { Credential } from "@rimuru-ai/core/credential"
-import { Database } from "@rimuru-ai/core/database/database"
-import { Integration } from "@rimuru-ai/core/integration"
+import { Credential } from "@rimurucode-ai/core/credential"
+import { Database } from "@rimurucode-ai/core/database/database"
+import { Integration } from "@rimurucode-ai/core/integration"
 import { tmpdir } from "./fixture/tmpdir"
 import { it } from "./lib/effect"
 

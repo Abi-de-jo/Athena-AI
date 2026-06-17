@@ -1,6 +1,6 @@
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { SessionMessage } from "@rimuru-ai/core/session/message"
-import { ToolRegistry } from "@rimuru-ai/core/tool/registry"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { SessionMessage } from "@rimurucode-ai/core/session/message"
+import { ToolRegistry } from "@rimurucode-ai/core/tool/registry"
 import { Effect } from "effect"
 
 export const toolIdentity = {

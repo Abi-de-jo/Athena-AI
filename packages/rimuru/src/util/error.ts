@@ -1,1 +1,1 @@
-export * from "@rimuru-ai/tui/util/error"
+export * from "@rimurucode-ai/tui/util/error"

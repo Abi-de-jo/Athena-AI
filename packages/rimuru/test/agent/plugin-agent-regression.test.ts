@@ -1,6 +1,6 @@
 import { expect } from "bun:test"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { LocationServiceMap } from "@rimuru-ai/core/location-layer"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { LocationServiceMap } from "@rimurucode-ai/core/location-layer"
 import { Effect, Layer } from "effect"
 import { FetchHttpClient } from "effect/unstable/http"
 import path from "path"

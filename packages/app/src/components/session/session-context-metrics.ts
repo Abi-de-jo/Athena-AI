@@ -1,4 +1,4 @@
-import type { AssistantMessage, Message } from "@rimuru-ai/sdk/v2/client"
+import type { AssistantMessage, Message } from "@rimurucode-ai/sdk/v2/client"
 
 type Provider = {
   id: string

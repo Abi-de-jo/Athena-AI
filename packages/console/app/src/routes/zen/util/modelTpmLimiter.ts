@@ -1,5 +1,5 @@
-import { and, Database, eq, inArray, sql } from "@rimuru-ai/console-core/drizzle/index.js"
-import { ModelTpmRateLimitTable } from "@rimuru-ai/console-core/schema/ip.sql.js"
+import { and, Database, eq, inArray, sql } from "@rimurucode-ai/console-core/drizzle/index.js"
+import { ModelTpmRateLimitTable } from "@rimurucode-ai/console-core/schema/ip.sql.js"
 import { UsageInfo } from "./provider/provider"
 
 export function createModelTpmLimiter(providers: { id: string; model: string; tpmLimit?: number }[]) {

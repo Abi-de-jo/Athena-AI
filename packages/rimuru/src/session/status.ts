@@ -1,10 +1,10 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { InstanceState } from "@/effect/instance-state"
 import { SessionID } from "./schema"
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
 import { Effect, Layer, Context, Schema } from "effect"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 
 export const Info = Schema.Union([
   Schema.Struct({

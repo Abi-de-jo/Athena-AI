@@ -1,5 +1,5 @@
-import type { Event } from "@rimuru-ai/sdk/v2/client"
-import { createSimpleContext } from "@rimuru-ai/ui/context"
+import type { Event } from "@rimurucode-ai/sdk/v2/client"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
 import { createGlobalEmitter } from "@solid-primitives/event-bus"
 import { makeEventListener } from "@solid-primitives/event-listener"
 import { type Accessor, batch, createMemo, onCleanup, onMount } from "solid-js"

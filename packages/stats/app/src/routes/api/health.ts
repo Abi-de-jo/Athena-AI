@@ -1,5 +1,5 @@
-import { AppConfig } from "@rimuru-ai/stats-core/config"
-import { runtime } from "@rimuru-ai/stats-core/runtime"
+import { AppConfig } from "@rimurucode-ai/stats-core/config"
+import { runtime } from "@rimurucode-ai/stats-core/runtime"
 import { Effect } from "effect"
 
 export async function GET() {

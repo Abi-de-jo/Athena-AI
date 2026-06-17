@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { FilePart } from "@rimuru-ai/sdk/v2"
+import type { FilePart } from "@rimurucode-ai/sdk/v2"
 import { attached, inline, kind } from "./message-file"
 
 function file(part: Partial<FilePart> = {}): FilePart {

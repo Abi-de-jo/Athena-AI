@@ -1,4 +1,4 @@
-import { QuestionV2 } from "@rimuru-ai/core/question"
+import { QuestionV2 } from "@rimurucode-ai/core/question"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"

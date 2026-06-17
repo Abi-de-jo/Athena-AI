@@ -1,4 +1,4 @@
-import { createRimuruClient } from "@rimuru-ai/sdk/v2"
+import { createRimuruClient } from "@rimurucode-ai/sdk/v2"
 import { SessionID } from "@/session/schema"
 import { Schema } from "effect"
 

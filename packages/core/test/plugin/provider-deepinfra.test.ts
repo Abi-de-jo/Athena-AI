@@ -1,9 +1,9 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AISDK } from "@rimuru-ai/core/aisdk"
-import { EventV2 } from "@rimuru-ai/core/event"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { DeepInfraPlugin } from "@rimuru-ai/core/plugin/provider/deepinfra"
+import { AISDK } from "@rimurucode-ai/core/aisdk"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { DeepInfraPlugin } from "@rimurucode-ai/core/plugin/provider/deepinfra"
 import { testEffect } from "../lib/effect"
 import { it, model } from "./provider-helper"
 

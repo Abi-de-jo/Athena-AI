@@ -1,6 +1,6 @@
 import { NodeFileSystem } from "@effect/platform-node"
-import { HttpRecorder } from "@rimuru-ai/http-recorder"
-import { HttpRecorderInternal } from "@rimuru-ai/http-recorder/internal"
+import { HttpRecorder } from "@rimurucode-ai/http-recorder"
+import { HttpRecorderInternal } from "@rimurucode-ai/http-recorder/internal"
 import { Layer } from "effect"
 import { FetchHttpClient } from "effect/unstable/http"
 import * as path from "node:path"

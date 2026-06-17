@@ -3,7 +3,7 @@ import type {
   TuiPluginInstallOptions,
   TuiPluginInstallResult,
   TuiPluginStatus,
-} from "@rimuru-ai/plugin/tui"
+} from "@rimurucode-ai/plugin/tui"
 import type { TuiConfig } from "../config"
 import { createContext, createSignal, useContext, type JSX, type ParentProps } from "solid-js"
 import { createPluginRoutes } from "./api"

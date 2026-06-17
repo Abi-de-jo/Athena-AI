@@ -1,5 +1,5 @@
-import { Message, Model, Part, Session, SnapshotFileDiff } from "@rimuru-ai/sdk/v2"
-import { iife } from "@rimuru-ai/core/util/iife"
+import { Message, Model, Part, Session, SnapshotFileDiff } from "@rimurucode-ai/sdk/v2"
+import { iife } from "@rimurucode-ai/core/util/iife"
 import z from "zod"
 import { Storage } from "./storage"
 

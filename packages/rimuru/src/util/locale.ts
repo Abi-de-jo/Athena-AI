@@ -1,2 +1,2 @@
-export * from "@rimuru-ai/tui/util/locale"
-export { Locale } from "@rimuru-ai/tui/util/locale"
+export * from "@rimurucode-ai/tui/util/locale"
+export { Locale } from "@rimurucode-ai/tui/util/locale"

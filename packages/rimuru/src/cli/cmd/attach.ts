@@ -1,6 +1,6 @@
 import { cmd } from "./cmd"
 import { UI } from "@/cli/ui"
-import { errorMessage } from "@rimuru-ai/tui/util/error"
+import { errorMessage } from "@rimurucode-ai/tui/util/error"
 import { validateSession } from "../tui/validate-session"
 import { ServerAuth } from "@/server/auth"
 

@@ -4,8 +4,8 @@ import { BoxRenderable, RGBA, type RootRenderable } from "@opentui/core"
 import { testRender, useRenderer } from "@opentui/solid"
 import { createSignal } from "solid-js"
 import { createDefaultOpenTuiKeymap } from "@opentui/keymap/opentui"
-import type { QuestionRequest } from "@rimuru-ai/sdk/v2"
-import { RimuruKeymapProvider, registerRimuruKeymap } from "@rimuru-ai/tui/keymap"
+import type { QuestionRequest } from "@rimurucode-ai/sdk/v2"
+import { RimuruKeymapProvider, registerRimuruKeymap } from "@rimurucode-ai/tui/keymap"
 import {
   RUN_COMMAND_PANEL_ROWS,
   RUN_SUBAGENT_PANEL_ROWS,

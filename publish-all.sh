@@ -1,5 +1,5 @@
 #!/bin/bash
-# publish-all.sh — Publish ALL @rimuru-ai/* sub-packages + rimuru-ai to npm.
+# publish-all.sh — Publish ALL @rimurucode-ai/* sub-packages + rimuru-ai to npm.
 #
 # Resolves both catalog: and workspace:* references, publishes in
 # dependency order (leaf first → root last).
@@ -34,16 +34,16 @@ echo "=== Catalog loaded with $(echo "$CATALOG" | node -e "const c=JSON.parse(re
 # ── 2. Define publish order (leaves first, roots last) ────────────────
 # Each entry: "dir" package-name
 PUBLISH_ORDER=(
-  "packages/effect-drizzle-sqlite" "@rimuru-ai/effect-drizzle-sqlite"
-  "packages/effect-sqlite-node"    "@rimuru-ai/effect-sqlite-node"
-  "packages/sdk/js"                "@rimuru-ai/sdk"
-  "packages/script"                "@rimuru-ai/script"
-  "packages/llm"                   "@rimuru-ai/llm"
-  "packages/core"                  "@rimuru-ai/core"
-  "packages/plugin"                "@rimuru-ai/plugin"
-  "packages/ui"                    "@rimuru-ai/ui"
-  "packages/server"                "@rimuru-ai/server"
-  "packages/tui"                   "@rimuru-ai/tui"
+  "packages/effect-drizzle-sqlite" "@rimurucode-ai/effect-drizzle-sqlite"
+  "packages/effect-sqlite-node"    "@rimurucode-ai/effect-sqlite-node"
+  "packages/sdk/js"                "@rimurucode-ai/sdk"
+  "packages/script"                "@rimurucode-ai/script"
+  "packages/llm"                   "@rimurucode-ai/llm"
+  "packages/core"                  "@rimurucode-ai/core"
+  "packages/plugin"                "@rimurucode-ai/plugin"
+  "packages/ui"                    "@rimurucode-ai/ui"
+  "packages/server"                "@rimurucode-ai/server"
+  "packages/tui"                   "@rimurucode-ai/tui"
   "packages/rimuru"                "rimuru-ai"
 )
 

@@ -1,4 +1,4 @@
-import { SkillV2 } from "@rimuru-ai/core/skill"
+import { SkillV2 } from "@rimurucode-ai/core/skill"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"
 import { response } from "../groups/location"

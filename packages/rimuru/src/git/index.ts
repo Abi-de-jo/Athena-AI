@@ -1,5 +1,5 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
-import { AppProcess } from "@rimuru-ai/core/process"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
+import { AppProcess } from "@rimurucode-ai/core/process"
 import { Effect, Layer, Context, Stream } from "effect"
 import { ChildProcess } from "effect/unstable/process"
 

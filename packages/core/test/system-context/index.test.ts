@@ -1,6 +1,6 @@
 import { describe, expect } from "bun:test"
 import { Cause, Effect, Exit, Schema } from "effect"
-import { SystemContext } from "@rimuru-ai/core/system-context"
+import { SystemContext } from "@rimurucode-ai/core/system-context"
 import { it } from "../lib/effect"
 
 const key = SystemContext.Key.make

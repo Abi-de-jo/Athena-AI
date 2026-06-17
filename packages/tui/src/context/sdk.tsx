@@ -1,6 +1,6 @@
-import { createRimuruClient } from "@rimuru-ai/sdk/v2"
-import type { GlobalEvent } from "@rimuru-ai/sdk/v2"
-import { Flag } from "@rimuru-ai/core/flag/flag"
+import { createRimuruClient } from "@rimurucode-ai/sdk/v2"
+import type { GlobalEvent } from "@rimurucode-ai/sdk/v2"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
 import { createSimpleContext } from "./helper"
 import { batch, onCleanup, onMount } from "solid-js"
 

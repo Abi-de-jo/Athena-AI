@@ -1,5 +1,5 @@
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { Location } from "@rimuru-ai/core/location"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { Location } from "@rimurucode-ai/core/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { ProviderNotFoundError, ServiceUnavailableError } from "../errors"

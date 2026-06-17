@@ -4,7 +4,7 @@ import { useTheme } from "../context/theme"
 import { MouseButton, Renderable, RGBA } from "@opentui/core"
 import { createStore } from "solid-js/store"
 import { useToast } from "./toast"
-import { Flag } from "@rimuru-ai/core/flag/flag"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
 import { useBindings, useRimuruModeStack } from "../keymap"
 import { useClipboard } from "../context/clipboard"
 

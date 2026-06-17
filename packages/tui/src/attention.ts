@@ -9,17 +9,17 @@ import type {
   TuiAttentionSoundName,
   TuiAttentionSoundPack,
   TuiAttentionSoundPackInfo,
-} from "@rimuru-ai/plugin/tui"
+} from "@rimurucode-ai/plugin/tui"
 import { AttentionSoundName, type TuiConfig } from "./config"
 import { Schema } from "effect"
 import stripAnsi from "strip-ansi"
 import * as TuiAudio from "./audio"
-import defaultSoundPath from "@rimuru-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import questionSoundPath from "@rimuru-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
-import permissionSoundPath from "@rimuru-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
-import errorSoundPath from "@rimuru-ai/ui/audio/nope-03.mp3" with { type: "file" }
-import doneSoundPath from "@rimuru-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
-import subagentDoneSoundPath from "@rimuru-ai/ui/audio/yup-01.mp3" with { type: "file" }
+import defaultSoundPath from "@rimurucode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import questionSoundPath from "@rimurucode-ai/ui/audio/bip-bop-03.mp3" with { type: "file" }
+import permissionSoundPath from "@rimurucode-ai/ui/audio/staplebops-06.mp3" with { type: "file" }
+import errorSoundPath from "@rimurucode-ai/ui/audio/nope-03.mp3" with { type: "file" }
+import doneSoundPath from "@rimurucode-ai/ui/audio/bip-bop-01.mp3" with { type: "file" }
+import subagentDoneSoundPath from "@rimurucode-ai/ui/audio/yup-01.mp3" with { type: "file" }
 
 type FocusState = "unknown" | "focused" | "blurred"
 

@@ -1,5 +1,5 @@
-import { SessionV2 } from "@rimuru-ai/core/session"
-import { SessionMessage } from "@rimuru-ai/core/session/message"
+import { SessionV2 } from "@rimurucode-ai/core/session"
+import { SessionMessage } from "@rimurucode-ai/core/session/message"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { InvalidCursorError, SessionNotFoundError, UnknownError } from "../errors"

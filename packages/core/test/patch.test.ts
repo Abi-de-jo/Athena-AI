@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import { Patch } from "@rimuru-ai/core/patch"
+import { Patch } from "@rimurucode-ai/core/patch"
 
 describe("Patch", () => {
   test("parses add, update, and delete hunks", () => {

@@ -1,1 +1,1 @@
-export { default } from "@rimuru-ai/tui/parsers-config"
+export { default } from "@rimurucode-ai/tui/parsers-config"

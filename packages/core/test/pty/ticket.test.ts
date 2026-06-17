@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { PtyID } from "@rimuru-ai/core/pty/schema"
-import { PtyTicket } from "@rimuru-ai/core/pty/ticket"
-import { WorkspaceV2 } from "@rimuru-ai/core/workspace"
+import { PtyID } from "@rimurucode-ai/core/pty/schema"
+import { PtyTicket } from "@rimurucode-ai/core/pty/ticket"
+import { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
 import { testEffect } from "../lib/effect"
 
 const it = testEffect(PtyTicket.layer)

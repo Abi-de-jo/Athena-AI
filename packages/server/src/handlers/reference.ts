@@ -1,4 +1,4 @@
-import { Reference } from "@rimuru-ai/core/reference"
+import { Reference } from "@rimurucode-ai/core/reference"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"
 import { response } from "../groups/location"

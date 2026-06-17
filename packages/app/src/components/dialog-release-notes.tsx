@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js"
-import { Dialog } from "@rimuru-ai/ui/dialog"
-import { Button } from "@rimuru-ai/ui/button"
-import { useDialog } from "@rimuru-ai/ui/context/dialog"
+import { Dialog } from "@rimurucode-ai/ui/dialog"
+import { Button } from "@rimurucode-ai/ui/button"
+import { useDialog } from "@rimurucode-ai/ui/context/dialog"
 import { useLanguage } from "@/context/language"
 import { useSettings } from "@/context/settings"
 

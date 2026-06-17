@@ -1,7 +1,7 @@
 import { Config, Effect, Formatter, Layer, Schema, Stream } from "effect"
-import { LLM, LLMClient, Message, ProviderID, Tool, ToolRuntime } from "@rimuru-ai/llm"
-import { Route, Auth, Endpoint, Framing, Protocol, RequestExecutor, WebSocketExecutor } from "@rimuru-ai/llm/route"
-import { OpenAI } from "@rimuru-ai/llm/providers"
+import { LLM, LLMClient, Message, ProviderID, Tool, ToolRuntime } from "@rimurucode-ai/llm"
+import { Route, Auth, Endpoint, Framing, Protocol, RequestExecutor, WebSocketExecutor } from "@rimurucode-ai/llm/route"
+import { OpenAI } from "@rimurucode-ai/llm/providers"
 
 /**
  * A runnable walkthrough of the LLM package use-site API.

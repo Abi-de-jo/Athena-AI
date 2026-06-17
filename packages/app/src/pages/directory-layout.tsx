@@ -1,6 +1,6 @@
-import { DataProvider } from "@rimuru-ai/ui/context"
+import { DataProvider } from "@rimurucode-ai/ui/context"
 import { showToast } from "@/utils/toast"
-import { base64Encode } from "@rimuru-ai/core/util/encode"
+import { base64Encode } from "@rimurucode-ai/core/util/encode"
 import { useLocation, useNavigate, useParams } from "@solidjs/router"
 import { createEffect, createMemo, createResource, type ParentProps, Show } from "solid-js"
 import { useLanguage } from "@/context/language"

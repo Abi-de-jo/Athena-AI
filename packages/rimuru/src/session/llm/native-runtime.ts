@@ -1,5 +1,5 @@
 import type { Auth } from "@/auth"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import type { Provider } from "@/provider/provider"
 import { ProviderTransform } from "@/provider/transform"
 import { errorMessage } from "@/util/error"
@@ -16,8 +16,8 @@ import {
   toDefinitions,
   type JsonSchema,
   type LLMEvent,
-} from "@rimuru-ai/llm"
-import type { LLMClientShape } from "@rimuru-ai/llm/route"
+} from "@rimurucode-ai/llm"
+import type { LLMClientShape } from "@rimurucode-ai/llm/route"
 import { LLMNative } from "./native-request"
 
 export type RuntimeStatus =
@@ -77,7 +77,7 @@ export function stream(input: StreamInput): StreamResult {
   const current = statusWithFetch(input, fetch)
   if (current.type === "unsupported") return current
 
-  // Integration point with @rimuru-ai/llm: native-request lowers session data
+  // Integration point with @rimurucode-ai/llm: native-request lowers session data
   // into an LLMRequest, then LLMClient handles route selection and transport.
   //
   // ProviderTransform.providerOptions builds AI-SDK-shaped options for the
@@ -172,7 +172,7 @@ export function nativeTools(tools: Record<string, Tool>, input: Pick<StreamInput
     Object.entries(tools).map(([name, item]) => [
       name,
       // Tool execution remains rimuru-ai-owned. The native runtime only adapts
-      // the @rimuru-ai/llm tool call back into the AI SDK Tool.execute shape.
+      // the @rimurucode-ai/llm tool call back into the AI SDK Tool.execute shape.
       NativeTool.make({
         description: item.description ?? "",
         jsonSchema: nativeSchema(item.inputSchema),

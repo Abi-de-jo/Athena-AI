@@ -14,7 +14,7 @@ process.chdir(dir)
 
 const generated = await import("./generate.ts")
 
-import { Script } from "@rimuru-ai/script"
+import { Script } from "@rimurucode-ai/script"
 import pkg from "../package.json"
 
 const singleFlag = process.argv.includes("--single")

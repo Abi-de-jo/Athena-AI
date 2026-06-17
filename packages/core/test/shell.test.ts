@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import path from "path"
-import { Shell } from "@rimuru-ai/core/shell"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { which } from "@rimuru-ai/core/util/which"
+import { Shell } from "@rimurucode-ai/core/shell"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { which } from "@rimurucode-ai/core/util/which"
 
 const withShell = async (shell: string | undefined, fn: () => void | Promise<void>) => {
   const prev = process.env.SHELL

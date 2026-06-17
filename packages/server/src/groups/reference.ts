@@ -1,5 +1,5 @@
-import { Location } from "@rimuru-ai/core/location"
-import { Reference } from "@rimuru-ai/core/reference"
+import { Location } from "@rimurucode-ai/core/location"
+import { Reference } from "@rimurucode-ai/core/reference"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationMiddleware, LocationQuery, locationQueryOpenApi } from "./location"

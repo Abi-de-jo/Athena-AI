@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@rimuru-ai/tui",
+  "name": "@rimurucode-ai/tui",
   "version": "1.17.7",
   "type": "module",
   "license": "MIT",
@@ -46,10 +46,10 @@
     "./component/spinner": "./src/component/spinner.tsx"
   },
   "dependencies": {
-    "@rimuru-ai/core": "workspace:*",
-    "@rimuru-ai/plugin": "workspace:*",
-    "@rimuru-ai/sdk": "workspace:*",
-    "@rimuru-ai/ui": "workspace:*",
+    "@rimurucode-ai/core": "workspace:*",
+    "@rimurucode-ai/plugin": "workspace:*",
+    "@rimurucode-ai/sdk": "workspace:*",
+    "@rimurucode-ai/ui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/keymap": "catalog:",
     "@opentui/solid": "catalog:",

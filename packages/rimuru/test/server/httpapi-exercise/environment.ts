@@ -1,4 +1,4 @@
-import { Flag } from "@rimuru-ai/core/flag/flag"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
 import { Effect } from "effect"
 import path from "path"
 

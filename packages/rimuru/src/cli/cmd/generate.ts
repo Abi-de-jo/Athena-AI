@@ -18,7 +18,7 @@ export const GenerateCommand = {
           {
             lang: "js",
             source: [
-              `import { createRimuruClient } from "@rimuru-ai/sdk`,
+              `import { createRimuruClient } from "@rimurucode-ai/sdk`,
               ``,
               `const client = createRimuruClient()`,
               `await client.${operation.operationId}({`,

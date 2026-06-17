@@ -1,10 +1,10 @@
-import { SessionMessage } from "@rimuru-ai/core/session/message"
-import { SessionInput } from "@rimuru-ai/core/session/input"
-import { Prompt } from "@rimuru-ai/core/session/prompt"
-import { SessionV2 } from "@rimuru-ai/core/session"
-import { ProjectV2 } from "@rimuru-ai/core/project"
-import { AbsolutePath, PositiveInt, RelativePath, withStatics } from "@rimuru-ai/core/schema"
-import { WorkspaceV2 } from "@rimuru-ai/core/workspace"
+import { SessionMessage } from "@rimurucode-ai/core/session/message"
+import { SessionInput } from "@rimurucode-ai/core/session/input"
+import { Prompt } from "@rimurucode-ai/core/session/prompt"
+import { SessionV2 } from "@rimurucode-ai/core/session"
+import { ProjectV2 } from "@rimurucode-ai/core/project"
+import { AbsolutePath, PositiveInt, RelativePath, withStatics } from "@rimurucode-ai/core/schema"
+import { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
 import { Schema, Struct } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import {
@@ -16,9 +16,9 @@ import {
   UnknownError,
 } from "../errors"
 import { SessionLocationMiddleware } from "../middleware/session-location"
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { ModelV2 } from "@rimuru-ai/core/model"
-import { Location } from "@rimuru-ai/core/location"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { ModelV2 } from "@rimurucode-ai/core/model"
+import { Location } from "@rimurucode-ai/core/location"
 
 const SessionsQueryFields = {
   workspace: WorkspaceV2.ID.pipe(Schema.optional),

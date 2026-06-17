@@ -2,8 +2,8 @@ import { describe, expect, test } from "bun:test"
 import { Effect } from "effect"
 import { ProviderTransform } from "@/provider/transform"
 import { LLMRequestPrep } from "@/session/llm/request"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 
 describe("ProviderTransform.options - setCacheKey", () => {
   const sessionID = "test-session-123"

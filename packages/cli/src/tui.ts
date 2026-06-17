@@ -1,7 +1,7 @@
-import { run } from "@rimuru-ai/tui"
-import { TuiConfig } from "@rimuru-ai/tui/config"
+import { run } from "@rimurucode-ai/tui"
+import { TuiConfig } from "@rimurucode-ai/tui/config"
 import { Effect } from "effect"
-import { Global } from "@rimuru-ai/core/global"
+import { Global } from "@rimurucode-ai/core/global"
 
 export function runTui(transport: { url: string; headers: RequestInit["headers"] }) {
   const config = TuiConfig.resolve({}, { terminalSuspend: false })

@@ -1,5 +1,5 @@
-import type { AssistantMessage } from "@rimuru-ai/sdk/v2"
-import type { TuiPlugin, TuiPluginApi } from "@rimuru-ai/plugin/tui"
+import type { AssistantMessage } from "@rimurucode-ai/sdk/v2"
+import type { TuiPlugin, TuiPluginApi } from "@rimurucode-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 import { createMemo } from "solid-js"
 

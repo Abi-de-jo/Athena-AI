@@ -1,5 +1,5 @@
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { SessionID } from "@/session/schema"
 import { Schema } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiError, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"

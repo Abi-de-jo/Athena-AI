@@ -11,8 +11,8 @@
 //     → stream.ts bridges to footer API
 //       → footer.ts queues commits and patches the footer view
 //         → OpenTUI split-footer renderer writes to terminal
-import type { RimuruClient, PermissionRequest, QuestionRequest, ToolPart } from "@rimuru-ai/sdk/v2"
-import type { TuiConfig } from "@rimuru-ai/tui/config"
+import type { RimuruClient, PermissionRequest, QuestionRequest, ToolPart } from "@rimurucode-ai/sdk/v2"
+import type { TuiConfig } from "@rimurucode-ai/tui/config"
 
 export type RunFilePart = {
   type: "file"

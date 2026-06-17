@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test"
-import type { QuestionRequest } from "@rimuru-ai/sdk/v2"
+import type { QuestionRequest } from "@rimurucode-ai/sdk/v2"
 import {
   createQuestionBodyState,
   questionConfirm,

@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import { Cause, Effect, Logger } from "effect"
-import { logFailure } from "@rimuru-ai/core/session/logging"
-import { SessionSchema } from "@rimuru-ai/core/session/schema"
+import { logFailure } from "@rimurucode-ai/core/session/logging"
+import { SessionSchema } from "@rimurucode-ai/core/session/schema"
 
 describe("Session logging", () => {
   for (const message of ["Failed to drain Session", "Failed to wake Session"] as const) {

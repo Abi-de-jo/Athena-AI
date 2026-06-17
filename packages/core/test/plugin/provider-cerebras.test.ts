@@ -1,9 +1,9 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { CerebrasPlugin } from "@rimuru-ai/core/plugin/provider/cerebras"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { CerebrasPlugin } from "@rimurucode-ai/core/plugin/provider/cerebras"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import { it, model } from "./provider-helper"
 
 const cerebrasOptions: Record<string, unknown>[] = []

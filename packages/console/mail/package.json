@@ -1,5 +1,5 @@
 {
-  "name": "@rimuru-ai/console-mail",
+  "name": "@rimurucode-ai/console-mail",
   "version": "1.17.7",
   "dependencies": {
     "@jsx-email/all": "2.2.3",

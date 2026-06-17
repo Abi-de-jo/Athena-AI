@@ -18,8 +18,8 @@
 // without changing the fixture. Long-lived commands like `serve` will need a
 // different return shape — see the TODO at the bottom of OpencodeCli.
 import { test, type TestOptions } from "bun:test"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { AppProcess } from "@rimuru-ai/core/process"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { AppProcess } from "@rimurucode-ai/core/process"
 import { Deferred, Duration, Effect, Layer, Queue, Scope, Stream } from "effect"
 import { FetchHttpClient, HttpClient } from "effect/unstable/http"
 import { ChildProcess } from "effect/unstable/process"

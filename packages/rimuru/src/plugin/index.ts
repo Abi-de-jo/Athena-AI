@@ -1,17 +1,17 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import type {
   Hooks,
   PluginInput,
   Plugin as PluginInstance,
   PluginModule,
   WorkspaceAdapter as PluginWorkspaceAdapter,
-} from "@rimuru-ai/plugin"
+} from "@rimurucode-ai/plugin"
 import { Config } from "@/config/config"
-import { createRimuruClient } from "@rimuru-ai/sdk"
+import { createRimuruClient } from "@rimurucode-ai/sdk"
 import { ServerAuth } from "@/server/auth"
 import { CodexAuthPlugin } from "./openai/codex"
 import { Session } from "@/session/session"
-import { NamedError } from "@rimuru-ai/core/util/error"
+import { NamedError } from "@rimurucode-ai/core/util/error"
 import { CopilotAuthPlugin } from "./github-copilot/copilot"
 import { gitlabAuthPlugin as GitlabAuthPlugin } from "opencode-gitlab-auth"
 import { PoeAuthPlugin } from "opencode-poe-auth"
@@ -30,7 +30,7 @@ import { registerAdapter } from "@/control-plane/adapters"
 import type { WorkspaceAdapter } from "@/control-plane/types"
 import { RuntimeFlags } from "@/effect/runtime-flags"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { InstallationChannel } from "@rimuru-ai/core/installation/version"
+import { InstallationChannel } from "@rimurucode-ai/core/installation/version"
 
 type State = {
   hooks: Hooks[]

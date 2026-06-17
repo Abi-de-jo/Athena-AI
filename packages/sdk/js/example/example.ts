@@ -1,4 +1,4 @@
-import { createRimuruClient, createRimuruServer } from "@rimuru-ai/sdk"
+import { createRimuruClient, createRimuruServer } from "@rimurucode-ai/sdk"
 import { pathToFileURL } from "bun"
 
 const server = await createRimuruServer()

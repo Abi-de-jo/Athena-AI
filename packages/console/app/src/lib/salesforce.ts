@@ -1,4 +1,4 @@
-import { Resource } from "@rimuru-ai/console-resource"
+import { Resource } from "@rimurucode-ai/console-resource"
 
 async function login() {
   const url = Resource.SALESFORCE_INSTANCE_URL.value.replace(/\/$/, "")

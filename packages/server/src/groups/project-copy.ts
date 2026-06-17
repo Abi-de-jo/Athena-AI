@@ -1,5 +1,5 @@
-import { ProjectCopy } from "@rimuru-ai/core/project/copy"
-import { ProjectV2 } from "@rimuru-ai/core/project"
+import { ProjectCopy } from "@rimurucode-ai/core/project/copy"
+import { ProjectV2 } from "@rimurucode-ai/core/project"
 import { Schema, Struct } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { LocationMiddleware, LocationQuery, locationQueryOpenApi } from "./location"

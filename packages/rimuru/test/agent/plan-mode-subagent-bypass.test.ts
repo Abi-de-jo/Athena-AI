@@ -1,4 +1,4 @@
-import { PermissionV1 } from "@rimuru-ai/core/v1/permission"
+import { PermissionV1 } from "@rimurucode-ai/core/v1/permission"
 import { expect } from "bun:test"
 import { Effect } from "effect"
 import { Agent } from "../../src/agent/agent"

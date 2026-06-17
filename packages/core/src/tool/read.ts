@@ -1,6 +1,6 @@
 export * as ReadTool from "./read"
 
-import { ToolFailure } from "@rimuru-ai/llm"
+import { ToolFailure } from "@rimurucode-ai/llm"
 import path from "path"
 import { Effect, Layer, Schema } from "effect"
 import { FileSystem } from "../filesystem"

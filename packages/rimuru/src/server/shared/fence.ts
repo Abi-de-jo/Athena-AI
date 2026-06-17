@@ -1,8 +1,8 @@
-import { Database } from "@rimuru-ai/core/database/database"
+import { Database } from "@rimurucode-ai/core/database/database"
 import { inArray } from "drizzle-orm"
-import { EventSequenceTable } from "@rimuru-ai/core/event/sql"
+import { EventSequenceTable } from "@rimurucode-ai/core/event/sql"
 import { Workspace } from "@/control-plane/workspace"
-import type { WorkspaceV2 } from "@rimuru-ai/core/workspace"
+import type { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
 import { Effect } from "effect"
 
 export const HEADER = "x-rimuru-sync"

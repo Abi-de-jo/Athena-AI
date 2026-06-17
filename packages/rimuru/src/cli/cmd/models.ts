@@ -1,9 +1,9 @@
 import { EOL } from "os"
 import { Effect } from "effect"
-import { ModelsDev } from "@rimuru-ai/core/models-dev"
+import { ModelsDev } from "@rimurucode-ai/core/models-dev"
 import { effectCmd, fail } from "../effect-cmd"
 import { UI } from "../ui"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 
 export const ModelsCommand = effectCmd({
   command: "models [provider]",

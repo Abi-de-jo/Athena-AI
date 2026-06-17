@@ -1,7 +1,7 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { OpenAICompatiblePlugin } from "@rimuru-ai/core/plugin/provider/openai-compatible"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { OpenAICompatiblePlugin } from "@rimurucode-ai/core/plugin/provider/openai-compatible"
 import { it, model } from "./provider-helper"
 
 describe("OpenAICompatiblePlugin", () => {

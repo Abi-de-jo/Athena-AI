@@ -8,10 +8,10 @@ import type {
   QuestionRequest,
   Session,
   Todo,
-} from "@rimuru-ai/sdk/v2/client"
+} from "@rimurucode-ai/sdk/v2/client"
 import { showToast } from "@/utils/toast"
-import { getFilename } from "@rimuru-ai/core/util/path"
-import { retry } from "@rimuru-ai/core/util/retry"
+import { getFilename } from "@rimurucode-ai/core/util/path"
+import { retry } from "@rimurucode-ai/core/util/retry"
 import { batch } from "solid-js"
 import { reconcile, type SetStoreFunction, type Store } from "solid-js/store"
 import type { State, VcsCache } from "./types"
@@ -19,7 +19,7 @@ import { cmp, normalizeAgentList, normalizeProviderList } from "./utils"
 import { formatServerError } from "@/utils/server-errors"
 import { QueryClient, queryOptions } from "@tanstack/solid-query"
 import { loadMcpQuery } from "../server-sync"
-import { NormalizedProviderListResponse } from "@rimuru-ai/ui/context"
+import { NormalizedProviderListResponse } from "@rimurucode-ai/ui/context"
 import { ScopedKey, type ServerScope } from "@/utils/server-scope"
 
 type GlobalStore = {

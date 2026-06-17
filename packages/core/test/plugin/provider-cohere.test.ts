@@ -1,8 +1,8 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { ModelV2 } from "@rimuru-ai/core/model"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { CoherePlugin } from "@rimuru-ai/core/plugin/provider/cohere"
+import { ModelV2 } from "@rimurucode-ai/core/model"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { CoherePlugin } from "@rimurucode-ai/core/plugin/provider/cohere"
 import { fakeSelectorSdk, it, model } from "./provider-helper"
 
 const cohereOptions: Record<string, any>[] = []

@@ -1,5 +1,5 @@
 import { describe, expect } from "bun:test"
-import { SessionV1 } from "@rimuru-ai/core/v1/session"
+import { SessionV1 } from "@rimurucode-ai/core/v1/session"
 import fs from "fs/promises"
 import path from "path"
 import { Effect, Layer } from "effect"
@@ -9,11 +9,11 @@ import { SessionRevert } from "../../src/session/revert"
 import { MessageV2 } from "../../src/session/message-v2"
 import { Snapshot } from "../../src/snapshot"
 import { MessageID, PartID, SessionID } from "../../src/session/schema"
-import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
+import { CrossSpawnSpawner } from "@rimurucode-ai/core/cross-spawn-spawner"
 import { provideTmpdirInstance } from "../fixture/fixture"
 import { testEffect } from "../lib/effect"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 
 const env = Layer.mergeAll(
   Session.defaultLayer,

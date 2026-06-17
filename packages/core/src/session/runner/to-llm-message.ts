@@ -6,7 +6,7 @@ import {
   type ContentPart,
   type Model,
   type ProviderMetadata,
-} from "@rimuru-ai/llm"
+} from "@rimurucode-ai/llm"
 import { SessionMessage } from "../message"
 import type { FileAttachment } from "../prompt"
 
@@ -144,6 +144,6 @@ ${message.recent}
   }
 }
 
-/** Translate projected V2 Session history into canonical @rimuru-ai/llm context. */
+/** Translate projected V2 Session history into canonical @rimurucode-ai/llm context. */
 export const toLLMMessages = (messages: readonly SessionMessage.Message[], model: Model) =>
   messages.flatMap((message) => toLLMMessage(message, model))

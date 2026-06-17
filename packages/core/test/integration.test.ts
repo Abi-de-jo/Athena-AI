@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Duration, Effect, Exit, Fiber, Layer, Scope, Stream } from "effect"
 import * as TestClock from "effect/testing/TestClock"
-import { Integration } from "@rimuru-ai/core/integration"
-import { Credential } from "@rimuru-ai/core/credential"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { Integration } from "@rimurucode-ai/core/integration"
+import { Credential } from "@rimurucode-ai/core/credential"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { it } from "./lib/effect"
 
 const layer = Integration.locationLayer.pipe(

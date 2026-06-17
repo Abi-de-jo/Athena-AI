@@ -1,7 +1,7 @@
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { SessionID, MessageID, PartID } from "./schema"
-import { SessionV1 } from "@rimuru-ai/core/v1/session"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { SessionV1 } from "@rimurucode-ai/core/v1/session"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import {
   APIError,
   AbortedError,
@@ -17,11 +17,11 @@ import {
   User,
   WithParts,
   type ToolPart,
-} from "@rimuru-ai/core/v1/session"
+} from "@rimurucode-ai/core/v1/session"
 
-import { NamedError } from "@rimuru-ai/core/util/error"
+import { NamedError } from "@rimurucode-ai/core/util/error"
 import { APICallError, convertToModelMessages, LoadAPIKeyError, type ModelMessage, type UIMessage } from "ai"
-import { Database } from "@rimuru-ai/core/database/database"
+import { Database } from "@rimurucode-ai/core/database/database"
 import { NotFoundError } from "@/storage/storage"
 import { and } from "drizzle-orm"
 import { desc } from "drizzle-orm"
@@ -29,7 +29,7 @@ import { eq } from "drizzle-orm"
 import { inArray } from "drizzle-orm"
 import { lt } from "drizzle-orm"
 import { or } from "drizzle-orm"
-import { MessageTable, PartTable, SessionTable } from "@rimuru-ai/core/session/sql"
+import { MessageTable, PartTable, SessionTable } from "@rimurucode-ai/core/session/sql"
 import { ProviderError } from "@/provider/error"
 import { iife } from "@/util/iife"
 import { errorMessage } from "@/util/error"

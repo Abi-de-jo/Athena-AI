@@ -7,20 +7,20 @@ import { ConfigParse } from "@/config/parse"
 import * as ConfigPaths from "@/config/paths"
 import { migrateTuiConfig } from "./tui-migrate"
 import { resolveHostAttentionSoundPaths } from "./tui-host-attention"
-import { Flag } from "@rimuru-ai/core/flag/flag"
-import { isRecord } from "@rimuru-ai/tui/util/record"
-import { Global } from "@rimuru-ai/core/global"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
+import { isRecord } from "@rimurucode-ai/tui/util/record"
+import { Global } from "@rimurucode-ai/core/global"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 import { CurrentWorkingDirectory } from "./tui-cwd"
 import { ConfigPlugin } from "@/config/plugin"
-import { TuiKeybind } from "@rimuru-ai/tui/config/keybind"
-import { InstallationLocal, InstallationVersion } from "@rimuru-ai/core/installation/version"
-import { makeRuntime } from "@rimuru-ai/core/effect/runtime"
+import { TuiKeybind } from "@rimurucode-ai/tui/config/keybind"
+import { InstallationLocal, InstallationVersion } from "@rimurucode-ai/core/installation/version"
+import { makeRuntime } from "@rimurucode-ai/core/effect/runtime"
 import { Filesystem } from "@/util/filesystem"
 import { ConfigVariable } from "@/config/variable"
-import { Npm } from "@rimuru-ai/core/npm"
+import { Npm } from "@rimurucode-ai/core/npm"
 import { FormatError, FormatUnknownError } from "@/cli/error"
-import { TuiConfig } from "@rimuru-ai/tui/config"
+import { TuiConfig } from "@rimurucode-ai/tui/config"
 
 export const Info = TuiConfig.Info
 export type Info = TuiConfig.Info
@@ -236,7 +236,7 @@ export const layer = Layer.effect(
           .install(dir, {
             add: [
               {
-                name: "@rimuru-ai/plugin",
+                name: "@rimurucode-ai/plugin",
                 version: InstallationLocal ? undefined : InstallationVersion,
               },
             ],

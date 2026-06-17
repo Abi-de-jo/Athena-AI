@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import { LLMEvent, ToolFailure } from "@rimuru-ai/llm"
-import { LLMClient, RequestExecutor, WebSocketExecutor, type LLMClientShape } from "@rimuru-ai/llm/route"
+import { LLMEvent, ToolFailure } from "@rimurucode-ai/llm"
+import { LLMClient, RequestExecutor, WebSocketExecutor, type LLMClientShape } from "@rimurucode-ai/llm/route"
 import { jsonSchema, tool, type ModelMessage, type Tool } from "ai"
 import { Effect, Fiber, Layer, Stream } from "effect"
 import { LLMNative } from "@/session/llm/native-request"
@@ -9,8 +9,8 @@ import type { Provider } from "@/provider/provider"
 
 import { OAUTH_DUMMY_KEY } from "@/auth"
 import { testEffect } from "../lib/effect"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 
 const baseModel: Provider.Model = {
   id: ModelV2.ID.make("gpt-5-mini"),

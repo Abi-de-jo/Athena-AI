@@ -1,5 +1,5 @@
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { PluginBoot } from "@rimuru-ai/core/plugin/boot"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { PluginBoot } from "@rimurucode-ai/core/plugin/boot"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

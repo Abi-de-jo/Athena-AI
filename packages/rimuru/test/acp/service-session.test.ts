@@ -10,9 +10,9 @@ import type {
   SessionConfigSelectOption,
   SetSessionConfigOptionResponse,
 } from "@agentclientprotocol/sdk"
-import type { RimuruClient } from "@rimuru-ai/sdk/v2"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import type { RimuruClient } from "@rimurucode-ai/sdk/v2"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 import { Effect } from "effect"
 import * as ACPService from "@/acp/service"
 import * as ACPError from "@/acp/error"

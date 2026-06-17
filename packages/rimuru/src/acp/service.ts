@@ -29,8 +29,8 @@ import {
   type SetSessionModeRequest,
   type SetSessionModeResponse,
 } from "@agentclientprotocol/sdk"
-import { InstallationVersion } from "@rimuru-ai/core/installation/version"
-import type { Message, RimuruClient, SessionMessageResponse } from "@rimuru-ai/sdk/v2"
+import { InstallationVersion } from "@rimurucode-ai/core/installation/version"
+import type { Message, RimuruClient, SessionMessageResponse } from "@rimurucode-ai/sdk/v2"
 import { Context, Effect, Layer, ManagedRuntime } from "effect"
 import * as ACPError from "./error"
 import { buildConfigOptions, parseModelSelection } from "./config-option"
@@ -40,8 +40,8 @@ import { ACPEvent } from "./event"
 import { ACPSession } from "./session"
 import { UsageService } from "./usage"
 import { ACPProfile } from "./profile"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 import { Provider } from "@/provider/provider"
 import type { Command } from "@/command"
 

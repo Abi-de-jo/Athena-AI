@@ -1,5 +1,5 @@
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { PluginBoot } from "@rimuru-ai/core/plugin/boot"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { PluginBoot } from "@rimurucode-ai/core/plugin/boot"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

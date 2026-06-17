@@ -1,5 +1,5 @@
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { Location } from "@rimuru-ai/core/location"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { Location } from "@rimurucode-ai/core/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi, LocationMiddleware } from "./location"

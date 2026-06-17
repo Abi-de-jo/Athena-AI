@@ -1,6 +1,6 @@
 import { Filesystem } from "@/util/filesystem"
-import { FrontmatterError } from "@rimuru-ai/core/v1/config/error"
-import { ConfigMarkdown as ConfigMarkdownCore } from "@rimuru-ai/core/config/markdown"
+import { FrontmatterError } from "@rimurucode-ai/core/v1/config/error"
+import { ConfigMarkdown as ConfigMarkdownCore } from "@rimurucode-ai/core/config/markdown"
 
 export const FILE_REGEX = /(?<![\w`])@(\.?[^\s`,.]*(?:\.[^\s`,.]+)*)/g
 export const SHELL_REGEX = /!`([^`]+)`/g

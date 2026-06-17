@@ -1,5 +1,5 @@
 import { afterEach, describe, expect } from "bun:test"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 import { Effect, Layer } from "effect"
 import { HttpClientResponse } from "effect/unstable/http"
 import path from "path"

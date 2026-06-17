@@ -1,5 +1,5 @@
 import { Schema } from "effect"
-import { ProviderMetadata, ToolContent } from "@rimuru-ai/llm"
+import { ProviderMetadata, ToolContent } from "@rimurucode-ai/llm"
 import { EventV2 } from "../event"
 import { ModelV2 } from "../model"
 import { NonNegativeInt } from "../schema"

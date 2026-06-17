@@ -3,13 +3,13 @@ import {
   type SnapshotFileDiff,
   Message as MessageType,
   Part as PartType,
-} from "@rimuru-ai/sdk/v2/client"
-import type { SessionStatus } from "@rimuru-ai/sdk/v2"
+} from "@rimurucode-ai/sdk/v2/client"
+import type { SessionStatus } from "@rimurucode-ai/sdk/v2"
 import { useData } from "../context"
 import { useFileComponent } from "../context/file"
 
-import { Binary } from "@rimuru-ai/core/util/binary"
-import { getDirectory, getFilename } from "@rimuru-ai/core/util/path"
+import { Binary } from "@rimurucode-ai/core/util/binary"
+import { getDirectory, getFilename } from "@rimurucode-ai/core/util/path"
 import { createEffect, createMemo, createSignal, For, on, ParentProps, Show } from "solid-js"
 import { createStore } from "solid-js/store"
 import { Dynamic } from "solid-js/web"

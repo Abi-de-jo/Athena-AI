@@ -1,14 +1,14 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { Cause, Duration, Effect, Layer, Schedule, Schema, Semaphore, Context } from "effect"
 import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process"
 import { formatPatch, structuredPatch } from "diff"
 import path from "path"
-import { AppProcess } from "@rimuru-ai/core/process"
+import { AppProcess } from "@rimurucode-ai/core/process"
 import { InstanceState } from "@/effect/instance-state"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { Hash } from "@rimuru-ai/core/util/hash"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { Hash } from "@rimurucode-ai/core/util/hash"
 import { Config } from "@/config/config"
-import { Global } from "@rimuru-ai/core/global"
+import { Global } from "@rimurucode-ai/core/global"
 
 export const Patch = Schema.Struct({
   hash: Schema.String,

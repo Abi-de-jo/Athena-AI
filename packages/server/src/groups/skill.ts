@@ -1,5 +1,5 @@
-import { SkillV2 } from "@rimuru-ai/core/skill"
-import { Location } from "@rimuru-ai/core/location"
+import { SkillV2 } from "@rimurucode-ai/core/skill"
+import { Location } from "@rimurucode-ai/core/location"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"
 import { LocationQuery, locationQueryOpenApi, LocationMiddleware } from "./location"

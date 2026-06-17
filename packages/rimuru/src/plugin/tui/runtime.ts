@@ -10,12 +10,12 @@ import {
   type TuiPluginStatus,
   type TuiSlotPlugin,
   type TuiTheme,
-} from "@rimuru-ai/plugin/tui"
+} from "@rimurucode-ai/plugin/tui"
 import path from "path"
 import { fileURLToPath } from "url"
 import { TuiConfig } from "@/config/tui"
-import { errorData, errorMessage } from "@rimuru-ai/tui/util/error"
-import { isRecord } from "@rimuru-ai/tui/util/record"
+import { errorData, errorMessage } from "@rimurucode-ai/tui/util/error"
+import { isRecord } from "@rimurucode-ai/tui/util/record"
 import { resolveHostAttentionSoundPaths } from "@/config/tui-host-attention"
 import {
   readPackageThemes,
@@ -28,20 +28,20 @@ import {
 import { PluginLoader } from "@/plugin/loader"
 import { PluginMeta } from "@/plugin/meta"
 import { installPlugin as installModulePlugin, patchPluginConfig, readPluginManifest } from "@/plugin/install"
-import { hasTheme, upsertTheme } from "@rimuru-ai/tui/context/theme"
-import { Global } from "@rimuru-ai/core/global"
+import { hasTheme, upsertTheme } from "@rimurucode-ai/tui/context/theme"
+import { Global } from "@rimurucode-ai/core/global"
 import { Filesystem } from "@/util/filesystem"
 import { Process } from "@/util/process"
-import { Flock } from "@rimuru-ai/core/util/flock"
-import { Flag } from "@rimuru-ai/core/flag/flag"
+import { Flock } from "@rimurucode-ai/core/util/flock"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
 import { internalTuiPlugins, type InternalTuiPlugin } from "./internal"
-import type { HostPluginApi, HostSlots } from "@rimuru-ai/tui/plugin/slots"
+import type { HostPluginApi, HostSlots } from "@rimurucode-ai/tui/plugin/slots"
 import { ConfigPlugin } from "@/config/plugin"
-import { ConfigPluginV1 } from "@rimuru-ai/core/v1/config/plugin"
-import { createCommandShim } from "@rimuru-ai/tui/plugin/command-shim"
+import { ConfigPluginV1 } from "@rimurucode-ai/core/v1/config/plugin"
+import { createCommandShim } from "@rimurucode-ai/tui/plugin/command-shim"
 import { RuntimeFlags } from "@/effect/runtime-flags"
 import { Effect } from "effect"
-import { createPluginRuntime, type PluginRuntime, type TuiPluginHost } from "@rimuru-ai/tui/plugin/runtime"
+import { createPluginRuntime, type PluginRuntime, type TuiPluginHost } from "@rimurucode-ai/tui/plugin/runtime"
 
 ensureRuntimePluginSupport({ additional: keymapRuntimeModules })
 

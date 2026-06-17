@@ -1,5 +1,5 @@
-import type { WorkspaceV2 } from "@rimuru-ai/core/workspace"
-import { Flag } from "@rimuru-ai/core/flag/flag"
+import type { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
 import { Effect, Scope } from "effect"
 
 /**

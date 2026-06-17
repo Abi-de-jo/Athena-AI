@@ -1,5 +1,5 @@
 import type { AgentSideConnection, PermissionOption, RequestPermissionResponse } from "@agentclientprotocol/sdk"
-import type { Event, RimuruClient } from "@rimuru-ai/sdk/v2"
+import type { Event, RimuruClient } from "@rimurucode-ai/sdk/v2"
 import { applyPatch } from "diff"
 import { exists, readText } from "@/util/filesystem"
 import type { ACPSession } from "./session"

@@ -124,7 +124,7 @@ These are internal identifiers, config schemas, environment variables, or extern
 - **When a codebase uses `@/*` path aliases** (tsconfig `paths: {"@/*": ["./src/*"]}`), all internal imports within a package resolve via the alias — NOT the directory name. This means:
   - Renaming `packages/opencode/` → `packages/rimuru/` breaks ZERO import statements within the package
   - Only external references to the directory path need updating: workspace config, turbo.json, build scripts
-- **Cross-package imports** use `@rimuru-ai/package-name` (from other packages in the monorepo) — these are already decoupled from directory names
+- **Cross-package imports** use `@rimurucode-ai/package-name` (from other packages in the monorepo) — these are already decoupled from directory names
 - **No relative imports like `../../opencode/src/`** were found — the workspace resolution pattern prevented this antipattern entirely
 - **Always check** with `rg -rn 'packages/<oldname>'` before renaming to find all external references
 - **Turbo task names** in `turbo.json` use the `package.json#name` field, NOT the directory name. After rename, ensure task names match: `"rimuru-ai#test"` not `"rimuru#test"`

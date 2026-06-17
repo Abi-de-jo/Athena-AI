@@ -1,11 +1,11 @@
 export * as ConfigPaths from "./paths"
 
 import path from "path"
-import { Flag } from "@rimuru-ai/core/flag/flag"
-import { Global } from "@rimuru-ai/core/global"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
+import { Global } from "@rimurucode-ai/core/global"
 import { unique } from "remeda"
 import * as Effect from "effect/Effect"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 
 export const files = Effect.fn("ConfigPaths.projectFiles")(function* (
   name: string,

@@ -13,11 +13,11 @@
       "outputs": [],
       "passThroughEnv": ["*"]
     },
-    "@rimuru-ai/app#test": {
+    "@rimurucode-ai/app#test": {
       "dependsOn": ["^build"],
       "outputs": []
     },
-    "@rimuru-ai/ui#test": {
+    "@rimurucode-ai/ui#test": {
       "dependsOn": ["^build"],
       "outputs": []
     }

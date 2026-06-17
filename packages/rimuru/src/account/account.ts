@@ -1,7 +1,7 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
-import { httpClient } from "@rimuru-ai/core/effect/layer-node-platform"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
+import { httpClient } from "@rimurucode-ai/core/effect/layer-node-platform"
 import { Cache, Clock, Duration, Effect, Layer, Option, Schema, SchemaGetter, Context } from "effect"
-import { serviceUse } from "@rimuru-ai/core/effect/service-use"
+import { serviceUse } from "@rimurucode-ai/core/effect/service-use"
 import {
   FetchHttpClient,
   HttpClient,

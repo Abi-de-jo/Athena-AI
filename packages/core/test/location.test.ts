@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { Location } from "@rimuru-ai/core/location"
-import { Project } from "@rimuru-ai/core/project"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
-import { WorkspaceV2 } from "@rimuru-ai/core/workspace"
+import { Location } from "@rimurucode-ai/core/location"
+import { Project } from "@rimurucode-ai/core/project"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
+import { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
 import { testEffect } from "./lib/effect"
 
 const workspaceID = WorkspaceV2.ID.make("wrk_test")

@@ -1,5 +1,5 @@
-import { FileSystem } from "@rimuru-ai/core/filesystem"
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
+import { FileSystem } from "@rimurucode-ai/core/filesystem"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
 import { LSP } from "@/lsp/lsp"
 import { Schema } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiGroup, OpenApi } from "effect/unstable/httpapi"

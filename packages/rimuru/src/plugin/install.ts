@@ -8,9 +8,9 @@ import {
 } from "jsonc-parser"
 
 import * as ConfigPaths from "@/config/paths"
-import { Global } from "@rimuru-ai/core/global"
+import { Global } from "@rimurucode-ai/core/global"
 import { Filesystem } from "@/util/filesystem"
-import { Flock } from "@rimuru-ai/core/util/flock"
+import { Flock } from "@rimurucode-ai/core/util/flock"
 import { isRecord } from "@/util/record"
 
 import { parsePluginSpecifier, readPackageThemes, readPluginPackage, resolvePluginTarget } from "./shared"

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@rimuru-ai/cli",
+  "name": "@rimurucode-ai/cli",
   "version": "1.17.7",
   "type": "module",
   "license": "MIT",
@@ -17,10 +17,10 @@
   },
   "dependencies": {
     "@effect/platform-node": "catalog:",
-    "@rimuru-ai/core": "workspace:*",
-    "@rimuru-ai/sdk": "workspace:*",
-    "@rimuru-ai/server": "workspace:*",
-    "@rimuru-ai/tui": "workspace:*",
+    "@rimurucode-ai/core": "workspace:*",
+    "@rimurucode-ai/sdk": "workspace:*",
+    "@rimurucode-ai/server": "workspace:*",
+    "@rimurucode-ai/tui": "workspace:*",
     "@opentui/core": "catalog:",
     "@opentui/solid": "catalog:",
     "@parcel/watcher": "2.5.1",
@@ -28,7 +28,7 @@
     "solid-js": "catalog:"
   },
   "devDependencies": {
-    "@rimuru-ai/script": "workspace:*",
+    "@rimurucode-ai/script": "workspace:*",
     "@tsconfig/bun": "catalog:",
     "@types/bun": "catalog:",
     "@typescript/native-preview": "catalog:"

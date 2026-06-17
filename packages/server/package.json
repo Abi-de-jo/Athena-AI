@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@rimuru-ai/server",
+  "name": "@rimurucode-ai/server",
   "version": "1.17.7",
   "type": "module",
   "license": "MIT",
@@ -11,7 +11,7 @@
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
-    "@rimuru-ai/core": "workspace:*",
+    "@rimurucode-ai/core": "workspace:*",
     "drizzle-orm": "catalog:",
     "effect": "catalog:"
   },

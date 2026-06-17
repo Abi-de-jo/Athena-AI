@@ -1,7 +1,7 @@
 import type { APIEvent } from "@solidjs/start/server"
 import { z } from "zod"
-import { Resource } from "@rimuru-ai/console-resource"
-import { safeEqual } from "@rimuru-ai/console-core/util/crypto.js"
+import { Resource } from "@rimurucode-ai/console-resource"
+import { safeEqual } from "@rimurucode-ai/console-core/util/crypto.js"
 
 const DISCORD_ALERT_ROLE_ID = "1501447160175136838"
 

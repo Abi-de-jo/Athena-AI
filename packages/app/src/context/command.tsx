@@ -1,5 +1,5 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
-import { useDialog } from "@rimuru-ai/ui/context/dialog"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
+import { useDialog } from "@rimurucode-ai/ui/context/dialog"
 import { type Accessor, createEffect, createMemo, onCleanup, onMount } from "solid-js"
 import { createStore } from "solid-js/store"
 import { makeEventListener } from "@solid-primitives/event-listener"

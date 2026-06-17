@@ -1,6 +1,6 @@
 import { parseCommentNote, readCommentMetadata } from "@/utils/comment-note"
-import { AssistantMessage, Part, SessionStatus, SnapshotFileDiff, UserMessage } from "@rimuru-ai/sdk/v2"
-import { groupParts, PartGroup, renderable } from "@rimuru-ai/ui/message-part"
+import { AssistantMessage, Part, SessionStatus, SnapshotFileDiff, UserMessage } from "@rimurucode-ai/sdk/v2"
+import { groupParts, PartGroup, renderable } from "@rimurucode-ai/ui/message-part"
 import { Data, Equal } from "effect"
 
 export type SummaryDiff = SnapshotFileDiff & { file: string }

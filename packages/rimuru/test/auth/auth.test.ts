@@ -1,7 +1,7 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
 import { Auth } from "../../src/auth"
-import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
+import { CrossSpawnSpawner } from "@rimurucode-ai/core/cross-spawn-spawner"
 import { testEffect } from "../lib/effect"
 
 const node = CrossSpawnSpawner.defaultLayer

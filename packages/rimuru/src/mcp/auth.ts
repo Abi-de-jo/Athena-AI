@@ -1,10 +1,10 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import path from "path"
-import { serviceUse } from "@rimuru-ai/core/effect/service-use"
-import { Global } from "@rimuru-ai/core/global"
+import { serviceUse } from "@rimurucode-ai/core/effect/service-use"
+import { Global } from "@rimurucode-ai/core/global"
 import { Effect, Layer, Context, Option, Schema } from "effect"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { EffectFlock } from "@rimuru-ai/core/util/effect-flock"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { EffectFlock } from "@rimurucode-ai/core/util/effect-flock"
 
 export const Tokens = Schema.Struct({
   accessToken: Schema.mutableKey(Schema.String),

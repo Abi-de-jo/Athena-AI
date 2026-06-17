@@ -1,5 +1,5 @@
-import { Glob } from "@rimuru-ai/core/util/glob"
-import { ConfigPluginV1 } from "@rimuru-ai/core/v1/config/plugin"
+import { Glob } from "@rimurucode-ai/core/util/glob"
+import { ConfigPluginV1 } from "@rimurucode-ai/core/v1/config/plugin"
 import { pathToFileURL } from "url"
 import { isPathPluginSpec, parsePluginSpecifier, resolvePathPluginTarget } from "@/plugin/shared"
 import path from "path"

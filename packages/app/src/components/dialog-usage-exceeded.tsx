@@ -1,7 +1,7 @@
 import { usePlatform } from "@/context/platform"
-import { Button } from "@rimuru-ai/ui/button"
-import { useDialog } from "@rimuru-ai/ui/context/dialog"
-import { Dialog } from "@rimuru-ai/ui/dialog"
+import { Button } from "@rimurucode-ai/ui/button"
+import { useDialog } from "@rimurucode-ai/ui/context/dialog"
+import { Dialog } from "@rimurucode-ai/ui/dialog"
 import { JSX } from "solid-js"
 
 export type DialogGoUpsellProps = {

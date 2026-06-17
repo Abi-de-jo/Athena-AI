@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Context, Deferred, Effect, Exit, Fiber, Layer, Scope } from "effect"
-import { Database } from "@rimuru-ai/core/database/database"
-import { EventV2 } from "@rimuru-ai/core/event"
-import { QuestionV2 } from "@rimuru-ai/core/question"
-import { SessionV2 } from "@rimuru-ai/core/session"
+import { Database } from "@rimurucode-ai/core/database/database"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { QuestionV2 } from "@rimurucode-ai/core/question"
+import { SessionV2 } from "@rimurucode-ai/core/session"
 import { testEffect } from "./lib/effect"
 
 const database = Database.layerFromPath(":memory:")

@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, mock, spyOn, test } from "bun:test"
-import { RimuruClient, type Provider } from "@rimuru-ai/sdk/v2"
-import type { Resolved } from "@rimuru-ai/tui/config"
+import { RimuruClient, type Provider } from "@rimurucode-ai/sdk/v2"
+import type { Resolved } from "@rimurucode-ai/tui/config"
 import { TuiConfig } from "@/config/tui"
 import { resolveDiffStyle, resolveModelInfo, resolveRunTuiConfig } from "@/cli/cmd/run/runtime.boot"
 import { createTuiResolvedConfig } from "../../fixture/tui-runtime"

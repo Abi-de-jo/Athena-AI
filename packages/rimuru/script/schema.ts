@@ -1,8 +1,8 @@
 #!/usr/bin/env bun
 
 import { Config } from "@/config/config"
-import { ConfigV1 } from "@rimuru-ai/core/v1/config/config"
-import { TuiConfig } from "@rimuru-ai/tui/config"
+import { ConfigV1 } from "@rimurucode-ai/core/v1/config/config"
+import { TuiConfig } from "@rimurucode-ai/tui/config"
 import { Schema } from "effect"
 
 type JsonSchema = Record<string, unknown>

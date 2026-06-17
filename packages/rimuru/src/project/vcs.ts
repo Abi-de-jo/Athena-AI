@@ -1,11 +1,11 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { Effect, Layer, Context, Schema, Stream, Scope } from "effect"
 import { formatPatch, structuredPatch } from "diff"
 import { InstanceState } from "@/effect/instance-state"
-import { Watcher } from "@rimuru-ai/core/filesystem/watcher"
+import { Watcher } from "@rimurucode-ai/core/filesystem/watcher"
 import { Git } from "@/git"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 
 const PATCH_CONTEXT_LINES = 2_147_483_647
 const MAX_PATCH_BYTES = 10_000_000

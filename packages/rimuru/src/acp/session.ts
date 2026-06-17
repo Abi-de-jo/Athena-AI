@@ -1,7 +1,7 @@
 import type { McpServer } from "@agentclientprotocol/sdk"
-import type { Message, Part } from "@rimuru-ai/sdk/v2"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import type { Message, Part } from "@rimurucode-ai/sdk/v2"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 import { Context, Effect, Layer, Ref } from "effect"
 import * as ACPError from "./error"
 

@@ -81,19 +81,19 @@ beforeAll(async () => {
     useSearchParams: () => [{}, () => undefined],
   }))
 
-  mock.module("@rimuru-ai/sdk/v2/client", () => ({
+  mock.module("@rimurucode-ai/sdk/v2/client", () => ({
     createRimuruClient: (input: { directory: string }) => {
       createdClients.push(input.directory)
       return clientFor(input.directory)
     },
   }))
 
-  mock.module("@rimuru-ai/ui/toast", () => ({
+  mock.module("@rimurucode-ai/ui/toast", () => ({
     Toast: { Region: () => null },
     showToast: () => 0,
   }))
 
-  mock.module("@rimuru-ai/core/util/encode", () => ({
+  mock.module("@rimurucode-ai/core/util/encode", () => ({
     base64Encode: (value: string) => value,
   }))
 

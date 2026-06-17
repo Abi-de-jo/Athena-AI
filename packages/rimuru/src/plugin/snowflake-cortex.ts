@@ -1,6 +1,6 @@
-import type { Hooks, PluginInput } from "@rimuru-ai/plugin"
+import type { Hooks, PluginInput } from "@rimurucode-ai/plugin"
 import { OAUTH_DUMMY_KEY } from "../auth"
-import { InstallationVersion } from "@rimuru-ai/core/installation/version"
+import { InstallationVersion } from "@rimurucode-ai/core/installation/version"
 import { createServer } from "http"
 import open from "open"
 

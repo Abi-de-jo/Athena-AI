@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Context, Deferred, Effect, Exit, Fiber, Layer, Scope } from "effect"
-import { EventV2 } from "@rimuru-ai/core/event"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { State } from "@rimuru-ai/core/state"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { State } from "@rimurucode-ai/core/state"
 import { it } from "./lib/effect"
 
 const events = Layer.mock(EventV2.Service)({

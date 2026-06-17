@@ -4,7 +4,7 @@ import {
   TuiStartupProvider,
   TuiTerminalEnvironmentProvider,
   type TuiPaths,
-} from "@rimuru-ai/tui/context/runtime"
+} from "@rimurucode-ai/tui/context/runtime"
 import type { ParentProps } from "solid-js"
 
 export function TestTuiContexts(

@@ -1,5 +1,5 @@
-import type { JsonSchema, LLMRequest, ProviderMetadata } from "@rimuru-ai/llm"
-import { LLM, Message, SystemPart, ToolCallPart, ToolDefinition, ToolResultPart } from "@rimuru-ai/llm"
+import type { JsonSchema, LLMRequest, ProviderMetadata } from "@rimurucode-ai/llm"
+import { LLM, Message, SystemPart, ToolCallPart, ToolDefinition, ToolResultPart } from "@rimurucode-ai/llm"
 import {
   AmazonBedrock,
   Anthropic,
@@ -8,7 +8,7 @@ import {
   OpenAI,
   OpenAICompatible,
   OpenRouter,
-} from "@rimuru-ai/llm/providers"
+} from "@rimurucode-ai/llm/providers"
 import type { ModelMessage } from "ai"
 import type { Provider } from "@/provider/provider"
 import { isRecord } from "@/util/record"
@@ -181,7 +181,7 @@ export const model = (input: Provider.Model | RequestInput, headers?: Record<str
 export const request = (input: RequestInput) => {
   const converted = messages(input.messages)
   // This is the only native adapter boundary that should construct canonical
-  // @rimuru-ai/llm request objects from rimuru-ai's session/AI SDK-shaped data.
+  // @rimurucode-ai/llm request objects from rimuru-ai's session/AI SDK-shaped data.
   return LLM.request({
     model: model(input, input.headers),
     system: [...(input.system ?? []).map(SystemPart.make), ...converted.system],

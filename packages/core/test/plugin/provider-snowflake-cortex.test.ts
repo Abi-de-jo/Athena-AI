@@ -1,8 +1,8 @@
 import { describe, expect, it as bun_it } from "bun:test"
 import { Effect } from "effect"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { SnowflakeCortexPlugin, cortexFetch } from "@rimuru-ai/core/plugin/provider/snowflake-cortex"
-import { ProviderPlugins } from "@rimuru-ai/core/plugin/provider"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { SnowflakeCortexPlugin, cortexFetch } from "@rimurucode-ai/core/plugin/provider/snowflake-cortex"
+import { ProviderPlugins } from "@rimurucode-ai/core/plugin/provider"
 import { expectPluginRegistered, it, model, withEnv } from "./provider-helper"
 
 describe("SnowflakeCortexPlugin", () => {

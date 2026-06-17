@@ -4,8 +4,8 @@ import { realpathSync } from "fs"
 import { dirname, isAbsolute, join, resolve as pathResolve, win32 } from "path"
 import { Readable } from "stream"
 import { pipeline } from "stream/promises"
-import { Glob } from "@rimuru-ai/core/util/glob"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { Glob } from "@rimurucode-ai/core/util/glob"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 import { fileURLToPath } from "url"
 
 // Fast sync version for metadata checks

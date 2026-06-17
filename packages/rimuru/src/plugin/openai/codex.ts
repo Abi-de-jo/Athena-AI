@@ -1,5 +1,5 @@
-import type { Hooks, PluginInput } from "@rimuru-ai/plugin"
-import { InstallationVersion } from "@rimuru-ai/core/installation/version"
+import type { Hooks, PluginInput } from "@rimurucode-ai/plugin"
+import { InstallationVersion } from "@rimurucode-ai/core/installation/version"
 import { OAUTH_DUMMY_KEY } from "../../auth"
 import os from "os"
 import { setTimeout as sleep } from "node:timers/promises"

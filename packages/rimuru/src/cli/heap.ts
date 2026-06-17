@@ -1,7 +1,7 @@
 import path from "path"
 import { writeHeapSnapshot } from "node:v8"
-import { Flag } from "@rimuru-ai/core/flag/flag"
-import { Global } from "@rimuru-ai/core/global"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
+import { Global } from "@rimurucode-ai/core/global"
 const MINUTE = 60_000
 const LIMIT = 2 * 1024 * 1024 * 1024
 

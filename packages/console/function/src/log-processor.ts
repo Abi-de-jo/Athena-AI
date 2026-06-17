@@ -1,4 +1,4 @@
-import { Resource } from "@rimuru-ai/console-resource"
+import { Resource } from "@rimurucode-ai/console-resource"
 import type { TraceItem } from "@cloudflare/workers-types"
 
 export default {

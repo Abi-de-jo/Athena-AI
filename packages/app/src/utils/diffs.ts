@@ -1,5 +1,5 @@
-import type { SnapshotFileDiff, VcsFileDiff } from "@rimuru-ai/sdk/v2"
-import type { Message } from "@rimuru-ai/sdk/v2/client"
+import type { SnapshotFileDiff, VcsFileDiff } from "@rimurucode-ai/sdk/v2"
+import type { Message } from "@rimurucode-ai/sdk/v2/client"
 
 type Diff = SnapshotFileDiff | VcsFileDiff
 

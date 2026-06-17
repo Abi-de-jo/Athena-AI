@@ -1,6 +1,6 @@
 export * as WebFetchTool from "./webfetch"
 
-import { ToolFailure } from "@rimuru-ai/llm"
+import { ToolFailure } from "@rimurucode-ai/llm"
 import { Duration, Effect, Layer, Schema, Stream } from "effect"
 import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http"
 import { Parser } from "htmlparser2"

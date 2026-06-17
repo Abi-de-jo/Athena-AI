@@ -1,4 +1,4 @@
-import { MoveSession } from "@rimuru-ai/core/control-plane/move-session"
+import { MoveSession } from "@rimurucode-ai/core/control-plane/move-session"
 import { Schema } from "effect"
 import { HttpApi, HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { described } from "./metadata"

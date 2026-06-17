@@ -1,9 +1,9 @@
 import fs from "fs/promises"
 import os from "os"
 import { Effect, Layer } from "effect"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { EffectFlock } from "@rimuru-ai/core/util/effect-flock"
-import { Global } from "@rimuru-ai/core/global"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { EffectFlock } from "@rimurucode-ai/core/util/effect-flock"
+import { Global } from "@rimurucode-ai/core/global"
 
 type Msg = {
   key: string

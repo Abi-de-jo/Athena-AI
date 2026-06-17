@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { Integration } from "@rimuru-ai/core/integration"
-import { ModelV2 } from "@rimuru-ai/core/model"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { OpenAIPlugin } from "@rimuru-ai/core/plugin/provider/openai"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { Integration } from "@rimurucode-ai/core/integration"
+import { ModelV2 } from "@rimurucode-ai/core/model"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { OpenAIPlugin } from "@rimurucode-ai/core/plugin/provider/openai"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import { fakeSelectorSdk, it, model, provider } from "./provider-helper"
 
 function add(plugin: PluginV2.Interface, integrations: Integration.Interface) {

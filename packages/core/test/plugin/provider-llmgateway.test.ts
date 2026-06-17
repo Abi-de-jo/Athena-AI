@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { Integration } from "@rimuru-ai/core/integration"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { ProviderPlugins } from "@rimuru-ai/core/plugin/provider"
-import { LLMGatewayPlugin } from "@rimuru-ai/core/plugin/provider/llmgateway"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { Integration } from "@rimurucode-ai/core/integration"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { ProviderPlugins } from "@rimurucode-ai/core/plugin/provider"
+import { LLMGatewayPlugin } from "@rimurucode-ai/core/plugin/provider/llmgateway"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import { expectPluginRegistered, it, provider } from "./provider-helper"
 
 describe("LLMGatewayPlugin", () => {

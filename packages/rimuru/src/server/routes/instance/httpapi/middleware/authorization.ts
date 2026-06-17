@@ -7,7 +7,7 @@ import { isPublicUIPath } from "@/server/shared/public-ui"
 export {
   Authorization as ServerAuthorization,
   authorizationLayer as serverAuthorizationLayer,
-} from "@rimuru-ai/server/middleware/authorization"
+} from "@rimurucode-ai/server/middleware/authorization"
 
 const AUTH_TOKEN_QUERY = "auth_token"
 const UNAUTHORIZED = 401

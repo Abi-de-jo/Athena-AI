@@ -1,5 +1,5 @@
-import { SessionMessage } from "@rimuru-ai/core/session/message"
-import { SessionV2 } from "@rimuru-ai/core/session"
+import { SessionMessage } from "@rimurucode-ai/core/session/message"
+import { SessionV2 } from "@rimurucode-ai/core/session"
 import { Effect, Schema } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { Api } from "../api"

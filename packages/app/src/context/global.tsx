@@ -1,4 +1,4 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
 import { createEffect, createMemo, createRoot } from "solid-js"
 import { createStore } from "solid-js/store"
 import { createServerProjects, ServerConnection, useServer } from "./server"

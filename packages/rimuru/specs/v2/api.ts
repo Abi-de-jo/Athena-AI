@@ -1,7 +1,7 @@
 // @ts-nocheck
 
-import { OpenCode } from "@rimuru-ai/core"
-import { ReadTool } from "@rimuru-ai/core/tools"
+import { OpenCode } from "@rimurucode-ai/core"
+import { ReadTool } from "@rimurucode-ai/core/tools"
 
 const opencode = OpenCode.make({})
 

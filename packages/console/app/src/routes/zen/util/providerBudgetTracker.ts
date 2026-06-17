@@ -1,4 +1,4 @@
-import { centsToMicroCents } from "@rimuru-ai/console-core/util/price.js"
+import { centsToMicroCents } from "@rimurucode-ai/console-core/util/price.js"
 import { buildRateLimitKey, getRedis } from "./redis"
 
 export function createProviderBudgetTracker(

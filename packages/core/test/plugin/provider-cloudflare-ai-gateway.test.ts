@@ -1,7 +1,7 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { CloudflareAIGatewayPlugin } from "@rimuru-ai/core/plugin/provider/cloudflare-ai-gateway"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { CloudflareAIGatewayPlugin } from "@rimurucode-ai/core/plugin/provider/cloudflare-ai-gateway"
 import { it, model, withEnv } from "./provider-helper"
 
 const aiGatewayCalls: Record<string, unknown>[] = []

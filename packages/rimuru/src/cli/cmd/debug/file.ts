@@ -1,9 +1,9 @@
 import { EOL } from "os"
 import { Effect } from "effect"
-import { FileSystem } from "@rimuru-ai/core/filesystem"
-import { LocationServiceMap } from "@rimuru-ai/core/location-layer"
-import { Location } from "@rimuru-ai/core/location"
-import { AbsolutePath, RelativePath } from "@rimuru-ai/core/schema"
+import { FileSystem } from "@rimurucode-ai/core/filesystem"
+import { LocationServiceMap } from "@rimurucode-ai/core/location-layer"
+import { Location } from "@rimurucode-ai/core/location"
+import { AbsolutePath, RelativePath } from "@rimurucode-ai/core/schema"
 import { effectCmd } from "../../effect-cmd"
 import { cmd } from "../cmd"
 

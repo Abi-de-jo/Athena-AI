@@ -1,4 +1,4 @@
-import type { UserMessage } from "@rimuru-ai/sdk/v2"
+import type { UserMessage } from "@rimurucode-ai/sdk/v2"
 
 type Local = {
   session: {

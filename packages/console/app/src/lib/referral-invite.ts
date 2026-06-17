@@ -1,5 +1,5 @@
-import { Actor } from "@rimuru-ai/console-core/actor.js"
-import { Referral } from "@rimuru-ai/console-core/referral.js"
+import { Actor } from "@rimurucode-ai/console-core/actor.js"
+import { Referral } from "@rimurucode-ai/console-core/referral.js"
 import { getRequestEvent } from "solid-js/web"
 
 const REFERRAL_COOKIE = "oc_referral"

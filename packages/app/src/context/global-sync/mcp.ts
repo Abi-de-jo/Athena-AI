@@ -1,4 +1,4 @@
-import type { McpStatus } from "@rimuru-ai/sdk/v2/client"
+import type { McpStatus } from "@rimurucode-ai/sdk/v2/client"
 
 export async function toggleMcp(input: {
   status: McpStatus["status"]

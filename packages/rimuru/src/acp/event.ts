@@ -7,7 +7,7 @@ import type {
   Part,
   SessionMessageResponse,
   ToolPart,
-} from "@rimuru-ai/sdk/v2"
+} from "@rimurucode-ai/sdk/v2"
 import { Effect } from "effect"
 import { ACPSession } from "./session"
 import { ACPPermission } from "./permission"

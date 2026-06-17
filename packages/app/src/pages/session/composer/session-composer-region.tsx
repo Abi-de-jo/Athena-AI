@@ -1,7 +1,7 @@
 import { Show, createEffect, createMemo, onCleanup } from "solid-js"
 import { createStore } from "solid-js/store"
 import { useNavigate, useSearchParams } from "@solidjs/router"
-import { useSpring } from "@rimuru-ai/ui/motion-spring"
+import { useSpring } from "@rimurucode-ai/ui/motion-spring"
 import { useLayout } from "@/context/layout"
 import { PromptInput } from "@/components/prompt-input"
 import { useLanguage } from "@/context/language"
@@ -28,7 +28,7 @@ import { useSettings } from "@/context/settings"
 import { useServer } from "@/context/server"
 import { useTabs } from "@/context/tabs"
 import { useDirectoryPicker } from "@/components/directory-picker"
-import { base64Encode } from "@rimuru-ai/core/util/encode"
+import { base64Encode } from "@rimurucode-ai/core/util/encode"
 
 export function SessionComposerRegion(props: {
   state: SessionComposerState

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test"
 import type { AgentSideConnection } from "@agentclientprotocol/sdk"
-import type { Event, Message, RimuruClient, Part, SessionMessageResponse, ToolPart } from "@rimuru-ai/sdk/v2"
+import type { Event, Message, RimuruClient, Part, SessionMessageResponse, ToolPart } from "@rimurucode-ai/sdk/v2"
 import { Effect, ManagedRuntime } from "effect"
 import { ACPEvent } from "@/acp/event"
 import * as ACPService from "@/acp/service"

@@ -5,8 +5,8 @@ import {
   type LabUsageModelEntry,
   type ModelUsagePoint,
   type StatsLabData,
-} from "@rimuru-ai/stats-core/domain/home"
-import { runtime } from "@rimuru-ai/stats-core/runtime"
+} from "@rimurucode-ai/stats-core/domain/home"
+import { runtime } from "@rimurucode-ai/stats-core/runtime"
 import { createAsync, query, useParams } from "@solidjs/router"
 import { createMemo, createSignal, For, onMount, Show, type JSX } from "solid-js"
 import { getRequestEvent } from "solid-js/web"

@@ -1,6 +1,6 @@
 import type { Argv } from "yargs"
 import { spawn } from "child_process"
-import { Database } from "@rimuru-ai/core/database/database"
+import { Database } from "@rimurucode-ai/core/database/database"
 import { Effect } from "effect"
 import { sql } from "drizzle-orm"
 import { effectCmd } from "../effect-cmd"

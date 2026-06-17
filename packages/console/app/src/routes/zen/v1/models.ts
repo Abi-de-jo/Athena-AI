@@ -1,9 +1,9 @@
 import type { APIEvent } from "@solidjs/start/server"
-import { ZenData } from "@rimuru-ai/console-core/model.js"
-import { and, Database, eq, isNull } from "@rimuru-ai/console-core/drizzle/index.js"
-import { KeyTable } from "@rimuru-ai/console-core/schema/key.sql.js"
-import { WorkspaceTable } from "@rimuru-ai/console-core/schema/workspace.sql.js"
-import { ModelTable } from "@rimuru-ai/console-core/schema/model.sql.js"
+import { ZenData } from "@rimurucode-ai/console-core/model.js"
+import { and, Database, eq, isNull } from "@rimurucode-ai/console-core/drizzle/index.js"
+import { KeyTable } from "@rimurucode-ai/console-core/schema/key.sql.js"
+import { WorkspaceTable } from "@rimurucode-ai/console-core/schema/workspace.sql.js"
+import { ModelTable } from "@rimurucode-ai/console-core/schema/model.sql.js"
 import { buildOptionsResponse, buildModelsResponse } from "~/routes/zen/util/modelsHandler"
 
 export async function OPTIONS(_input: APIEvent) {

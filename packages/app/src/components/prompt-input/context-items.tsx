@@ -1,8 +1,8 @@
 import { Component, For, Show } from "solid-js"
-import { FileIcon } from "@rimuru-ai/ui/file-icon"
-import { IconButton } from "@rimuru-ai/ui/icon-button"
-import { Tooltip } from "@rimuru-ai/ui/tooltip"
-import { getDirectory, getFilename, getFilenameTruncated } from "@rimuru-ai/core/util/path"
+import { FileIcon } from "@rimurucode-ai/ui/file-icon"
+import { IconButton } from "@rimurucode-ai/ui/icon-button"
+import { Tooltip } from "@rimurucode-ai/ui/tooltip"
+import { getDirectory, getFilename, getFilenameTruncated } from "@rimurucode-ai/core/util/path"
 import type { ContextItem } from "@/context/prompt"
 
 type PromptContextItem = ContextItem & { key: string }

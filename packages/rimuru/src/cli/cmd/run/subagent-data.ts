@@ -1,4 +1,4 @@
-import type { Event, Message, Part, PermissionRequest, QuestionRequest, ToolPart } from "@rimuru-ai/sdk/v2"
+import type { Event, Message, Part, PermissionRequest, QuestionRequest, ToolPart } from "@rimurucode-ai/sdk/v2"
 import * as Locale from "@/util/locale"
 import {
   bootstrapSessionData,

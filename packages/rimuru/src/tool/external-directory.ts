@@ -3,7 +3,7 @@ import { Effect } from "effect"
 import { InstanceState } from "@/effect/instance-state"
 import type * as Tool from "./tool"
 import { containsPath } from "../project/instance-context"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 
 type Kind = "file" | "directory"
 

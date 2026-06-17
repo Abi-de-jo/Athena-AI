@@ -1,11 +1,11 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer, Schema } from "effect"
-import { Database } from "@rimuru-ai/core/database/database"
-import { EventV2 } from "@rimuru-ai/core/event"
-import { Project } from "@rimuru-ai/core/project"
-import { ProjectDirectories } from "@rimuru-ai/core/project/directories"
-import { ProjectTable } from "@rimuru-ai/core/project/sql"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { Database } from "@rimurucode-ai/core/database/database"
+import { EventV2 } from "@rimurucode-ai/core/event"
+import { Project } from "@rimurucode-ai/core/project"
+import { ProjectDirectories } from "@rimurucode-ai/core/project/directories"
+import { ProjectTable } from "@rimurucode-ai/core/project/sql"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
 import { testEffect } from "./lib/effect"
 
 const database = Database.layerFromPath(":memory:")

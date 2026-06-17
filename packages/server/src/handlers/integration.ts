@@ -1,4 +1,4 @@
-import { Integration } from "@rimuru-ai/core/integration"
+import { Integration } from "@rimurucode-ai/core/integration"
 import { Effect } from "effect"
 import { HttpApiBuilder, HttpApiSchema } from "effect/unstable/httpapi"
 import { Api } from "../api"

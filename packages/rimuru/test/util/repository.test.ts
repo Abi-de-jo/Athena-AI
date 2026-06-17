@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test"
 import path from "path"
 import { pathToFileURL } from "url"
-import { Global } from "@rimuru-ai/core/global"
+import { Global } from "@rimurucode-ai/core/global"
 import {
   InvalidRepositoryBranchError,
   InvalidRepositoryReferenceError,

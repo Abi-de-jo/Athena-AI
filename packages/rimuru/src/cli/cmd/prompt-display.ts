@@ -1,1 +1,1 @@
-export * from "@rimuru-ai/tui/prompt/display"
+export * from "@rimurucode-ai/tui/prompt/display"

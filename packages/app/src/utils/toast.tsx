@@ -1,6 +1,6 @@
-import { Icon, type IconProps } from "@rimuru-ai/ui/icon"
-import { Toast, showToast as showLegacyToast, type ToastOptions, type ToastVariant } from "@rimuru-ai/ui/toast"
-import { ToastV2, showToastV2 } from "@rimuru-ai/ui/v2/toast-v2"
+import { Icon, type IconProps } from "@rimurucode-ai/ui/icon"
+import { Toast, showToast as showLegacyToast, type ToastOptions, type ToastVariant } from "@rimurucode-ai/ui/toast"
+import { ToastV2, showToastV2 } from "@rimurucode-ai/ui/v2/toast-v2"
 
 let v2 = false
 

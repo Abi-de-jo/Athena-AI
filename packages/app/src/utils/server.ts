@@ -1,4 +1,4 @@
-import { createRimuruClient } from "@rimuru-ai/sdk/v2/client"
+import { createRimuruClient } from "@rimurucode-ai/sdk/v2/client"
 import type { ServerConnection } from "@/context/server"
 import { decode64 } from "@/utils/base64"
 

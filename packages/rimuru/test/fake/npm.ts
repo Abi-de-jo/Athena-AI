@@ -1,4 +1,4 @@
-import { Npm } from "@rimuru-ai/core/npm"
+import { Npm } from "@rimurucode-ai/core/npm"
 import { Effect, Layer } from "effect"
 
 export const noop = Layer.mock(Npm.Service)({

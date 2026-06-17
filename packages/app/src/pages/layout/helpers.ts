@@ -1,5 +1,5 @@
-import { getFilename } from "@rimuru-ai/core/util/path"
-import { type Session } from "@rimuru-ai/sdk/v2/client"
+import { getFilename } from "@rimurucode-ai/core/util/path"
+import { type Session } from "@rimurucode-ai/sdk/v2/client"
 import { pathKey } from "@/utils/path-key"
 import type { ServerConnection } from "@/context/server"
 

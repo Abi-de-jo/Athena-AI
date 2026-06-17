@@ -1,4 +1,4 @@
-import type { FileContent } from "@rimuru-ai/sdk/v2"
+import type { FileContent } from "@rimurucode-ai/sdk/v2"
 
 const MAX_FILE_CONTENT_ENTRIES = 40
 const MAX_FILE_CONTENT_BYTES = 20 * 1024 * 1024

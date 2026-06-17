@@ -1,5 +1,5 @@
 import type { Argv, InferredOptionTypes } from "yargs"
-import { ConfigV1 } from "@rimuru-ai/core/v1/config/config"
+import { ConfigV1 } from "@rimurucode-ai/core/v1/config/config"
 import type { Config } from "@/config/config"
 import { Effect } from "effect"
 

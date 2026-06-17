@@ -1,4 +1,4 @@
-import { sampledChecksum } from "@rimuru-ai/core/util/encode"
+import { sampledChecksum } from "@rimurucode-ai/core/util/encode"
 import {
   areFilesEqual,
   areOptionsEqual,

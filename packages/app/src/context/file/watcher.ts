@@ -1,4 +1,4 @@
-import type { FileNode } from "@rimuru-ai/sdk/v2"
+import type { FileNode } from "@rimurucode-ai/sdk/v2"
 
 type WatcherEvent = {
   type: string

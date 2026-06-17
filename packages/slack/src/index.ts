@@ -1,5 +1,5 @@
 import { App } from "@slack/bolt"
-import { createRimuru, type ToolPart } from "@rimuru-ai/sdk"
+import { createRimuru, type ToolPart } from "@rimurucode-ai/sdk"
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,

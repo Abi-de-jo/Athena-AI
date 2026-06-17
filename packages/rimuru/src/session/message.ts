@@ -1,11 +1,11 @@
 import { Schema } from "effect"
 import { SessionID } from "./schema"
 
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
 import { MessageError } from "./message-error"
 import { AuthError, OutputLengthError } from "./message-error"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 export { AuthError, OutputLengthError } from "./message-error"
 
 export const ToolCall = Schema.Struct({

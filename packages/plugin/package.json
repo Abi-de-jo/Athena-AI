@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@rimuru-ai/plugin",
+  "name": "@rimurucode-ai/plugin",
   "version": "1.17.7",
   "type": "module",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "dist"
   ],
   "dependencies": {
-    "@rimuru-ai/sdk": "workspace:*",
+    "@rimurucode-ai/sdk": "workspace:*",
     "effect": "catalog:",
     "zod": "catalog:"
   },

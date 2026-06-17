@@ -1,7 +1,7 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { GatewayPlugin } from "@rimuru-ai/core/plugin/provider/gateway"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { GatewayPlugin } from "@rimurucode-ai/core/plugin/provider/gateway"
 import { it, model } from "./provider-helper"
 
 const gatewayCalls: Record<string, unknown>[] = []

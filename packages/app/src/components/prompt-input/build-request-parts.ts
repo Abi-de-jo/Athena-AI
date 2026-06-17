@@ -1,5 +1,5 @@
-import { getFilename } from "@rimuru-ai/core/util/path"
-import { type AgentPartInput, type FilePartInput, type Part, type TextPartInput } from "@rimuru-ai/sdk/v2/client"
+import { getFilename } from "@rimurucode-ai/core/util/path"
+import { type AgentPartInput, type FilePartInput, type Part, type TextPartInput } from "@rimurucode-ai/sdk/v2/client"
 import type { FileSelection } from "@/context/file"
 import { encodeFilePath } from "@/context/file/path"
 import type { AgentPart, FileAttachmentPart, ImageAttachmentPart, Prompt } from "@/context/prompt"

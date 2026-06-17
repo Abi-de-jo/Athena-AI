@@ -1,6 +1,6 @@
-import { createRimuruClient } from "@rimuru-ai/sdk/v2"
+import { createRimuruClient } from "@rimurucode-ai/sdk/v2"
 import { RGBA, type CliRenderer } from "@opentui/core"
-import type { HostPluginApi } from "@rimuru-ai/tui/plugin/slots"
+import type { HostPluginApi } from "@rimurucode-ai/tui/plugin/slots"
 import { createTuiResolvedConfig } from "./tui-runtime"
 
 type Count = {

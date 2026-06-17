@@ -1,6 +1,6 @@
-import type { DesktopMenuAction } from "@rimuru-ai/app/desktop-menu"
-import type { WslServersPlatform } from "@rimuru-ai/app/wsl/types"
-import type { UpdaterState } from "@rimuru-ai/app/updater"
+import type { DesktopMenuAction } from "@rimurucode-ai/app/desktop-menu"
+import type { WslServersPlatform } from "@rimurucode-ai/app/wsl/types"
+import type { UpdaterState } from "@rimurucode-ai/app/updater"
 export type {
   WslDistroProbe,
   WslInstalledDistro,
@@ -13,7 +13,7 @@ export type {
   WslServerRuntime,
   WslServersEvent,
   WslServersState,
-} from "@rimuru-ai/app/wsl/types"
+} from "@rimurucode-ai/app/wsl/types"
 
 export type ServerReadyData = {
   url: string

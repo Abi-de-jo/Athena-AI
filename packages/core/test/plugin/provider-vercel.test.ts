@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { VercelPlugin } from "@rimuru-ai/core/plugin/provider/vercel"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { VercelPlugin } from "@rimurucode-ai/core/plugin/provider/vercel"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import { it, model, provider } from "./provider-helper"
 
 describe("VercelPlugin", () => {

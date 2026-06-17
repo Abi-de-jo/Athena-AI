@@ -1,5 +1,5 @@
-import type { NamedError } from "@rimuru-ai/core/util/error"
-import { SessionV1 } from "@rimuru-ai/core/v1/session"
+import type { NamedError } from "@rimurucode-ai/core/util/error"
+import { SessionV1 } from "@rimurucode-ai/core/v1/session"
 import { Cause, Clock, Duration, Effect, Schedule } from "effect"
 import { MessageV2 } from "./message-v2"
 import { iife } from "@/util/iife"

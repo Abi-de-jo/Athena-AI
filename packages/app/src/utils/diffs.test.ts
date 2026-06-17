@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test"
-import type { SnapshotFileDiff } from "@rimuru-ai/sdk/v2"
-import type { Message } from "@rimuru-ai/sdk/v2/client"
+import type { SnapshotFileDiff } from "@rimurucode-ai/sdk/v2"
+import type { Message } from "@rimurucode-ai/sdk/v2/client"
 import { diffs, message } from "./diffs"
 
 const item = {

@@ -1,4 +1,4 @@
-import type { Event } from "@rimuru-ai/sdk/v2"
+import type { Event } from "@rimurucode-ai/sdk/v2"
 import { useSDK } from "./sdk"
 
 type EventMetadata = {

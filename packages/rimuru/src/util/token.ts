@@ -1,1 +1,1 @@
-export { Token, estimate } from "@rimuru-ai/core/util/token"
+export { Token, estimate } from "@rimurucode-ai/core/util/token"

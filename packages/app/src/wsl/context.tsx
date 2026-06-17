@@ -1,4 +1,4 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
 import { queryOptions, useQuery, useQueryClient } from "@tanstack/solid-query"
 import { createEffect, onCleanup } from "solid-js"
 import type { WslServersState } from "./types"

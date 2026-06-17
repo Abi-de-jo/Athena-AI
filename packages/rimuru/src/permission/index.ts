@@ -1,12 +1,12 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
-import { ConfigPermissionV1 } from "@rimuru-ai/core/v1/config/permission"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
+import { ConfigPermissionV1 } from "@rimurucode-ai/core/v1/config/permission"
 import { InstanceState } from "@/effect/instance-state"
-import { Wildcard } from "@rimuru-ai/core/util/wildcard"
+import { Wildcard } from "@rimurucode-ai/core/util/wildcard"
 import { Deferred, Effect, Layer, Context } from "effect"
 import os from "os"
-import { PermissionV1 } from "@rimuru-ai/core/v1/permission"
+import { PermissionV1 } from "@rimurucode-ai/core/v1/permission"
 import { EventV2Bridge } from "@/event-v2-bridge"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 
 export const Event = {
   Asked: EventV2.define({ type: "permission.asked", schema: PermissionV1.Request.fields }),

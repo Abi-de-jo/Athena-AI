@@ -1,5 +1,5 @@
-import { useFilteredList } from "@rimuru-ai/ui/hooks"
-import { getDirectory, getFilename } from "@rimuru-ai/core/util/path"
+import { useFilteredList } from "@rimurucode-ai/ui/hooks"
+import { getDirectory, getFilename } from "@rimurucode-ai/core/util/path"
 import { createSignal, For, onMount, Show, splitProps, type JSX } from "solid-js"
 import { Button } from "./button"
 import { FileIcon } from "./file-icon"

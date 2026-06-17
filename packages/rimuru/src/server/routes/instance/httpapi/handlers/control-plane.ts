@@ -1,5 +1,5 @@
-import { MoveSession } from "@rimuru-ai/core/control-plane/move-session"
-import { SessionV2 } from "@rimuru-ai/core/session"
+import { MoveSession } from "@rimurucode-ai/core/control-plane/move-session"
+import { SessionV2 } from "@rimurucode-ai/core/session"
 import { Effect } from "effect"
 import { HttpApiBuilder } from "effect/unstable/httpapi"
 import { RootHttpApi } from "../api"

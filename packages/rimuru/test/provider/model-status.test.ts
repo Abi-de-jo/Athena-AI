@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test"
 import { Schema } from "effect"
-import { ConfigProviderV1 } from "@rimuru-ai/core/v1/config/provider"
+import { ConfigProviderV1 } from "@rimurucode-ai/core/v1/config/provider"
 import { CatalogModelStatus, ModelStatus } from "@/provider/model-status"
-import { ModelsDev } from "@rimuru-ai/core/models-dev"
+import { ModelsDev } from "@rimurucode-ai/core/models-dev"
 import { Provider } from "@/provider/provider"
 
 describe("provider model status schemas", () => {

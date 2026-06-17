@@ -1,6 +1,6 @@
-import type { UpdaterState } from "@rimuru-ai/app/updater"
+import type { UpdaterState } from "@rimurucode-ai/app/updater"
 
-export type { UpdaterState } from "@rimuru-ai/app/updater"
+export type { UpdaterState } from "@rimurucode-ai/app/updater"
 
 export type UpdaterReadyRecord = { version: string }
 

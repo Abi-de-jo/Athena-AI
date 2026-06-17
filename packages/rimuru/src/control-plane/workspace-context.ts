@@ -1,5 +1,5 @@
 import { LocalContext } from "@/util/local-context"
-import type { WorkspaceV2 } from "@rimuru-ai/core/workspace"
+import type { WorkspaceV2 } from "@rimurucode-ai/core/workspace"
 
 export interface WorkspaceContext {
   workspaceID: WorkspaceV2.ID | undefined

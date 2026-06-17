@@ -1,9 +1,9 @@
 import { describe, expect, mock } from "bun:test"
 import { Effect } from "effect"
-import { Catalog } from "@rimuru-ai/core/catalog"
-import { PluginV2 } from "@rimuru-ai/core/plugin"
-import { GoogleVertexPlugin } from "@rimuru-ai/core/plugin/provider/google-vertex"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
+import { Catalog } from "@rimurucode-ai/core/catalog"
+import { PluginV2 } from "@rimurucode-ai/core/plugin"
+import { GoogleVertexPlugin } from "@rimurucode-ai/core/plugin/provider/google-vertex"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
 import { fakeSelectorSdk, it, model, withEnv } from "./provider-helper"
 
 const vertexOptions: Record<string, any>[] = []

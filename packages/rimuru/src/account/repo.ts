@@ -1,10 +1,10 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import { eq } from "drizzle-orm"
-import { serviceUse } from "@rimuru-ai/core/effect/service-use"
+import { serviceUse } from "@rimurucode-ai/core/effect/service-use"
 import { Effect, Layer, Option, Schema, Context } from "effect"
 
-import { Database } from "@rimuru-ai/core/database/database"
-import { AccountStateTable, AccountTable } from "@rimuru-ai/core/account/sql"
+import { Database } from "@rimurucode-ai/core/database/database"
+import { AccountStateTable, AccountTable } from "@rimurucode-ai/core/account/sql"
 import { AccessToken, AccountID, AccountRepoError, Info, OrgID, RefreshToken } from "./schema"
 import { normalizeServerUrl } from "./url"
 

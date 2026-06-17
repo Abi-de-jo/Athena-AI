@@ -6,7 +6,7 @@
  */
 export * as WriteTool from "./write"
 
-import { ToolFailure } from "@rimuru-ai/llm"
+import { ToolFailure } from "@rimurucode-ai/llm"
 import { Effect, Layer, Schema } from "effect"
 import { FileMutation } from "../file-mutation"
 import { LocationMutation } from "../location-mutation"

@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
 import { FetchHttpClient } from "effect/unstable/http"
-import { CrossSpawnSpawner } from "@rimuru-ai/core/cross-spawn-spawner"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { EffectFlock } from "@rimuru-ai/core/util/effect-flock"
+import { CrossSpawnSpawner } from "@rimurucode-ai/core/cross-spawn-spawner"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { EffectFlock } from "@rimurucode-ai/core/util/effect-flock"
 import path from "path"
 import { pathToFileURL } from "url"
 import { EventV2Bridge } from "../../src/event-v2-bridge"
@@ -17,8 +17,8 @@ import { testEffect } from "../lib/effect"
 import { AccountTest } from "../fake/account"
 import { AuthTest } from "../fake/auth"
 import { NpmTest } from "../fake/npm"
-import { ProviderV2 } from "@rimuru-ai/core/provider"
-import { ModelV2 } from "@rimuru-ai/core/model"
+import { ProviderV2 } from "@rimurucode-ai/core/provider"
+import { ModelV2 } from "@rimurucode-ai/core/model"
 
 const configLayer = Config.layer.pipe(
   Layer.provide(EffectFlock.defaultLayer),

@@ -1,4 +1,4 @@
-import { Credential } from "@rimuru-ai/core/credential"
+import { Credential } from "@rimurucode-ai/core/credential"
 import { Schema } from "effect"
 import { HttpApiEndpoint, HttpApiGroup, HttpApiSchema, OpenApi } from "effect/unstable/httpapi"
 import { LocationMiddleware, LocationQuery, locationQueryOpenApi } from "./location"

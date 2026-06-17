@@ -1,5 +1,5 @@
 {
-  "name": "@rimuru-ai/desktop",
+  "name": "@rimurucode-ai/desktop",
   "private": true,
   "version": "1.17.7",
   "type": "module",
@@ -36,8 +36,8 @@
   "devDependencies": {
     "@actions/artifact": "4.0.0",
     "@lydell/node-pty": "catalog:",
-    "@rimuru-ai/app": "workspace:*",
-    "@rimuru-ai/ui": "workspace:*",
+    "@rimurucode-ai/app": "workspace:*",
+    "@rimurucode-ai/ui": "workspace:*",
     "@sentry/solid": "catalog:",
     "@sentry/vite-plugin": "catalog:",
     "@solid-primitives/i18n": "2.2.1",

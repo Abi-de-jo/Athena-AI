@@ -1,8 +1,8 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { Location } from "@rimuru-ai/core/location"
-import { Policy } from "@rimuru-ai/core/policy"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { Location } from "@rimurucode-ai/core/location"
+import { Policy } from "@rimurucode-ai/core/policy"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
 

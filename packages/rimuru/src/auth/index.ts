@@ -1,9 +1,9 @@
-import { LayerNode } from "@rimuru-ai/core/effect/layer-node"
+import { LayerNode } from "@rimurucode-ai/core/effect/layer-node"
 import path from "path"
 import { Effect, Layer, Record, Result, Schema, Context } from "effect"
-import { NonNegativeInt } from "@rimuru-ai/core/schema"
-import { Global } from "@rimuru-ai/core/global"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
+import { NonNegativeInt } from "@rimurucode-ai/core/schema"
+import { Global } from "@rimurucode-ai/core/global"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
 
 export const OAUTH_DUMMY_KEY = "rimuru-oauth-dummy-key"
 

@@ -1,6 +1,6 @@
 import { SessionID } from "@/session/schema"
-import { PositiveInt } from "@rimuru-ai/core/schema"
-import { EventV2 } from "@rimuru-ai/core/event"
+import { PositiveInt } from "@rimurucode-ai/core/schema"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { Effect, Schema } from "effect"
 
 const DEFAULT_TOAST_DURATION = 5000

@@ -1,8 +1,8 @@
 import { For, Show } from "solid-js"
-import type { PermissionRequest } from "@rimuru-ai/sdk/v2"
-import { Button } from "@rimuru-ai/ui/button"
-import { DockPrompt } from "@rimuru-ai/ui/dock-prompt"
-import { Icon } from "@rimuru-ai/ui/icon"
+import type { PermissionRequest } from "@rimurucode-ai/sdk/v2"
+import { Button } from "@rimurucode-ai/ui/button"
+import { DockPrompt } from "@rimurucode-ai/ui/dock-prompt"
+import { Icon } from "@rimurucode-ai/ui/icon"
 import { useLanguage } from "@/context/language"
 
 export function SessionPermissionDock(props: {

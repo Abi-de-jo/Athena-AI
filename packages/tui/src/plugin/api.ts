@@ -1,4 +1,4 @@
-import type { TuiPluginApi, TuiRouteDefinition } from "@rimuru-ai/plugin/tui"
+import type { TuiPluginApi, TuiRouteDefinition } from "@rimurucode-ai/plugin/tui"
 import { createSignal } from "solid-js"
 
 type RouteEntry = {

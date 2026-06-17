@@ -1,5 +1,5 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
-import { base64Encode } from "@rimuru-ai/core/util/encode"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
+import { base64Encode } from "@rimurucode-ai/core/util/encode"
 import { useParams } from "@solidjs/router"
 import { batch, createEffect, createMemo } from "solid-js"
 import { createStore } from "solid-js/store"

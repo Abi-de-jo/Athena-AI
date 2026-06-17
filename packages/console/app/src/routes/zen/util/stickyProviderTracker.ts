@@ -1,5 +1,5 @@
-import { Database, eq } from "@rimuru-ai/console-core/drizzle/index.js"
-import { ModelStickyProviderTable } from "@rimuru-ai/console-core/schema/ip.sql.js"
+import { Database, eq } from "@rimurucode-ai/console-core/drizzle/index.js"
+import { ModelStickyProviderTable } from "@rimurucode-ai/console-core/schema/ip.sql.js"
 
 export function createStickyTracker(
   modelId: string,

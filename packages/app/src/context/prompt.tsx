@@ -1,5 +1,5 @@
-import { createSimpleContext } from "@rimuru-ai/ui/context"
-import { checksum } from "@rimuru-ai/core/util/encode"
+import { createSimpleContext } from "@rimurucode-ai/ui/context"
+import { checksum } from "@rimurucode-ai/core/util/encode"
 import { useParams, useSearchParams } from "@solidjs/router"
 import { batch, createMemo, createRoot, getOwner, onCleanup } from "solid-js"
 import { createStore, type SetStoreFunction } from "solid-js/store"

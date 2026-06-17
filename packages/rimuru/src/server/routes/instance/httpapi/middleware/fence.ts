@@ -1,5 +1,5 @@
-import { Flag } from "@rimuru-ai/core/flag/flag"
-import { Database } from "@rimuru-ai/core/database/database"
+import { Flag } from "@rimurucode-ai/core/flag/flag"
+import { Database } from "@rimurucode-ai/core/database/database"
 import { Effect } from "effect"
 import { HttpRouter, HttpServerRequest, HttpServerResponse } from "effect/unstable/http"
 import * as Fence from "@/server/shared/fence"

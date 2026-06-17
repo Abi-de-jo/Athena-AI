@@ -7,7 +7,7 @@ import type {
   SessionStatus,
   SnapshotFileDiff,
   Todo,
-} from "@rimuru-ai/sdk/v2/client"
+} from "@rimurucode-ai/sdk/v2/client"
 import { dropSessionCaches, pickSessionCacheEvictions } from "./session-cache"
 
 const msg = (id: string, sessionID: string) =>

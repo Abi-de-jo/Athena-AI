@@ -1,9 +1,9 @@
 import { describe, expect } from "bun:test"
 import { Effect, Exit, Scope } from "effect"
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { Location } from "@rimuru-ai/core/location"
-import { AgentPlugin } from "@rimuru-ai/core/plugin/agent"
-import { AbsolutePath } from "@rimuru-ai/core/schema"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { Location } from "@rimurucode-ai/core/location"
+import { AgentPlugin } from "@rimurucode-ai/core/plugin/agent"
+import { AbsolutePath } from "@rimurucode-ai/core/schema"
 import { location } from "./fixture/location"
 import { testEffect } from "./lib/effect"
 

@@ -1,7 +1,7 @@
 import { type ChildProcess, spawnSync } from "node:child_process"
 
 // Duplicated from `packages/rimuru/src/util/process.ts` because the SDK cannot
-// import `rimuru-ai` without creating a cycle (`rimuru-ai` depends on `@rimuru-ai/sdk`).
+// import `rimuru-ai` without creating a cycle (`rimuru-ai` depends on `@rimurucode-ai/sdk`).
 export function stop(proc: ChildProcess) {
   if (proc.exitCode !== null || proc.signalCode !== null) return
   if (process.platform === "win32" && proc.pid) {

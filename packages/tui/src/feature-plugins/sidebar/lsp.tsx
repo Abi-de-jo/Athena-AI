@@ -1,4 +1,4 @@
-import type { TuiPlugin, TuiPluginApi } from "@rimuru-ai/plugin/tui"
+import type { TuiPlugin, TuiPluginApi } from "@rimurucode-ai/plugin/tui"
 import type { BuiltinTuiPlugin } from "../builtins"
 import { createMemo, For, Show, createSignal } from "solid-js"
 

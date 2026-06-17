@@ -6,7 +6,7 @@ import type {
   SessionStatus,
   SnapshotFileDiff,
   Todo,
-} from "@rimuru-ai/sdk/v2/client"
+} from "@rimurucode-ai/sdk/v2/client"
 
 export const SESSION_CACHE_LIMIT = 40
 

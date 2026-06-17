@@ -1,10 +1,10 @@
 import { describe, expect } from "bun:test"
 import { Effect, Layer } from "effect"
-import { AgentV2 } from "@rimuru-ai/core/agent"
-import { FSUtil } from "@rimuru-ai/core/fs-util"
-import { SkillPlugin } from "@rimuru-ai/core/plugin/skill"
-import { SkillV2 } from "@rimuru-ai/core/skill"
-import { SkillDiscovery } from "@rimuru-ai/core/skill/discovery"
+import { AgentV2 } from "@rimurucode-ai/core/agent"
+import { FSUtil } from "@rimurucode-ai/core/fs-util"
+import { SkillPlugin } from "@rimurucode-ai/core/plugin/skill"
+import { SkillV2 } from "@rimurucode-ai/core/skill"
+import { SkillDiscovery } from "@rimurucode-ai/core/skill/discovery"
 import { testEffect } from "../lib/effect"
 
 const it = testEffect(

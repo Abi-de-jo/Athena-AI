@@ -1,4 +1,4 @@
-import type { PermissionV1 } from "@rimuru-ai/core/v1/permission"
+import type { PermissionV1 } from "@rimurucode-ai/core/v1/permission"
 // CLI entry point for `rimuru-ai run`.
 //
 // Handles three modes:
@@ -20,7 +20,7 @@ import { UI } from "../ui"
 import { effectCmd } from "../effect-cmd"
 import { EOL } from "os"
 import { Filesystem } from "@/util/filesystem"
-import { createRimuruClient, type RimuruClient, type ToolPart } from "@rimuru-ai/sdk/v2"
+import { createRimuruClient, type RimuruClient, type ToolPart } from "@rimurucode-ai/sdk/v2"
 import { FormatError, FormatUnknownError } from "../error"
 import { INTERACTIVE_INPUT_ERROR, resolveInteractiveStdin } from "./run/runtime.stdin"
 

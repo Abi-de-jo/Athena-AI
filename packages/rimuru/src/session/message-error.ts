@@ -1,5 +1,5 @@
 import { Schema } from "effect"
-import { NamedError } from "@rimuru-ai/core/util/error"
+import { NamedError } from "@rimurucode-ai/core/util/error"
 
 export const OutputLengthError = NamedError.create("MessageOutputLengthError", {})
 

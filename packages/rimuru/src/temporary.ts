@@ -1,6 +1,6 @@
 import yargs from "yargs"
 import { TuiThreadCommand } from "./cli/cmd/tui"
-import { InstallationVersion } from "@rimuru-ai/core/installation/version"
+import { InstallationVersion } from "@rimurucode-ai/core/installation/version"
 import { hideBin } from "yargs/helpers"
 const cli = yargs(hideBin(process.argv))
   .parserConfiguration({ "populate--": true })

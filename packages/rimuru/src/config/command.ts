@@ -2,10 +2,10 @@ export * as ConfigCommand from "./command"
 
 import path from "path"
 import { Cause, Exit, Schema } from "effect"
-import { Glob } from "@rimuru-ai/core/util/glob"
-import { ConfigCommandV1 } from "@rimuru-ai/core/v1/config/command"
+import { Glob } from "@rimurucode-ai/core/util/glob"
+import { ConfigCommandV1 } from "@rimurucode-ai/core/v1/config/command"
 import { configEntryNameFromPath } from "./entry-name"
-import { InvalidError } from "@rimuru-ai/core/v1/config/error"
+import { InvalidError } from "@rimurucode-ai/core/v1/config/error"
 import * as ConfigMarkdown from "./markdown"
 
 const decodeInfo = Schema.decodeUnknownExit(ConfigCommandV1.Info)

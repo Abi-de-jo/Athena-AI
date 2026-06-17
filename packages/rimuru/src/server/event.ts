@@ -1,4 +1,4 @@
-import { EventV2 } from "@rimuru-ai/core/event"
+import { EventV2 } from "@rimurucode-ai/core/event"
 import { Schema } from "effect"
 
 export const Event = {

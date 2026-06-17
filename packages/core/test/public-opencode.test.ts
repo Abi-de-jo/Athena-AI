@@ -2,7 +2,7 @@ import fs from "fs/promises"
 import path from "path"
 import { describe, expect } from "bun:test"
 import { Effect, Schema } from "effect"
-import { AbsolutePath, Location, Model, Rimuru, Session, Tool } from "@rimuru-ai/core/public"
+import { AbsolutePath, Location, Model, Rimuru, Session, Tool } from "@rimurucode-ai/core/public"
 import { tmpdir } from "./fixture/tmpdir"
 import { testEffect } from "./lib/effect"
 
