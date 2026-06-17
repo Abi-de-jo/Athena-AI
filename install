@@ -441,7 +441,8 @@ fi
 install_configs() {
     local config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/rimuru"
     local config_url="https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/rimuru-default-configs.tar.gz"
-    local tmp_config="/tmp/rimuru_configs_$$.tar.gz"
+    local tmp_dir="${TMPDIR:-/tmp}/rimuru_config_$$"
+    local tmp_config="$tmp_dir/configs.tar.gz"
 
     # Skip if config dir already exists and has agents
     if [ -d "$config_dir/agents" ] && [ "$(ls -A "$config_dir/agents" 2>/dev/null)" ]; then
@@ -451,9 +452,12 @@ install_configs() {
 
     print_message info "\n${MUTED}Downloading default configs (agents, skills, commands)...${NC}"
     if curl -fsSL -o "$tmp_config" "$config_url"; then
-        mkdir -p "$config_dir"
-        tar -xzf "$tmp_config" -C "$config_dir" --strip-components=1 2>/dev/null || true
-        rm -f "$tmp_config"
+        mkdir -p "$config_dir" "$tmp_dir"
+        tar -xzf "$tmp_config" -C "$tmp_dir" 2>/dev/null || true
+        if [ -d "$tmp_dir/.rimuru" ]; then
+            cp -r "$tmp_dir/.rimuru"/* "$config_dir"/
+        fi
+        rm -rf "$tmp_dir"
         print_message info "${MUTED}Configs installed to ${NC}$config_dir"
     else
         print_message warning "Could not download default configs. Run rimuru to create defaults."
