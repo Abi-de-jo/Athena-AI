@@ -5,6 +5,12 @@
   "type": "module",
   "license": "MIT",
   "private": true,
+  "files": [
+    ".rimuru/",
+    "bin/",
+    "src/",
+    "dist/"
+  ],
   "scripts": {
     "typecheck": "tsgo --noEmit",
     "test": "bun test --timeout 30000 --only-failures",
