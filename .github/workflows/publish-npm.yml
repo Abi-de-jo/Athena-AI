@@ -16,9 +16,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "22"
+          bun-version: "1.3.14"
 
       - name: Publish to npm
         run: |
@@ -28,7 +28,7 @@ jobs:
             exit 1
           fi
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-          npm publish --access public
+          bun publish --access public
         working-directory: packages/rimuru
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

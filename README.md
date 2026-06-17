@@ -7,7 +7,8 @@
 </p>
 <p align="center">The open source AI coding agent.</p>
 <p align="center">
-  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman-dev/rimuru-ai/publish.yml?style=flat-square&branch=dev" /></a>
+  <a href="https://www.npmjs.com/package/rimuru-ai"><img alt="npm version" src="https://img.shields.io/npm/v/rimuru-ai?style=flat-square" /></a>
+  <a href="https://github.com/gowdaman-dev/rimuru-ai/actions/workflows/publish-npm.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/gowdaman-dev/rimuru-ai/publish-npm.yml?style=flat-square&branch=dev" /></a>
 </p>
 
 <p align="center">
@@ -43,15 +44,12 @@ This is the main repository for Rimuru AI — an AI-powered development tool. It
 
 ### Agents
 
-Rimuru AI includes two built-in agents you can switch between with the `Tab` key.
+Rimuru AI ships with **Veldora** and **Veldora-Pro** — two hierarchically organized meta-agents:
 
-- **build** - Default, full-access agent for development work
-- **plan** - Read-only agent for analysis and code exploration
-  - Denies file edits by default
-  - Asks permission before running bash commands
-  - Ideal for exploring unfamiliar codebases or planning changes
+- **veldora** — General-purpose agent for development, research, and multi-turn tasks
+- **veldora-pro** — Self-improving meta-agent that audits, tunes, and optimizes the Rimuru setup itself (agent configs, plugins, skills, MCP servers, token efficiency)
 
-Also included is a **general** subagent for complex searches and multistep tasks.
+Plus specialist subagents for backend, frontend, database, devops, systems engineering, ethical hacking, document prep, and ERP architecture.
 
 ### Documentation
 
