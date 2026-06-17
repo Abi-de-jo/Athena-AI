@@ -21,117 +21,95 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Vendor sub-packages and resolve all refs
+      - name: Resolve catalog and workspace refs
         run: |
           node -e "
             const fs = require('fs');
             const root = JSON.parse(fs.readFileSync('package.json', 'utf8'));
             const catalog = root.workspaces?.catalog || {};
 
-            // Package name → vendor directory name
-            const vendorMap = {
-              '@rimurucode-ai/effect-drizzle-sqlite': 'effect-drizzle-sqlite',
-              '@rimurucode-ai/effect-sqlite-node': 'effect-sqlite-node',
-              '@rimurucode-ai/sdk': 'sdk',
-              '@rimurucode-ai/script': 'script',
-              '@rimurucode-ai/llm': 'llm',
-              '@rimurucode-ai/core': 'core',
-              '@rimurucode-ai/plugin': 'plugin',
-              '@rimurucode-ai/ui': 'ui',
-              '@rimurucode-ai/server': 'server',
-              '@rimurucode-ai/tui': 'tui',
-            };
+            const publishOrder = [
+              { dir: 'packages/effect-drizzle-sqlite', name: '@rimurucode-ai/effect-drizzle-sqlite' },
+              { dir: 'packages/effect-sqlite-node', name: '@rimurucode-ai/effect-sqlite-node' },
+              { dir: 'packages/sdk/js', name: '@rimurucode-ai/sdk' },
+              { dir: 'packages/script', name: '@rimurucode-ai/script' },
+              { dir: 'packages/llm', name: '@rimurucode-ai/llm' },
+              { dir: 'packages/core', name: '@rimurucode-ai/core' },
+              { dir: 'packages/plugin', name: '@rimurucode-ai/plugin' },
+              { dir: 'packages/ui', name: '@rimurucode-ai/ui' },
+              { dir: 'packages/server', name: '@rimurucode-ai/server' },
+              { dir: 'packages/tui', name: '@rimurucode-ai/tui' },
+              { dir: 'packages/rimuru', name: 'rimuru-ai' },
+            ];
 
-            // Vendor dir → source dir
-            const srcDirs = {
-              'effect-drizzle-sqlite': 'packages/effect-drizzle-sqlite',
-              'effect-sqlite-node': 'packages/effect-sqlite-node',
-              'sdk': 'packages/sdk/js',
-              'script': 'packages/script',
-              'llm': 'packages/llm',
-              'core': 'packages/core',
-              'plugin': 'packages/plugin',
-              'ui': 'packages/ui',
-              'server': 'packages/server',
-              'tui': 'packages/tui',
-            };
-
-            const vendorDir = 'packages/rimuru/vendor';
-            fs.rmSync(vendorDir, { recursive: true, force: true });
-            fs.mkdirSync(vendorDir, { recursive: true });
-
-            // Copy each sub-package into vendor dir (skip node_modules, .turbo, dist)
-            for (const [vendir, srcdir] of Object.entries(srcDirs)) {
-              const target = vendorDir + '/' + vendir;
-              fs.cpSync(srcdir, target, {
-                recursive: true,
-                filter: (src) =>
-                  !src.includes('node_modules') &&
-                  !src.includes('.turbo') &&
-                  !src.includes('/dist/')
-              });
+            const wsVersions = {};
+            for (const p of publishOrder) {
+              const pkg = JSON.parse(fs.readFileSync(p.dir + '/package.json', 'utf8'));
+              wsVersions[p.name] = pkg.version || '1.17.7';
             }
 
-            // Resolve catalog: and workspace:* in every vendored sub-package
-            function resolveVendorPkg(vendir) {
-              const path = vendorDir + '/' + vendir + '/package.json';
-              const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
-              // Remove overrides (can conflict with file: deps at publish time)
-              delete pkg.overrides;
-              ['dependencies','devDependencies','peerDependencies'].forEach(section => {
+            function resolve(pkg) {
+              const updated = {};
+              ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
                 if (!pkg[section]) return;
+                const resolved = {};
                 Object.keys(pkg[section]).forEach(key => {
-                  // Resolve catalog:
                   if (pkg[section][key] === 'catalog:' && catalog[key]) {
-                    pkg[section][key] = catalog[key];
-                  }
-                  // Resolve workspace:* → file: (relative between vendor dirs)
-                  if (pkg[section][key] === 'workspace:*' && vendorMap[key]) {
-                    pkg[section][key] = 'file:../' + vendorMap[key];
+                    resolved[key] = catalog[key];
+                  } else if (pkg[section][key] === 'workspace:*' && wsVersions[key]) {
+                    resolved[key] = '^' + wsVersions[key];
+                  } else {
+                    resolved[key] = pkg[section][key];
                   }
                 });
+                if (Object.keys(resolved).length > 0) updated[section] = resolved;
               });
+              return updated;
+            }
+
+            for (const p of publishOrder) {
+              const path = p.dir + '/package.json';
+              const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
+              const resolved = resolve(pkg);
+              Object.assign(pkg, resolved);
+              // Remove overrides (can conflict at publish time)
+              delete pkg.overrides;
               fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
-              console.log('  vendor/' + vendir + '/package.json resolved');
+              const depCount = Object.keys(pkg.dependencies || {}).length;
+              console.log(p.name + ': resolved, ' + depCount + ' deps');
             }
-
-            for (const vendir of Object.keys(srcDirs)) {
-              resolveVendorPkg(vendir);
-            }
-
-            // Update rimuru's package.json
-            const rimuruDir = 'packages/rimuru';
-            const rimuruPkg = JSON.parse(fs.readFileSync(rimuruDir + '/package.json', 'utf8'));
-
-            // Remove overrides (can conflict with file: vendor deps)
-            delete rimuruPkg.overrides;
-
-            // Add vendor/ to files
-            if (!rimuruPkg.files.includes('vendor/')) {
-              rimuruPkg.files.push('vendor/');
-            }
-
-            // Resolve workspace:* → file:vendor/<dir> in rimuru-ai
-            ['dependencies','devDependencies'].forEach(section => {
-              if (!rimuruPkg[section]) return;
-              Object.keys(rimuruPkg[section]).forEach(key => {
-                if (vendorMap[key] && rimuruPkg[section][key] === 'workspace:*') {
-                  rimuruPkg[section][key] = 'file:vendor/' + vendorMap[key];
-                  console.log('  ' + key + ' → file:vendor/' + vendorMap[key]);
-                } else if (rimuruPkg[section][key] === 'catalog:' && catalog[key]) {
-                  rimuruPkg[section][key] = catalog[key];
-                  console.log('  ' + key + ' → ' + catalog[key] + ' (catalog)');
-                }
-              });
-            });
-
-            fs.writeFileSync(rimuruDir + '/package.json', JSON.stringify(rimuruPkg, null, 2) + '\n');
-            console.log('rimuru-ai package.json updated with vendor deps');
           "
+
+      - name: Publish sub-packages
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
+          set -e
+          for dir in \
+            packages/effect-drizzle-sqlite \
+            packages/effect-sqlite-node \
+            packages/sdk/js \
+            packages/script \
+            packages/llm \
+            packages/core \
+            packages/plugin \
+            packages/ui \
+            packages/server \
+            packages/tui
+          do
+            name=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).name)")
+            ver=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).version)")
+            if npm view "$name@$ver" version &>/dev/null; then
+              echo "✓ Already published $name@$ver"
+            else
+              echo "→ Publishing $name@$ver..."
+              (cd "$dir" && npm publish --access public)
+            fi
+          done
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish rimuru-ai
         run: |
-          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
           npm publish --access public
         working-directory: packages/rimuru
         env:
