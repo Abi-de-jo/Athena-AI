@@ -1,15 +1,31 @@
-# js
+# rimuru-ai
 
-To install dependencies:
+The open source AI coding agent — powered by Veldora.
 
-```bash
-bun install
-```
-
-To run:
+## Install
 
 ```bash
-bun run index.ts
+npm install -g rimuru-ai@latest
 ```
 
-This project was created using `bun init` in bun v1.2.12. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Or via curl:
+
+```bash
+curl -fsSL https://rimurucode.vercel.app/install | bash
+```
+
+## Usage
+
+```bash
+rimuru-ai
+```
+
+Press `Tab` to switch between **Veldora** (general dev) and **Veldora-Pro** (self-improving meta-agent).
+
+## Documentation
+
+Configure via `.rimuru/` files in your project or `~/.config/rimuru/` globally.
+
+## License
+
+MIT
