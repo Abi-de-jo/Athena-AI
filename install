@@ -438,6 +438,30 @@ if [[ "$no_modify_path" != "true" ]]; then
     fi
 fi
 
+install_configs() {
+    local config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/rimuru"
+    local config_url="https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/rimuru-default-configs.tar.gz"
+    local tmp_config="/tmp/rimuru_configs_$$.tar.gz"
+
+    # Skip if config dir already exists and has agents
+    if [ -d "$config_dir/agents" ] && [ "$(ls -A "$config_dir/agents" 2>/dev/null)" ]; then
+        print_message info "${MUTED}Configs already exist at ${NC}$config_dir"
+        return 0
+    fi
+
+    print_message info "\n${MUTED}Downloading default configs (agents, skills, commands)...${NC}"
+    if curl -fsSL -o "$tmp_config" "$config_url"; then
+        mkdir -p "$config_dir"
+        tar -xzf "$tmp_config" -C "$config_dir" --strip-components=1 2>/dev/null || true
+        rm -f "$tmp_config"
+        print_message info "${MUTED}Configs installed to ${NC}$config_dir"
+    else
+        print_message warning "Could not download default configs. Run rimuru to create defaults."
+    fi
+}
+
+install_configs
+
 if [ -n "${GITHUB_ACTIONS-}" ] && [ "${GITHUB_ACTIONS}" == "true" ]; then
     echo "$INSTALL_DIR" >> $GITHUB_PATH
     print_message info "Added $INSTALL_DIR to \$GITHUB_PATH"
