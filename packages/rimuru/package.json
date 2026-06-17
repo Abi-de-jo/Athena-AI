@@ -7,9 +7,7 @@
   "private": false,
   "files": [
     ".rimuru/",
-    "bin/",
-    "src/",
-    "dist/"
+    "src/"
   ],
   "scripts": {
     "typecheck": "tsgo --noEmit",
