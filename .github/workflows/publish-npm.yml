@@ -1,0 +1,22 @@
+name: publish-npm
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - "packages/rimuru/package.json"
+      - "packages/rimuru/.rimuru/**"
+      - "packages/rimuru/src/**"
+
+jobs:
+  publish:
+    if: github.repository == 'gowdaman-dev/rimuru-ai'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish to npm
+        run: npm publish
+        working-directory: packages/rimuru
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
