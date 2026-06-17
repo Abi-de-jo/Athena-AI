@@ -4,7 +4,7 @@
   "name": "rimuru-ai",
   "type": "module",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "files": [
     ".rimuru/",
     "bin/",
@@ -20,9 +20,6 @@
     "build": "bun run script/build.ts",
     "dev": "bun run --conditions=browser ./src/index.ts",
     "dev:temporary": "bun run --conditions=browser ./src/temporary.ts"
-  },
-  "bin": {
-    "rimuru-ai": "./bin/opencode"
   },
   "exports": {
     "./*": "./src/*.ts"
