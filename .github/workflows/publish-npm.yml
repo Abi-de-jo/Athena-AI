@@ -25,4 +25,4 @@ jobs:
         run: npm publish --access public
         working-directory: packages/rimuru
         env:
-          NODE_AUTH_TOKEN: ${{ vars.PRODUCTION }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
