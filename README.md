@@ -19,15 +19,12 @@
 ### Installation
 
 ```bash
-# YOLO
+# Quick install
 curl -fsSL https://rimurucode.vercel.app/install | bash
 
-# Package managers (coming soon)
-# npm i -g rimuru-ai@latest
+# or via npm
+npm install -g rimuru-ai@latest
 ```
-
-> [!TIP]
-> This is a development fork — the install script and published packages are being set up.
 
 ### Desktop App (BETA)
 
