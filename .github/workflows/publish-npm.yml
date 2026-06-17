@@ -22,8 +22,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
 
       - name: Publish to npm
-        if: env.NODE_AUTH_TOKEN != ''
-        run: npm publish --access public || true
+        run: npm publish --access public
         working-directory: packages/rimuru
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ vars.PRODUCTION }}
