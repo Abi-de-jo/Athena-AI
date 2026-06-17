@@ -76,7 +76,9 @@ jobs:
             function resolveVendorPkg(vendir) {
               const path = vendorDir + '/' + vendir + '/package.json';
               const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
-              ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
+              // Remove overrides (can conflict with file: deps at publish time)
+              delete pkg.overrides;
+              ['dependencies','devDependencies','peerDependencies'].forEach(section => {
                 if (!pkg[section]) return;
                 Object.keys(pkg[section]).forEach(key => {
                   // Resolve catalog:
@@ -100,6 +102,9 @@ jobs:
             // Update rimuru's package.json
             const rimuruDir = 'packages/rimuru';
             const rimuruPkg = JSON.parse(fs.readFileSync(rimuruDir + '/package.json', 'utf8'));
+
+            // Remove overrides (can conflict with file: vendor deps)
+            delete rimuruPkg.overrides;
 
             // Add vendor/ to files
             if (!rimuruPkg.files.includes('vendor/')) {
