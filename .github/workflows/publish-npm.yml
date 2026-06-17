@@ -21,38 +21,61 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Resolve catalog + workspace refs for all packages
+      - name: Vendor sub-packages and resolve all refs
         run: |
           node -e "
             const fs = require('fs');
             const root = JSON.parse(fs.readFileSync('package.json', 'utf8'));
             const catalog = root.workspaces?.catalog || {};
 
-            // Pre-build workspace version map (read each sub-package's version)
-            const publishOrder = [
-              'packages/effect-drizzle-sqlite',
-              'packages/effect-sqlite-node',
-              'packages/sdk/js',
-              'packages/script',
-              'packages/llm',
-              'packages/core',
-              'packages/plugin',
-              'packages/ui',
-              'packages/server',
-              'packages/tui',
-              'packages/rimuru',
-            ];
-            const wsVersions = {};
-            for (const dir of publishOrder) {
-              const pkg = JSON.parse(fs.readFileSync(dir + '/package.json', 'utf8'));
-              wsVersions[pkg.name] = pkg.version || '1.17.7';
+            // Package name → vendor directory name
+            const vendorMap = {
+              '@rimurucode-ai/effect-drizzle-sqlite': 'effect-drizzle-sqlite',
+              '@rimurucode-ai/effect-sqlite-node': 'effect-sqlite-node',
+              '@rimurucode-ai/sdk': 'sdk',
+              '@rimurucode-ai/script': 'script',
+              '@rimurucode-ai/llm': 'llm',
+              '@rimurucode-ai/core': 'core',
+              '@rimurucode-ai/plugin': 'plugin',
+              '@rimurucode-ai/ui': 'ui',
+              '@rimurucode-ai/server': 'server',
+              '@rimurucode-ai/tui': 'tui',
+            };
+
+            // Vendor dir → source dir
+            const srcDirs = {
+              'effect-drizzle-sqlite': 'packages/effect-drizzle-sqlite',
+              'effect-sqlite-node': 'packages/effect-sqlite-node',
+              'sdk': 'packages/sdk/js',
+              'script': 'packages/script',
+              'llm': 'packages/llm',
+              'core': 'packages/core',
+              'plugin': 'packages/plugin',
+              'ui': 'packages/ui',
+              'server': 'packages/server',
+              'tui': 'packages/tui',
+            };
+
+            const vendorDir = 'packages/rimuru/vendor';
+            fs.rmSync(vendorDir, { recursive: true, force: true });
+            fs.mkdirSync(vendorDir, { recursive: true });
+
+            // Copy each sub-package into vendor dir (skip node_modules, .turbo, dist)
+            for (const [vendir, srcdir] of Object.entries(srcDirs)) {
+              const target = vendorDir + '/' + vendir;
+              fs.cpSync(srcdir, target, {
+                recursive: true,
+                filter: (src) =>
+                  !src.includes('node_modules') &&
+                  !src.includes('.turbo') &&
+                  !src.includes('/dist/')
+              });
             }
 
-            // Resolve catalog: and workspace:* in every sub-package
-            function resolvePackage(dir) {
-              const path = dir + '/package.json';
-              let pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
-
+            // Resolve catalog: and workspace:* in every vendored sub-package
+            function resolveVendorPkg(vendir) {
+              const path = vendorDir + '/' + vendir + '/package.json';
+              const pkg = JSON.parse(fs.readFileSync(path, 'utf8'));
               ['dependencies','devDependencies','peerDependencies','overrides'].forEach(section => {
                 if (!pkg[section]) return;
                 Object.keys(pkg[section]).forEach(key => {
@@ -60,64 +83,50 @@ jobs:
                   if (pkg[section][key] === 'catalog:' && catalog[key]) {
                     pkg[section][key] = catalog[key];
                   }
-                  // Resolve workspace:*
-                  if (pkg[section][key] === 'workspace:*' && wsVersions[key]) {
-                    pkg[section][key] = '^' + wsVersions[key];
+                  // Resolve workspace:* → file: (relative between vendor dirs)
+                  if (pkg[section][key] === 'workspace:*' && vendorMap[key]) {
+                    pkg[section][key] = 'file:../' + vendorMap[key];
                   }
                 });
               });
-
               fs.writeFileSync(path, JSON.stringify(pkg, null, 2) + '\n');
+              console.log('  vendor/' + vendir + '/package.json resolved');
             }
 
-            for (const dir of publishOrder) {
-              resolvePackage(dir);
-              const pkg = JSON.parse(fs.readFileSync(dir + '/package.json', 'utf8'));
-              const resolved = Object.entries(pkg.dependencies || {})
-                .filter(([,v]) => v !== 'catalog:' && !v.startsWith('workspace:'))
-                .map(([k,v]) => k + '@' + v);
-              console.log(pkg.name + ': resolved ' + resolved.length + ' deps');
+            for (const vendir of Object.keys(srcDirs)) {
+              resolveVendorPkg(vendir);
             }
+
+            // Update rimuru's package.json
+            const rimuruDir = 'packages/rimuru';
+            const rimuruPkg = JSON.parse(fs.readFileSync(rimuruDir + '/package.json', 'utf8'));
+
+            // Add vendor/ to files
+            if (!rimuruPkg.files.includes('vendor/')) {
+              rimuruPkg.files.push('vendor/');
+            }
+
+            // Resolve workspace:* → file:vendor/<dir> in rimuru-ai
+            ['dependencies','devDependencies'].forEach(section => {
+              if (!rimuruPkg[section]) return;
+              Object.keys(rimuruPkg[section]).forEach(key => {
+                if (vendorMap[key] && rimuruPkg[section][key] === 'workspace:*') {
+                  rimuruPkg[section][key] = 'file:vendor/' + vendorMap[key];
+                  console.log('  ' + key + ' → file:vendor/' + vendorMap[key]);
+                } else if (rimuruPkg[section][key] === 'catalog:' && catalog[key]) {
+                  rimuruPkg[section][key] = catalog[key];
+                  console.log('  ' + key + ' → ' + catalog[key] + ' (catalog)');
+                }
+              });
+            });
+
+            fs.writeFileSync(rimuruDir + '/package.json', JSON.stringify(rimuruPkg, null, 2) + '\n');
+            console.log('rimuru-ai package.json updated with vendor deps');
           "
-
-      - name: Ensure @rimuru-ai npm org exists
-        run: |
-          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
-          npm org create @rimuru-ai 2>/dev/null && echo "Created @rimuru-ai org" || echo "@rimuru-ai org already exists or token lacks org-create permission"
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish sub-packages in dependency order
-        run: |
-          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
-          set -e
-          # Publish order: leaves first, root last
-          for dir in \
-            packages/effect-drizzle-sqlite \
-            packages/effect-sqlite-node \
-            packages/sdk/js \
-            packages/script \
-            packages/llm \
-            packages/core \
-            packages/plugin \
-            packages/ui \
-            packages/server \
-            packages/tui
-          do
-            name=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).name)")
-            ver=$(node -e "console.log(JSON.parse(require('fs').readFileSync('$dir/package.json','utf8')).version)")
-            if npm view "$name@$ver" version &>/dev/null; then
-              echo "✓ Already published $name@$ver"
-            else
-              echo "→ Publishing $name@$ver..."
-              (cd "$dir" && npm publish --access public)
-            fi
-          done
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish rimuru-ai
         run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
           npm publish --access public
         working-directory: packages/rimuru
         env:
