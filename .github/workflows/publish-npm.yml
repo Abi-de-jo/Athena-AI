@@ -79,9 +79,17 @@ jobs:
             }
           "
 
+      - name: Ensure @rimuru-ai npm org exists
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
+          npm org create @rimuru-ai 2>/dev/null && echo "Created @rimuru-ai org" || echo "@rimuru-ai org already exists or token lacks org-create permission"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish sub-packages in dependency order
         run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
+          set -e
           # Publish order: leaves first, root last
           for dir in \
             packages/effect-drizzle-sqlite \
@@ -101,7 +109,7 @@ jobs:
               echo "✓ Already published $name@$ver"
             else
               echo "→ Publishing $name@$ver..."
-              (cd "$dir" && npm publish --access public) || echo "⚠  Publish failed for $name (may already exist)"
+              (cd "$dir" && npm publish --access public)
             fi
           done
         env:
