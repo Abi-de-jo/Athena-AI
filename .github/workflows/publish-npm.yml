@@ -21,13 +21,33 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Vendor sub-packages and prepare package
-        run: node script/prepare-publish.cjs
+      - name: Resolve catalog + workspace refs for rimuru-ai
+        run: |
+          node -e "
+            const fs = require('fs');
+            const root = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+            const catalog = root.workspaces?.catalog || {};
+            const pkg = JSON.parse(fs.readFileSync('packages/rimuru/package.json', 'utf8'));
+            delete pkg.overrides;
+            ['dependencies','devDependencies'].forEach(section => {
+              if (!pkg[section]) return;
+              Object.keys(pkg[section]).forEach(key => {
+                if (pkg[section][key] === 'catalog:' && catalog[key]) {
+                  pkg[section][key] = catalog[key];
+                }
+                if (pkg[section][key] === 'workspace:*') {
+                  pkg[section][key] = '^1.17.7';
+                }
+              });
+            });
+            fs.writeFileSync('packages/rimuru/package.json', JSON.stringify(pkg, null, 2) + '\n');
+            console.log('Resolved deps for publish');
+          "
 
       - name: Publish rimuru-ai
         run: |
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > ~/.npmrc
-          npm publish --access public --ignore-scripts
+          npm publish --access public
         working-directory: packages/rimuru
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
