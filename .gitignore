@@ -35,3 +35,6 @@ logs/
 *.bun-build
 tsconfig.tsbuildinfo
 .vercel
+
+# Codebase index (large binary)
+.opencode/index/
