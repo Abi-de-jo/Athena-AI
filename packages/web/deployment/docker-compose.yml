@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  rimuru-ai:
+    image: ghcr.io/gowdaman-dev/rimuru-ai-web:latest
+    container_name: rimuru-ai
+    restart: unless-stopped
+    ports:
+      - "4000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_URL=${APP_URL:-http://localhost:4000}
+      - NEXT_PUBLIC_DEFAULT_OPENCODE_URL=${OPENCODE_URL:-http://localhost:3000}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rimuru.rule=Host(`rimuru.yourdomain.com`)"
+      - "traefik.http.routers.rimuru.tls.certresolver=letsencrypt"

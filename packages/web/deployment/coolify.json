@@ -1,0 +1,20 @@
+{
+  "name": "rimuru-ai",
+  "description": "Open-source anime-themed OpenCode frontend",
+  "build": {
+    "type": "dockerfile",
+    "dockerfile": "deployment/Dockerfile"
+  },
+  "port": 3000,
+  "domains": ["rimuru.yourdomain.com"],
+  "environment": {
+    "NEXT_PUBLIC_APP_URL": "https://rimuru.yourdomain.com",
+    "NEXT_PUBLIC_DEFAULT_OPENCODE_URL": "http://localhost:3000",
+    "NODE_ENV": "production"
+  },
+  "healthcheck": {
+    "path": "/api/health",
+    "interval": 30,
+    "timeout": 10
+  }
+}

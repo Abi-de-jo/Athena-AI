@@ -1,0 +1,21 @@
+{
+  "name": "rimuru-ai",
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_APP_URL": "https://rimuru.yourdomain.com",
+    "NEXT_PUBLIC_DEFAULT_OPENCODE_URL": "http://localhost:3000",
+    "NEXT_PUBLIC_GITHUB_URL": "https://github.com/gowdaman-dev/rimuru-ai"
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" }
+      ]
+    }
+  ]
+}
