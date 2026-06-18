@@ -22,19 +22,19 @@
 ### Linux & macOS
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/install | bash
+curl -fsSL https://raw.githubusercontent.com/gowdaman-dev/rimurucode-ai/main/install | bash
 ```
 
 ### Windows
 
 **PowerShell:**
 ```powershell
-irm https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/install | iex
+irm https://raw.githubusercontent.com/gowdaman-dev/rimurucode-ai/main/install | iex
 ```
 
 **Git Bash / WSL:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/gowdaman-dev/rimuru-ai/dev/install | bash
+curl -fsSL https://raw.githubusercontent.com/gowdaman-dev/rimurucode-ai/main/install | bash
 ```
 
 ### npm (All Platforms)
