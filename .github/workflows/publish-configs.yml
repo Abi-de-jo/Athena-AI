@@ -22,8 +22,11 @@ jobs:
           tar czf rimuru-configs.tar.gz -C . .rimuru/
 
       - name: Push to rimurucode-ai (public)
+        env:
+          GH_TOKEN: ${{ secrets.RIMURUCODE_PAT }}
         run: |
-          git clone https://x-access-token:${{ secrets.RIMURUCODE_PAT }}@github.com/gowdaman-dev/rimurucode-ai.git /tmp/public-repo
+          gh auth setup-git
+          gh repo clone gowdaman-dev/rimurucode-ai /tmp/public-repo -- --depth 1
           cd /tmp/public-repo
           cp $GITHUB_WORKSPACE/install .
           cp $GITHUB_WORKSPACE/rimuru-configs.tar.gz .
