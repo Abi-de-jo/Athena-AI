@@ -1,0 +1,8 @@
+*
+!packages
+!packages/web
+!packages/web/**
+node_modules
+.next
+.turbo
+.git
