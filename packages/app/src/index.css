@@ -171,3 +171,160 @@
     }
   }
 }
+
+/* ── Rimuru Theme: Modern Glassmorphism UI ── */
+@layer components {
+  [data-theme="rimuru-ai"] {
+    /* Sidebar rail: subtle frosted glass */
+    [data-component="sidebar-rail"] {
+      background: color-mix(in srgb, var(--background-base) 75%, transparent);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      border-right: 1px solid color-mix(in srgb, var(--v2-border-border-base) 25%, transparent);
+    }
+
+    /* Sidebar nav panel: glass effect + gradient border */
+    [data-component="sidebar-nav-desktop"] [data-slot] {
+      /* subtle nothing — inherits theme */
+    }
+    [data-component="sidebar-nav-desktop"] > div > div > div:last-child {
+      background: color-mix(in srgb, var(--background-base) 80%, transparent);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-left: 1px solid color-mix(in srgb, var(--v2-border-border-base) 30%, transparent);
+    }
+
+    /* Main content area: subtle lift with gradient top border */
+    main.xl\:rounded-tl-\[12px\] {
+      background: color-mix(in srgb, var(--background-base) 92%, transparent);
+      border-top: 2px solid transparent;
+      border-left: 1px solid color-mix(in srgb, var(--v2-border-border-base) 40%, transparent);
+      border-image: linear-gradient(
+        135deg,
+        var(--color-primary-base) 0%,
+        var(--color-accent-base) 100%
+      ) 1;
+    }
+
+    /* Titlebar: gradient underline accent */
+    [data-component="titlebar"] {
+      border-bottom: 1px solid color-mix(in srgb, var(--v2-border-border-base) 30%, transparent);
+      background: color-mix(in srgb, var(--background-base) 85%, transparent);
+      backdrop-filter: blur(8px) saturate(140%);
+      -webkit-backdrop-filter: blur(8px) saturate(140%);
+    }
+
+    /* Primary buttons: gradient with glow on hover */
+    [data-component="button"][data-variant="primary"] {
+      background: linear-gradient(135deg, var(--color-primary-base), var(--color-info-base));
+      border: none;
+      box-shadow: 0 0 12px -3px color-mix(in srgb, var(--color-primary-base) 50%, transparent);
+      transition: box-shadow 200ms ease, transform 150ms ease;
+    }
+    [data-component="button"][data-variant="primary"]:hover {
+      box-shadow: 0 0 20px -2px color-mix(in srgb, var(--color-primary-base) 60%, transparent);
+      transform: translateY(-1px);
+    }
+
+    /* Active session tab: cyan glow underline */
+    [data-component="tab"][data-state="active"] {
+      box-shadow: 0 -2px 0 0 var(--color-primary-base),
+        inset 0 1px 0 0 color-mix(in srgb, var(--color-primary-base) 15%, transparent);
+      border-radius: 6px 6px 0 0;
+    }
+
+    /* Focus rings: cyan glow */
+    *:focus-visible {
+      outline: 2px solid color-mix(in srgb, var(--color-primary-base) 60%, transparent);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary-base) 15%, transparent);
+    }
+
+    /* Links: cyan with gradient hover */
+    a:not([data-component]) {
+      color: var(--color-primary-base);
+      text-decoration-color: color-mix(in srgb, var(--color-primary-base) 30%, transparent);
+      transition: color 150ms ease, text-decoration-color 150ms ease;
+    }
+    a:not([data-component]):hover {
+      color: var(--color-info-base);
+      text-decoration-color: var(--color-primary-base);
+    }
+
+    /* Scrollbar: cyan themed */
+    ::-webkit-scrollbar-thumb {
+      background: color-mix(in srgb, var(--color-primary-base) 35%, transparent);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: color-mix(in srgb, var(--color-primary-base) 55%, transparent);
+    }
+
+    /* Selection: cyan tint */
+    ::selection {
+      background: color-mix(in srgb, var(--color-primary-base) 25%, transparent);
+      color: var(--text-base);
+    }
+    ::-moz-selection {
+      background: color-mix(in srgb, var(--color-primary-base) 25%, transparent);
+      color: var(--text-base);
+    }
+
+    /* Dialog/modal glass effect */
+    [data-component="dialog-content"],
+    [data-component="dialog-v2-content"] {
+      background: color-mix(in srgb, var(--background-base) 92%, transparent);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border: 1px solid color-mix(in srgb, var(--v2-border-border-base) 35%, transparent);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+        0 0 0 1px color-mix(in srgb, var(--color-primary-base) 8%, transparent);
+    }
+
+    /* Dropdown menus: glass effect */
+    [data-component="dropdown-menu-content"] {
+      background: color-mix(in srgb, var(--background-base) 90%, transparent);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid color-mix(in srgb, var(--v2-border-border-base) 30%, transparent);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+    }
+
+    /* Tooltip: glass */
+    [data-component="tooltip-content"] {
+      background: color-mix(in srgb, var(--background-base) 90%, transparent);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      border: 1px solid color-mix(in srgb, var(--v2-border-border-base) 25%, transparent);
+    }
+
+    /* Input fields: subtle glass border */
+    [data-component="text-input"] input,
+    [data-component="text-input-v2"] input {
+      background: color-mix(in srgb, var(--background-base) 70%, transparent);
+      border-color: color-mix(in srgb, var(--v2-border-border-base) 40%, transparent);
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+    [data-component="text-input"] input:focus,
+    [data-component="text-input-v2"] input:focus {
+      border-color: var(--color-primary-base);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary-base) 15%, transparent);
+    }
+
+    /* Sidebar project tiles: subtle glow on hover */
+    [data-component="sidebar-rail"] [data-component="project-tile"]:hover {
+      box-shadow: 0 0 12px -3px color-mix(in srgb, var(--color-primary-base) 30%, transparent);
+    }
+
+    /* Getting started card: gradient accent border */
+    [data-component="getting-started"] {
+      border: 1px solid color-mix(in srgb, var(--v2-border-border-base) 30%, transparent);
+      background: color-mix(in srgb, var(--background-base) 85%, transparent);
+      border-image: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--color-primary-base) 40%, transparent),
+        color-mix(in srgb, var(--color-accent-base) 40%, transparent)
+      ) 1;
+    }
+  }
+}

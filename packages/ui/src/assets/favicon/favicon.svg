@@ -4,12 +4,22 @@
       <stop offset="0%" stop-color="#141420"/>
       <stop offset="100%" stop-color="#0d0d15"/>
     </linearGradient>
-    <linearGradient id="r" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="slime" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#6DD5FF"/>
       <stop offset="50%" stop-color="#4DA8E8"/>
       <stop offset="100%" stop-color="#2979CC"/>
     </linearGradient>
+    <linearGradient id="slimeHi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#89E0FF"/>
+      <stop offset="100%" stop-color="#4DA8E8"/>
+    </linearGradient>
   </defs>
   <rect width="512" height="512" rx="108" fill="url(#bg)"/>
-  <text x="256" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif" font-size="300" font-weight="800" fill="url(#r)" text-anchor="middle" dominant-baseline="central" letter-spacing="-8">R</text>
+  <g transform="translate(0, 42) scale(0.5)">
+    <path d="M515.938 0C390.725 0 259.78 40.136 173.832 114.343 34.03 235.047 0 367.853 0 468.395s29.787 131.208 118.326 202.303 272.399 87.499 397.612 87.499c125.212 0 295.407-15.973 392.981-74.05 40.914-24.35 124.61-101.153 124.61-201.696s-43.953-249.058-177.14-357.36C768.288 53.453 641.15 0 515.937 0" fill="url(#slime)"/>
+    <ellipse fill="#ffffff" cx="215.186" cy="234.558" rx="35.452" ry="71.516" transform="matrix(.90792 .41914 -.3872 .922 0 0)"/>
+    <ellipse fill="#ffffff" cx="240.291" cy="248.236" rx="205.79" ry="67.259" transform="matrix(.91967 -.3927 .446 .89503 0 0)"/>
+    <path fill="url(#slimeHi)" d="M876.432 289.94c3.14 8.377 16.368 150.252-86.54 217.73-7.103 21.49 74.714 90.205 50.711 141.11-58.143 93.552-515.092 137.397-691.775 0-73.327-50.255-60.296-158.033 72.206-172.154 17.584-1.004 226.826 41.847 227.104 16.16-1.465-15.615-206.018-41.605-207.257-141.662 1.558-67.06 132.902-198.644 318.602-210.564 185.275-1.832 307.305 100.239 316.95 149.38"/>
+    <ellipse fill="url(#slimeHi)" cx="711.16" cy="270.614" rx="36.38" ry="20.816" opacity="0.5"/>
+  </g>
 </svg>

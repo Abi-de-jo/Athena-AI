@@ -74,7 +74,7 @@ const getBase = (appId: string): Configuration => ({
     sign: true,
   },
   protocols: {
-    name: "OpenCode",
+    name: "Rimuru AI",
     schemes: ["rimuru-ai"],
   },
   win: {
@@ -115,7 +115,7 @@ function getConfig() {
       return {
         ...base,
         appId,
-        productName: "OpenCode Dev",
+        productName: "Rimuru AI Dev",
         rpm: { packageName: "rimuru-ai-dev" },
       }
     }
@@ -123,8 +123,8 @@ function getConfig() {
       return {
         ...base,
         appId,
-        productName: "OpenCode Beta",
-        protocols: { name: "OpenCode Beta", schemes: ["rimuru-ai"] },
+        productName: "Rimuru AI Beta",
+        protocols: { name: "Rimuru AI Beta", schemes: ["rimuru-ai"] },
         publish: { provider: "github", owner: "gowdaman", repo: "opencode-beta", channel: "latest" },
         rpm: { packageName: "opencode-beta" },
       }
@@ -133,8 +133,8 @@ function getConfig() {
       return {
         ...base,
         appId,
-        productName: "OpenCode",
-        protocols: { name: "OpenCode", schemes: ["rimuru-ai"] },
+        productName: "Rimuru AI",
+        protocols: { name: "Rimuru AI", schemes: ["rimuru-ai"] },
         publish: { provider: "github", owner: "gowdaman", repo: "rimuru-ai", channel: "latest" },
         deb: { fpm: [legacyDesktopEntryFpm] },
         rpm: { packageName: "rimuru-ai", fpm: [legacyDesktopEntryFpm] },

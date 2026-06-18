@@ -1,6 +1,6 @@
-# OpenCode Desktop
+# Rimuru AI Desktop
 
-The OpenCode Desktop app, built with Electron.
+The Rimuru AI Desktop app, built with Electron.
 
 ## Development
 

@@ -2299,18 +2299,57 @@ export default function Layout(props: ParentProps) {
             hidden: store.gettingStartedDismissed || !(providers.all().size > 0 && providers.paid().length === 0),
           }}
         >
-          <div class="rounded-xl bg-background-base shadow-xs-border-base" data-component="getting-started">
-            <div class="p-3 flex flex-col gap-6">
-              <div class="flex flex-col gap-2">
-                <div class="text-14-medium text-text-strong">{language.t("sidebar.gettingStarted.title")}</div>
-                <div class="text-14-regular text-text-base" style={{ "line-height": "var(--line-height-normal)" }}>
-                  {language.t("sidebar.gettingStarted.line1")}
-                </div>
-                <div class="text-14-regular text-text-base" style={{ "line-height": "var(--line-height-normal)" }}>
-                  {language.t("sidebar.gettingStarted.line2")}
+          <div
+            class="rounded-xl relative overflow-hidden"
+            data-component="getting-started"
+            style={{
+              background: "linear-gradient(135deg, #0f1929 0%, #0a1220 50%, #141420 100%)",
+              border: "1px solid rgba(77, 168, 232, 0.15)",
+            }}
+          >
+            {/* Decorative glow */}
+            <div
+              style={{
+                position: "absolute",
+                top: "-30px",
+                right: "-20px",
+                width: "100px",
+                height: "100px",
+                background: "radial-gradient(circle, rgba(77, 168, 232, 0.12) 0%, transparent 70%)",
+                "border-radius": "50%",
+                "pointer-events": "none",
+              }}
+            />
+            <div class="p-3 flex flex-col gap-3">
+              {/* Slime mascot + title */}
+              <div class="flex items-start gap-2.5">
+                <svg
+                  width="36" height="36" viewBox="0 0 1032 759" fill="none"
+                  style="flex-shrink:0; margin-top: 1px;"
+                >
+                  <path d="M515.938 0C390.725 0 259.78 40.136 173.832 114.343 34.03 235.047 0 367.853 0 468.395s29.787 131.208 118.326 202.303 272.399 87.499 397.612 87.499c125.212 0 295.407-15.973 392.981-74.05 40.914-24.35 124.61-101.153 124.61-201.696s-43.953-249.058-177.14-357.36C768.288 53.453 641.15 0 515.937 0" fill="url(#getting-started-slime)"/>
+                  <ellipse fill="#ffffff" cx="215.186" cy="234.558" rx="35.452" ry="71.516" transform="matrix(.90792 .41914 -.3872 .922 0 0)"/>
+                  <ellipse fill="#ffffff" cx="240.291" cy="248.236" rx="205.79" ry="67.259" transform="matrix(.91967 -.3927 .446 .89503 0 0)"/>
+                  <path fill="rgba(137, 224, 255, 0.4)" d="M876.432 289.94c3.14 8.377 16.368 150.252-86.54 217.73-7.103 21.49 74.714 90.205 50.711 141.11-58.143 93.552-515.092 137.397-691.775 0-73.327-50.255-60.296-158.033 72.206-172.154 17.584-1.004 226.826 41.847 227.104 16.16-1.465-15.615-206.018-41.605-207.257-141.662 1.558-67.06 132.902-198.644 318.602-210.564 185.275-1.832 307.305 100.239 316.95 149.38"/>
+                  <defs>
+                    <linearGradient id="getting-started-slime" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#6DD5FF"/>
+                      <stop offset="50%" stop-color="#4DA8E8"/>
+                      <stop offset="100%" stop-color="#2979CC"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div class="flex flex-col gap-1.5">
+                  <div class="text-14-medium" style="color: #89E0FF">{language.t("sidebar.gettingStarted.title")}</div>
+                  <div class="text-13-regular" style="color: #8a8fa8; line-height: var(--line-height-normal);">
+                    {language.t("sidebar.gettingStarted.line1")}
+                  </div>
+                  <div class="text-13-regular" style="color: #8a8fa8; line-height: var(--line-height-normal);">
+                    {language.t("sidebar.gettingStarted.line2")}
+                  </div>
                 </div>
               </div>
-              <div data-component="getting-started-actions">
+              <div data-component="getting-started-actions" class="flex gap-2">
                 <Button size="large" icon="plus-small" onClick={connectProvider}>
                   {language.t("command.provider.connect")}
                 </Button>
