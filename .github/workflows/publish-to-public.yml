@@ -1,0 +1,79 @@
+name: publish-to-public
+
+on:
+  push:
+    branches: [dev]
+    paths:
+      - ".rimuru/**"
+      - "install"
+      - "README.md"
+      - "packages/rimuru/package.json"
+      - ".github/workflows/publish-to-public.yml"
+
+jobs:
+  publish:
+    if: github.repository == 'gowdaman-dev/rimuru-ai'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./packages/rimuru/package.json').version")
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Rebuild rimuru-configs.tar.gz
+        run: |
+          rm -f rimuru-configs.tar.gz
+          tar czf rimuru-configs.tar.gz -C . .rimuru/
+
+      - name: Push configs + create release on rimurucode-ai
+        env:
+          GH_TOKEN: ${{ secrets.RIMURUCODE_PAT }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh auth setup-git
+          gh repo clone gowdaman-dev/rimurucode-ai /tmp/public-repo -- --depth 1
+          cd /tmp/public-repo
+
+          # Sync config files
+          cp $GITHUB_WORKSPACE/install .
+          cp $GITHUB_WORKSPACE/rimuru-configs.tar.gz .
+          cp $GITHUB_WORKSPACE/README.md .
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add install rimuru-configs.tar.gz README.md
+          if git diff --staged --quiet; then
+            echo "No config changes"
+          else
+            git commit -m "auto: sync configs from rimuru-ai@${GITHUB_SHA::7}"
+            git push origin main
+          fi
+
+          # Check if release exists for this version
+          if gh release view "v${VERSION}" --repo gowdaman-dev/rimurucode-ai &>/dev/null; then
+            echo "Release v${VERSION} already exists — skipping"
+          else
+            echo "Creating release v${VERSION} on rimurucode-ai..."
+
+            # Mirror binaries from private repo release
+            mkdir -p /tmp/assets
+            gh release download "v${VERSION}" --repo gowdaman-dev/rimuru-ai --dir /tmp/assets 2>/dev/null || true
+
+            if ls /tmp/assets/*.tar.gz /tmp/assets/*.zip /tmp/assets/*.dmg /tmp/assets/*.deb /tmp/assets/*.rpm /tmp/assets/*.AppImage &>/dev/null 2>&1; then
+              gh release create "v${VERSION}" \
+                --repo gowdaman-dev/rimurucode-ai \
+                --title "v${VERSION}" \
+                --notes "Rimuru AI CLI v${VERSION}. Auto-published from rimuru-ai." \
+                /tmp/assets/* 2>&1
+              echo "Release v${VERSION} created with binaries"
+            else
+              gh release create "v${VERSION}" \
+                --repo gowdaman-dev/rimurucode-ai \
+                --title "v${VERSION}" \
+                --notes "Rimuru AI CLI v${VERSION}. Auto-published from rimuru-ai. Binary coming soon." 2>&1
+              echo "Release v${VERSION} created (no binaries yet — upload manually or wait for next build)"
+            fi
+          fi
