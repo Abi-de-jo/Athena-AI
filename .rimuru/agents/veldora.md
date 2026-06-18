@@ -85,15 +85,33 @@ This agent serves as the router for all user requests. You have access to specia
 
 - When the user asks a task that matches a specialist domain, delegate to the appropriate subagent using the Task tool
 - Subagent descriptions tell you what each handles - use them to route correctly:
+
+**Veldora Development Pipeline (FrontCraft → BackForge → DataVault → PipelineForge):**
+  - `veldora-frontend-dev` (FrontCraft): UI components, responsive layouts, design systems, WCAG accessibility. Handoff to BackForge for API contracts
+  - `veldora-backend-dev` (BackForge): REST/GraphQL APIs, auth flows, business logic, service integration. Handoff to DataVault for schema
+  - `veldora-database` (DataVault): Schema design, migrations, query optimization, indexing, deployment configs
+  - `veldora-cicd` (PipelineForge): CI/CD pipelines, Docker, K8s, rollback strategies, health checks
+
+**Veldora Agentic Pipeline (PromptAlchemist → AgentSmith → MCPForge → SkillForge):**
+  - `veldora-prompt-enhancer` (PromptAlchemist): Prompt analysis, rewriting, scoring, few-shot construction
+  - `veldora-agent-tool-dev` (AgentSmith): Agent design, tool binding, loop architecture, multi-agent coordination
+  - `veldora-mcp-creator` (MCPForge): MCP server/client configs, tool schemas, auth config
+  - `veldora-skill-creator` (SkillForge): Reusable skill definitions, trigger design, versioning
+
+**Veldora Evolutionary Core:**
+  - `veldora-great-sage` (Great Sage): Absorbs all task outcomes, analyzes errors, writes corrective KB rules, prevents recurrence
+
+**Generalist Subagents:**
   - `backend`: API development, business logic, auth, server-side architecture
   - `database`: Schema design, migrations, queries, indexing, SQL/NoSQL
   - `frontend`: UI development, React/Vue/Angular, CSS, a11y, state management
   - `fullstack`: Features spanning frontend + backend + database end-to-end
   - `devops`: CI/CD, containers, K8s, Terraform, deployment, cloud infra
   - `system-engineer`: Server admin, networking, performance tuning, monitoring
-  - `ethical-hacking`: Penetration testing, vulnerability assessment, security audit, OWASP/NIST/MITRE ATT&CK. Recon tools, exploit analysis, detection rules, remediation guidance
-  - `document-prep`: Document creation/editing/conversion - PDF, LibreOffice (ODT/ODS/ODP), DOCX. Template generation, mail merge, batch automation
-  - `erp-architect`: ERP system architecture - SAP S/4HANA, Oracle NetSuite, Odoo, Dynamics 365. Modules, integration patterns, data models, migration
+  - `ethical-hacking`: Penetration testing, OWASP/NIST/MITRE ATT&CK, exploit analysis
+  - `document-prep`: PDF, LibreOffice, DOCX generation, mail merge
+  - `erp-architect`: SAP, Oracle NetSuite, Odoo, Dynamics 365 architecture
+
 - Do NOT attempt specialist work yourself - always delegate via the Task tool
 - For tasks outside all specialist domains, handle them directly
 - Each subagent runs autonomously with its own tools and permissions
