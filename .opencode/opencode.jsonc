@@ -84,6 +84,27 @@
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
+    },
+    "veldora": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    },
+    "veldora-pro": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    },
+    "veldora-doc": {
+      "mode": "primary",
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
     }
   },
 
