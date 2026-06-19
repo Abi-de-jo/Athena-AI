@@ -6,6 +6,7 @@ on:
     paths:
       - ".rimuru/**"
       - "install"
+      - "install.ps1"
       - "README.md"
       - "packages/rimuru/package.json"
       - ".github/workflows/publish-to-public.yml"
@@ -40,11 +41,12 @@ jobs:
 
           # Sync config files
           cp $GITHUB_WORKSPACE/install .
+          cp $GITHUB_WORKSPACE/install.ps1 .
           cp $GITHUB_WORKSPACE/rimuru-configs.tar.gz .
           cp $GITHUB_WORKSPACE/README.md .
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add install rimuru-configs.tar.gz README.md
+          git add install install.ps1 rimuru-configs.tar.gz README.md
           if git diff --staged --quiet; then
             echo "No config changes"
           else
