@@ -9,10 +9,21 @@
     "build": "tsc"
   },
   "exports": {
-    ".": "./src/index.ts",
-    "./tool": "./src/tool.ts",
-    "./tui": "./src/tui.ts"
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./dist/index.js"
+    },
+    "./tool": {
+      "types": "./src/tool.ts",
+      "default": "./dist/tool.js"
+    },
+    "./tui": {
+      "types": "./src/tui.ts",
+      "default": "./dist/tui.js"
+    }
   },
+  "main": "./dist/index.js",
+  "types": "./src/index.ts",
   "files": [
     "dist"
   ],
