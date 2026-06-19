@@ -374,17 +374,7 @@ export const layer = Layer.effect(
           return { status } satisfies CreateResult
         }
 
-        return yield* Effect.gen(function* () {
-          const listed = mcpClient.getServerCapabilities()?.tools ? yield* McpCatalog.defs(mcpClient, mcp.timeout) : []
-          if (!listed) {
-            return yield* Effect.fail(new Error("Failed to get tools"))
-          }
-          return { mcpClient, status, defs: listed } satisfies CreateResult
-        }).pipe(
-          Effect.catchCause((cause) =>
-            Effect.tryPromise(() => mcpClient.close()).pipe(Effect.ignore, Effect.andThen(Effect.failCause(cause))),
-          ),
-        )
+        return { mcpClient, status } satisfies CreateResult
       },
       Effect.map((result): CreateResult => result),
       Effect.catchCause((cause) => {
@@ -500,11 +490,11 @@ export const layer = Layer.effect(
               s.status[key] = result.status
               if (result.mcpClient) {
                 s.clients[key] = result.mcpClient
-                s.defs[key] = result.defs!
+                s.defs[key] = result.defs ?? []
                 watch(s, key, result.mcpClient, bridge, mcp.timeout)
               }
             }),
-          { concurrency: "unbounded" },
+          { concurrency: 3 },
         )
 
         yield* Effect.addFinalizer(() =>
@@ -527,7 +517,7 @@ export const layer = Layer.effect(
                   }
                   yield* Effect.tryPromise(() => client.close()).pipe(Effect.ignore)
                 }),
-              { concurrency: "unbounded" },
+              { concurrency: 3 },
             )
             pendingOAuthTransports.clear()
           }),
@@ -597,7 +587,7 @@ export const layer = Layer.effect(
         return result.status
       }
 
-      return yield* storeClient(s, name, result.mcpClient, result.defs!, mcp.timeout)
+      return yield* storeClient(s, name, result.mcpClient, result.defs ?? [], mcp.timeout)
     })
 
     const add = Effect.fn("MCP.add")(function* (name: string, mcp: ConfigMCPV1.Info) {
@@ -636,11 +626,14 @@ export const layer = Layer.effect(
       for (const [clientName, client] of Object.entries(s.clients)) {
         if (s.status[clientName]?.status !== "connected") continue
         const mcpConfig = config[clientName]
-        const listed = s.defs[clientName]
-        if (!listed) {
-          yield* Effect.logWarning("missing cached tools for connected server", { clientName })
-          continue
+        let listed = s.defs[clientName]
+        if (!listed || (listed.length === 0 && client.getServerCapabilities()?.tools)) {
+          const fetched = yield* McpCatalog.defs(client, requestTimeout(s, clientName, mcpConfig, defaultTimeout))
+          if (!fetched) continue
+          s.defs[clientName] = fetched
+          listed = fetched
         }
+        if (!listed || listed.length === 0) continue
         const timeout = requestTimeout(s, clientName, mcpConfig, defaultTimeout)
         for (const mcpTool of listed) {
           const key = McpCatalog.sanitize(clientName) + "_" + McpCatalog.sanitize(mcpTool.name)
@@ -666,7 +659,7 @@ export const layer = Layer.effect(
               (c) => listFn(c, requestTimeout(s, clientName, cfg.mcp?.[clientName], cfg.experimental?.mcp_timeout)),
               label,
             ).pipe(Effect.map((items) => Object.entries(items ?? {}))),
-          { concurrency: "unbounded" },
+          { concurrency: 3 },
         ).pipe(Effect.map((results) => Object.fromEntries<T & { client: string }>(results.flat())))
       })
     }

@@ -85,33 +85,38 @@ export function serveUIEffect(
 
     if (embeddedWebUI) return yield* serveEmbeddedUIEffect(path, services.fs, embeddedWebUI)
 
-    const response = yield* services.client.execute(
+    return yield* services.client.execute(
       HttpClientRequest.make(request.method)(upstreamURL(path), {
         headers: ProxyUtil.headers(request.headers, { host: UI_UPSTREAM.host }),
         body: requestBody(request),
       }),
     ).pipe(
-      Effect.catchAll(() =>
-        Effect.succeed(
-          HttpServerResponse.text(
-            "Web UI is not available. The embedded web UI was not built into this binary.",
-            { status: 502 },
+      Effect.matchEffect({
+        onSuccess: (response) => {
+          const headers = proxyResponseHeaders(response.headers)
+          if (response.headers["content-type"]?.includes("text/html")) {
+            return Effect.gen(function* () {
+              const body = yield* response.text
+              headers.set("Content-Security-Policy", cspForHtml(body))
+              return HttpServerResponse.text(body, { status: response.status, headers })
+            })
+          }
+          headers.set("Content-Security-Policy", csp())
+          return Effect.succeed(
+            HttpServerResponse.stream(response.stream.pipe(Stream.catchCause(() => Stream.empty)), {
+              status: response.status,
+              headers,
+            }),
+          )
+        },
+        onFailure: () =>
+          Effect.succeed(
+            HttpServerResponse.text(
+              "Web UI is not available. The embedded web UI was not built into this binary.",
+              { status: 502 },
+            ),
           ),
-        ),
-      ),
+      }),
     )
-    const headers = proxyResponseHeaders(response.headers)
-
-    if (response.headers["content-type"]?.includes("text/html")) {
-      const body = yield* response.text
-      headers.set("Content-Security-Policy", cspForHtml(body))
-      return HttpServerResponse.text(body, { status: response.status, headers })
-    }
-
-    headers.set("Content-Security-Policy", csp())
-    return HttpServerResponse.stream(response.stream.pipe(Stream.catchCause(() => Stream.empty)), {
-      status: response.status,
-      headers,
-    })
   })
 }
