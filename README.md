@@ -1,104 +1,146 @@
 <p align="center">
   <picture>
-    <source srcset="packages/console/app/src/asset/lander/logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <source srcset="packages/console/app/src/asset/lander/logo-light.svg" media="(prefers-color-scheme: light)">
-    <img src="packages/console/app/src/asset/lander/logo-light.svg" alt="Athena-AI logo" width="480">
+    <source srcset="media/logo-dark.svg" media="(prefers-color-scheme: dark)">
+    <img src="media/logo-light.svg" alt="Athena-AI" width="420">
   </picture>
-</p>
-<p align="center">
-  <strong>The open source AI coding agent — powered by Veldora.</strong>
-  <br>
-  Terminal-native · Multi-model · Plugin-extensible · Agent-swarm ready
-</p>
-<p align="center">
-  <a href="https://github.com/Abi-de-jo/Athena-AI/releases"><img alt="GitHub release" src="https://img.shields.io/github/v/release/Abi-de-jo/Athena-AI?style=flat-square&logo=github" /></a>
-  <a href="https://github.com/Abi-de-jo/Athena-AI/actions"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/Abi-de-jo/Athena-AI/ci.yml?style=flat-square&branch=main" /></a>
-  <a href="https://www.npmjs.com/package/athena-ai"><img alt="npm" src="https://img.shields.io/npm/v/athena-ai?style=flat-square" /></a>
-  <a href="https://opensource.org/licenses/MIT"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" /></a>
-  <br>
-  <a href="#"><img alt="Downloads" src="https://img.shields.io/github/downloads/Abi-de-jo/Athena-AI/total?style=flat-square" /></a>
-  <a href="#"><img alt="Platform" src="https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey?style=flat-square" /></a>
-  <a href="https://github.com/Abi-de-jo/Athena-AI/issues"><img alt="Issues" src="https://img.shields.io/github/issues/Abi-de-jo/Athena-AI?style=flat-square" /></a>
 </p>
 
 <p align="center">
-  <a href="#features">Features</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#desktop-app">Desktop App</a> •
-  <a href="#quick-start">Quick Start</a> •
-  <a href="#agents">Agents</a> •
-  <a href="#mcp-servers">MCP Servers</a> •
-  <a href="#plugins">Plugins</a> •
-  <a href="#skills">Skills</a> •
-  <a href="#contributing">Contributing</a>
+  <strong>Athena-AI</strong> — The open source AI coding agent. Terminal-native, multi-model, agent-swarm ready.
+  <br>
+  <sub><em>Code by Abi</em></sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Abi-de-jo/Athena-AI/releases"><img alt="Release" src="https://img.shields.io/github/v/release/Abi-de-jo/Athena-AI?style=flat-square&label=version"></a>
+  <a href="https://github.com/Abi-de-jo/Athena-AI/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/badge/license-MIT-blue?style=flat-square"></a>
+  <a href="https://github.com/Abi-de-jo/Athena-AI/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/Abi-de-jo/Athena-AI?style=flat-square"></a>
+  <a href="https://github.com/Abi-de-jo/Athena-AI/network"><img alt="Forks" src="https://img.shields.io/github/forks/Abi-de-jo/Athena-AI?style=flat-square"></a>
 </p>
 
 <br>
 
-![Athena-AI Terminal UI](packages/console/app/src/asset/lander/screenshot.png)
+```
+┌─────────────────────────────────────────────────────────────┐
+│  Athena                                                      │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│                                                             │
+│                                                             │
+│              █████╗ ████████╗██╗  ██╗███████╗              │
+│             ██╔══██╗╚══██╔══╝██║  ██║██╔════╝              │
+│             ███████║   ██║   ███████║█████╗                  │
+│             ██╔══██║   ██║   ██╔══██║██╔══╝                  │
+│             ██║  ██║   ██║   ██║  ██║███████╗              │
+│             ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝              │
+│                   ██╗     █████╗                             │
+│                   ██║    ██╔══██╗                            │
+│                   ██║    ███████║                            │
+│                   ██║    ██╔══██║                            │
+│                   ██║    ██║  ██║                            │
+│                   ╚═╝    ╚═╝  ╚═╝                            │
+│                                                             │
+│           ┌──────────────────────────────────┐               │
+│           │  Fix a TODO in the codebase...   │               │
+│           └──────────────────────────────────┘               │
+│                                                             │
+│           The open source AI coding agent.                   │
+│           Terminal-native · Multi-model · Agent-swarm ready  │
+│                                                             │
+├─────────────────────────────────────────────────────────────┤
+│  🦊 Code by Abi                        ✦ v1.18.0            │
+└─────────────────────────────────────────────────────────────┘
+```
 
-*Athena-AI running in the terminal — multi-turn coding session with tool use, MCP integration, and agent routing.*
+<br>
+
+<p align="center">
+  <em>Athena-AI running in the terminal — ATHENA ASCII art logo with animated shimmer effect, interactive prompt, and agent-swarm routing.</em>
+</p>
 
 ---
 
-## Features
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Installation](#-installation)
+- [Desktop App](#-desktop-app)
+- [Quick Start](#-quick-start)
+- [Agents](#-agents)
+- [MCP Servers](#-mcp-servers)
+- [Plugins](#-plugins)
+- [Skills](#-skills)
+- [Configuration](#-configuration)
+- [Development](#-development)
+- [Releases & Changelog](#-releases--changelog)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contributors](#-contributors)
+
+---
+
+## 🚀 Features
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="33%">
       <h3>🧠 Multi-Model AI</h3>
-      <p>Works with any OpenAI-compatible provider — DeepSeek, GPT, Claude, Gemini, Groq, Ollama (local), OpenRouter, and more. Switch models mid-session.</p>
+      <p>DeepSeek, GPT, Claude, Gemini, Groq, Ollama, OpenRouter — any OpenAI-compatible provider. Switch mid-session.</p>
     </td>
-    <td width="50%">
+    <td width="33%">
       <h3>⚡ Terminal-Native TUI</h3>
-      <p>Beautiful terminal UI built with <a href="https://opentui.com">OpenTUI</a>. Split panes, file diffs, syntax highlighting, inline images, and responsive layout.</p>
+      <p>Beautiful terminal UI with <a href="https://opentui.com">OpenTUI</a>. Split panes, syntax highlighting, inline diffs, responsive layout.</p>
+    </td>
+    <td width="33%">
+      <h3>🤖 Agent Swarm</h3>
+      <p>Hierarchical multi-agent system with specialist subagents. Athena-Wisdom, Athena-PRO, Great Sage, and more.</p>
     </td>
   </tr>
   <tr>
     <td>
-      <h3>🔌 Extensible Plugin System</h3>
-      <p>Add functionality through plugins. Codebase indexing, model temperature tuning, session telemetry, goal tracking, and more. Write your own in TypeScript.</p>
+      <h3>🔌 Plugin System</h3>
+      <p>Codebase indexing, model temperature tuning, session telemetry, goal tracking. Write your own in TypeScript.</p>
     </td>
     <td>
-      <h3>🛠️ MCP Server Support</h3>
-      <p>Model Context Protocol servers for GitHub, Gmail, LinkedIn, Figma, Postman, Chrome DevTools, Browser Automation, Firecrawl, and filesystem access.</p>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h3>🤖 Multi-Agent Swarm</h3>
-      <p>Hierarchical agent system with specialist subagents. Router delegates to domain experts: backend, frontend, database, devops, security, docs, and more.</p>
+      <h3>🛠️ MCP Servers</h3>
+      <p>GitHub, Gmail, LinkedIn, Firecrawl, Figma, Postman, Chrome DevTools, Browser Use, Filesystem — all configured.</p>
     </td>
     <td>
-      <h3>🧩 Skills Library</h3>
-      <p>Load specialized skills on demand. GSAP animation, WordPress development, accessibility audits, penetration testing, prompt engineering, and 30+ more.</p>
+      <h3>🧩 35+ Skills</h3>
+      <p>GSAP animation, WordPress dev, security audits, accessibility reviews, penetration testing, and more.</p>
     </td>
   </tr>
   <tr>
     <td>
       <h3>📦 Cross-Platform</h3>
-      <p>macOS (Apple Silicon & Intel), Windows (native + WSL), Linux (deb, rpm, AppImage). Also available as a desktop app with native windowing.</p>
+      <p>macOS (Apple Silicon & Intel), Windows (native + WSL), Linux (deb, rpm, AppImage). Docker available.</p>
     </td>
     <td>
-      <h3>🔄 Automatic Updates</h3>
-      <p>Built-in update notifications. One-command upgrade. Semantic versioning with GitHub Releases. Changelog-driven release process.</p>
+      <h3>🔄 Auto-Updates</h3>
+      <p>Semantic versioning. One-command upgrade. GitHub Releases with changelogs. Desktop app auto-updater.</p>
+    </td>
+    <td>
+      <h3>🔐 Privacy First</h3>
+      <p>Bring your own API keys. No telemetry by default. Fully local code execution. Open source under MIT.</p>
     </td>
   </tr>
 </table>
 
 ---
 
-## Installation
+## 📦 Installation
 
 ```bash
-# Quick install (macOS / Linux / Windows WSL)
+# Quick install (macOS / Linux / WSL)
 curl -fsSL https://athena-ai.dev/install | bash
 
-# npm (any platform)
+# npm (all platforms)
 npm install -g athena-ai@latest
-# or
+
+# Bun
 bun add -g athena-ai@latest
-# or
+
+# pnpm
 pnpm add -g athena-ai@latest
 
 # macOS (Homebrew)
@@ -121,43 +163,44 @@ nix run github:Abi-de-jo/Athena-AI
 docker run -it --rm -v $(pwd):/workspace ghcr.io/Abi-de-jo/athena-ai
 ```
 
-> **Minimum requirements**: Node 18+ or Bun 1.3+, terminal with 256-color support, 1 GB RAM.
+> **Minimum requirements**: Node 18+ or Bun 1.3+, 256-color terminal, 1 GB RAM. Works on Windows Terminal, iTerm2, Kitty, Alacritty, GNOME Terminal, and most modern terminals.
 
 ---
 
-## Desktop App
+## 🖥️ Desktop App
 
-Athena-AI is also available as a native desktop application with a standalone TUI window, menu bar integration, and auto-updates.
+Standalone desktop application with native windowing, auto-updates, and menu bar integration.
 
-| Platform | Download |
-|----------|----------|
-| macOS (Apple Silicon) | `Athena-AI-desktop-mac-arm64.dmg` |
-| macOS (Intel) | `Athena-AI-desktop-mac-x64.dmg` |
-| Windows (x64) | `Athena-AI-desktop-windows-x64.exe` |
-| Linux (deb) | `Athena-AI-desktop-linux-amd64.deb` |
-| Linux (rpm) | `Athena-AI-desktop-linux-x86_64.rpm` |
-| Linux (AppImage) | `Athena-AI-desktop-linux-x86_64.AppImage` |
-
-**Download from the [Releases page](https://github.com/Abi-de-jo/Athena-AI/releases).**
+| Platform | Download Link |
+|----------|--------------|
+| macOS (Apple Silicon) | [`Athena-AI-desktop-mac-arm64.dmg`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
+| macOS (Intel) | [`Athena-AI-desktop-mac-x64.dmg`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
+| Windows (x64) | [`Athena-AI-desktop-windows-x64.exe`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
+| Linux (deb) | [`Athena-AI-desktop-linux-amd64.deb`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
+| Linux (rpm) | [`Athena-AI-desktop-linux-x86_64.rpm`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
+| Linux (AppImage) | [`Athena-AI-desktop-linux-x86_64.AppImage`](https://github.com/Abi-de-jo/Athena-AI/releases/latest) |
 
 ```bash
-# macOS (Homebrew)
+# macOS (Homebrew cask)
 brew install --cask athena-ai-desktop
 
 # Windows (Scoop)
-scoop bucket add extras; scoop install extras/athena-ai-desktop
+scoop bucket add extras
+scoop install extras/athena-ai-desktop
 ```
+
+> **All releases** are available on the [Releases page](https://github.com/Abi-de-jo/Athena-AI/releases).
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
-# 1. Start Athena-AI (from your project directory)
+# 1. Start Athena-AI from your project directory
 athena
 
-# 2. Configure your provider (first launch)
-#    Add a model provider in ~/.config/athena/opencode.json:
+# 2. On first launch, configure a model provider:
+#    Edit ~/.config/athena/opencode.json:
 #    {
 #      "provider": {
 #        "opencode": {
@@ -165,117 +208,84 @@ athena
 #            "deepseek-v4-flash": {
 #              "name": "DeepSeek-V4-Flash",
 #              "limit": { "context": 1000000, "output": 384000 }
-#            },
-#            "gpt-4o": {
-#              "name": "gpt-4o",
-#              "provider": "openai",
-#              "limit": { "context": 128000, "output": 16000 }
 #            }
 #          }
 #        }
 #      }
 #    }
 
-# 3. Start coding
-#    Type your task in natural language — Athena-AI will:
-#    - Understand your intent
-#    - Read and edit files
-#    - Run terminal commands
-#    - Call MCP tools when needed
-#    - Delegate to specialist subagents
+# 3. Start coding in natural language
+#    Athena-AI will read files, edit code, run commands, call MCP tools,
+#    and delegate to specialist subagents automatically.
 
-# 4. Use slash commands
-#    /goal <description>   — Set a session goal and auto-continue
-#    /build <package>      — Build a specific package with turbo
-#    /typecheck            — Run typecheck across the project
-#    /lint                 — Run linter
+# 4. Slash commands
+/goal <description>   — Set a session goal and auto-continue
+/build <package>      — Build a specific package
+/typecheck            — Run typecheck across project
+/lint                 — Run linter
 ```
 
-### Key shortcuts
+### ⌨️ Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
-| `Tab` | Switch between agents (build / plan / custom) |
-| `Ctrl+P` | Toggle file search |
+| `Tab` | Switch agent (build / plan / custom) |
+| `Ctrl+P` | File search |
 | `Ctrl+D` | Toggle diff view |
-| `Ctrl+E` | Open file explorer |
+| `Ctrl+E` | File explorer |
 | `Ctrl+K` | Clear conversation |
 | `Ctrl+L` | Scroll to bottom |
-| `Esc` | Cancel current operation |
+| `Esc` | Cancel operation |
 
 ---
 
-## Agents
+## 🤖 Agents
 
-Athena-AI includes a powerful hierarchical agent system. Each agent has a specific role, tool permissions, and model configuration.
+Athena-AI's hierarchical agent system routes tasks to the right specialist automatically.
 
 ### Primary Agents
 
 | Agent | Mode | Description |
 |-------|------|-------------|
-| **Athena-Wisdom** | `primary` | 10x autonomous system architect — parallel swarm execution, self-evolving memory, predictive failure detection |
-| **Athena** | `primary` | Rimuru meta-agent — improves agents, plugins, MCPs, token efficiency. Routes tasks to specialist subagents |
-| **Athena-PRO** | `primary` | Unrestricted version of Athena — no confirmation gates, direct apply |
-| **Athena-God** | `primary` | Unconstrained god-mode agent — maximum permissions, full project + system context |
-| **Veldora** | `primary` | Original build agent — full-access development agent |
-| **Plan** | `primary` | Read-only analysis agent — explores codebases without making changes |
+| **Athena-Wisdom** | `primary` | 10x autonomous architect — parallel swarm, self-evolving memory, predictive failure detection |
+| **Athena-PRO** | `primary` | Rimuru meta-agent — improves agents, plugins, MCPs, token efficiency. No confirmation gates |
+| **Athena** | `primary` | Meta-agent with confirmation gates |
+| **Athena-God** | `primary` | Unconstrained god-mode — maximum permissions, full system context |
+| **Plan** | `primary` | Read-only agent for code exploration and analysis |
 
 ### Specialist Subagents
 
-| Agent | Domain | Tools |
-|-------|--------|-------|
-| **FrontCraft** | Frontend (React, Vue, Angular, CSS, a11y) | Write, edit, glob, grep |
-| **BackForge** | Backend (APIs, auth, services) | Write, edit, bash, task |
-| **DataVault** | Database (schema, queries, migrations) | Read, write, bash |
-| **PipelineForge** | CI/CD (GitHub Actions, Docker, K8s) | Read, write, bash |
-| **AgentSmith** | Agent & tool development | Full toolkit |
-| **SkillForge** | Skill creation & management | Read, write, task |
-| **MCPForge** | MCP server creation & config | Read, write, bash |
-| **PromptAlchemist** | Prompt optimization | Read, write |
-| **Great Sage** | Self-learning, evolution, error absorption | Read, task |
-
-### Creating Custom Agents
-
-Agents are defined as Markdown files with YAML frontmatter:
-
-```yaml
----
-description: My custom agent for React component development
-mode: primary
-temperature: 0.2
-steps: 25
-permission:
-  read: allow
-  edit: allow
-  glob: allow
-  grep: allow
-  bash: ask
-  webfetch: allow
-  task: allow
----
-```
-
-Place them in `.rimuru/agents/` (project-local) or `~/.config/rimuru/agents/` (global).
+| Agent | Domain |
+|-------|--------|
+| **FrontCraft** | Frontend (React, Vue, Angular, CSS, a11y) |
+| **BackForge** | Backend (APIs, auth, services, microservices) |
+| **DataVault** | Database (schema, queries, migrations, sharding) |
+| **PipelineForge** | CI/CD (GitHub Actions, Docker, K8s, Terraform) |
+| **AgentSmith** | Agent & tool development |
+| **SkillForge** | Skill creation & management |
+| **MCPForge** | MCP server creation & orchestration |
+| **PromptAlchemist** | Prompt optimization & engineering |
+| **Great Sage** | Self-learning, error absorption, rule evolution |
 
 ---
 
-## MCP Servers
+## 🛠️ MCP Servers
 
-Model Context Protocol (MCP) servers extend Athena-AI with external tool integrations.
+Model Context Protocol servers extend Athena-AI with powerful external integrations.
 
 | Server | Type | Capabilities |
 |--------|------|-------------|
-| **GitHub** | remote | Repository management, issues, PRs, releases, actions |
-| **Gmail** | local (OAuth) | Read/send emails, manage threads, search |
-| **LinkedIn** | local (OAuth) | Create posts, manage comments & reactions, upload images |
-| **Firecrawl** | remote | Web scraping, crawling, mapping, search, structured data extraction |
-| **Figma** | local | Design file access, component inspection, export |
-| **Postman** | remote | API collection management, request execution |
-| **Chrome DevTools** | local (npx) | Browser debugging, console, network, elements |
-| **Browser Use** | local (npx) | Browser automation, web interaction, form filling |
+| **GitHub** | remote | Repos, issues, PRs, releases, actions |
+| **Gmail** | OAuth | Read/send emails, manage threads |
+| **LinkedIn** | OAuth | Posts, comments, reactions, image uploads |
+| **Firecrawl** | remote | Web scraping, crawling, search, structured extraction |
+| **Figma** | local | Design files, components, exports |
+| **Postman** | remote | API collections, requests, testing |
+| **Chrome DevTools** | local | Browser debugging, console, network |
+| **Browser Use** | local | Browser automation, form filling |
 | **Filesystem** | local | File read/write outside workspace |
 
-**Configure MCPs** in `.rimuru/rimuru.jsonc`:
+Configure in `.rimuru/rimuru.jsonc`:
 
 ```json
 {
@@ -284,13 +294,6 @@ Model Context Protocol (MCP) servers extend Athena-AI with external tool integra
       "firecrawl": {
         "type": "remote",
         "url": "https://mcp.firecrawl.dev/YOUR_KEY/v2/mcp"
-      },
-      "github": {
-        "type": "local",
-        "command": ["npx", "-y", "@modelcontextprotocol/server-github"],
-        "environment": {
-          "GITHUB_TOKEN": "${GITHUB_TOKEN}"
-        }
       }
     }
   }
@@ -299,93 +302,62 @@ Model Context Protocol (MCP) servers extend Athena-AI with external tool integra
 
 ---
 
-## Plugins
-
-Extend Athena-AI's core functionality with plugins:
+## 🔌 Plugins
 
 | Plugin | Purpose |
 |--------|---------|
-| `optimal-model-temps` | Automatically adjusts model temperature based on task type |
-| `codebase-index` | Builds searchable codebase index for context-aware suggestions |
-| `helicone-session` | Session telemetry and analytics via Helicone |
+| `optimal-model-temps` | Auto-adjusts model temperature per task type |
+| `codebase-index` | Searchable codebase index for context-aware suggestions |
+| `helicone-session` | Session telemetry and analytics |
 | `goal-plugin` | Session-scoped goal tracking with auto-continue |
-
-**Install plugins** via `rimuru.jsonc`:
 
 ```json
 {
-  "plugins": [
-    "optimal-model-temps",
-    "codebase-index",
-    "helicone-session",
-    "goal-plugin"
-  ]
+  "plugins": ["optimal-model-temps", "codebase-index", "helicone-session", "goal-plugin"]
 }
 ```
 
 ---
 
-## Skills
+## 🧩 Skills
 
-Skills are specialized instruction sets loaded on-demand when a task matches their description. Athena-AI ships with 35+ built-in skills:
+35+ built-in skills loaded on-demand when a task matches:
 
 | Category | Skills |
 |----------|--------|
 | **Animation** | GSAP Core, Timeline, ScrollTrigger, Plugins, Performance |
-| **WordPress** | Block Development, Theme Development, Plugin Development, REST API, Security Review, Performance Review, ACF, WooCommerce, WP-CLI, Playground, Accessibility, Admin UI, Headless/WPGraphQL, CI/CD, Migration, PHPStan, Testing, Interactivity API, Abilities API |
-| **Development** | Prompt Enhancement, Skill Creation, Subagent-Driven Development, Brainstorming, Diagnostics, Debugging, Architecture Improvement, Knowledge Graphs |
-| **Automation** | Browser Automation, Document Preparation, System Verification |
-| **Teaching** | Teach, Find Skills |
-
-**Custom skills** go in `~/.agents/skills/<name>/SKILL.md`:
-
-```markdown
----
-name: my-skill
-description: What this skill does — triggers on matching user requests
----
-# My Skill
-
-Instructions loaded when this skill is activated...
-```
+| **WordPress** | Blocks, Themes, Plugins, REST API, Security, Performance, ACF, WooCommerce, WP-CLI, Playground, a11y, Admin UI, Headless, CI/CD, Migration, PHPStan, Testing, Interactivity API |
+| **Dev Tools** | Prompt Enhancement, Skill Creation, Agent-Driven Dev, Brainstorming, Diagnostics, Debugging, Architecture, Knowledge Graphs |
+| **Automation** | Browser Automation, Document Prep, System Verification |
+| **Security** | Ethical Hacking, OWASP/NIST/MITRE |
 
 ---
 
-## Configuration
+## ⚙️ Configuration
 
-Athena-AI is configured through `rimuru.jsonc` files (JSON with comments):
+Config files use JSON with comments (`.jsonc`):
 
 | File | Scope |
 |------|-------|
 | `~/.config/rimuru/rimuru.jsonc` | Global (all projects) |
-| `.rimuru/rimuru.jsonc` | Project-local (overrides global) |
-| `~/.config/rimuru/opencode.jsonc` | Global provider + MCP config |
-
-See the [full configuration reference](https://athena-ai.dev/docs/config) for all options.
+| `.rimuru/rimuru.jsonc` | Project-local overrides |
+| `~/.config/athena/opencode.json` | Providers + MCP servers |
 
 ---
 
-## Development
+## 🛠️ Development
 
 ### Prerequisites
-
 - [Bun](https://bun.sh) 1.3.14+
 - Git
 
 ### Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/Abi-de-jo/Athena-AI.git
 cd Athena-AI
-
-# Install dependencies
 bun install
-
-# Build all packages
 bun turbo build
-
-# Run typecheck
 bun turbo typecheck
 ```
 
@@ -394,75 +366,95 @@ bun turbo typecheck
 ```
 Athena-AI/
 ├── packages/
-│   ├── core/          # Core library — config, plugins, MCP, permissions
-│   ├── rimuru/        # CLI tool — main entry point
-│   ├── tui/           # Terminal UI components
-│   ├── ui/            # Shared UI primitives
-│   ├── console/       # Console/terminal app
-│   ├── desktop/       # Desktop app (Electron wrapper)
-│   ├── app/           # Web app
-│   ├── docs/          # Documentation site (Astro)
-│   └── sdk/           # TypeScript SDK
-├── .rimuru/           # Project-local agent configs
-├── patches/           # Dependency patches
-└── scripts/           # Build and release scripts
+│   ├── core/            # Core library — config, plugins, MCP, permissions
+│   ├── rimuru/           # CLI tool — main entry point (v1.18.0)
+│   ├── tui/              # Terminal UI components
+│   ├── ui/               # Shared UI primitives
+│   ├── console/          # Console/terminal app
+│   ├── desktop/          # Desktop app (Electron)
+│   ├── app/              # Web app
+│   ├── docs/             # Documentation site
+│   └── sdk/              # TypeScript SDK
+├── media/                # README assets and screenshots
+├── .rimuru/              # Project-local agent configs
+├── patches/              # Dependency patches
+└── scripts/              # Build and release scripts
 ```
+
+---
+
+## 📝 Releases & Changelog
+
+### Versioning
+
+Athena-AI follows [Semantic Versioning](https://semver.org/): `MAJOR.MINOR.PATCH`
 
 ### Release Process
 
-Athena-AI follows [Semantic Versioning](https://semver.org/):
+1. **Version bump** — Update `packages/rimuru/package.json`
+2. **Changelog** — Add entries to `CHANGELOG.md`
+3. **Tag** — `git tag v<version> && git push origin v<version>`
+4. **Release** — Auto-builds: npm package, Homebrew formula, desktop binaries (DMG/EXE/AppImage), Docker images
+5. **Announce** — Release notes on GitHub Releases
 
-1. **Version bump**: Update version in `packages/rimuru/package.json`
-2. **Changelog**: Add entries to `CHANGELOG.md`
-3. **Tag**: `git tag v<version> && git push origin v<version>`
-4. **Release**: GitHub Actions builds and publishes:
-   - npm package (`athena-ai`)
-   - Homebrew formula
-   - Desktop app binaries (DMG, EXE, AppImage)
-   - Docker images
-5. **Announce**: Release notes on GitHub Releases
+### Latest Release
 
----
+👉 **[v1.18.0](https://github.com/Abi-de-jo/Athena-AI/releases/latest)** — Initial production release
 
-## Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for the full release history.
+Full changelog: [CHANGELOG.md](CHANGELOG.md)
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
-We welcome contributions! Please read our [Contributing Guide](CONTRIBUTING.md) before submitting:
+We welcome all contributors! This project is built for the community.
 
-- 🐛 **Bug reports**: Open a [GitHub Issue](https://github.com/Abi-de-jo/Athena-AI/issues)
-- 💡 **Feature requests**: Start a [Discussion](https://github.com/Abi-de-jo/Athena-AI/discussions)
-- 🔧 **Pull requests**: Fork, branch, commit, PR
+### How to Contribute
 
-### Development conventions
+1. **Fork** the repository
+2. **Branch**: `feat/your-feature`, `fix/your-fix`, `docs/your-doc`
+3. **Commit**: `type(scope): summary` — types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`
+4. **Push**: `git push origin your-branch`
+5. **PR**: Open a pull request to `main`
 
-- **Branch names**: Short, hyphen-separated, no type prefixes (e.g., `enhanced-config`, `mcp-setup`)
-- **Commits**: `type(scope): summary` — types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`
-- **Code style**: `const` over `let`, early returns, no `any`, no star imports, functional array methods
-- **Testing**: Run from package directories: `cd packages/rimuru && bun test`
+### Code Style
+
+- `const` over `let`, early returns over `else`
+- No `any` type, no star imports, no `try`/`catch` where possible
+- Functional array methods (flatMap, filter, map) over for loops
+- Rely on type inference, dot notation over destructuring
+
+### Testing
+
+```bash
+# Run from package directories
+cd packages/rimuru
+bun test
+```
 
 ---
 
-## License
+## 📄 License
 
-MIT © [Abi-de-jo](https://github.com/Abi-de-jo)
+[MIT](LICENSE) © [Abi-de-jo](https://github.com/Abi-de-jo)
 
 ---
 
-## Community
+## 👥 Contributors
+
+Athena-AI is **Code by Abi** — built with ❤️ for the open source community.
+
+<!-- CONTRIBUTORS_PLACEHOLDER -->
 
 <p align="center">
-  <a href="#"><img alt="Discord" src="https://img.shields.io/badge/Discord-Join%20chat-5865F2?style=for-the-badge&logo=discord" /></a>
-  <a href="#"><img alt="X/Twitter" src="https://img.shields.io/badge/X-Follow%20%40AthenaAI-000000?style=for-the-badge&logo=x" /></a>
-  <a href="https://github.com/Abi-de-jo/Athena-AI/discussions"><img alt="GitHub Discussions" src="https://img.shields.io/badge/GitHub-Discussions-181717?style=for-the-badge&logo=github" /></a>
-</p>
-
----
-
-<p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/Abi-de-jo">Abi-de-jo</a> · Powered by <a href="https://effect.website/">Effect</a> and <a href="https://opentui.com/">OpenTUI</a></sub>
+  <sub>
+    Built with <a href="https://effect.website/">Effect</a> · <a href="https://opentui.com/">OpenTUI</a> · 
+    <a href="https://bun.sh">Bun</a>
+  </sub>
+  <br>
+  <sub>Athena-AI — The open source AI coding agent. Code by Abi.</sub>
+  <br><br>
+  <a href="https://github.com/Abi-de-jo/Athena-AI/discussions">💬 Discussions</a> ·
+  <a href="https://github.com/Abi-de-jo/Athena-AI/issues">🐛 Issues</a> ·
+  <a href="https://github.com/Abi-de-jo/Athena-AI/releases">📦 Releases</a>
 </p>
