@@ -1,12 +1,12 @@
 <p align="center">
   <picture>
     <source srcset="media/logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="media/logo-light.svg" alt="Athena-AI" width="420">
+    <img src="media/logo-light.svg" alt="Athena AI" width="480">
   </picture>
 </p>
 
 <p align="center">
-  <strong>Athena-AI</strong> — The open source AI coding agent. Terminal-native, multi-model, agent-swarm ready.
+  <strong>Athena AI</strong> — The open source AI coding agent. Terminal-native, multi-model, agent-swarm ready.
   <br>
   <sub><em>Code by Abi</em></sub>
 </p>
@@ -21,41 +21,40 @@
 <br>
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│  Athena                                                      │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│                                                             │
-│                                                             │
-│              █████╗ ████████╗██╗  ██╗███████╗              │
-│             ██╔══██╗╚══██╔══╝██║  ██║██╔════╝              │
-│             ███████║   ██║   ███████║█████╗                  │
-│             ██╔══██║   ██║   ██╔══██║██╔══╝                  │
-│             ██║  ██║   ██║   ██║  ██║███████╗              │
-│             ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝              │
-│                   ██╗     █████╗                             │
-│                   ██║    ██╔══██╗                            │
-│                   ██║    ███████║                            │
-│                   ██║    ██╔══██║                            │
-│                   ██║    ██║  ██║                            │
-│                   ╚═╝    ╚═╝  ╚═╝                            │
-│                                                             │
-│           ┌──────────────────────────────────┐               │
-│           │  Fix a TODO in the codebase...   │               │
-│           └──────────────────────────────────┘               │
-│                                                             │
-│           The open source AI coding agent.                   │
-│           Terminal-native · Multi-model · Agent-swarm ready  │
-│                                                             │
-├─────────────────────────────────────────────────────────────┤
-│  🦊 Code by Abi                        ✦ v1.18.0            │
-└─────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│  Athena AI                                                                   │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│            █████╗ ████████╗██╗  ██╗███████╗███╗   ██╗ █████╗               │
+│           ██╔══██╗╚══██╔══╝██║  ██║██╔════╝████╗  ██║██╔══██╗              │
+│           ███████║   ██║   ███████║█████╗  ██╔██╗ ██║███████║              │
+│           ██╔══██║   ██║   ██╔══██║██╔══╝  ██║╚██╗██║██╔══██║              │
+│           ██║  ██║   ██║   ██║  ██║███████╗██║ ╚████║██║  ██║              │
+│           ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝╚═╝  ╚═╝              │
+│                                                                              │
+│              █████╗ ██╗                                                     │
+│             ██╔══██╗██║                                                     │
+│             ███████║██║                                                     │
+│             ██╔══██║██║                                                     │
+│             ██║  ██║██║                                                     │
+│             ╚═╝  ╚═╝╚═╝                                                     │
+│                                                                              │
+│           ┌──────────────────────────────────────────┐                       │
+│           │  Fix a TODO in the codebase...           │                       │
+│           └──────────────────────────────────────────┘                       │
+│                                                                              │
+│           The open source AI coding agent.                                   │
+│           Terminal-native · Multi-model · Agent-swarm ready                  │
+│                                                                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  🦊 Code by Abi                                ✦ v1.18.0                    │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 <br>
 
 <p align="center">
-  <em>Athena-AI running in the terminal — ATHENA ASCII art logo with animated shimmer effect, interactive prompt, and agent-swarm routing.</em>
+  <em>Athena AI running in the terminal — full ASCII art logo with interactive prompt, MCP integration, and agent-swarm routing.</em>
 </p>
 
 ---
