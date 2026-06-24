@@ -1,7 +1,6 @@
 <p align="center">
   <picture>
-    <source srcset="media/logo-dark.svg" media="(prefers-color-scheme: dark)">
-    <img src="media/logo-light.svg" alt="Athena AI" width="480">
+  
   </picture>
 </p>
 
