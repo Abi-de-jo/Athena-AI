@@ -1,7 +1,7 @@
-# Rimuru-AI Development Guide
+# Athena-AI Development Guide
 
 ## Project Identity
-Rimuru-AI is an AI-powered development tool. This is the main repository.
+Athena-AI is an AI-powered development tool. This is the main repository.
 
 ## Branch Names
 Use short branch names (at most three words, hyphens, no slashes or type prefixes).
@@ -12,7 +12,7 @@ Examples: `enhanced-config`, `mcp-setup`, `doc-prep-workflow`
 Conventional commit format: `type(scope): summary`.
 
 Types: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`
-Scopes: `core`, `rimuru-ai`, `tui`, `app`, `desktop`, `sdk`, `plugin`, `config`, `mcp`
+Scopes: `core`, `athena-ai`, `tui`, `app`, `desktop`, `sdk`, `plugin`, `config`, `mcp`
 
 ## Style Guide
 Follow the existing code style in the source. Key rules:
@@ -32,7 +32,7 @@ Follow the existing code style in the source. Key rules:
 - Run `oxlint` for linting
 
 ## MCP Servers
-Configured in `.rimuru/rimuru.jsonc`. Available MCPs:
+Configured in `.athena/athena.jsonc`. Available MCPs:
 - figma — Design integration
 - filesystem — File system access
 - postman — API management
@@ -43,6 +43,8 @@ Configured in `.rimuru/rimuru.jsonc`. Available MCPs:
 
 ## Testing
 - Tests cannot run from repo root
-- Run from package directories like `packages/opencode`
+- Run from package directories like `packages/rimuru`
 - Avoid mocks where possible
 - Test actual implementation, don't duplicate logic
+
+

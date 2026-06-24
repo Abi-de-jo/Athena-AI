@@ -69,6 +69,8 @@ const TRAIL = 0.28
 const SWELL = 0.24
 const WIDE = 1.85
 const DRIFT = 1.45
+const THUNDER_EDGE = 3.2
+const THUNDER_BOLT = 3.0
 const EXPAND = 1.62
 const LIFE = 1020
 const CHARGE = 3000
@@ -87,6 +89,7 @@ const TAIL = 1.8
 const TRACE_IN = 200
 const GLOW_OUT = 1600
 const PEAK = RGBA.fromInts(255, 255, 255)
+const THUNDER_PEAK = RGBA.fromInts(215, 230, 255)
 
 type Ring = {
   x: number
@@ -171,6 +174,8 @@ function glow(base: RGBA, theme: ReturnType<typeof useTheme>["theme"], n: number
   const mid = tint(base, theme.primary, 0.84)
   const top = tint(theme.primary, PEAK, 0.96)
   if (n <= 1) return tint(base, mid, Math.min(1, Math.sqrt(Math.max(0, n)) * 1.14))
+  // Thunder: high-intensity burst values (>2.4) skip theme tint and go straight to blue-white lightning
+  if (n >= 2.4) return tint(base, THUNDER_PEAK, Math.min(1, 0.88 + (n - 2.4) * 0.04))
   return tint(mid, top, Math.min(1, 1 - Math.exp(-2.4 * (n - 1))))
 }
 
@@ -336,6 +341,7 @@ function remain(x: number, y: number, item: Release, t: number, ctx: LogoContext
   return clamp((r - dist) / 1.35 < 1 ? 1 - (r - dist) / 1.35 : 0)
 }
 
+// Sharp expanding ring (secondary effect for thunder — adds a crisp shockwave edge)
 function wave(x: number, y: number, frame: Frame, live: boolean, ctx: LogoContext) {
   return frame.list.reduce((sum, item) => {
     const age = frame.t - item.at
@@ -345,17 +351,41 @@ function wave(x: number, y: number, frame: Frame, live: boolean, ctx: LogoContex
     const dy = y * 2 + 1 - item.y
     const dist = Math.hypot(dx, dy)
     const r = ctx.SPAN * (1 - (1 - p) ** EXPAND)
-    const fade = (1 - p) ** 1.32
+    const fade = (1 - p) ** 1.6
     const j = 1.02 + noise(x + item.x * 0.7, y + item.y * 0.7, item.at * 0.002 + age * 0.06) * 0.52
-    const edge = Math.exp(-(((dist - r) / WIDTH) ** 2)) * GAIN * fade * item.force * j
-    const swell = Math.exp(-(((dist - Math.max(0, r - DRIFT)) / WIDE) ** 2)) * SWELL * fade * item.force
+    const edge = Math.exp(-(((dist - r) / WIDTH) ** 4)) * THUNDER_EDGE * fade * item.force * j
     const trail = dist < r ? Math.exp(-(r - dist) / 2.4) * TRAIL * fade * item.force * lerp(0.92, 1.22, j) : 0
-    const flash = Math.exp(-(dist * dist) / 3.2) * FLASH * item.force * Math.max(0, 1 - age / 140) * lerp(0.95, 1.18, j)
-    const kick = Math.exp(-(dist * dist) / 2) * item.kick * Math.max(0, 1 - age / 100)
-    const suck = Math.exp(-(((dist - 1.25) / 0.75) ** 2)) * item.kick * SUCK * Math.max(0, 1 - age / 110)
-    const wake = live && dist < r ? Math.exp(-(r - dist) / 1.25) * 0.32 * fade : 0
-    return sum + edge + swell + trail + flash + wake - kick - suck
+    return sum + edge + trail
   }, 0)
+}
+
+// Global thunder flash: illuminates every cell equally regardless of distance from click
+// Produces a sudden brilliant white flash across the entire logo
+// Intensity scales with ring force (longer hold = bigger blast)
+function thunderFlash(frame: Frame): number {
+  if (frame.list.length === 0) return 0
+  const latest = frame.list[frame.list.length - 1]
+  const age = frame.t - latest.at
+  if (age < 0 || age > 120) return 0
+  const p = age / 120
+  const forceScale = latest.force / 0.82
+  return (1 - p) ** 4 * 8 * forceScale
+}
+
+// Jagged lightning bolts across the logo surface using multi-octave noise
+// Intensity scales with ring force (longer hold = bigger blast)
+function thunderBolt(x: number, y: number, frame: Frame): number {
+  if (frame.list.length === 0) return 0
+  const latest = frame.list[frame.list.length - 1]
+  const age = frame.t - latest.at
+  if (age < 0 || age > 300) return 0
+  const fade = Math.max(0, 1 - age / 300)
+  const forceScale = latest.force / 0.82
+  const n1 = noise(x * 0.6 + 0.3, y * 0.6 + 1.7, frame.t * 1.5 + latest.at)
+  const n2 = noise(x * 1.4 + 0.7, y * 1.4 + 0.5, frame.t * 3.0 + latest.at)
+  const n3 = noise(x * 3.0 + 1.1, y * 3.0 + 2.3, frame.t * 6.0 + latest.at)
+  const bolt = Math.max(0, n1 * 0.5 + n2 * 0.3 + n3 * 0.2 - 0.65) * 10 * forceScale
+  return bolt * fade
 }
 
 function field(x: number, y: number, frame: Frame, ctx: LogoContext) {
@@ -384,16 +414,20 @@ function field(x: number, y: number, frame: Frame, ctx: LogoContext) {
   const seam = Math.max(0, Math.cos(angle * 5 + spin * 1.55)) ** 12
   const ring = Math.exp(-(((dist - lerp(1.05, 3, level)) / 0.48) ** 2)) * arc * lerp(0.03, 0.5 + ARC, storm)
   const fork = Math.exp(-(((dist - (1.55 + storm * 2.1)) / 0.36) ** 2)) * seam * storm * FORK
-  const spark = Math.max(0, noise(x, y, frame.t) - lerp(0.94, 0.66, storm)) * lerp(0, 5.4, storm)
-  const glitch = spark * Math.exp(-dist / Math.max(1.2, 3.1 - storm))
-  const crack = Math.max(0, Math.cos((dx - dy) * 1.6 + spin * 2.1)) ** 18
-  const lash = crack * Math.exp(-(((dist - (1.95 + storm * 2)) / 0.28) ** 2)) * storm * 1.1
-  const flicker =
-    Math.max(0, noise(item.x * 3.1, item.y * 2.7, frame.t * 1.7) - 0.72) *
-    Math.exp(-(dist * dist) / 0.15) *
-    lerp(0.08, 0.42, body)
+    const spark = Math.max(0, noise(x, y, frame.t) - lerp(0.94, 0.66, storm)) * lerp(0, 8.0, storm)
+    const glitch = spark * Math.exp(-dist / Math.max(1.2, 3.1 - storm))
+    const crack = Math.max(0, Math.cos((dx - dy) * 2.0 + spin * 2.8)) ** 12
+    const lash = crack * Math.exp(-(((dist - (1.95 + storm * 2)) / 0.24) ** 2)) * storm * 2.0
+    const flicker =
+      Math.max(0, noise(item.x * 3.1, item.y * 2.7, frame.t * 1.7) - 0.68) *
+      Math.exp(-(dist * dist) / 0.12) *
+      lerp(0.08, 0.8, body)
+  // Vibration: rapid trembling that intensifies with charge during hold
+  const vibFreq = lerp(10, 55, storm)
+  const vibAmp = lerp(0, 3.0, storm)
+  const vib = held ? vibAmp * (0.5 + 0.5 * Math.sin(frame.t * vibFreq * 0.001 + x * 2.3 + y * 1.7)) : 0
   const fade = frame.release && !frame.hold ? remain(x, y, frame.release, frame.t, ctx) : 1
-  return (core + shell + ember + ring + fork + glitch + lash + flicker - dim) * fade
+  return (core + shell + ember + ring + fork + glitch + lash + flicker + vib - dim) * fade
 }
 
 function pick(x: number, y: number, frame: Frame, ctx: LogoContext) {
@@ -560,6 +594,7 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
   const [release, setRelease] = createSignal<Release>()
   const [glow, setGlow] = createSignal<Glow>()
   const [now, setNow] = createSignal(0)
+  const [hoverPos, setHoverPos] = createSignal<{ x: number; y: number } | undefined>()
   let box: BoxRenderable | undefined
   let timer: ReturnType<typeof setInterval> | undefined
 
@@ -589,6 +624,7 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
     if (!live) setRelease(undefined)
     if (live || hold() || release() || glow()) return
     if (props.idle) return
+    if (hoverPos()) return  // Keep timer alive for hover wave animation
     stop()
   }
 
@@ -631,17 +667,30 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
     setHold(undefined)
     setRelease({ x, y, at: t, glyph: item.glyph, level, rise })
     if (item.glyph !== undefined) {
-      setGlow({ glyph: item.glyph, at: t, force: lerp(0.18, 1.5, rise * level) })
+      setGlow({ glyph: item.glyph, at: t, force: lerp(0.18, 2.5, rise * level) })
     }
+    // Primary blast ring
     setRings((list) => [
       ...list,
       {
         x: x + 0.5,
         y: y * 2 + 1,
         at: t,
-        force: lerp(0.82, 2.55, level),
-        kick: lerp(0.32, 0.32 + KICK, level),
+        force: lerp(0.82, 4.0, level),
+        kick: lerp(0.32, 0.32 + KICK * 2, level),
       },
+      // Cascading secondary blast (kicks in when held long enough)
+      ...(level > 0.3
+        ? [
+            {
+              x: x + 0.5,
+              y: y * 2 + 1,
+              at: t + 60,
+              force: lerp(0.5, 2.8, level),
+              kick: lerp(0.2, 0.5 + KICK, level),
+            },
+          ]
+        : []),
     ])
     setNow(t)
     start()
@@ -737,6 +786,9 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
       const e = charLit ? trace(off + i, y, frame, ctx) : 0
       const b = charLit ? bloom(off + i, y, frame, ctx) : 0
       const q = shimmer(off + i, y, frame, ctx)
+      const hw = hoverWave(off + i, y, frame.t)
+      const tf = frame.list.length > 0 ? thunderFlash(frame) : 0
+      const tb = frame.list.length > 0 ? thunderBolt(off + i, y, frame) : 0
 
       if (char === "_") {
         return (
@@ -754,7 +806,7 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
       if (char === "^") {
         return (
           <text
-            fg={shade(inkTop, theme, n + p + e + b)}
+            fg={shade(inkTop, theme, n + p + e + b + tf + tb + hw)}
             bg={shade(shadowBot, theme, ghost(s, 0.18) + ghost(q, 0.05) + ghost(b, 0.08))}
             attributes={attrs}
             selectable={false}
@@ -784,8 +836,8 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
       if (char === "█" && useSubpixelBlocks()) {
         return (
           <text
-            fg={shade(inkTop, theme, n + p + e + b)}
-            bg={shade(inkBot, theme, n + p + e + b)}
+            fg={shade(inkTop, theme, n + p + e + b + tf + tb + hw)}
+            bg={shade(inkBot, theme, n + p + e + b + tf + tb + hw)}
             attributes={attrs}
             selectable={false}
           >
@@ -797,7 +849,7 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
       // ▀ top-half-lit: fg uses top-pixel sample, bg stays transparent/panel
       if (char === "▀") {
         return (
-          <text fg={shade(inkTop, theme, n + p + e + b)} attributes={attrs} selectable={false}>
+          <text fg={shade(inkTop, theme, n + p + e + b + tf + tb + hw)} attributes={attrs} selectable={false}>
             ▀
           </text>
         )
@@ -806,31 +858,63 @@ export function Logo(props: { shape?: LogoShape; ink?: RGBA; idle?: boolean } = 
       // ▄ bottom-half-lit: fg uses bottom-pixel sample
       if (char === "▄") {
         return (
-          <text fg={shade(inkBot, theme, n + p + e + b)} attributes={attrs} selectable={false}>
+          <text fg={shade(inkBot, theme, n + p + e + b + tf + tb + hw)} attributes={attrs} selectable={false}>
             ▄
           </text>
         )
       }
 
       return (
-        <text fg={shade(inkTinted, theme, n + p + e + b)} attributes={attrs} selectable={false}>
+        <text fg={shade(inkTinted, theme, n + p + e + b + tf + tb + hw)} attributes={attrs} selectable={false}>
           {char}
         </text>
       )
     })
   }
 
+  // Hover wave: gentle theme-colored ripples that follow the cursor like water waves
+  function hoverWave(cellX: number, cellY: number, t: number): number {
+    const pos = hoverPos()
+    if (!pos) return 0
+    const dx = cellX - pos.x
+    const dy = cellY * 2 - pos.y
+    const dist = Math.hypot(dx, dy)
+    if (dist > 18) return 0
+    // Expanding ripples from cursor position
+    const phase = dist * 0.5 - t * 0.0015
+    const wave = Math.sin(phase) * 0.5 + 0.5
+    const decay = Math.max(0, 1 - dist / 18) ** 2
+    return wave * decay * 0.6
+  }
+
   const mouse = (evt: MouseEvent) => {
     if (!box) return
+    const mx = evt.x - box.x
+    const my = evt.y - box.y
+
+    // Track hover for wave effect
+    if (evt.type === "move") {
+      if (mx >= 0 && my >= 0 && mx < ctx.FULL[0]?.length && my < ctx.FULL.length) {
+        setHoverPos({ x: mx, y: my })
+        start()  // Ensure timer runs for wave animation
+      } else {
+        setHoverPos(undefined)
+      }
+      return
+    }
+
+    if (evt.type === "leave") {
+      setHoverPos(undefined)
+      return
+    }
+
     if ((evt.type === "down" || evt.type === "drag") && evt.button === MouseButton.LEFT) {
-      const x = evt.x - box.x
-      const y = evt.y - box.y
-      if (!hit(x, y)) return
+      if (!hit(mx, my)) return
       if (evt.type === "drag" && hold()) return
       evt.preventDefault()
       evt.stopPropagation()
       const t = performance.now()
-      press(x, y, t)
+      press(mx, my, t)
       return
     }
 

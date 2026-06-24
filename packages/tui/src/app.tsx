@@ -441,14 +441,14 @@ function App(props: { onSnapshot?: () => Promise<string[]>; pluginHost: TuiPlugi
     if (!terminalTitleEnabled() || Flag.OPENCODE_DISABLE_TERMINAL_TITLE) return
 
     if (route.data.type === "home") {
-      renderer.setTerminalTitle("Rimuru")
+      renderer.setTerminalTitle("Athena")
       return
     }
 
     if (route.data.type === "session") {
       const session = sync.session.get(route.data.sessionID)
       if (!session || isDefaultTitle(session.title)) {
-        renderer.setTerminalTitle("Rimuru")
+        renderer.setTerminalTitle("Athena")
         return
       }
 
@@ -1075,8 +1075,8 @@ function App(props: { onSnapshot?: () => Promise<string[]>; pluginHost: TuiPlugi
       <Show when={Flag.OPENCODE_SHOW_TTFD}>
         <TimeToFirstDraw />
       </Show>
+      <AnimeHeader />
       <Show when={ready()}>
-        <AnimeHeader />
         <box flexGrow={1} minHeight={0} flexDirection="column">
           <Switch>
             <Match when={route.data.type === "home"}>

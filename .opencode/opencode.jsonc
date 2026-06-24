@@ -10,17 +10,17 @@
       "repository": "github.com/Effect-TS/effect-smol",
       "description": "Use for Effect v4 and effect-smol implementation details"
     },
-    "rimuru-local": {
+    "athena-local": {
       "path": "~/.local/share/opencode",
       "description": "Contains opencode logs and data"
     },
-    "rimuru-docs": {
+    "athena-docs": {
       "path": "./packages/docs",
-      "description": "Rimuru documentation site built with Astro"
+      "description": "Athena documentation site built with Astro"
     },
-    "rimuru-core": {
+    "athena-core": {
       "path": "./packages/core",
-      "description": "Core shared library for rimuru-ai"
+      "description": "Core shared library for athena-ai"
     }
   },
 
@@ -30,7 +30,7 @@
       "command": ["npx", "-y", "@nexus2520/figma-mcp-server"],
       "enabled": true,
       "environment": {
-        "FIGMA_ACCESS_TOKEN": "figd_hnE1be8CLqwEb2ZKciIr4y8bokJs38c-wTasSVQj"
+        "FIGMA_ACCESS_TOKEN": "${ATHENA_FIGMA_TOKEN}"
       }
     },
     "filesystem": {
@@ -43,7 +43,7 @@
       "command": ["npx", "-y", "@postman/postman-mcp-server@latest", "--region", "us", "--full"],
       "enabled": true,
       "environment": {
-        "POSTMAN_API_KEY": "PMAK-6a27e753d8c40900019727e5-35d5902e704787a6b5a23328fbf0e7922d"
+        "POSTMAN_API_KEY": "${ATHENA_POSTMAN_KEY}"
       }
     },
     "chrome-devtools": {
@@ -64,42 +64,21 @@
   },
 
   "agent": {
-    "rimuru-build": {
+    "athena-build": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "rimuru-docs": {
+    "athena-docs": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "rimuru-codebase": {
-      "mode": "primary",
-      "permission": {
-        "task": { "*": "allow" },
-        "tool": { "*": "allow" }
-      }
-    },
-    "veldora": {
-      "mode": "primary",
-      "permission": {
-        "task": { "*": "allow" },
-        "tool": { "*": "allow" }
-      }
-    },
-    "veldora-pro": {
-      "mode": "primary",
-      "permission": {
-        "task": { "*": "allow" },
-        "tool": { "*": "allow" }
-      }
-    },
-    "veldora-doc": {
+    "athena-codebase": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },

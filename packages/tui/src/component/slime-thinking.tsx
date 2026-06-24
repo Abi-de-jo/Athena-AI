@@ -1,36 +1,36 @@
 import { createEffect, createSignal, onCleanup, Show } from "solid-js"
 import { useTheme } from "../context/theme"
 
-/** Slime face frames — eyes blink, body bounces */
+/** Warrior frames — ⚔ crossed swords clash during thought, rest when done */
 const THINK_FRAMES = [
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◔‿◔)", // half-blink
-  "(◡‿◡)", // blink!
-  "(◔‿◕)", // winking
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◡‿◡)", // blink!
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
+  "⚔",  // crossed swords
+  "⚒",  // hammer & pick — striking
+  "⚔",  // crossed swords
+  "⚜",  // fleur-de-lis — heraldic badge
+  "⚔",  // crossed swords
+  "⚒",  // striking
+  "⚔",  // crossed swords
+  "⚜",  // heraldic
+  "⚔",  // crossed swords
+  "⚒",  // striking
+  "⚔",  // crossed swords
+  "⚜",  // heraldic
 ]
 
-/** Done state — subtle idle blink */
+/** Done state — warrior at rest */
 const DONE_FRAMES = [
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◔‿◔)", // half
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◕‿◕)", // open
-  "(◡‿◡)", // blink
-  "(◕‿◕)", // open
+  "⚔",  // crossed swords
+  "⚔",  // crossed swords
+  "⚒",  // hammer & pick
+  "⚔",  // crossed swords
+  "⚔",  // crossed swords
+  "⚜",  // heraldic badge
+  "⚔",  // crossed swords
+  "⚔",  // crossed swords
+  "⚒",  // hammer & pick
+  "⚔",  // crossed swords
+  "⚔",  // crossed swords
+  "⚜",  // heraldic badge
 ]
 
 export function SlimeThinking(props: { text?: string }) {

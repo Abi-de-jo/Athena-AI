@@ -1,105 +1,94 @@
 {
   "$schema": "https://opencode.ai/config.json",
 
-  "provider": {},
-
-  "permission": {},
+  "permission": {
+    "*": "allow",
+    "external_directory": "allow"
+  },
 
   "references": {
     "effect": {
       "repository": "github.com/Effect-TS/effect-smol",
       "description": "Use for Effect v4 and effect-smol implementation details"
     },
-    "rimuru-local": {
-      "path": "~/.local/share/opencode",
-      "description": "Contains opencode logs and data"
+    "athena-local": {
+      "path": "~/.local/share/athena",
+      "description": "Contains athena/opencode logs and data"
     },
-    "rimuru-docs": {
+    "athena-docs": {
       "path": "./packages/docs",
-      "description": "Rimuru documentation site built with Astro"
+      "description": "Athena documentation site built with Astro"
     },
-    "rimuru-core": {
+    "athena-core": {
       "path": "./packages/core",
-      "description": "Core shared library for rimuru-ai"
+      "description": "Core shared library for the Athena monorepo"
+    },
+    "athena-system": {
+      "path": "./.athena/SYSTEM.md",
+      "description": "Auto-generated comprehensive host + project + integrations context (read once at session start)"
+    },
+    "user-skills": {
+      "path": "~/.config/opencode/skills",
+      "description": "User-global skill library (Athena, backend, frontend, general, hermes, testing, explore)"
+    },
+    "user-config": {
+      "path": "~/.config/opencode/opencode.json",
+      "description": "User-global Athena/opencode config (providers, MCPs, plugins)"
     }
   },
 
   "mcp": {
-    "figma": {
-      "type": "local",
-      "command": ["npx", "-y", "@nexus2520/figma-mcp-server"],
-      "enabled": true,
-      "environment": {
-        "FIGMA_ACCESS_TOKEN": "figd_hnE1be8CLqwEb2ZKciIr4y8bokJs38c-wTasSVQj"
-      }
-    },
     "filesystem": {
       "type": "local",
-      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/home/gowdaman"],
+      "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "C:\\Users\\narea", "D:\\"],
       "enabled": true
-    },
-    "postman": {
-      "type": "local",
-      "command": ["npx", "-y", "@postman/postman-mcp-server@latest", "--region", "us", "--full"],
-      "enabled": true,
-      "environment": {
-        "POSTMAN_API_KEY": "PMAK-6a27e753d8c40900019727e5-35d5902e704787a6b5a23328fbf0e7922d"
-      }
-    },
-    "chrome-devtools": {
-      "type": "local",
-      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
-      "enabled": true
-    },
-    "browser-use": {
-      "type": "local",
-      "command": ["npx", "-y", "browser-use", "--mcp"],
-      "enabled": true
-    },
+    }
   },
 
   "tools": {
-    "github-triage": false,
-    "github-pr-search": false
+    "github-triage": true,
+    "github-pr-search": true
   },
 
   "agent": {
-    "rimuru-build": {
+    "athena-god": {
+      "mode": "primary",
+      "prompt": "{file:./.athena/agents/athena-god.md}",
+      "temperature": 0.2,
+      "permission": {
+        "task": { "*": "allow" },
+        "tool": { "*": "allow" }
+      }
+    },
+    "athena": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "rimuru-docs": {
+    "athena-max": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "rimuru-codebase": {
+    "athena-build": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "veldora": {
+    "athena-doc": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
         "tool": { "*": "allow" }
       }
     },
-    "veldora-pro": {
-      "mode": "primary",
-      "permission": {
-        "task": { "*": "allow" },
-        "tool": { "*": "allow" }
-      }
-    },
-    "veldora-doc": {
+    "athena-codebase": {
       "mode": "primary",
       "permission": {
         "task": { "*": "allow" },
@@ -119,22 +108,28 @@
     "goal": {
       "description": "Set a session-scoped goal and auto-continue until complete.",
       "template": "$ARGUMENTS",
-      "agent": "build"
+      "agent": "athena-god"
     },
     "build-package": {
       "description": "Build a specific package with turbo",
       "template": "bun turbo build --filter=$ARGUMENTS",
-      "agent": "build"
+      "agent": "athena-god"
     },
     "typecheck": {
       "description": "Run typecheck across the project",
       "template": "bun turbo typecheck",
-      "agent": "build"
+      "agent": "athena-god"
     },
     "lint": {
       "description": "Run linter",
       "template": "oxlint",
-      "agent": "build"
+      "agent": "athena-god"
+    },
+    "system-info": {
+      "description": "Print the current SYSTEM.md summary (host, runtimes, MCPs, agents).",
+      "template": "cat .athena/SYSTEM.md",
+      "agent": "athena-god"
     }
   }
 }
+

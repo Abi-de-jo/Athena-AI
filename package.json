@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "rimuru-ai",
+  "name": "athena-ai",
   "description": "AI-powered development tool",
   "private": true,
   "type": "module",
@@ -115,7 +115,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gowdaman-dev/rimuru-ai"
+    "url": "https://github.com/Abi-de-jo/Athena-AI"
   },
   "license": "MIT",
   "prettier": {

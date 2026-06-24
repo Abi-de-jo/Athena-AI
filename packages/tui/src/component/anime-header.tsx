@@ -17,7 +17,7 @@ export function AnimeHeader() {
   return (
     <box flexShrink={0} flexDirection="row" paddingLeft={2} paddingRight={2} paddingTop={1} paddingBottom={1}>
       <text fg={theme.primary} attributes={TextAttributes.BOLD}>
-        (◕‿◕) Rimuru
+        Athena
       </text>
       <box flexGrow={1} />
       <Show when={routeLabel()}>

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://github.com/gowdaman-dev/athena-ai/config.json",
+
+  // ── MCP Servers (copied from opencode.jsonc, V2 format) ─────────────
+  "mcp": {
+    "servers": {
+      "figma": {
+        "type": "local",
+        "command": ["npx", "-y", "@nexus2520/figma-mcp-server"],
+        "environment": {
+          "FIGMA_ACCESS_TOKEN": "figd_hnE1be8CLqwEb2ZKciIr4y8bokJs38c-wTasSVQj"
+        }
+      },
+      "filesystem": {
+        "type": "local",
+        "command": ["npx", "-y", "@modelcontextprotocol/server-filesystem", "/home/gowdaman"]
+      },
+      "postman": {
+        "type": "local",
+        "command": ["npx", "-y", "@postman/postman-mcp-server@latest", "--region", "us", "--full"],
+        "environment": {
+          "POSTMAN_API_KEY": "PMAK-6a27e753d8c40900019727e5-35d5902e704787a6b5a23328fbf0e7922d"
+        }
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": ["npx", "-y", "chrome-devtools-mcp@latest"]
+      },
+      "browser-use": {
+        "type": "local",
+        "command": ["npx", "-y", "browser-use", "--mcp"]
+      },
+      "firecrawl": {
+        "type": "remote",
+        "url": "https://mcp.firecrawl.dev/fc-d6f01d8d7f044adea43e9b20a19405d8/v2/mcp"
+      }
+    }
+  },
+
+  // ── Plugins (copied from opencode.jsonc) ────────────────────────────
+  "plugins": [
+    "opencode-optimal-model-temps",
+    "opencode-codebase-index",
+    "opencode-helicone-session",
+    "opencode-goal-plugin"
+  ],
+
+  // ── Skills (paths to discover skills from) ─────────────────────────
+  "skills": [
+    "~/.agents/skills",
+    "~/.claude/skills"
+  ]
+}

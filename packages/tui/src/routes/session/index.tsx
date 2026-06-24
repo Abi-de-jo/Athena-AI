@@ -1485,6 +1485,18 @@ function AssistantMessage(props: { message: AssistantMessage; parts: Part[]; las
     return props.message.time.completed - user.time.created
   })
 
+  const buildMeta = createMemo(() => {
+    const d = duration()
+    const name = model()
+    if (!name) return undefined
+    return {
+      mode: Locale.titlecase(props.message.mode),
+      model: name,
+      buildDuration: d ? Locale.duration(d) : "",
+    }
+  })
+  const hasReasoning = createMemo(() => props.parts.some((x) => x.type === "reasoning"))
+
   const childShortcut = useCommandShortcut("session.child.first")
   const backgroundShortcut = useCommandShortcut("session.background")
 
@@ -1500,6 +1512,7 @@ function AssistantMessage(props: { message: AssistantMessage; parts: Part[]; las
                 component={component()}
                 part={part as any}
                 message={props.message}
+                buildMeta={hasReasoning() ? buildMeta() : undefined}
               />
             </Show>
           )
@@ -1542,7 +1555,7 @@ function AssistantMessage(props: { message: AssistantMessage; parts: Part[]; las
         </box>
       </Show>
       <Switch>
-        <Match when={props.last || final() || props.message.error?.name === "MessageAbortedError"}>
+        <Match when={!hasReasoning() && (props.last || final() || props.message.error?.name === "MessageAbortedError")}>
           <box id={`assistant-summary-${props.message.id}`} paddingLeft={3}>
             <text marginTop={1}>
               <span
@@ -1579,7 +1592,7 @@ const PART_MAPPING = {
 
 const INLINE_TOOL_ICON_WIDTH = 2
 
-function ReasoningPart(props: { last: boolean; part: ReasoningPart; message: AssistantMessage }) {
+function ReasoningPart(props: { last: boolean; part: ReasoningPart; message: AssistantMessage; buildMeta?: { mode: string; model: string; buildDuration: string } }) {
   const { theme } = useTheme()
   const ctx = use()
   // Collapsed by default in hide mode: a single line throughout, so the
@@ -1622,6 +1635,7 @@ function ReasoningPart(props: { last: boolean; part: ReasoningPart; message: Ass
             done={isDone()}
             title={summary().title}
             duration={isDone() ? Locale.duration(duration()) : undefined}
+            buildMeta={props.buildMeta}
           />
         </box>
         <Show when={(!inMinimal() || expanded()) && summary().body}>
@@ -1648,6 +1662,7 @@ function ReasoningHeader(props: {
   done: boolean
   title: string | null
   duration?: string
+  buildMeta?: { mode: string; model: string; buildDuration: string }
 }) {
   const { theme } = useTheme()
   const fg = () =>
@@ -1666,6 +1681,7 @@ function ReasoningHeader(props: {
           open={props.open}
           title={props.title}
           duration={props.duration}
+          buildMeta={props.buildMeta}
         />
       </Match>
     </Switch>
